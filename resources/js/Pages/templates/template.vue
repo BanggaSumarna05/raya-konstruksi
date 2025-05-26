@@ -10,7 +10,8 @@ import { Link } from '@inertiajs/vue3'
                 <Link :href="route('index')" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <img src="/assets/img/makadia.png" alt="Logo Makadia Group International" srcset="">
+                <!-- <img src="/assets/img/makadia.png" alt="Logo Makadia Group International" srcset=""> -->
+                <h1>RAYA Construction Internasional</h1>
                 </Link>
 
                 <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -60,13 +61,14 @@ import { Link } from '@inertiajs/vue3'
 
                         <div class="col-lg-3 col-md-3" data-aos="fade-right" data-aos-delay="100">
                             <div class="footer-info">
-                                <img src="/assets/img/makadia.png" alt="Logo Makadia Group International"
-                                    style="max-width: 70%">
+                                <!-- <img src="/assets/img/makadia.png" alt="Logo Makadia Group International"
+                                    style="max-width: 70%"> -->
+                                <h1>RAYA Construction Indonesia</h1>
                                 <br><br>
                                 <div class="row" style="background-color: transparent;">
                                     <div class="social-links d-flex mt-3">
-                                        <img src="assets/img/isos2.png" style="max-width: 22em; max-height: 5.8em;" alt=""
-                                            srcset="">
+                                        <img src="assets/img/isos2.png" style="max-width: 22em; max-height: 5.8em;"
+                                            alt="" srcset="">
                                     </div>
                                 </div>
                                 <br><br>

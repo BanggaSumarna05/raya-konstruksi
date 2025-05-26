@@ -1,9 +1,10 @@
 <header id="header" class="header d-flex align-items-center" {{-- style="background-color: red" --}}>
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between" style="margin-left: 0vh;">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between" style="margin-left: 4em;">
 
-        <a href="{{ route('index') }}" class="logo d-flex align-items-center">
-            <img src="/assets/img/makadia-new.png" alt="Logo Makadia Group International"
-                title="Logo Makadia Group International">
+        <a href="{{ route('index') }}" class="logo d-flex align-items-center" style="padding-left:2em">
+            {{-- <img src="/assets/img/makadia-new.png" alt="Logo Makadia Group International"
+                title="Logo Makadia Group International"> --}}
+            <h4>RAYA CONSTRUCTION INDONESIA</h4>
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>

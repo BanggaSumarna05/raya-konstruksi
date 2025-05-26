@@ -6,7 +6,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 
 <template>
     <VuePreloader background-color="black" color="#FCD03B" transition-type="fade-up" :loading-speed="40"
-    :transition-speed="600" @loading-is-over="loadingIsOver" @transition-is-over="transitionIsOver"></VuePreloader>
+        :transition-speed="600" @loading-is-over="loadingIsOver" @transition-is-over="transitionIsOver"></VuePreloader>
 
     <Head title="Home" />
     <!-- ======= Hero Section ======= -->
@@ -17,7 +17,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
                         <h2 data-aos="fade-down" data-aos-delay="2200">
-                            Makadia Group International
+                            RAYA Construction International
                         </h2>
                     </div>
                     <div class="col-lg-7">
@@ -34,7 +34,8 @@ import '/node_modules/vue-preloader/dist/style.css';
             <div class="carousel-item active" style="background-image: url('assets/img/hero-carousel/uoi-1 (5).jpeg')">
             </div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (9).jpeg')"></div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')"></div>
+            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')">
+            </div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (2).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (3).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (4).jpeg')"></div>
@@ -169,22 +170,22 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <li class="nav-item col-3" role="presentation">
                     <a class="nav-link show active" data-bs-toggle="tab" data-bs-target="#tab-1" aria-selected="true"
                         role="tab">
-                        <h4>Plant Maintenance</h4>
-                    </a>
-                </li>
-                <li class="nav-item col-3" role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" aria-selected="true" role="tab">
-                        <h4>Engineering & Manpower Supply</h4>
-                    </a>
-                </li>
-                <li class="nav-item col-3" role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3" aria-selected="true" role="tab">
                         <h4>Construction & Fabrication</h4>
                     </a>
                 </li>
                 <li class="nav-item col-3" role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4" aria-selected="true" role="tab">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" aria-selected="true" role="tab">
                         <h4>Catalyst Loading</h4>
+                    </a>
+                </li>
+                <li class="nav-item col-3" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3" aria-selected="true" role="tab">
+                        <h4>Plant Maintenance</h4>
+                    </a>
+                </li>
+                <li class="nav-item col-3" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4" aria-selected="true" role="tab">
+                        <h4>Engineering & Manpower Supply</h4>
                     </a>
                 </li>
 
@@ -192,7 +193,62 @@ import '/node_modules/vue-preloader/dist/style.css';
 
             <div class="tab-content">
 
+
                 <div class="tab-pane active show" id="tab-1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <h3>Construction & Fabrication</h3>
+                            <p class="rapih">
+                                Our team of skilled engineers and workers collaborate to bring your visions to life
+                                across a range of disciplines, including Integrated Steel Structure Fabrication and
+                                Installation, Piping Fabrication & Installation, and Mechanical Installation. We
+                                meticulously craft every detail to reflect your unique aspirations.
+                            </p>
+                            <ul class="ul-2">
+                                <li>Steel Structure Fabrication & Installation</li>
+                                <li>Piping Fabrication & Installation</li>
+                                <li>Mechanical Erection</li>
+                                <li>Tank Fabrication & Installation</li>
+                                <li>Equipment Rental</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <img src="assets/img/construction-fabrication.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab-2" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <h3>Catalyst Handling</h3>
+                            <p class="rapih">
+                                Catalysts play a pivotal role in accelerating industrial processes, we address the
+                                critical challenges of loading and unloading these compounds within reactors. To ensure
+                                seamless catalyst activation at our clients’ facilities, we provide comprehensive
+                                equipment and deploy highly skilled personnel.
+                            </p>
+                            <ul class="ul-2">
+                                <li>Atmospheric Condition</li>
+                                <li>Inert Condition</li>
+                                <li>Sock Loading</li>
+                                <li>Dense Loading</li>
+                                <li>Unloading Catalyst</li>
+                                <li>Licensed Technicians</li>
+                                <li>Loading Equipment</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <img src="assets/img/catalyst-loading-3.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab-3" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
                             data-aos="fade-up" data-aos-delay="100">
@@ -222,7 +278,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     </div>
                 </div>
 
-                <div class="tab-pane" id="tab-2" role="tabpanel">
+                <div class="tab-pane" id="tab-4" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
                             data-aos="fade-up" data-aos-delay="100">
@@ -247,63 +303,6 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
                             data-aos-delay="200">
                             <img src="assets/img/engineering-manpower.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="tab-3" role="tabpanel">
-                    <div class="row">
-                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
-                            data-aos="fade-up" data-aos-delay="100">
-                            <h3>Construction & Fabrication</h3>
-                            <p class="rapih">
-                                Our team of skilled engineers and workers collaborate to bring your visions to life
-                                across a range of disciplines, including Integrated Steel Structure Fabrication and
-                                Installation, Piping Fabrication & Installation, and Mechanical Installation. We
-                                meticulously craft every detail to reflect your unique aspirations.
-                            </p>
-                            <ul class="ul-2">
-                                <li>Steel Structure Fabrication</li>
-                                <li>Steel Structure Installation</li>
-                                <li>Piping Fabrication</li>
-                                <li>Piping Installation</li>
-                                <li>Mechanical Erection</li>
-                                <li>Tank Fabrication</li>
-                                <li>Tank Installation</li>
-                                <li>Equipment Rental</li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
-                            data-aos-delay="200">
-                            <img src="assets/img/construction-fabrication.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="tab-4" role="tabpanel">
-                    <div class="row">
-                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
-                            data-aos="fade-up" data-aos-delay="100">
-                            <h3>Catalyst Handling</h3>
-                            <p class="rapih">
-                                Catalysts play a pivotal role in accelerating industrial processes, we address the
-                                critical challenges of loading and unloading these compounds within reactors. To ensure
-                                seamless catalyst activation at our clients’ facilities, we provide comprehensive
-                                equipment and deploy highly skilled personnel.
-                            </p>
-                            <ul class="ul-2">
-                                <li>Atmospheric Condition</li>
-                                <li>Inert Condition</li>
-                                <li>Sock Loading</li>
-                                <li>Dense Loading</li>
-                                <li>Unloading Catalyst</li>
-                                <li>Licensed Technicians</li>
-                                <li>Loading Equipment</li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
-                            data-aos-delay="200">
-                            <img src="assets/img/catalyst-loading-3.png" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -369,8 +368,8 @@ import '/node_modules/vue-preloader/dist/style.css';
 .greyscale {
     object-fit: scale-down;
     /* display: flex; */
-    justify-content: center!important;
-    align-items: center!important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 </style>
 <script>

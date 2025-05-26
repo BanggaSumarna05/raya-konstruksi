@@ -2,10 +2,10 @@
     <div class="footer-content position-relative">
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-3 col-md-3" data-aos="fade-right" data-aos-delay="100">
                     <div class="footer-info">
-                        <img src="/assets/img/makadia-new.png" alt="Logo Makadia Group International" style="max-width: 70%" title="logo-footer">
+                        {{-- <img src="/assets/img/makadia-new.png" alt="Logo Makadia Group International" style="max-width: 70%" title="logo-footer"> --}}
+                        <h4>RAYA CONSTRUCTION INDONESIA</h4>
                         <br><br>
                         <div class="row" style="background-color: transparent;">
                             <div class="col-12">
@@ -56,10 +56,10 @@
                 <div class="col-lg-3 col-md-3 footer-links" data-aos="fade-left" data-aos-delay="100">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><a href="{{route('service')}}">Piping & Mechanical Construction</a></li>
-                        <li><a href="{{route('service')}}">Equipment & Scaffolding Rental</a></li>
-                        <li><a href="{{route('service')}}">Manpower Supply</a></li>
-                        <li><a href="{{route('service')}}">Catalyst Loading</a></li>
+                        <li><a href="{{ route('service') }}">Piping & Mechanical Construction</a></li>
+                        <li><a href="{{ route('service') }}">Equipment & Scaffolding Rental</a></li>
+                        <li><a href="{{ route('service') }}">Manpower Supply</a></li>
+                        <li><a href="{{ route('service') }}">Catalyst Loading</a></li>
                     </ul>
                 </div>
                 <!-- End footer links column-->

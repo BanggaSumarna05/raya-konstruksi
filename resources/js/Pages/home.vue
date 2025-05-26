@@ -17,7 +17,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
                         <h2 data-aos="fade-down" data-aos-delay="2200">
-                            Makadia Group International
+                            RAYA CONSTRUCTION INTERNATIONAL
                         </h2>
                     </div>
                     <div class="col-lg-7">

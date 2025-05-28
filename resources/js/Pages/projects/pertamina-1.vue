@@ -100,9 +100,14 @@ defineProps({
                         </center>
                         <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
-                            <div class="col-lg-12 col-md-12 portfolio-item filter-remodeling">
+                            <div class="col-lg-6 col-md-12 portfolio-item filter-remodeling">
                                 <div class="portfolio-content h-100">
                                     <img src="/assets/projects/pertamina-1/gal-1.png" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 portfolio-item filter-remodeling">
+                                <div class="portfolio-content h-100">
+                                    <img src="/assets/projects/pertamina-1/gal-2.jpeg" class="img-fluid" alt="">
                                 </div>
                             </div>
 

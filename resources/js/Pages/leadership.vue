@@ -56,7 +56,7 @@ defineProps({
                         <!-- <h4>Est 2018</h4> -->
                         <div class="text-left">
                             <h3>Robby Satria Manurung</h3>
-                            <span><i>President Commissioners of Makadia Group International</i></span>
+                            <span><i>President Commissioners of RAYA Construction International</i></span>
                         </div>
                         <br />
                         <h5 class="rapih" style="padding-left: 2em;">
@@ -86,7 +86,7 @@ defineProps({
                         <!-- <h4>Est 2018</h4> -->
                         <div class="text-left">
                             <h3>Jimmy P. Sanjaya</h3>
-                            <span><i>Director of Makadia Group International</i></span>
+                            <span><i>Director of RAYA Construction International</i></span>
                         </div>
                         <br /><br /><br /><br />
                         <h5 class="rapih">

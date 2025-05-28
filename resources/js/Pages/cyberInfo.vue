@@ -5,6 +5,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 </script>
 
 <template>
+
     <Head title="Cyber Security Information" />
     <!-- ======= Hero Section ======= -->
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
@@ -20,26 +21,30 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <p class="rapih">
                         The Cybercrime is placed in the current and future top 10 risks globally(1) and the cost of
                         Cybercrime is
-                        predicted to reach $ 8 trillion in 2023, while it is projected to hit an annual $10.5 trillion by
+                        predicted to reach $ 8 trillion in 2023, while it is projected to hit an annual $10.5 trillion
+                        by
                         2025. If
-                        it were measured as a Country, then Cybercrime would be the world’s third largest economy after U.S.
+                        it were measured as a Country, then Cybercrime would be the world’s third largest economy after
+                        U.S.
                         and
                         China(2).<br><br>
-                        Phishing e-mails are leading the current ranking of top Cybersecurity threats. These e-mails usually
+                        Phishing e-mails are leading the current ranking of top Cybersecurity threats. These e-mails
+                        usually
                         exploit
                         <b>spoofing</b> techniques, i.e. the creation of messages with a fake sender address.<br><br>
                         In many cases, <b>typosquatting</b>, i.e. deliberately typing errors that could trick the
                         recipients, is
                         used to
                         spoof e-mail addresses.<br><br>
-                        For example: makadlagroup.com; makadiagrup.com; makediagrup.com<br><br>
+                        <!-- For example: makadlagroup.com; makadiagrup.com; makediagrup.com<br><br> -->
 
                         However, advanced spoofing techniques can make it almost impossible for users to distinguish a
                         legitimate
                         message from one sent by a fake sender.<br><br>
 
-                        To improve the security of its own communications, for every Makadia Group International domain,
-                        Makadia Group International uses three
+                        To improve the security of its own communications, for every RAYA Construction International
+                        domain,
+                        RAYA Construction International uses three
                         protocols that
                         work together to ensure the validity and reliability of an e-mail message:<br><br>
                     <ul>
@@ -60,7 +65,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                             transit.
                         </li>
                         <li>
-                            <b>DMARC</b> (Domain-based Message Authentication, Reporting, and Conformance): tells receiving
+                            <b>DMARC</b> (Domain-based Message Authentication, Reporting, and Conformance): tells
+                            receiving
                             mail
                             servers what
                             to do when they get a message that appears to be from your organisation, but doesn't pass
@@ -69,18 +75,22 @@ import '/node_modules/vue-preloader/dist/style.css';
                         </li>
                     </ul>
 
-                    Makadia Group International recommends that all potential recipients of e-mail messages that look like
+                    RAYA Construction International recommends that all potential recipients of e-mail messages that
+                    look like
                     they come from one
                     of the
-                    mentioned domains always check the SPF, DKIM and DMARC records and <b>reject all communications</b> that
+                    mentioned domains always check the SPF, DKIM and DMARC records and <b>reject all communications</b>
+                    that
                     <b>do not pass these checks</b>.<br><br>
 
-                    Makadia Group International considers the adoption of these protocols in e-mail communications strategic
+                    RAYA Construction International considers the adoption of these protocols in e-mail communications
+                    strategic
                     and advises all the companies in its supply chain to adopt them.<br><br>
 
-                    To report any cases of communications that try to mimic companies of the Makadia Group International
+                    To report any cases of communications that try to mimic companies of the RAYA Construction
+                    International
                     group, please write to:
-                    <b>IT@makadiagroup.com</b>
+                    <b>IT@rayaconstruction.com</b>
                     </p>
                     <br><br><br>
                 </div>

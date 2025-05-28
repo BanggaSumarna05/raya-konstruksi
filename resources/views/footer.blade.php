@@ -18,7 +18,7 @@
                         <br><br>
                         <p>
                             <strong>Phone:</strong> (021) 2781 4774<br>
-                            <strong>Email:</strong> marketing@makadiagroup.com
+                            <strong>Email:</strong> marketing@rayaconstruction.com
                         </p>
                         <div class="social-links d-flex mt-3">
                             <a href="https://www.instagram.com/makadiagroupinternational/" target="_blank"
@@ -85,7 +85,7 @@
     <div class="footer-legal text-center position-relative">
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Makadia Group International</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>RAYA Construction International</span></strong>. All Rights Reserved
             </div>
         </div>
     </div>

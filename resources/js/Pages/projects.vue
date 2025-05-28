@@ -40,7 +40,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/line-1/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -70,7 +70,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/msm-1/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -88,7 +88,7 @@ defineProps({
                                     </div>
                                     <br>
                                     <br>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('msm-1')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/rdmp-034/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -109,6 +109,7 @@ defineProps({
                                     <h4 class="card-title">
                                         RDMP RU-V Balikpapan ME-03.4 ISBL Tanks Project
                                     </h4>
+                                    <br>
                                     <div class="row">
                                         <div class="col-6">
                                             <p class="float-left">RDMP JO</p>
@@ -118,7 +119,7 @@ defineProps({
                                         </div>
                                     </div>
                                     <br>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('rdmp-034')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -131,7 +132,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/rdmp-032/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -148,7 +149,7 @@ defineProps({
                                         </div>
                                     </div>
                                     <br>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('rdmp-032')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -161,7 +162,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/pertamina-1/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -178,7 +179,7 @@ defineProps({
                                         </div>
                                     </div>
                                     <br>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('pertamina-1')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -191,7 +192,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/ap-1/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -208,7 +209,7 @@ defineProps({
                                             <p class="float-right">North Sumatra, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('ap-1')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -221,7 +222,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/ap-2/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -237,7 +238,7 @@ defineProps({
                                             <p class="float-right">North Sumatra, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('ap-2')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -250,7 +251,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/ap-3/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -266,7 +267,7 @@ defineProps({
                                             <p class="float-right">North Sumatra, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('ap-3')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -279,7 +280,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/tangguh-1/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -287,6 +288,7 @@ defineProps({
                                     <h4 class="card-title">
                                         Tangguh Expansion Plant Preservation Work, CSTS JO
                                     </h4>
+                                    <br>
                                     <div class="row">
                                         <div class="col-6">
                                             <p class="float-left">BP P.L.C</p>
@@ -295,7 +297,7 @@ defineProps({
                                             <p class="float-right">Tangguh, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('tangguh-1')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -308,7 +310,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/line-2/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -316,6 +318,7 @@ defineProps({
                                     <h4 class="card-title">
                                         LINE Ethylene Plant GHU I, II & Clay Towers Catalyst Loading
                                     </h4>
+                                    <br>
                                     <div class="row">
                                         <div class="col-6">
                                             <p class="float-left">KINE JO</p>
@@ -324,7 +327,7 @@ defineProps({
                                             <p class="float-right">Cilegon, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('line-2')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -337,7 +340,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/ap-4/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -353,7 +356,7 @@ defineProps({
                                             <p class="float-right">North Sumatra, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('ap-4')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -366,7 +369,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/uoi-1/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -374,6 +377,7 @@ defineProps({
                                     <h4 class="card-title">
                                         UOI Turnaround & Maintenance Project
                                     </h4>
+                                    <br>
                                     <div class="row">
                                         <div class="col-6">
                                             <p class="float-left">Unilever Oleochemical</p>
@@ -382,7 +386,7 @@ defineProps({
                                             <p class="float-right">Sei Mangkei, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('uoi-1')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -395,7 +399,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/msm-2/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -411,7 +415,7 @@ defineProps({
                                             <p class="float-right">Sumba, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('msm-2')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -424,7 +428,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/enerco-1/gal-1.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -440,7 +444,7 @@ defineProps({
                                             <p class="float-right">Batam, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('enerco-1')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -453,7 +457,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/enerco-2/gal-1.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -469,7 +473,7 @@ defineProps({
                                             <p class="float-right">Batam, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('enerco-2')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -482,7 +486,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/akatara-1/cover-1.jpg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -490,6 +494,7 @@ defineProps({
                                     <h4 class="card-title">
                                         Akatara Project Pre-Commissioning & Commissioning Works
                                     </h4>
+                                    <br>
                                     <div class="row">
                                         <div class="col-6">
                                             <p class="float-left">Jadesone</p>
@@ -498,7 +503,7 @@ defineProps({
                                             <p class="float-right">Jambi, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('akatara-1')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -511,7 +516,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/enerco-3/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -527,7 +532,7 @@ defineProps({
                                             <p class="float-right">Batam, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('enerco-3')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -540,7 +545,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/msm-3/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -556,7 +561,7 @@ defineProps({
                                             <p class="float-right">Sumba, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('msm-3')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -569,7 +574,7 @@ defineProps({
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="card-bg"
-                                    :style="`background-image: url('/assets/img/projects/adsorbent/adsorbent (11).jpg');`">
+                                    :style="`background-image: url('/assets/projects/line-3/hero.jpeg');`">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-around">
@@ -585,7 +590,7 @@ defineProps({
                                             <p class="float-right">Cilegon, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <a :href="route('line-1')" class="readmore stretched-link">Discover More
+                                    <a :href="route('line-3')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>

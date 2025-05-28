@@ -47,7 +47,7 @@ defineProps({
                     <div class="our-story">
                         <h3>About Us</h3>
                         <p class="rapih">
-                            <b>PT Makadia Group International</b>, founded in
+                            <b>RAYA Construction International</b>, founded in
                             2018, has quickly established itself as a premier
                             provider of Engineering & Construction Services. Our
                             expertise spans across multiple areas including
@@ -57,7 +57,7 @@ defineProps({
                             global industrial clients, setting new standards of
                             quality and reliability in the industry.
                             <br /><br />
-                            At PT Makadia Group International, our mission is to
+                            At RAYA Construction International, our mission is to
                             achieve extraordinary results for our clients. We do
                             this by cultivating a culture of excellence in
                             engineering, construction, and heavy equipment

@@ -66,7 +66,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <h2>Our Solutions</h2>
                 <p class="text-center">We offer a comprehensive
                     range of services designed to address the diverse needs.
-                    Construction and Rental, our team of experts is
+                    Construction, our team of experts is
                     dedicated to helping you unlock the full potential of your business.</p>
             </div>
             <div class="row gy-4 justify-content-around">
@@ -86,7 +86,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <div class="service-item card-bg"
                         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/projects/msm/msm-13.jpg); background-position: cover;background-position: center; background-size: cover">
                         <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">+200 People</h3> <br>
+                            <h3 style="color:white!important">People</h3> <br>
                             <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
                                     class="bi bi-arrow-right"></i></a>
                         </div>
@@ -97,7 +97,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <div class="service-item card-bg"
                         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/projects/lotte/lotte-5.png); background-position: cover;background-position: center; background-size: cover">
                         <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">+4,500 Asset</h3>
+                            <h3 style="color:white!important">Asset</h3>
                             <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
                                     class="bi bi-arrow-right"></i></a>
                         </div>
@@ -108,7 +108,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <div class="service-item card-bg"
                         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/building.jpg); background-position: cover;background-position: center; background-size: cover">
                         <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">2 Office's</h3>
+                            <h3 style="color:white!important">Office</h3>
                             <br>
                             <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
                                     class="bi bi-arrow-right"></i></a>
@@ -131,19 +131,19 @@ import '/node_modules/vue-preloader/dist/style.css';
                         style="border: 0px;background-color: transparent;">
                     <map name="image-map">
                         <area target="_self" alt="Enerco RPO International Project"
-                            title="Enerco RPO International Project" :href="route('project-enerco-1')"
-                            coords="221,135,19" shape="circle">
+                            title="Enerco RPO International Project" :href="route('enerco-1')" coords="221,135,19"
+                            shape="circle">
                         <area target="_self" alt="JADESTONE ENERGY AKATARA" title="JADESTONE ENERGY AKATARA"
-                            :href="route('jadestone-akatara-mps')" coords="205,186,19" shape="circle">
+                            :href="route('akatara-1')" coords="205,186,19" shape="circle">
                         <area target="_self" alt="LOTTE LINE WORK PACKAGES 03" title="LOTTE LINE WORK PACKAGES 03"
-                            :href="route('lotte-line-wp03')" coords="264,294,23" shape="circle">
+                            :href="route('line-1')" coords="264,294,23" shape="circle">
                         <area target="_self" alt="PERTAMINA RDMP RU-V" title="PERTAMINA RDMP RU-V"
-                            :href="route('pertamina-rdmp-v')" coords="502,190,30" shape="circle">
+                            :href="route('pertamina-1')" coords="502,190,30" shape="circle">
                         <area target="_self" alt="MURIA SUMBA MANIS SUGAR FACTORY"
-                            title="MURIA SUMBA MANIS SUGAR FACTORY" :href="route('sumba-msm')" coords="555,372,26"
+                            title="MURIA SUMBA MANIS SUGAR FACTORY" :href="route('msm-1')" coords="555,372,26"
                             shape="circle">
                         <area target="_self" alt="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL"
-                            title="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL" :href="route('unilever-1')"
+                            title="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL" :href="route('uoi-1')"
                             coords="121,104,26" shape="circle">
                     </map>
                 </center>
@@ -170,22 +170,22 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <li class="nav-item col-3" role="presentation">
                     <a class="nav-link show active" data-bs-toggle="tab" data-bs-target="#tab-1" aria-selected="true"
                         role="tab">
-                        <h4>Construction & Fabrication</h4>
+                        <h4 class="text-uppercase">Construction & Fabrication</h4>
                     </a>
                 </li>
                 <li class="nav-item col-3" role="presentation">
                     <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" aria-selected="true" role="tab">
-                        <h4>Catalyst Loading</h4>
+                        <h4 class="text-uppercase">Catalyst Loading</h4>
                     </a>
                 </li>
                 <li class="nav-item col-3" role="presentation">
                     <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3" aria-selected="true" role="tab">
-                        <h4>Plant Maintenance</h4>
+                        <h4 class="text-uppercase">Plant Maintenance</h4>
                     </a>
                 </li>
                 <li class="nav-item col-3" role="presentation">
                     <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4" aria-selected="true" role="tab">
-                        <h4>Engineering & Manpower Supply</h4>
+                        <h4 class="text-uppercase">Engineering & Manpower Supply</h4>
                     </a>
                 </li>
 
@@ -198,7 +198,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
                             data-aos="fade-up" data-aos-delay="100">
-                            <h3>Construction & Fabrication</h3>
+                            <h3 class="text-uppercase">Construction & Fabrication</h3>
                             <p class="rapih">
                                 Our team of skilled engineers and workers collaborate to bring your visions to life
                                 across a range of disciplines, including Integrated Steel Structure Fabrication and
@@ -210,7 +210,6 @@ import '/node_modules/vue-preloader/dist/style.css';
                                 <li>Piping Fabrication & Installation</li>
                                 <li>Mechanical Erection</li>
                                 <li>Tank Fabrication & Installation</li>
-                                <li>Equipment Rental</li>
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
@@ -224,7 +223,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
                             data-aos="fade-up" data-aos-delay="100">
-                            <h3>Catalyst Handling</h3>
+                            <h3 class="text-uppercase">Catalyst Handling</h3>
                             <p class="rapih">
                                 Catalysts play a pivotal role in accelerating industrial processes, we address the
                                 critical challenges of loading and unloading these compounds within reactors. To ensure
@@ -252,7 +251,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
                             data-aos="fade-up" data-aos-delay="100">
-                            <h3>Plant Maintenance</h3>
+                            <h3 class="text-uppercase">Plant Maintenance</h3>
                             <p class="rapih">
                                 Driven by an unwavering commitment to client satisfaction, our skilled and dedicated
                                 team consistently delivers exceptional results. Our expertise shines through in
@@ -282,7 +281,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
                             data-aos="fade-up" data-aos-delay="100">
-                            <h3>Engineering & Manpower Supply</h3>
+                            <h3 class="text-uppercase">Engineering & Manpower Supply</h3>
                             <p class="rapih">
                                 Our team of experienced and highly competent engineers is dedicated to ensuring the
                                 successful execution of your project. With over 50 engineers and hundreds direct work

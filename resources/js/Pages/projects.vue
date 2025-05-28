@@ -87,7 +87,6 @@ defineProps({
                                         </div>
                                     </div>
                                     <br>
-                                    <br>
                                     <a :href="route('msm-1')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
@@ -118,7 +117,6 @@ defineProps({
                                             <p class="float-right">Balikpapan, Indonesia.</p>
                                         </div>
                                     </div>
-                                    <br>
                                     <a :href="route('rdmp-034')" class="readmore stretched-link">Discover More
                                         <i class="bi bi-arrow-right"></i></a>
                                 </div>
@@ -275,7 +273,7 @@ defineProps({
                     </div>
                 </div>
 
-                <div class="col-md-12 col-lg-4 col-xl-4" data-aos="fade-down" data-aos-delay="100">
+                <!-- <div class="col-md-12 col-lg-4 col-xl-4" data-aos="fade-down" data-aos-delay="100">
                     <div class="card-item">
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -303,7 +301,7 @@ defineProps({
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="col-md-12 col-lg-4 col-xl-4" data-aos="fade-down" data-aos-delay="100">
                     <div class="card-item">
@@ -582,6 +580,7 @@ defineProps({
                                     <h4 class="card-title">
                                         LINE Ethylene Plant Project Construction Manpower Supply
                                     </h4>
+                                    <br>
                                     <div class="row">
                                         <div class="col-6">
                                             <p class="float-left">KINE JO</p>

@@ -18,7 +18,7 @@
                         <br><br>
                         <p>
                             <strong>Phone:</strong> (021) 2781 4774<br>
-                            <strong>Email:</strong> marketing@rayaconstruction.com
+                            <strong>Email:</strong> marketing@rayakonstruksi.com
                         </p>
                         <div class="social-links d-flex mt-3">
                             <a href="https://www.instagram.com/makadiagroupinternational/" target="_blank"
@@ -71,7 +71,7 @@
                         src="https://maps.google.com/maps?width=600&amp;height=800&amp;hl=en&amp;q=talavera office park&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                     <br><br>
                     <p class="text-left">
-                        Talavera Office Park, 15th floor.
+                        Talavera Office Park, 17th floor.
                         T.B. Simatupang, Kav. 22 – 26,
                         South Jakarta, Indonesia
                     </p>

@@ -22,7 +22,7 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                     <div class="info-item  d-flex flex-column justify-content-center align-items-center px-4">
                         <i class="bi bi-map"></i>
                         <h3>Our Address</h3>
-                        <p>Talavera Office Park, 11th floor. T.B. Simatupang, Kav. 22 – 26, South Jakarta, Indonesia</p>
+                        <p>Talavera Office Park, 17th floor. T.B. Simatupang, Kav. 22 – 26, South Jakarta, Indonesia</p>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                     <div class="info-item d-flex flex-column justify-content-center align-items-center px-4">
                         <i class="bi bi-envelope"></i>
                         <h3>Email Us</h3>
-                        <p>marketing@rayaconstruction.com</p>
+                        <p>marketing@rayakonstruksi.com</p>
                     </div>
                 </div>
 

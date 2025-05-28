@@ -30,7 +30,7 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                     <div class="info-item d-flex flex-column justify-content-center align-items-center px-4">
                         <i class="bi bi-envelope"></i>
                         <h3>Email Us</h3>
-                        <p>marketing@makadiagroup.com</p>
+                        <p>marketing@rayaconstruction.com</p>
                     </div>
                 </div>
 

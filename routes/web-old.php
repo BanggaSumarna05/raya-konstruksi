@@ -6,38 +6,6 @@ use Inertia\Inertia;
 
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
-
-#who we are
-Route::get('/who-we-are', [FrontController::class, 'whoWeAre'])->name('whoWeAre');
-Route::get('/who-we-are/our-corporate-structure', [FrontController::class, 'corporateStructure'])->name('corporateStructure');
-Route::get('/who-we-are/clients-partners', [FrontController::class, 'clientPartner'])->name('clientPartner');
-
-#what we do
-Route::get('/what-we-do', [FrontController::class, 'whatWeDo'])->name('whatWeDo');
-
-#careers
-Route::get('/careers', [FrontController::class, 'career'])->name('career');
-
-#contact us
-Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contactUs');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#############################
 Route::get('/about-us', function () {
     return Inertia::render('aboutUs-new');
 })->name('about');
@@ -74,9 +42,9 @@ Route::get('/management/Anggi-Simatupang', function () {
     return Inertia::render('management/anggi');
 })->name('anggi');
 
-// Route::get('/contact-us', function () {
-//     return Inertia::render('contact');
-// })->name('contact');
+Route::get('/contact-us', function () {
+    return Inertia::render('contact');
+})->name('contact');
 
 Route::post(
     '/submit-inquiry-form',

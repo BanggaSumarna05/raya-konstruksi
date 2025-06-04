@@ -1,0 +1,71 @@
+<script setup>
+import { Head, Link } from '@inertiajs/vue3';
+import { VuePreloader } from 'vue-preloader';
+import '/node_modules/vue-preloader/dist/style.css';
+</script>
+
+<template>
+
+    <Head title="Client & Partners" />
+    <section id="alt-services-2" class="alt-services-2 section" style="padding-top:10%">
+        <div class="container">
+            <h4>
+                Clients & Partners
+            </h4>
+            <div class="row gy-4">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1100">
+                    <div class="card">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-air-products.png" alt="">
+                    </div>
+                </div>
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1200">
+                    <div class="card">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-enerco.png" alt="">
+                    </div>
+                </div>
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1300">
+                    <div class="card">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-jadestone.png" alt="">
+                    </div>
+                </div>
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1400">
+                    <div class="card">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-msm.png" alt="">
+                    </div>
+                </div>
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1500">
+                    <div class="card">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/kine-jo-logo.png" alt="">
+                    </div>
+                </div>
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1600">
+                    <div class="card">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-asraya.png" alt="">
+                    </div>
+                </div>
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1700">
+                    <div class="card">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-unilever.png" alt="">
+                    </div>
+                </div>
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1800">
+                    <div class="card">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/swg.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</template>
+<script>
+export default {
+    data() {
+    },
+    mounted() {
+    },
+    beforeDestroy() {
+    },
+    methods: {}
+};
+</script>

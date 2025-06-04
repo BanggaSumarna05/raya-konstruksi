@@ -5,8 +5,8 @@ import '/node_modules/vue-preloader/dist/style.css';
 </script>
 
 <template>
-    <VuePreloader background-color="black" color="#FCD03B" transition-type="fade-up" :loading-speed="40"
-        :transition-speed="600" @loading-is-over="loadingIsOver" @transition-is-over="transitionIsOver"></VuePreloader>
+    <!-- <VuePreloader background-color="black" color="#FCD03B" transition-type="fade-up" :loading-speed="40"
+        :transition-speed="600" @loading-is-over="loadingIsOver" @transition-is-over="transitionIsOver"></VuePreloader> -->
 
     <Head title="Home" />
     <!-- ======= Hero Section ======= -->
@@ -25,30 +25,22 @@ import '/node_modules/vue-preloader/dist/style.css';
                             With an eye on the horizon, our industrial construction company
                             continues to pave the way for a future where possibility knows no bounds.</p>
                         <br>
-                        <!-- <div class="text-center" data-aos="fade-up" data-aos-delay="2400">
-                            <p>
-                                <b>Subsidiary Of</b>
-                            </p>
-                            <a href="https:/azureinvestama.com" target="_blank"><span><img class="image"
-                                        src="/assets/img/azureinvestama.png" style="max-width: 28%"
-                                        alt="Logo Azure Investama Group" title="Logo Azure Investama Group"></span></a>
-                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6200">
-            <div class="carousel-item active" style="background-image: url('assets/img/hero-carousel/uoi-1 (5).jpeg')"></div>
+            <div class="carousel-item active" style="background-image: url('assets/img/hero-carousel/uoi-1 (5).jpeg')">
+            </div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (9).jpeg')"></div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (1).jpeg')"></div>
+            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')">
+            </div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (2).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (3).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (4).jpeg')"></div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (7).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (9).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (10).jpeg')"></div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/uoi-1 (3).jpeg')"></div>
 
             <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/header-7.jpg)"></div>
             <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/header-4.jpg)"></div>
@@ -74,12 +66,12 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <h2>Our Solutions</h2>
                 <p class="text-center">We offer a comprehensive
                     range of services designed to address the diverse needs.
-                    Construction and Rental, our team of experts is
+                    Construction, our team of experts is
                     dedicated to helping you unlock the full potential of your business.</p>
             </div>
             <div class="row gy-4 justify-content-around">
 
-                <div class="col-lg-3 col-md-6" data-aos="fade-down" data-aos-delay="100" st>
+                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1100">
                     <div class="service-item card-bg"
                         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'); background-position: cover;background-position: center; background-size: cover">
                         <div class="card-title text-white" style="margin-top: 10em;">
@@ -90,33 +82,33 @@ import '/node_modules/vue-preloader/dist/style.css';
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6" data-aos="fade-down" data-aos-delay="100" st>
+                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1200">
                     <div class="service-item card-bg"
                         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/projects/msm/msm-13.jpg); background-position: cover;background-position: center; background-size: cover">
                         <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">+200 People</h3> <br>
+                            <h3 style="color:white!important">People</h3> <br>
                             <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
                                     class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6" data-aos="fade-down" data-aos-delay="100" st>
+                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1300">
                     <div class="service-item card-bg"
                         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/projects/lotte/lotte-5.png); background-position: cover;background-position: center; background-size: cover">
                         <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">+4,500 Asset</h3>
+                            <h3 style="color:white!important">Asset</h3>
                             <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
                                     class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6" data-aos="fade-down" data-aos-delay="100" st>
+                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1400">
                     <div class="service-item card-bg"
                         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/building.jpg); background-position: cover;background-position: center; background-size: cover">
                         <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">2 Office's</h3>
+                            <h3 style="color:white!important">Office</h3>
                             <br>
                             <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
                                     class="bi bi-arrow-right"></i></a>
@@ -139,27 +131,28 @@ import '/node_modules/vue-preloader/dist/style.css';
                         style="border: 0px;background-color: transparent;">
                     <map name="image-map">
                         <area target="_self" alt="Enerco RPO International Project"
-                            title="Enerco RPO International Project" :href="route('project-enerco-1')"
-                            coords="221,135,19" shape="circle">
+                            title="Enerco RPO International Project" :href="route('enerco-1')" coords="221,135,19"
+                            shape="circle">
                         <area target="_self" alt="JADESTONE ENERGY AKATARA" title="JADESTONE ENERGY AKATARA"
-                            :href="route('jadestone-akatara-mps')" coords="205,186,19" shape="circle">
+                            :href="route('akatara-1')" coords="205,186,19" shape="circle">
                         <area target="_self" alt="LOTTE LINE WORK PACKAGES 03" title="LOTTE LINE WORK PACKAGES 03"
-                            :href="route('lotte-line-wp03')" coords="264,294,23" shape="circle">
+                            :href="route('line-1')" coords="264,294,23" shape="circle">
                         <area target="_self" alt="PERTAMINA RDMP RU-V" title="PERTAMINA RDMP RU-V"
-                            :href="route('pertamina-rdmp-v')" coords="502,190,30" shape="circle">
+                            :href="route('pertamina-1')" coords="502,190,30" shape="circle">
                         <area target="_self" alt="MURIA SUMBA MANIS SUGAR FACTORY"
-                            title="MURIA SUMBA MANIS SUGAR FACTORY" :href="route('sumba-msm')" coords="555,372,26"
+                            title="MURIA SUMBA MANIS SUGAR FACTORY" :href="route('msm-1')" coords="555,372,26"
                             shape="circle">
-                        <area target="_self" alt="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL" title="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL" :href="route('unilever-1')" coords="121,104,26" 
-                            shape="circle">
+                        <area target="_self" alt="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL"
+                            title="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL" :href="route('uoi-1')"
+                            coords="121,104,26" shape="circle">
                     </map>
                 </center>
             </div>
         </div>
     </section>
-    <section id="constructions" class="constructions">
-        <div class="container" data-aos="fade-up">
-            <!-- comment here -->
+
+    <section id="features" class="features section-bg">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
             <div class="section-header">
                 <h2>Our Services</h2>
                 <p class="text-center">Excellence meets innovation to deliver unparalleled solutions for all your
@@ -172,124 +165,146 @@ import '/node_modules/vue-preloader/dist/style.css';
                     expectations.
                 </p>
             </div>
+            <ul class="nav nav-tabs row  g-2 d-flex" role="tablist">
 
-            <div class="row gy-4">
+                <li class="nav-item col-3" role="presentation">
+                    <a class="nav-link show active" data-bs-toggle="tab" data-bs-target="#tab-1" aria-selected="true"
+                        role="tab">
+                        <h4 class="text-uppercase">Construction & Fabrication</h4>
+                    </a>
+                </li>
+                <li class="nav-item col-3" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" aria-selected="true" role="tab">
+                        <h4 class="text-uppercase">Catalyst Loading</h4>
+                    </a>
+                </li>
+                <li class="nav-item col-3" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3" aria-selected="true" role="tab">
+                        <h4 class="text-uppercase">Plant Maintenance</h4>
+                    </a>
+                </li>
+                <li class="nav-item col-3" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4" aria-selected="true" role="tab">
+                        <h4 class="text-uppercase">Engineering & Manpower Supply</h4>
+                    </a>
+                </li>
 
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-item">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="card-bg"
-                                    style="background-image: url('assets/img/projects/lotte-catalyst/catalyst (3).jpeg');">
-                                </div>
-                            </div>
-                            <div class="col-xl-7 d-flex align-items-center">
-                                <div class="card-body">
-                                    <h4 class="card-title">Catalyst Loading</h4>
-                                    <p class="rapih">Trusted partner in optimizing industrial processes and
-                                        maximizing
-                                        operational efficiency.
-                                        <br><br>
-                                    </p>
-                                    <br>
-                                    <a :href="route('service')" class="readmore stretched-link">Discover More <i
-                                            class="bi bi-arrow-right"></i></a>
-                                </div>
-                            </div>
+            </ul>
+
+            <div class="tab-content">
+
+
+                <div class="tab-pane active show" id="tab-1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-uppercase">Construction & Fabrication</h3>
+                            <p class="rapih">
+                                Our team of skilled engineers and workers collaborate to bring your visions to life
+                                across a range of disciplines, including Integrated Steel Structure Fabrication and
+                                Installation, Piping Fabrication & Installation, and Mechanical Installation. We
+                                meticulously craft every detail to reflect your unique aspirations.
+                            </p>
+                            <ul class="ul-2">
+                                <li>Steel Structure Fabrication & Installation</li>
+                                <li>Piping Fabrication & Installation</li>
+                                <li>Mechanical Erection</li>
+                                <li>Tank Fabrication & Installation</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <img src="assets/img/construction-fabrication.png" alt="" class="img-fluid">
                         </div>
                     </div>
-                </div><!-- End Card Item -->
+                </div>
 
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-item">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="card-bg" style="background-image: url(assets/img/piping-1.jpg);"></div>
-                            </div>
-                            <div class="col-xl-7 d-flex align-items-center">
-                                <div class="card-body">
-                                    <h4 class="card-title">Steel Structure, Piping & Mechanical Construction</h4>
-                                    <p class="rapih">Skilled engineers and workers work to transform your
-                                        visions into reality, ensuring every detail reflects your unique
-                                        aspirations.
-                                    </p>
-                                    <br>
-                                    <a :href="route('service')" class="readmore stretched-link">Discover
-                                        More <i class="bi bi-arrow-right"></i></a>
-                                    <!-- <router-link :to="{ name: 'index' }">Login</router-link> -->
-                                </div>
-                            </div>
+                <div class="tab-pane" id="tab-2" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-uppercase">Catalyst Handling</h3>
+                            <p class="rapih">
+                                Catalysts play a pivotal role in accelerating industrial processes, we address the
+                                critical challenges of loading and unloading these compounds within reactors. To ensure
+                                seamless catalyst activation at our clients’ facilities, we provide comprehensive
+                                equipment and deploy highly skilled personnel.
+                            </p>
+                            <ul class="ul-2">
+                                <li>Atmospheric Condition</li>
+                                <li>Inert Condition</li>
+                                <li>Sock Loading</li>
+                                <li>Dense Loading</li>
+                                <li>Unloading Catalyst</li>
+                                <li>Licensed Technicians</li>
+                                <li>Loading Equipment</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <img src="assets/img/catalyst-loading-3.png" alt="" class="img-fluid">
                         </div>
                     </div>
-                </div><!-- End Card Item -->
+                </div>
 
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-item">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="card-bg" style="background-image: url(/assets/img/projects/msm/cover.jpg);">
-                                </div>
-                            </div>
-                            <div class="col-xl-7 d-flex align-items-center">
-                                <div class="card-body">
-                                    <h4 class="card-title">Manpower Supply</h4>
-                                    <p class="rapih">Highly skilled and experienced engineers and dedicated
-                                        workers collaborate
-                                        passionately to turn your visionary ideas into tangible reality.</p>
-                                    <br>
-                                    <a :href="route('service')" class="readmore stretched-link">Discover More <i
-                                            class="bi bi-arrow-right"></i></a>
-                                </div>
-                            </div>
+                <div class="tab-pane" id="tab-3" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-uppercase">Plant Maintenance</h3>
+                            <p class="rapih">
+                                Driven by an unwavering commitment to client satisfaction, our skilled and dedicated
+                                team consistently delivers exceptional results. Our expertise shines through in
+                                successful project implementations across diverse sectors, including the demanding Oil &
+                                Gas, Oleochemical, and Petrochemical industries.
+                            </p>
+                            <ul class="ul-2">
+                                <li>Welding</li>
+                                <li>Tank Maintenance & Cleaning</li>
+                                <li>Cut & Re-Weld</li>
+                                <li>Platform Fabrication</li>
+                                <li>Rotating</li>
+                                <li>Pumps</li>
+                                <li>Cleaning Exchanger</li>
+                                <li>Steam Tracing</li>
+                                <li>Internal Parts Installation</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <img src="assets/img/plant-maintenance.png" alt="" class="img-fluid">
                         </div>
                     </div>
-                </div><!-- End Card Item -->
+                </div>
 
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-item">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="card-bg" style="background-image: url(/assets/img/rental-1.jpg);"></div>
-                            </div>
-                            <div class="col-xl-7 d-flex align-items-center">
-                                <div class="card-body">
-                                    <h4 class="card-title">Equipment & Scaffolding Rental</h4>
-                                    <!-- here -->
-                                    <p class="rapih">Provide you with a vast fleet of
-                                        high-quality machinery and tools
-                                        that unlock the potential of every endeavour.</p>
-                                    <br>
-                                    <a :href="route('service')" class="readmore stretched-link">Discover More <i
-                                            class="bi bi-arrow-right"></i></a>
-                                </div>
-                            </div>
+                <div class="tab-pane" id="tab-4" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center aos-init aos-animate"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-uppercase">Engineering & Manpower Supply</h3>
+                            <p class="rapih">
+                                Our team of experienced and highly competent engineers is dedicated to ensuring the
+                                successful execution of your project. With over 50 engineers and hundreds direct work
+                                force strategically located across Indonesia, we are well-equipped to provide tailored
+                                solutions and support for your upcoming endeavors.
+                            </p>
+                            <ul class="ul-2">
+                                <li>Utility Design</li>
+                                <li>Pre-commisionning Support</li>
+                                <li>Commissioning Support</li>
+                                <li>Site Engineer</li>
+                                <li>Welder SS & CS</li>
+                                <li>Rigger</li>
+                                <li>Fitter</li>
+                                <li>Scaffolder</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center aos-init aos-animate" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <img src="assets/img/engineering-manpower.png" alt="" class="img-fluid">
                         </div>
                     </div>
-                </div><!-- End Card Item -->
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-item">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="card-bg" style="background-image: url(assets/img/pmc-1.jpg);">
-                                </div>
-                            </div>
-                            <div class="col-xl-7 d-flex align-items-center">
-                                <div class="card-body">
-                                    <h4 class="card-title">Project Management Consultant</h4>
-                                    <p class="rapih">With over 50 experienced and highly competent engineers
-                                        strategically in Indonesia, we are well-equipped to provide tailored
-                                        solutions and support for your upcoming endeavors.
-                                        <br><br>
-                                    </p>
-                                    <br>
-                                    <a :href="route('service')" class="readmore stretched-link">Discover More <i
-                                            class="bi bi-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- End Card Item -->
+                </div>
 
             </div>
 
@@ -303,44 +318,44 @@ import '/node_modules/vue-preloader/dist/style.css';
             </div>
             <div class="row gy-4">
 
-                <div class="col-3 col-sm-3 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1100">
                     <center>
-                        <img class="greyscale" src="/assets/img/client/logo-air-products.png" alt="">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-air-products.png" alt="">
                     </center>
                 </div>
-                <div class="col-3 col-sm-3 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1200">
                     <center>
-                        <img class="greyscale" src="/assets/img/client/logo-enerco.png" alt="">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-enerco.png" alt="">
                     </center>
                 </div>
-                <div class="col-3 col-sm-3 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1300">
                     <center>
-                        <img class="greyscale" src="/assets/img/client/logo-jadestone.png" alt="">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-jadestone.png" alt="">
                     </center>
                 </div>
-                <div class="col-3 col-sm-3 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1400">
                     <center>
-                        <img class="greyscale" src="/assets/img/client/logo-msm.png" alt="">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-msm.png" alt="">
                     </center>
                 </div>
-                <div class="col-3 col-sm-3 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1500">
                     <center>
-                        <img class="greyscale" src="/assets/img/client/kine-jo-logo.png" alt="">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/kine-jo-logo.png" alt="">
                     </center>
                 </div>
-                <div class="col-3 col-sm-3 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1600">
                     <center>
-                        <img class="greyscale" src="/assets/img/client/logo-asraya.png" alt="">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-asraya.png" alt="">
                     </center>
                 </div>
-                <div class="col-3 col-sm-3 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1700">
                     <center>
-                        <img class="greyscale" src="/assets/img/client/logo-unilever.png" alt="">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-unilever.png" alt="">
                     </center>
                 </div>
-                <div class="col-3 col-sm-3 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1800">
                     <center>
-                        <img class="greyscale" src="/assets/img/client/swg.png" alt="">
+                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/swg.png" alt="">
                     </center>
                 </div>
 
@@ -351,9 +366,9 @@ import '/node_modules/vue-preloader/dist/style.css';
 <style>
 .greyscale {
     object-fit: scale-down;
-    min-width: 20vh;
-    max-width: 20vh;
-    /* filter: grayscale(1); */
+    /* display: flex; */
+    justify-content: center !important;
+    align-items: center !important;
 }
 </style>
 <script>

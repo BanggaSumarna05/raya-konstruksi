@@ -334,7 +334,7 @@ class FrontController extends Controller
         ];*/
         $this->keywords = [
             "catalyst loading",
-            
+
             "sock catalyst lotte cilegon",
             "sock catalyst cilegon lotte",
             "sock lotte catalyst cilegon",
@@ -549,7 +549,7 @@ class FrontController extends Controller
             "BIG-BAGS loading process catalyst",
             "BIG-BAGS process catalyst loading",
             "BIG-BAGS process loading catalyst",
-            
+
             "sock catalyst loading lotte",
             "sock catalyst lotte loading",
             "sock loading catalyst lotte",
@@ -701,8 +701,83 @@ class FrontController extends Controller
     public function index()
     {
         SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('home-new');
+        return Inertia::render('1home');
     }
+
+    public function whoWeAre()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1whoWeAre');
+    }
+
+
+    public function corporateStructure()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1whoWeAre-bod');
+    }
+
+    public function clientPartner()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1whoWeAre-partners');
+    }
+
+    public function whatWeDo()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1whatWeDo');
+    }
+
+    public function contactUs()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1contact');
+    }
+
+
+    public function career()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1career');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #
 
     public function aboutUs()
     {

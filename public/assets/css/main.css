@@ -103,7 +103,7 @@ section {
 .section-header p {
     margin: 0 auto 0 auto;
 }
-z @media (min-width: 1199px) {
+@media (min-width: 1199px) {
     .section-header p {
         max-width: 60%;
     }
@@ -265,17 +265,19 @@ z @media (min-width: 1199px) {
     top: 0;
     left: 0;
     right: 0;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .header .logo img {
-    max-height: 70px;
+    max-height: 50px;
     margin-right: 12px;
 }
 
 .header .logo h1 {
     font-size: 24px;
     font-weight: 700;
-    color: #fff;
+    color: black;
     margin-bottom: 0;
     font-family: var(--font-primary);
 }
@@ -316,9 +318,10 @@ z @media (min-width: 1199px) {
         justify-content: space-between;
         padding: 0 3px;
         font-family: var(--font-primary);
-        font-size: 16px;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.6);
+        font-size: 14px;
+        font-weight: 700;
+        /* color: rgba(255, 255, 255, 0.6); */
+        color: black;
         text-transform: uppercase;
         white-space: nowrap;
         transition: 0.3s;
@@ -356,7 +359,8 @@ z @media (min-width: 1199px) {
     .navbar .active,
     .navbar .active:focus,
     .navbar li:hover > a {
-        color: #fff;
+        /* color: #fff; */
+        color: black;
     }
 
     .navbar .dropdown ul {
@@ -575,7 +579,7 @@ z @media (min-width: 1199px) {
 }
 
 .get-started .php-email-form {
-    background: #fff;
+    /* background: #fff; */
     padding: 30px;
     height: 100%;
 }
@@ -1729,7 +1733,7 @@ z @media (min-width: 1199px) {
 
 .contact .php-email-form .loading {
     display: none;
-    background: #fff;
+    /* background: #fff; */
     text-align: center;
     padding: 15px;
 }
@@ -2591,7 +2595,9 @@ z @media (min-width: 1199px) {
 --------------------------------------------------------------*/
 .footer {
     color: #fff;
-    background: url("../img/footer-1.jpg") top center no-repeat;
+    /* background: url("../img/footer-1.jpg") top center no-repeat; */
+    background-color: #f3f3f3;
+    color: black;
     background-size: cover;
     font-size: 14px;
     padding: 40px 0 30px 0;
@@ -2600,7 +2606,7 @@ z @media (min-width: 1199px) {
 
 .footer:before {
     content: "";
-    background: rgba(0, 0, 0, 0.8);
+    /* background: rgba(0, 0, 0, 0.8); */
     position: absolute;
     inset: 0;
 }
@@ -2627,14 +2633,14 @@ z @media (min-width: 1199px) {
     line-height: 24px;
     margin-bottom: 0;
     font-family: var(--font-primary);
-    color: #fff;
+    color: black;
 }
 
 .footer .footer-content .social-links a {
     font-size: 18px;
     display: inline-block;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    /* background: rgba(255, 255, 255, 0.1); */
+    color: black;
     line-height: 1;
     margin-right: 8px;
     border-radius: 4px;
@@ -2651,7 +2657,7 @@ z @media (min-width: 1199px) {
 .footer .footer-content h4 {
     font-size: 16px;
     font-weight: 600;
-    color: #fff;
+    color: black;
     position: relative;
     padding-bottom: 12px;
 }
@@ -2675,14 +2681,34 @@ z @media (min-width: 1199px) {
 }
 
 .footer .footer-content .footer-links ul a {
-    color: rgba(255, 255, 255, 0.6);
+    color: black;
     transition: 0.3s;
     display: inline-block;
     line-height: 1;
+    position: relative;
+    text-decoration: none;
+}
+
+.footer .footer-content .footer-links ul a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -8px;
+    left: 0;
+    background-color: var(--color-primary);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
 }
 
 .footer .footer-content .footer-links ul a:hover {
-    color: #fff;
+    color: black;
+}
+
+.footer .footer-content .footer-links ul a:hover:before {
+    visibility: visible;
+    width: 100%;
 }
 
 .footer .footer-legal .copyright {
@@ -2693,11 +2719,11 @@ z @media (min-width: 1199px) {
 .footer .footer-legal .credits {
     padding-top: 4px;
     font-size: 13px;
-    color: #fff;
+    color: black;
 }
 
 .footer .footer-legal .credits a {
-    color: var(--color-primary);
+    color: black;
 }
 
 .rapih {
@@ -2721,7 +2747,7 @@ li::marker {
     height: 90px;
 }
 
-.tagline{
+.tagline {
     max-width: 220px;
     max-height: 220px;
 }
@@ -2735,4 +2761,23 @@ li::marker {
 
 .ul-2 li {
     list-style-type: disc;
+}
+
+.btn-get-started {
+    font-family: var(--color-default);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 24px 0px;
+    color: var(--color-default);
+    border: 2px solid var(--color-default);
+}
+
+.card-hover-bg{
+    border-color: black;
+    border-radius: 0px;
 }

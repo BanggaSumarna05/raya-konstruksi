@@ -1,56 +1,50 @@
-<header id="header" class="header d-flex align-items-center" {{-- style="background-color: red" --}}>
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between" style="margin-left: 4em;">
+<header id="header" class="header d-flex align-items-center" style="background-color: white">
+    <div class="container container-fluid container-xl d-flex align-items-center justify-content-between">
 
-        <a href="{{ route('index') }}" class="logo d-flex align-items-center" style="padding-left:2em">
-            <img src="/assets/img/raya-white.png" alt="Logo Makadia Group International"
+        <a href="{{ route('index') }}" class="logo d-flex align-items-center" {{-- style="padding-left:2em" --}}>
+            <img src="/assets/img/raya-black.png" alt="Logo Makadia Group International"
                 title="Logo Makadia Group International">
-            {{-- <h4>RAYA CONSTRUCTION INTERNATIONAL</h4> --}}
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="{{ route('index') }}" class="{{ Route::is('index') ? 'active' : '' }}">Home</a></li>
-                <li class="dropdown"><a href="#" class="{{ Route::is('about') ? 'active' : '' }}"><span>About
-                            Us</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                        <li><a href="{{ route('about') }}#about">About</a></li>
-                        <li><a href="{{ route('about') }}#value">Value</a></li>
-                        <li><a href="{{ route('about') }}#vision">Vision & Mission</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{ route('leadership') }}"
-                        class="{{ Route::is('leadership') ? 'active' : '' }}">Leadership</a></li>
-                <li class="dropdown"><a href="#"
-                        class="{{ Route::is('service') ? 'active' : '' }}"><span>Services</span> <i
-                            class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                        <li><a href="{{ route('service') }}">Plant Maintenance</a></li>
-                        <li><a href="{{ route('service') }}">Engineering & Manpower Supply</a></li>
-                        <li><a href="{{ route('service') }}">Construction & Fabrication</a></li>
-                        <li><a href="{{ route('service') }}">Catalyst Loading</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{ route('project') }}" class="{{ Route::is('project') ? 'active' : '' }}">Projects</a>
-                </li>
-                <li><a class="{{ Route::is('equipment.index') ? 'active' : '' }}"
-                        href="{{ route('equipment.index') }}">Equipment</a></li>
-                <li><a href="{{ route('contact') }}">Contact</a></li>
-                <li>
-                    <a href="https://www.pekerjakita.com" target="_blank" style="position-left: 14vh;">
-                        <img src="/assets/img/pekerjakita-w.png" alt=""
-                            style="max-width: 24vh;
-                          padding: 4px">
-                    </a>
                 <li>
 
                 </li>
+                <li class="dropdown"><a href="{{ route('whoWeAre') }}"
+                        class="{{ Route::is('whoWeAre') ? 'active' : '' }}">Who We Are</a>
+                    <ul>
+                        <li><a href="{{ route('whoWeAre') }}#company-profile">Company Profile</a></li>
+                        <li><a href="{{ route('whoWeAre') }}#vision">Vision & Mission</a></li>
+                        <li><a href="{{ route('whoWeAre') }}#core-values">Core Values</a></li>
+                        <li><a href="{{ route('whoWeAre') }}#vision">Key Milestones</a></li>
+                        <li><a href="{{ route('corporateStructure') }}">Leadership</a></li>
+                        <li><a href="{{ route('clientPartner') }}">Client & Partners</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="{{ route('whatWeDo') }}"
+                        class="{{ Route::is('whatWeDo') ? 'active' : '' }}">What We Do</a>
+                    <ul>
+                        <li><a href="{{ route('whatWeDo') }}#catalyst-loading">Catalyst Loading</a></li>
+                        <li><a href="{{ route('whatWeDo') }}#plant-maintenance">Plant Maintenance</a></li>
+                        <li><a href="{{ route('whatWeDo') }}#engineering">Engineering & Manpower Supply</a></li>
+                        <li><a href="{{ route('whatWeDo') }}#construction">Construction & Fabrication</a></li>
+                    </ul>
+                </li>
                 <li>
-                    <a href="{{ route('index') }}" class="">
-                        <img class="tagline img-thumbnail" src="/assets/img/tagline-mgi.png" alt=""
-                            style="background-color: transparent;border: 0px">
-                    </a>
+                    <a href="{{ route('index') }}">Sustainability</a>
+                </li>
+                <li>
+                    <a href="{{ route('index') }}">News & Events</a>
+                </li>
+                <li>
+                    <a href="{{ route('career') }}" class="{{ Route::is('career') ? 'active' : '' }}">Careers</a>
+                </li>
+                <li>
+                    <a href="{{ route('contactUs') }}" class="{{ Route::is('contactUs') ? 'active' : '' }}">Contact
+                        Us</a>
                 </li>
             </ul>
         </nav>
@@ -61,19 +55,21 @@
 
 <script>
     window.onscroll = function() {
-        myFunction()
+        myFunction();
     };
+
 
     var header = document.getElementById("header");
     var sticky = header.offsetTop;
 
     function myFunction() {
+        // header.style.backgroundColor = "white";
         if (window.pageYOffset > (sticky + 300)) {
             header.classList.add("sticky");
-            header.style.backgroundColor = "black";
+            // header.style.backgroundColor = "white";
         } else {
             header.classList.remove("sticky");
-            header.style.backgroundColor = "transparent";
+            // header.style.backgroundColor = "white";
         }
     }
 </script>

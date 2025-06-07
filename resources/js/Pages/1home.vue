@@ -130,27 +130,6 @@ defineProps({ blogs: Array })
             <br>
             <div class="row ">
 
-                <!-- <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1100"
-                    style="padding: 0 6px 12px 6px;">
-                    <div class="card" style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-                        <img class="card-img-top" src="/assets/img/projects/lotte-catalyst/catalyst (4).jpeg"
-                            alt="Card image cap" style="max-height: 30vh; object-fit: cover; width: 100%;" />
-                        <div class="card-body">
-                            <p
-                                style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
-                                2 Febuary 2025
-                            </p>
-                            <a :href="route('newsDetail')">
-                                <h5 class="card-title text-black">Lorem ipsum dolor sit amet consectetur adipisicing
-                                    elit</h5>
-                            </a>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque distinctio ...
-                            </p>
-                        </div>
-                    </div>
-                </div> -->
-
                 <div v-for="(blog, idx) in blogs" :key="blog.id" class="col-lg-3 col-md-6" data-aos="fade-right"
                     :data-aos-delay="1100 + idx * 100" style="padding: 0 6px 12px 6px;">
                     <div class="card" style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
@@ -183,6 +162,104 @@ defineProps({ blogs: Array })
             </a>
         </div>
     </section>
+
+    <section id="milestones" class="milestones-section">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Project Milestones</h2>
+                <p>Our journey through the years</p>
+            </div>
+
+            <div class="milestones-container">
+                <!-- Year Group Template -->
+                <div class="year-group">
+                    <div class="year-header">2018</div>
+                    <div class="milestone-card company-event">
+                        <h3>Company Founded</h3>
+                        <p>PT Makadia Grup International was established in Jakarta, Indonesia.</p>
+                    </div>
+                </div>
+
+                <div class="year-group">
+                    <div class="year-header">2019</div>
+                    <div class="milestone-card">
+                        <h3>Enerco RPO TDAE Plant Operation & Maintenance</h3>
+                    </div>
+                </div>
+
+                <div class="year-group">
+                    <div class="year-header">2020</div>
+                    <div class="milestone-card">
+                        <h3>Tangguh Expansion Plant Preservation</h3>
+                        
+                    </div>
+                    <div class="milestone-card">
+                        <h3>Muria Sumba Manis Refinery Piping</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>Enerco Heat Exchanger Maintenance</h3>
+                    </div>
+                </div>
+
+                <div class="year-group">
+                    <div class="year-header">2022</div>
+                    <div class="milestone-card">
+                        <h3>RDMP RU-V OSBL Tanks Project</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>Pertamina Turnaround Piping</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>Muria Sugar Refinery Maintenance</h3>
+                    </div>
+                </div>
+
+                <div class="year-group">
+                    <div class="year-header">2023</div>
+                    <div class="milestone-card">
+                        <h3>LINE Ethylene Plant Project</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>Air Products UOI Indonesia</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>Air Products SMIP Piping</h3>
+                    </div>
+                </div>
+
+                <div class="year-group">
+                    <div class="year-header">2024</div>
+                    <div class="milestone-card">
+                        <h3>RDMP RU-V ISBL Tanks</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>LINE Catalyst Loading</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>UOI Turnaround & Maintenance</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>LINE Manpower Supply</h3>
+                    </div>
+                </div>
+
+                <div class="year-group">
+                    <div class="year-header">2025</div>
+                    <div class="milestone-card company-event">
+                        <h3>Company Rebranding</h3>
+                        <p>PT Makadia Grup International changes name to <strong>RAYA KONSTRUKSI</strong>.</p>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>Air Products Offsite SMR</h3>
+                    </div>
+                    <div class="milestone-card">
+                        <h3>Air Products Catalyst Loading</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section id="locations" class="services section-bg px-5">
         <div class="container" data-aos="fade-up">

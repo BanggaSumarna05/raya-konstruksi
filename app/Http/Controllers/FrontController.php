@@ -742,16 +742,68 @@ class FrontController extends Controller
         return Inertia::render('1career');
     }
 
+    public function sustainability()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1sustainability');
+    }
+
+    public function safety()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1safety');
+    }
+
+    public function quality()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1quality');
+    }
+
+    public function respon()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1respon');
+    }
+
+    public function news()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1news');
+    }
 
 
+    public function newsDetail()
+    {
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1newsDetail');
+    }
 
+    public function catalystLoading()
+    {
+        $data = [];
+        $data['title'] = 'Catalyst Handle Indonesia';
+        $data['desc'] = "Catalyst Loading The process of placing a catalyst into a chemical reactor to facilitate reactions without being consumed during the process. This step is critical to ensure reaction efficiency, uniform catalyst distribution, and maximum conversion of reactants to products. Here's how catalyst loading works. We carry out the loading process using Big-Bags or Drums, depending on the preferences of our clients or the situation of the equipment to be loaded and its location in the plant. Catalyst loading process with DRUMS The main benefit of the drums is that they are reusable, so once emptied they can be returned to the supplier. This considerably reduces waste generation at the plant. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. Big bags are large and flexible bags made of strong materials used to transport bulk material (in this case catalyst). Big-bags are easier to handle due to their “flexibility” and are more adaptable in case of limited manoeuvring space. On the other hand, are often discarded once they have been used, so we generate waste and need to dispose of them properly. In terms of the manoeuvre, the process consists of placing the hopper in the mouth of the reactor, and then raising the big bags without the need to move the hopper at each manoeuvre. Catalyst Method In catalyst loading, there are many methods that are often used, that's why we commonly use the 3 method's below Dry Catalyst Loading Dry catalyst loading involves the introduction of solid catalysts into the reactor without using any auxiliary equipment or liquid medium. commodi magnam occaecati. Dense Catalyst Loading Dense loading optimizes catalyst placement by maximizing packing density and reducing void spaces in the reactor. This method often requires specialized equipment, such as dense loading machines. Sock Catalyst Loading Sock loading employs a sock or tubular bag to guide catalysts into the reactor gently, minimizing physical damage to fragile materials.";
+        SEOMeta::setTitle($data['title']);
+        SEOMeta::setDescription($data['desc']);
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1service-catalyst', [
+            'data' => $data
+        ]);
+    }
 
-
-
-
-
-
-
+    public function plantMaintenance()
+    {
+        $data = [];
+        $data['title'] = 'Plant Maintenance Indonesia';
+        $data['desc'] = "Plant maintenance is the service and repair of assets and equipment. During normal operation, assets may accumulate wear-and-tear that needs to be addressed. Deviations outside of normal operation of cause the majority of damage to equipment and assets.";
+        SEOMeta::setTitle($data['title']);
+        SEOMeta::setDescription($data['desc']);
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1service-plant-maintenance', [
+            'data' => $data
+        ]);
+    }
 
 
 
@@ -800,16 +852,16 @@ class FrontController extends Controller
         }
     }
 
-    public function catalystLoading()
-    {
-        $data = [];
-        $data['title'] = 'Catalyst Handle Indonesia';
-        $data['desc'] = "Catalyst Loading The process of placing a catalyst into a chemical reactor to facilitate reactions without being consumed during the process. This step is critical to ensure reaction efficiency, uniform catalyst distribution, and maximum conversion of reactants to products. Here's how catalyst loading works. We carry out the loading process using Big-Bags or Drums, depending on the preferences of our clients or the situation of the equipment to be loaded and its location in the plant. Catalyst loading process with DRUMS The main benefit of the drums is that they are reusable, so once emptied they can be returned to the supplier. This considerably reduces waste generation at the plant. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. Big bags are large and flexible bags made of strong materials used to transport bulk material (in this case catalyst). Big-bags are easier to handle due to their “flexibility” and are more adaptable in case of limited manoeuvring space. On the other hand, are often discarded once they have been used, so we generate waste and need to dispose of them properly. In terms of the manoeuvre, the process consists of placing the hopper in the mouth of the reactor, and then raising the big bags without the need to move the hopper at each manoeuvre. Catalyst Method In catalyst loading, there are many methods that are often used, that's why we commonly use the 3 method's below Dry Catalyst Loading Dry catalyst loading involves the introduction of solid catalysts into the reactor without using any auxiliary equipment or liquid medium. commodi magnam occaecati. Dense Catalyst Loading Dense loading optimizes catalyst placement by maximizing packing density and reducing void spaces in the reactor. This method often requires specialized equipment, such as dense loading machines. Sock Catalyst Loading Sock loading employs a sock or tubular bag to guide catalysts into the reactor gently, minimizing physical damage to fragile materials.";
-        SEOMeta::setTitle($data['title']);
-        SEOMeta::setDescription($data['desc']);
-        SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('service-catalyst', [
-            'data' => $data
-        ]);
-    }
+    // public function catalystLoading()
+    // {
+    //     $data = [];
+    //     $data['title'] = 'Catalyst Handle Indonesia';
+    //     $data['desc'] = "Catalyst Loading The process of placing a catalyst into a chemical reactor to facilitate reactions without being consumed during the process. This step is critical to ensure reaction efficiency, uniform catalyst distribution, and maximum conversion of reactants to products. Here's how catalyst loading works. We carry out the loading process using Big-Bags or Drums, depending on the preferences of our clients or the situation of the equipment to be loaded and its location in the plant. Catalyst loading process with DRUMS The main benefit of the drums is that they are reusable, so once emptied they can be returned to the supplier. This considerably reduces waste generation at the plant. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. Big bags are large and flexible bags made of strong materials used to transport bulk material (in this case catalyst). Big-bags are easier to handle due to their “flexibility” and are more adaptable in case of limited manoeuvring space. On the other hand, are often discarded once they have been used, so we generate waste and need to dispose of them properly. In terms of the manoeuvre, the process consists of placing the hopper in the mouth of the reactor, and then raising the big bags without the need to move the hopper at each manoeuvre. Catalyst Method In catalyst loading, there are many methods that are often used, that's why we commonly use the 3 method's below Dry Catalyst Loading Dry catalyst loading involves the introduction of solid catalysts into the reactor without using any auxiliary equipment or liquid medium. commodi magnam occaecati. Dense Catalyst Loading Dense loading optimizes catalyst placement by maximizing packing density and reducing void spaces in the reactor. This method often requires specialized equipment, such as dense loading machines. Sock Catalyst Loading Sock loading employs a sock or tubular bag to guide catalysts into the reactor gently, minimizing physical damage to fragile materials.";
+    //     SEOMeta::setTitle($data['title']);
+    //     SEOMeta::setDescription($data['desc']);
+    //     SEOMeta::addKeyword($this->keywords);
+    //     return Inertia::render('1service-catalyst', [
+    //         'data' => $data
+    //     ]);
+    // }
 }

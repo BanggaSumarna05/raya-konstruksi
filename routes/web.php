@@ -14,218 +14,44 @@ Route::get('/who-we-are/clients-partners', [FrontController::class, 'clientPartn
 
 #what we do
 Route::get('/what-we-do', [FrontController::class, 'whatWeDo'])->name('whatWeDo');
+Route::get('/what-we-do/catalyst-loading', [FrontController::class, 'catalystLoading'])->name('catalyst-loading');
+Route::get('/what-we-do/plant-maintenance', [FrontController::class, 'plantMaintenance'])->name('plantMaintenance');
+
+#sustainability
+Route::get('/sustainability', [FrontController::class, 'sustainability'])->name('sustainability');
+Route::get('/sustainability/health-n-safety', [FrontController::class, 'safety'])->name('safety');
+Route::get('/sustainability/quality-n-risk-management', [FrontController::class, 'quality'])->name('quality');
+Route::get('/sustainability/corporate-social-responsibility', [FrontController::class, 'respon'])->name('respon');
 
 #careers
 Route::get('/careers', [FrontController::class, 'career'])->name('career');
+Route::get('/news-n-event', [FrontController::class, 'news'])->name('news');
+Route::get('/news-n-event/detail', [FrontController::class, 'newsDetail'])->name('newsDetail');
 
 #contact us
 Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contactUs');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#############################
-Route::get('/about-us', function () {
-    return Inertia::render('aboutUs-new');
-})->name('about');
-
-Route::get('/leadership', function () {
-    return Inertia::render('leadership');
-})->name('leadership');
-
-Route::get('/service', function () {
-    return Inertia::render('service-new');
-})->name('service');
-
-Route::get('/project', function () {
-    return Inertia::render('projects');
-})->name('project');
-
+# csi
 Route::get('/cyber-security-information', function () {
-    return Inertia::render('cyberInfo');
+    return Inertia::render('1cyberInfo');
 })->name('cyberInfo');
 
-Route::get('/management/Henry-Adrianto', function () {
-    return Inertia::render('management/henry');
-})->name('henry');
 
-Route::get('/management/Sutadi-Raharjo', function () {
-    return Inertia::render('management/sutadi');
-})->name('sutadi');
 
-Route::get('/management/Suwoto', function () {
-    return Inertia::render('management/suwoto');
-})->name('suwoto');
+#admin side
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
+    // Blog CMS routes
+    // Route::get('/blog', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('blog.index');
+    // Route::get('/blog/create', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('blog.create');
+    // Route::post('/blog', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('blog.store');
+    // Route::get('/blog/{blog}/edit', [App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('blog.edit');
+    // Route::put('/blog/{blog}', [App\Http\Controllers\Admin\BlogController::class, 'update'])->name('blog.update');
+    // Route::delete('/blog/{blog}', [App\Http\Controllers\Admin\BlogController::class, 'destroy'])->name('blog.destroy');
 
-Route::get('/management/Anggi-Simatupang', function () {
-    return Inertia::render('management/anggi');
-})->name('anggi');
-
-// Route::get('/contact-us', function () {
-//     return Inertia::render('contact');
-// })->name('contact');
+    // Route::resource('/blog',)
+});
 
 Route::post(
     '/submit-inquiry-form',
     [FrontController::class, 'submitEmail']
 )->name('submitEmail');
-
-// old start project
-Route::get('/project/enerco-management', function () {
-    return Inertia::render('projects/enerco-management');
-})->name('project-enerco-1');
-
-Route::get('/project/enerco-service', function () {
-    return Inertia::render('projects/enerco-service');
-})->name('project-enerco-2');
-
-Route::get('/project/sumba-msm', function () {
-    return Inertia::render('projects/sumba-msm');
-})->name('sumba-msm');
-
-Route::get('/project/sumba-msm-pmc', function () {
-    return Inertia::render('projects/sumba-msm-pmc');
-})->name('sumba-msm-pmc');
-
-Route::get('/project/pertaima-rdmp-v', function () {
-    return Inertia::render('projects/pertamina-rdmp-v');
-})->name('pertamina-rdmp-v');
-
-Route::get('/project/lotte-line-wp03', function () {
-    return Inertia::render('projects/lotte-line-wp03');
-})->name('lotte-line-wp03');
-
-Route::get('/project/lotte-line-wp03-mps', function () {
-    return Inertia::render('projects/lotte-line-wp03-mps');
-})->name('lotte-line-wp03-mps');
-
-Route::get('/project/jadestone-akatara-mps', function () {
-    return Inertia::render('projects/akatara-mps');
-})->name('jadestone-akatara-mps');
-
-Route::get('/project/air-product', function () {
-    return Inertia::render('projects/mpap-1');
-})->name('mpap-1');
-
-Route::get('/project/unilever-indonesia-const-support', function () {
-    return Inertia::render('projects/unilever-1');
-})->name('unilever-1');
-
-Route::get('/project/catalyst-loading', function () {
-    return Inertia::render('projects/catalyst-1');
-})->name('catalyst-1');
-
-Route::get('/project/catalyst-loading-t', function () {
-    return Inertia::render('projects/catalyst-2');
-})->name('catalyst-2');
-// end project
-
-
-
-
-// new project
-Route::get('/project/line-1', function () {
-    return Inertia::render('projects/line-1');
-})->name('line-1');
-
-Route::get('/project/msm-1', function () {
-    return Inertia::render('projects/msm-1');
-})->name('msm-1');
-
-Route::get('/project/rdmp-034', function () {
-    return Inertia::render('projects/rdmp-034');
-})->name('rdmp-034');
-
-Route::get('/project/rdmp-032', function () {
-    return Inertia::render('projects/rdmp-032');
-})->name('rdmp-032');
-
-Route::get('/project/pertamina-1', function () {
-    return Inertia::render('projects/pertamina-1');
-})->name('pertamina-1');
-
-Route::get('/project/ap-1', function () {
-    return Inertia::render('projects/ap-1');
-})->name('ap-1');
-
-Route::get('/project/ap-2', function () {
-    return Inertia::render('projects/ap-2');
-})->name('ap-2');
-
-Route::get('/project/ap-3', function () {
-    return Inertia::render('projects/ap-3');
-})->name('ap-3');
-
-Route::get('/project/tangguh-1', function () {
-    return Inertia::render('projects/tangguh-1');
-})->name('tangguh-1');
-
-Route::get('/project/line-2', function () {
-    return Inertia::render('projects/line-2');
-})->name('line-2');
-
-Route::get('/project/ap-4', function () {
-    return Inertia::render('projects/ap-4');
-})->name('ap-4');
-
-Route::get('/project/uoi-1', function () {
-    return Inertia::render('projects/uoi-1');
-})->name('uoi-1');
-
-Route::get('/project/msm-2', function () {
-    return Inertia::render('projects/msm-2');
-})->name('msm-2');
-
-Route::get('/project/enerco-1', function () {
-    return Inertia::render('projects/enerco-1');
-})->name('enerco-1');
-
-Route::get('/project/enerco-2', function () {
-    return Inertia::render('projects/enerco-2');
-})->name('enerco-2');
-
-Route::get('/project/akatara-1', function () {
-    return Inertia::render('projects/akatara-1');
-})->name('akatara-1');
-
-Route::get('/project/enerco-3', function () {
-    return Inertia::render('projects/enerco-3');
-})->name('enerco-3');
-
-Route::get('/project/msm-3', function () {
-    return Inertia::render('projects/msm-3');
-})->name('msm-3');
-
-Route::get('/project/line-3', function () {
-    return Inertia::render('projects/line-3');
-})->name('line-3');
-// end project
-
-
-
-Route::get('/equipment', function () {
-    return Inertia::render('equipment/index');
-})->name('equipment.index');
-
-Route::get(
-    '/ecatalogue',
-    [FrontController::class, 'ecatalogue']
-)->name('ecatalogue');
-
-Route::get(
-    '/catalyst-loading',
-    [FrontController::class, 'catalystLoading']
-)->name('catalyst-loading');

@@ -13,7 +13,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1 aos-init aos-animate"
                     data-aos="fade-up" data-aos-delay="200">
                     <img src="assets/img/hero-carousel/header-6.jpg" alt="" class="img-fluid"
-                        style="max-height: 20vdh!important;">
+                        style="max-height: 18vdh!important;">
                 </div>
                 <div class="features-image col-lg-5 order-1 order-lg-2 aos-init aos-animate" data-aos="fade-up"
                     data-aos-delay="100">
@@ -30,9 +30,6 @@ import '/node_modules/vue-preloader/dist/style.css';
                         With an outstanding track record, strong engineering expertise, and extensive range of
                         experience, we partner customers to achieve success in new markets, challenges, and geographies.
                     </p>
-                    <a href="#" rel="noopener noreferrer" class="btn-get-started">
-                        Discover More
-                    </a>
                 </div>
             </div>
         </div>
@@ -76,7 +73,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 
     <section id="core-values" class="services pt-5">
         <div class="container">
-            <div class="row" style="padding-top: 8vh;">
+            <div class="row" style="padding-top: 1vh;">
                 <div class="col-12 m-10">
                     <h4>Core Values</h4>
                     <br>
@@ -84,7 +81,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-2">
                     <div class="h-100">
                         <div class="card-body text-center">
-                            <i class="fa-brands fa-docker" style="font-size: 64px;"></i>
+                            <img src="/assets/img/values/ADAPTIVE.png" alt="" style="max-width: 64px;max-height: 64px;">
                             <h5 class="card-title mb-2 text-uppercase"
                                 style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
                                 Adaptive</h5>
@@ -97,7 +94,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-2">
                     <div class="h-100">
                         <div class="card-body text-center">
-                            <i class="fa-brands fa-docker" style="font-size: 64px;"></i>
+                            <img src="/assets/img/values/COMMITED.png" alt="" style="max-width: 64px;max-height: 64px;">
                             <h5 class="card-title mb-2 text-uppercase"
                                 style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
                                 Committed</h5>
@@ -112,7 +109,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-2">
                     <div class="h-100">
                         <div class="card-body text-center">
-                            <i class="fa-brands fa-docker" style="font-size: 64px;"></i>
+                            <img src="/assets/img/values/TRUSTWORTHY.png" alt=""
+                                style="max-width: 64px;max-height: 64px;">
                             <h5 class="card-title mb-2 text-uppercase"
                                 style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
                                 Trustworthy</h5>
@@ -126,7 +124,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-2">
                     <div class="h-100">
                         <div class="card-body text-center">
-                            <i class="fa-brands fa-docker" style="font-size: 64px;"></i>
+                            <img src="/assets/img/values/INTEGRITY.png" alt=""
+                                style="max-width: 64px;max-height: 64px;">
                             <h5 class="card-title mb-2 text-uppercase"
                                 style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
                                 Integrity</h5>
@@ -140,7 +139,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-2">
                     <div class="h-100">
                         <div class="card-body text-center">
-                            <i class="fa-brands fa-docker" style="font-size: 64px;"></i>
+                            <img src="/assets/img/values/OWNERSHIP.png" alt=""
+                                style="max-width: 64px;max-height: 64px;">
                             <h5 class="card-title mb-2 text-uppercase"
                                 style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
                                 Ownership</h5>
@@ -154,7 +154,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-2">
                     <div class="h-100">
                         <div class="card-body text-center">
-                            <i class="fa-brands fa-docker" style="font-size: 64px;"></i>
+                            <img src="/assets/img/values/SAFETY.png" alt="" style="max-width: 64px;max-height: 64px;">
                             <h5 class="card-title mb-2 text-uppercase"
                                 style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
                                 Safety & Health</h5>
@@ -185,7 +185,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 </div>
                 <div class="col-3">
                     <div class="card border-0">
-                        <img class="card-img-top" src="https://jel.com.sg/wp-content/uploads/2020/12/related1.jpg"
+                        <img class="card-img-top" src="https://jel.com.sg/wp-content/uploads/2020/12/related3.jpg"
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title mb-2"
@@ -198,13 +198,6 @@ import '/node_modules/vue-preloader/dist/style.css';
         </div>
     </section>
 </template>
-<style>
-.greyscale {
-    object-fit: scale-down;
-    justify-content: center !important;
-    align-items: center !important;
-}
-</style>
 <script>
 export default {
     data() {

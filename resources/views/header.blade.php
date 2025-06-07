@@ -6,15 +6,12 @@
                 title="Logo Makadia Group International">
         </a>
 
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list" style="color:#fcd03b"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
             <ul>
-                <li>
-
-                </li>
-                <li class="dropdown"><a href="{{ route('whoWeAre') }}"
-                        class="{{ Route::is('whoWeAre') ? 'active' : '' }}">Who We Are</a>
+                <li class="dropdown">
+                    <a href="{{ route('whoWeAre') }}" class="{{ Route::is('whoWeAre') ? 'active' : '' }}">Who We Are</a>
                     <ul>
                         <li><a href="{{ route('whoWeAre') }}#company-profile">Company Profile</a></li>
                         <li><a href="{{ route('whoWeAre') }}#vision">Vision & Mission</a></li>
@@ -27,23 +24,33 @@
                 <li class="dropdown"><a href="{{ route('whatWeDo') }}"
                         class="{{ Route::is('whatWeDo') ? 'active' : '' }}">What We Do</a>
                     <ul>
-                        <li><a href="{{ route('whatWeDo') }}#catalyst-loading">Catalyst Loading</a></li>
-                        <li><a href="{{ route('whatWeDo') }}#plant-maintenance">Plant Maintenance</a></li>
+                        <li><a href="{{ route('catalyst-loading') }}">Catalyst Loading</a></li>
+                        <li><a href="{{ route('plantMaintenance') }}">Plant Maintenance</a></li>
                         <li><a href="{{ route('whatWeDo') }}#engineering">Engineering & Manpower Supply</a></li>
                         <li><a href="{{ route('whatWeDo') }}#construction">Construction & Fabrication</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="{{ route('index') }}">Sustainability</a>
+                <li class="dropdown">
+                    <a href="{{ route('sustainability') }}"
+                        class="{{ Route::is('sustainability') ? 'active' : '' }}">Sustainability</a>
+                    <ul>
+                        <li><a href="{{ route('safety') }}">Health, Safety & Environment</a></li>
+                        <li><a href="{{ route('quality') }}">Quality & Risk Management</a></li>
+                        <li><a href="{{ route('respon') }}">Corporate Social Responsibility
+                            </a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="{{ route('index') }}">News & Events</a>
+                    <a href="{{ route('news') }}"
+                        class="{{ Route::is('news') || Request::is('news/*') ? 'active' : '' }}">News & Events</a>
                 </li>
                 <li>
-                    <a href="{{ route('career') }}" class="{{ Route::is('career') ? 'active' : '' }}">Careers</a>
+                    <a href="{{ route('career') }}"
+                        class="{{ Route::is('career') || Request::is('career/*') ? 'active' : '' }}">Careers</a>
                 </li>
                 <li>
-                    <a href="{{ route('contactUs') }}" class="{{ Route::is('contactUs') ? 'active' : '' }}">Contact
+                    <a href="{{ route('contactUs') }}"
+                        class="{{ Route::is('contactUs') || Request::is('contactUs/*') ? 'active' : '' }}">Contact
                         Us</a>
                 </li>
             </ul>
@@ -64,7 +71,7 @@
 
     function myFunction() {
         // header.style.backgroundColor = "white";
-        if (window.pageYOffset > (sticky + 300)) {
+        if (window.pageYOffset > (sticky + 150)) {
             header.classList.add("sticky");
             // header.style.backgroundColor = "white";
         } else {

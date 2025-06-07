@@ -1,0 +1,76 @@
+<script setup>
+import { Head, Link } from '@inertiajs/vue3';
+import { VuePreloader } from 'vue-preloader';
+import '/node_modules/vue-preloader/dist/style.css';
+</script>
+
+<template>
+
+    <Head title="Corporate Social Responsibility" />
+
+    <section id="services" class="services section-bg" style="padding-top: 10%;">
+        <div class="container" data-aos="fade-down">
+            <div class="row justify-content-center">
+                <div class="col-9">
+                    <h4>
+                        Corporate Social Responsibility</h4>
+                    <br><br>
+                </div>
+                <div class="col-9">
+                    <img src="/assets/img/respon.jpg" class="img-fluid" alt="">
+                    <p class="">
+                        <br>
+                        In a heartfelt gesture of community support and care, Azure Investama Grup recently organized a
+                        clothing donation drive for the orphans at Yayasan Ihsanul Karim in Pasar Minggu, South Jakarta.
+                        The event, held on Friday, June 21st, 2024, was a resounding success, reflecting the company’s
+                        commitment to social responsibility and the well-being of the less fortunate.
+                        <br><br>
+                        The initiative known as “We Care, We Share,” was spearheaded by the Human Resources Department
+                        and Corporate Communications Department of Azure Investama Grup. The drive aimed to provide
+                        high-quality clothing to the orphans, ensuring they have suitable attire for various occasions.
+                        The company’s employees rallied behind this noble cause, contributing generously to the clothing
+                        collection effort.
+                        <br><br>
+                    <h4>
+                        Coordinated Effort for Maximum Impact
+                    </h4>
+
+                    The clothing collection took place from June 11th to June 19th, 2024, at the Azure Investama
+                    Grup Head Office in Talavera Office Park. During this period, employees brought in a wide array
+                    of clothing, ranging from children’s outfits to adult wear, including hijabs for the girls. The
+                    collected items were meticulously sorted by the HR team to ensure that each child would receive
+                    appropriate and well-fitting clothing.
+                    <br><br>
+                    <h4>
+                        The Day of Giving: A Memorable Occasion
+                    </h4>
+
+                    On the afternoon of June 21st, at 15:00 WIB, representatives from the HR and Corporate
+                    Communications Department of Azure Investama Grup headed to Yayasan Ihsanul Karim to deliver the
+                    donations. The event was a poignant moment of connection and care, as the team handed over the
+                    clothes to the excited and grateful children.<br><br>
+
+                    The orphans at Yayasan Ihsanul Karim were thrilled with the variety of clothing they received.
+                    The donations included everyday wear, festive attire, and traditional garments, ensuring that
+                    the children would have suitable options for all occasions. The joy and gratitude expressed by
+                    the children and the foundation’s staff underscored the impact of the company’s initiative.
+                    <br><br>
+                    This donation drive is a shining example of Azure Investama Grup’s dedication to giving back to
+                    the community. By addressing the immediate needs of the orphans at Yayasan Ihsanul Karim, the
+                    company not only provided tangible support but also demonstrated the importance of compassion
+                    and community engagement.
+                    <br><br>
+                    The success of the “We Care, We Share” initiative has set a precedent for future charitable
+                    efforts by Azure Investama Grup. The company plans to continue its support for various social
+                    causes, fostering a culture of generosity and empathy among its employees. Future initiatives
+                    will aim to address different aspects of community needs, further solidifying the company’s role
+                    as a responsible and caring corporate citizen. The company’s commitment to social responsibility
+                    serves as an inspiration, highlighting the profound impact that corporate initiatives can have
+                    on the broader community.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

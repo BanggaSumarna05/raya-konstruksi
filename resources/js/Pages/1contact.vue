@@ -43,12 +43,6 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
             <h1>Contact Us</h1>
             <div class="row gy-4 mt-1">
 
-                <!-- <div class="col-lg-6 ">
-                    <iframe
-                        src="https://maps.google.com/maps?width=600&amp;height=800&amp;hl=en&amp;q=talavera office park&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                        frameborder="0" style="border:0; width: 100%; height: 720px;" allowfullscreen></iframe>
-                </div> -->
-
                 <div class="col-6">
                     <form :action="route('submitEmail')" method="POST" role="form" class="php-email-form">
                         <input type="hidden" name="_token" :value="csrf">
@@ -92,15 +86,20 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                     </form>
                 </div>
 
-                <div class="col-6">
+                <div class="col-4 p-5">
                     <div style="padding-top: 40%;">
-                        <h4>Contact Details</h4>
+                        <h4 style="color: #fcd03b">Contact Details</h4>
+                        <br>
                         <h5>RAYA KONSTRUKSI</h5>
                         <p>
-                            Talavera Office Park, 17th Floor. Jl. Let. Jen Jl. TB Simatupang No.Kav. 22 - 26, Cilandak
-                            Bar, Kec. Cilandak,Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430
+                            Talavera Office Park, 17th Floor.
+                            <br>
+                            Jl. TB Simatupang No.Kav. 22 - 26, South Jakarta, Indonesia
                         </p>
-                        <a href="mailto:marketing@rayakonstruksi.com">marketing@rayakonstruksi.com</a>
+                        <a href="mailto:marketing@rayakonstruksi.com" style="color: black">
+                            <i class="bi bi-envelope-fill" style="margin-right: 6px"></i>
+                            <b>marketing@rayakonstruksi.com</b>
+                        </a>
                     </div>
                 </div>
 

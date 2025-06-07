@@ -25,38 +25,46 @@ import '/node_modules/vue-preloader/dist/style.css';
                 comprehensive engineering solutions to our customers worldwide! We welcome you to join us and we are
                 confident that you will find plenty of reasons to build and shape your career with RAYA!
             </p>
-            <div class="row gy-4 justify-content-around">
-                <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1100">
-                    <div class="service-item card-bg"
-                        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'); background-position: cover;background-position: center; background-size: cover">
-                        <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">Our culture</h3><br>
-                            <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
-                                    class="bi bi-arrow-right"></i></a>
+            <div class="row gy-4 justify-content-around mt-5">
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1100" style="padding: 8px">
+                            <div class="card h-100" style="width: 100%; border-radius: 0px; border: none;">
+                                <img class="card-img-top" src="/assets/img/projects/lotte-catalyst/catalyst (4).jpeg"
+                                    alt="Card image cap" style="height: 350px; object-fit: cover; width: 100%;" />
+                                <div class="card-body d-flex align-items-end" style="min-height: 100px;">
+                                    <h5
+                                        style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
+                                        Our People
+                                    </h5>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1100" style="padding: 8px">
+                            <div class="card h-100" style="width: 100%; border-radius: 0px; border: none;">
+                                <img class="card-img-top" src="/assets/img/management.jpg"
+                                    alt="Card image cap" style="height: 350px; object-fit: cover; width: 100%;" />
+                                <div class="card-body d-flex align-items-end" style="min-height: 100px;">
+                                    <h5
+                                        style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
+                                        Our Culture
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1100" style="padding: 8px">
+                            <div class="card h-100" style="width: 100%; border-radius: 0px; border: none;">
+                                <img class="card-img-top" src="/assets/projects/msm-2/gal-2.jpeg"
+                                    alt="Card image cap" style="height: 350px; object-fit: cover; width: 100%;" />
+                                <div class="card-body d-flex align-items-end" style="min-height: 100px;">
+                                    <h5
+                                        style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
+                                        People Development
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1200">
-                    <div class="service-item card-bg"
-                        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/projects/msm/msm-13.jpg); background-position: cover;background-position: center; background-size: cover">
-                        <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">Our People</h3> <br>
-                            <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1300">
-                    <div class="service-item card-bg"
-                        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/projects/msm/msm-13.jpg); background-position: cover;background-position: center; background-size: cover">
-                        <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">People Development</h3>
-                            <br>
-                            <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
                     </div>
                 </div>
 
@@ -65,10 +73,10 @@ import '/node_modules/vue-preloader/dist/style.css';
     </section>
 
     <section class="services">
-        <div class="container">
+        <div class="container" >
             <div class="row">
                 <div class="col-8">
-                    <img src="/assets/img/hero-carousel/uoi-1 (9).jpeg" alt="" class="img-fluid"
+                    <img src="/assets/img/projects/msm/msm-13.jpg" alt="" class="img-fluid"
                         style="max-height: 450px; width: 100%; object-fit: cover;">
                 </div>
                 <div class="col-4">
@@ -103,13 +111,13 @@ import '/node_modules/vue-preloader/dist/style.css';
                             If you have queries regarding the legitimacy of the recruitment offer that you have
                             received, you may send your query to it@rayakonstruksi.com.
                         </p>
-                        <a href="http://pekerjakita.com/" target="_blank" class="btn-get-started">Discover More <i
+                        <a :href="route('cyberInfo')" target="_blank" class="btn-get-started">Discover More <i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-8">
-                    <img src="https://jel.com.sg/wp-content/uploads/2022/01/Fraud-image-1024x577.jpg" alt="" class="img-fluid"
-                        style="max-height: 450px; width: 100%; object-fit: cover;">
+                    <img src="https://jel.com.sg/wp-content/uploads/2022/01/Fraud-image-1024x577.jpg" alt=""
+                        class="img-fluid" style="max-height: 450px; width: 100%; object-fit: cover;">
                 </div>
             </div>
         </div>

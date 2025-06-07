@@ -88,7 +88,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         style="max-width:64px;max-height:64px;">
                     <div>
                         <div>
-                            <h3 style="color:#fcd03b">10</h3>
+                            <h3 style="color:#fcd03b">6</h3>
                             <p>
                                 Power Plants
                             </p>
@@ -98,7 +98,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         style="max-width:64px;max-height:64px;">
                     <div>
                         <div>
-                            <h3 style="color:#fcd03b">10+</h3>
+                            <h3 style="color:#fcd03b">5</h3>
                             <p>
                                 Industrial Facilities Built
                             </p>
@@ -108,7 +108,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         style="max-width:64px;max-height:64px;">
                     <div>
                         <div>
-                            <h3 style="color:#fcd03b">2.1m</h3>
+                            <h3 style="color:#fcd03b">8,000+</h3>
                             <p>
                                 Total Manhour 2025
                             </p>
@@ -124,50 +124,82 @@ import '/node_modules/vue-preloader/dist/style.css';
             <h4>
                 News & Events
             </h4>
-            <div class="row gy-4 justify-content-around">
+            <br>
+            <div class="row ">
 
-                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1100">
-                    <div class="service-item card-bg"
-                        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'); background-position: cover;background-position: center; background-size: cover">
-                        <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">Projects</h3><br>
-                            <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
-                                    class="bi bi-arrow-right"></i></a>
+                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1100"
+                    style="padding: 0 6px 12px 6px;">
+                    <div class="card" style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+                        <img class="card-img-top" src="/assets/img/projects/lotte-catalyst/catalyst (4).jpeg"
+                            alt="Card image cap" style="max-height: 30vh; object-fit: cover; width: 100%;" />
+                        <div class="card-body">
+                            <p
+                                style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
+                                2 Febuary 2025
+                            </p>
+                            <a :href="route('newsDetail')">
+                                <h5 class="card-title text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
+                            </a>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque distinctio ...
+                            </p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1200">
-                    <div class="service-item card-bg"
-                        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/projects/msm/msm-13.jpg); background-position: cover;background-position: center; background-size: cover">
-                        <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">People</h3> <br>
-                            <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
-                                    class="bi bi-arrow-right"></i></a>
+                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1100"
+                    style="padding: 0 6px 12px 6px;">
+                    <div class="card" style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+                        <img class="card-img-top" src="/assets/img/projects/lotte-catalyst/catalyst (4).jpeg"
+                            alt="Card image cap" style="max-height: 30vh; object-fit: cover; width: 100%;" />
+                        <div class="card-body">
+                            <p
+                                style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
+                                2 Febuary 2025
+                            </p>
+                            <a :href="route('newsDetail')">
+                                <h5 class="card-title text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
+                            </a>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque distinctio ...
+                            </p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1300">
-                    <div class="service-item card-bg"
-                        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/projects/lotte/lotte-5.png); background-position: cover;background-position: center; background-size: cover">
-                        <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">Asset</h3>
-                            <br>
-                            <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
-                                    class="bi bi-arrow-right"></i></a>
+                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1100"
+                    style="padding: 0 6px 12px 6px;">
+                    <div class="card" style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+                        <img class="card-img-top" src="/assets/img/projects/lotte-catalyst/catalyst (4).jpeg"
+                            alt="Card image cap" style="max-height: 30vh; object-fit: cover; width: 100%;" />
+                        <div class="card-body">
+                            <p
+                                style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
+                                2 Febuary 2025
+                            </p>
+                            <a :href="route('newsDetail')">
+                                <h5 class="card-title text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
+                            </a>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque distinctio ...
+                            </p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1400">
-                    <div class="service-item card-bg"
-                        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(assets/img/building.jpg); background-position: cover;background-position: center; background-size: cover">
-                        <div class="card-title text-white" style="margin-top: 10em;">
-                            <h3 style="color:white!important">Office</h3>
-                            <br>
-                            <a :href="route('project')" class="readmore stretched-link btn-block">Discover More <i
-                                    class="bi bi-arrow-right"></i></a>
+                <div class="col-lg-3 col-md-6" data-aos="fade-right" data-aos-delay="1100"
+                    style="padding: 0 6px 12px 6px;">
+                    <div class="card" style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+                        <img class="card-img-top" src="/assets/img/projects/lotte-catalyst/catalyst (4).jpeg"
+                            alt="Card image cap" style="max-height: 30vh; object-fit: cover; width: 100%;" />
+                        <div class="card-body">
+                            <p
+                                style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
+                                2 Febuary 2025
+                            </p>
+                            <a :href="route('newsDetail')">
+                                <h5 class="card-title text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</h5>
+                            </a>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque distinctio ...
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -197,24 +229,6 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <center>
                             <img class="img-thumbnail" src="/assets/img/map.png" usemap="#image-map"
                                 style="border: 0px;background-color: transparent;">
-                            <map name="image-map">
-                                <area target="_self" alt="Enerco RPO International Project"
-                                    title="Enerco RPO International Project" :href="route('enerco-1')"
-                                    coords="221,135,19" shape="circle">
-                                <area target="_self" alt="JADESTONE ENERGY AKATARA" title="JADESTONE ENERGY AKATARA"
-                                    :href="route('akatara-1')" coords="205,186,19" shape="circle">
-                                <area target="_self" alt="LOTTE LINE WORK PACKAGES 03"
-                                    title="LOTTE LINE WORK PACKAGES 03" :href="route('line-1')" coords="264,294,23"
-                                    shape="circle">
-                                <area target="_self" alt="PERTAMINA RDMP RU-V" title="PERTAMINA RDMP RU-V"
-                                    :href="route('pertamina-1')" coords="502,190,30" shape="circle">
-                                <area target="_self" alt="MURIA SUMBA MANIS SUGAR FACTORY"
-                                    title="MURIA SUMBA MANIS SUGAR FACTORY" :href="route('msm-1')" coords="555,372,26"
-                                    shape="circle">
-                                <area target="_self" alt="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL"
-                                    title="MECHANICAL SUPPORT - UNILEVER OLEOCHEMICAL" :href="route('uoi-1')"
-                                    coords="121,104,26" shape="circle">
-                            </map>
                         </center>
                     </div>
                 </div>
@@ -236,42 +250,14 @@ export default {
     },
     mounted() {
         // Panggil fungsi resizeMap saat komponen di-mount
-        this.resizeMap();
-        window.addEventListener('resize', this.resizeMap);
+        // this.resizeMap();
+        // window.addEventListener('resize', this.resizeMap);
     },
     beforeDestroy() {
         // Hapus event listener saat komponen di-destroy
-        window.removeEventListener('resize', this.resizeMap);
+        // window.removeEventListener('resize', this.resizeMap);
     },
     methods: {
-        // Fungsi untuk menyesuaikan koordinat area berdasarkan skala gambar
-        resizeMap() {
-            const img = this.$refs.image;
-            const width = img.naturalWidth;
-            const currentWidth = img.clientWidth;
-
-            if (!width) return; // Jika gambar belum termuat, hentikan eksekusi
-
-            const scale = currentWidth / width;
-
-            // Sesuaikan koordinat area berdasarkan skala gambar
-            this.areas = this.originalAreas.map(area => {
-                const originalCoords = area.coords.split(',').map(Number);
-                const scaledCoords = originalCoords.map(coord => coord * scale);
-                return {
-                    ...area,
-                    coords: scaledCoords.join(',')
-                };
-            });
-        }
     }
 };
 </script>
-
-<style scoped>
-/* Gambar dibuat responsif */
-.imgmap1 {
-    max-width: 100%;
-    height: auto;
-}
-</style>

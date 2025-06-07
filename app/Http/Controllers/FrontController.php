@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\InqueryMail;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -700,8 +701,11 @@ class FrontController extends Controller
 
     public function index()
     {
+        $blogs = Blog::where('is_published', 1)->orderBy('published_at', 'asc')->get()->take(4);
         SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('1home');
+        return Inertia::render('1home', [
+            'blogs' => $blogs
+        ]);
     }
 
     public function whoWeAre()
@@ -768,15 +772,21 @@ class FrontController extends Controller
 
     public function news()
     {
+        $blogs = Blog::where('is_published', 1)->orderBy('published_at', 'asc')->get()->take(16);
         SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('1news');
+        return Inertia::render('1news', [
+            'blogs' => $blogs
+        ]);
     }
 
 
-    public function newsDetail()
+    public function newsDetail($slug)
     {
+        $blog = Blog::where('slug',$slug)->first();
         SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('1newsDetail');
+        return Inertia::render('1newsDetail', [
+            'blog' => $blog
+        ]);
     }
 
     public function catalystLoading()

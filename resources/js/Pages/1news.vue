@@ -20,10 +20,12 @@ defineProps({ blogs: Array })
 
                 <div v-for="(blog, idx) in blogs" :key="blog.id" class="col-lg-3 col-md-6" data-aos="fade-right"
                     :data-aos-delay="1100 + idx * 100" style="padding: 0 6px 12px 6px;">
+                    <a :href="route('newsDetail', blog.id)">
                     <div class="card" style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
                         <img class="card-img-top"
                             :src="blog.image ? `/storage/${blog.image}` : '/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'"
-                            alt="Card image cap" style="max-height: 30vh; object-fit: cover; width: 100%;" />
+                            alt="Card image cap"
+                            style="max-height: 30vh;min-height: 30vh; object-fit: cover; width: 100%;" />
                         <div class="card-body">
                             <p
                                 style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
@@ -32,16 +34,17 @@ defineProps({ blogs: Array })
                                     day: 'numeric'
                                 }) }}
                             </p>
-                            <a :href="route('newsDetail', blog.id)">
-                                <h5 class="card-title text-black">
-                                    {{ blog.title }}
-                                </h5>
-                            </a>
+
+                            <h5 class="card-title text-black">
+                                {{ blog.title }}
+                            </h5>
+
                             <p class="card-text">
-                                {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 64) }}
+                                {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 32) }}
                             </p>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             <button v-if="hasMore" @click="loadMore" class="btn-get-started"

@@ -11,6 +11,38 @@ import '/node_modules/vue-preloader/dist/style.css';
         <div class="container" data-aos="fade-up">
             <h1 class="mb-5">What We Do</h1>
 
+
+            <div class="row justify-content-around gy-4" id="construction">
+                <div class="col-lg-6 img-bg" style="
+                        background-image: url('/assets/img/piping-2.jpg');
+                        background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        background-position: center;
+                        background-size: cover;
+                    " data-aos="fade-left" data-aos-delay="100"></div>
+                <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
+                    <h2>Construction & Fabrication</h2>
+                    <p class="rapih">
+                        Our team of skilled engineers and workers collaborate to bring your visions to life
+                        across a range of disciplines, including Integrated Steel Structure Fabrication and
+                        Installation, Piping Fabrication & Installation, and Mechanical Installation. We
+                        meticulously craft every detail to reflect your unique aspirations.
+                    </p>
+                    <ul class="ul-2">
+                        <li>Steel Structure Fabrication</li>
+                        <li>Steel Structure Installation</li>
+                        <li>Piping Fabrication</li>
+                        <li>Piping Installation</li>
+                        <li>Mechanical Erection</li>
+                        <li>Tank Fabrication</li>
+                        <li>Tank Installation</li>
+                        <li>Equipment Rental</li>
+                    </ul>
+                    <a href="#" class="btn btn-get-started" style="max-width: 40%;">Discover
+                        More <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+
             <div class="row justify-content-around gy-4" id="catalyst-loading">
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-left">
                     <h2>Catalyst Handling</h2>
@@ -40,7 +72,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: cover;
                     " data-aos="fade-right" data-aos-delay="100"></div>
             </div>
-            <br /><br /><br /><br /><br /><br />
+
 
             <div class="row justify-content-around gy-4" id="plant-maintenance">
                 <div class="col-lg-6 img-bg" style="
@@ -73,7 +105,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         More <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
-            <br /><br /><br /><br /><br /><br />
+
 
             <div class="row justify-content-around gy-4" id="engineering">
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
@@ -105,38 +137,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: cover;
                     " data-aos="fade-left" data-aos-delay="100"></div>
             </div>
-            <br /><br /><br /><br /><br /><br />
-            <div class="row justify-content-around gy-4" id="construction">
-                <div class="col-lg-6 img-bg" style="
-                        background-image: url('/assets/img/piping-2.jpg');
-                        background-repeat: no-repeat;
-                        background-attachment: fixed;
-                        background-position: center;
-                        background-size: cover;
-                    " data-aos="fade-left" data-aos-delay="100"></div>
-                <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
-                    <h2>Construction & Fabrication</h2>
-                    <p class="rapih">
-                        Our team of skilled engineers and workers collaborate to bring your visions to life
-                        across a range of disciplines, including Integrated Steel Structure Fabrication and
-                        Installation, Piping Fabrication & Installation, and Mechanical Installation. We
-                        meticulously craft every detail to reflect your unique aspirations.
-                    </p>
-                    <ul class="ul-2">
-                        <li>Steel Structure Fabrication</li>
-                        <li>Steel Structure Installation</li>
-                        <li>Piping Fabrication</li>
-                        <li>Piping Installation</li>
-                        <li>Mechanical Erection</li>
-                        <li>Tank Fabrication</li>
-                        <li>Tank Installation</li>
-                        <li>Equipment Rental</li>
-                    </ul>
-                    <a href="#" class="btn btn-get-started" style="max-width: 40%;">Discover
-                        More <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <br /><br /><br /><br /><br /><br />
+
+
         </div>
     </section>
 </template>

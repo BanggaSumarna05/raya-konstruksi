@@ -11,18 +11,26 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li class="dropdown">
-                    <a href="{{ route('whoWeAre') }}" class="{{ Route::is('whoWeAre') ? 'active' : '' }}">Who We Are</a>
+                    <a href="{{ route('whoWeAre') }}"
+                        class="
+                     {{ Route::is('whoWeAre') || Request::is('who-we-are/*') ? 'active' : '' }}
+                     ">Who
+                        We Are</a>
                     <ul>
                         <li><a href="{{ route('whoWeAre') }}#company-profile">Company Profile</a></li>
                         <li><a href="{{ route('whoWeAre') }}#vision">Vision & Mission</a></li>
                         <li><a href="{{ route('whoWeAre') }}#core-values">Core Values</a></li>
-                        <li><a href="{{ route('whoWeAre') }}#vision">Key Milestones</a></li>
-                        <li><a href="{{ route('corporateStructure') }}">Leadership</a></li>
+                        <li><a href="{{ route('whoWeAre') }}#milestones">Key Milestones</a></li>
+                        <li><a
+                                href="{{ Route::is('corporateStructure') || Request::is('who-we-are/*') ? 'active' : '' }}">Leadership</a>
+                        </li>
+
                         <li><a href="{{ route('clientPartner') }}">Client & Partners</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="{{ route('whatWeDo') }}"
-                        class="{{ Route::is('whatWeDo') ? 'active' : '' }}">What We Do</a>
+                        class="{{ Route::is('whatWeDo') || Request::is('what-we-do/*') ? 'active' : '' }}">What We
+                        Do</a>
                     <ul>
                         <li><a href="{{ route('catalyst-loading') }}">Catalyst Loading</a></li>
                         <li><a href="{{ route('plantMaintenance') }}">Plant Maintenance</a></li>
@@ -32,7 +40,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="{{ route('sustainability') }}"
-                        class="{{ Route::is('sustainability') ? 'active' : '' }}">Sustainability</a>
+                        class="{{ Route::is('sustainability') || Request::is('sustainability/*') ? 'active' : '' }}">Sustainability</a>
                     <ul>
                         <li><a href="{{ route('safety') }}">Health, Safety & Environment</a></li>
                         <li><a href="{{ route('quality') }}">Quality & Risk Management</a></li>
@@ -42,7 +50,8 @@
                 </li>
                 <li>
                     <a href="{{ route('news') }}"
-                        class="{{ Route::is('news') || Request::is('news/*') ? 'active' : '' }}">News & Events</a>
+                        class="{{ Route::is('news') || Request::is('news-n-event/*') ? 'active' : '' }}">News &
+                        Events</a>
                 </li>
                 <li>
                     <a href="{{ route('career') }}"

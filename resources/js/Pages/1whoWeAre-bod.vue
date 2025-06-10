@@ -62,7 +62,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #fcd03b; display: inline-block;">Suwoto</h5>
-                            <p style="font-size: 12px;padding-top: 12px;">Sr Manager Proposal & Estimator</p>
+                            <p style="font-size: 12px;padding-top: 12px;">Sr. Manager Proposal & Estimator</p>
                         </div>
                     </div>
                 </div>
@@ -75,49 +75,6 @@ import '/node_modules/vue-preloader/dist/style.css';
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #fcd03b; display: inline-block;">Anggi Simatupang</h5>
                             <p style="font-size: 12px;padding-top: 12px;">Manager Bussiness Development</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4>
-                Teams
-            </h4>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card p-3 card-hover-bg" style="
-                    background-image: url('/assets/img/nada1.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 20vh auto; min-height: 12em;">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Nada Shelawati</h5>
-                            <p style="font-size: 12px;padding-top: 12px;">Estimator</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card p-3 card-hover-bg" style="
-                    background-image: url('/assets/img/daffa1.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 21vh auto; min-height: 12em;">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Daffa Luthfi Pujiantoro
-                            </h5>
-                            <p style="font-size: 12px;padding-top: 12px;">Estimator</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card p-3 card-hover-bg" style="
-                    background-image: url('/assets/img/sirgio.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 15vh auto; min-height: 12em;">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Sirgio Demas Simajuntak
-                            </h5>
-                            <p style="font-size: 12px;padding-top: 12px;">Bussiness Development Officer</p>
                         </div>
                     </div>
                 </div>

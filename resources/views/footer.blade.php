@@ -84,17 +84,12 @@
                                 <i class="bi bi-instagram"></i> Instagram
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="#" aria-label="YouTube">
-                                <i class="bi bi-youtube"></i> Youtube
-                            </a>
-                        </li> --}}
                     </ul>
                 </div>
             </div>
             <div class="footer-legal position-relative">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>RAYA Construction International</span></strong>. All Rights
+                    &copy; Copyright RAYA Construction International 2025 All Rights
                     Reserved
                 </div>
             </div>

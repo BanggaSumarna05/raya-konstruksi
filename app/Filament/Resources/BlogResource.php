@@ -26,17 +26,11 @@ class BlogResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                // Forms\Components\TextInput::make('slug')
-                //     ->required()
-                //     ->maxLength(255),
                 Forms\Components\RichEditor::make('content')
                     ->required(),
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory('blog-images'),
-                // Forms\Components\TextInput::make('user_id')
-                //     ->required()
-                //     ->numeric(),
                 Forms\Components\Toggle::make('is_published')
                     ->label('Published'),
                 Forms\Components\DateTimePicker::make('published_at'),
@@ -50,13 +44,6 @@ class BlogResource extends Resource
                 Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('slug')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('user.name')->label('Author')->sortable(),
-                // Tables\Columns\ImageColumn::make('image')->label('Image')->circular(),
-                // Tables\Columns\ImageColumn::make('image')
-                //     ->label('Image')
-                //     ->circular()
-                //     ->disk('public')
-                //     ->visibility('public')
-                //     ->defaultImageUrl(url('storage/blog-images/placeholder.jpg')),
                 Tables\Columns\IconColumn::make('is_published')
                     ->boolean()
                     ->label('Published'),

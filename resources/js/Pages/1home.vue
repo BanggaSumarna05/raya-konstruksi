@@ -8,7 +8,7 @@ defineProps({ blogs: Array })
 </script>
 
 <template>
-    <!-- <VuePreloader background-color="black" color="#FCD03B" transition-type="fade-up" :loading-speed="40"
+    <!-- <VuePreloader background-color="black" color="black" transition-type="fade-up" :loading-speed="40"
         :transition-speed="600" @loading-is-over="loadingIsOver" @transition-is-over="transitionIsOver"></VuePreloader> -->
 
     <Head title="Home" />
@@ -17,104 +17,100 @@ defineProps({ blogs: Array })
 
 
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/uoi-1 (2).jpeg')"></div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/uoi-1 (5).jpeg')">
-            </div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (9).jpeg')"></div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')">
-            </div>
-
+            <div class="carousel-item active"
+                style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (3).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (4).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (9).jpeg')"></div>
             <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (10).jpeg')"></div>
-
             <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/header-7.jpg)"></div>
             <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/header-4.jpg)"></div>
             <div class="carousel-item " style="background-image: url(assets/img/hero-carousel/header-2.jpg)"></div>
             <div class="carousel-item " style="background-image: url(assets/img/hero-carousel/header-5.jpg)"></div>
-            <div class="carousel-item active" style="background-image: url(assets/img/hero-carousel/header-6.jpg)">
+            <div class="carousel-item " style="background-image: url(assets/img/hero-carousel/header-6.jpg)">
             </div>
         </div>
     </section>
 
-    <section id="services" class="services container">
-        <div class="row">
-            <div class="col-4">
-                <h4>RAYA At A Glance</h4>
-                <p>
-                    RAYA is leading construction company based in Indonesia.
-                    <br><br>
-                    With multifaceted project management capabilities and a strong diverse workforce.
-                    RAYA provides a full range of services in procurement, construction and maintenance
-                    across the world.
-                </p>
-                <a href="#" rel="noopener noreferrer" class="btn-get-started">
-                    Discover More
-                </a>
-            </div>
-            <div class="col-8">
-                <div class="px-5" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;">
-                    <div>
-                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon1-1.png" alt=""
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="pb-10">RAYA At A Glance</h2>
+            <div class="row">
+                <div class="col-4">
+                    <p>
+                        RAYA is leading construction company based in Indonesia.
+                        <br><br>
+                        With multifaceted project management capabilities and a strong diverse workforce.
+                        RAYA provides a full range of services in procurement, construction and maintenance
+                        across the world.
+                    </p>
+                    <a href="#" rel="noopener noreferrer" class="btn-get-started">
+                        Discover More
+                    </a>
+                </div>
+                <div class="col-8">
+                    <div class="px-5" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;">
+                        <div>
+                            <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon1-1.png" alt=""
+                                style="max-width:64px;max-height:64px;">
+                        </div>
+                        <div>
+                            <div>
+                                <h3 style="color:black">7</h3>
+                                <p>
+                                    Years History
+                                </p>
+                            </div>
+                        </div>
+                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon2.png" alt=""
                             style="max-width:64px;max-height:64px;">
-                    </div>
-                    <div>
                         <div>
-                            <h3 style="color:#fcd03b">7</h3>
-                            <p>
-                                Years History
-                            </p>
+                            <div>
+                                <h3 style="color:black">20+</h3>
+                                <p>
+                                    Projects
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon2.png" alt=""
-                        style="max-width:64px;max-height:64px;">
-                    <div>
+                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon3.png" alt=""
+                            style="max-width:64px;max-height:64px;">
                         <div>
-                            <h3 style="color:#fcd03b">1</h3>
-                            <p>
-                                Group Offices
-                            </p>
+                            <div>
+                                <h3 style="color:black">200,000+</h3>
+                                <p>
+                                    Piping
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon3.png" alt=""
-                        style="max-width:64px;max-height:64px;">
-                    <div>
+                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon4.png" alt=""
+                            style="max-width:64px;max-height:64px;">
                         <div>
-                            <h3 style="color:#fcd03b">1,000+</h3>
-                            <p>
-                                Group Employees
-                            </p>
+                            <div>
+                                <h3 style="color:black">10+</h3>
+                                <p>
+                                    Catalyst Loading
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon4.png" alt=""
-                        style="max-width:64px;max-height:64px;">
-                    <div>
+                        <!-- <i class="fa fa-briefcase fa-4x" style="color: #868686;" aria-hidden="true"></i> -->
+                        <img src="assets/img/worker.svg" alt="" style="max-width:64px;max-height:64px; color:red">
                         <div>
-                            <h3 style="color:#fcd03b">6</h3>
-                            <p>
-                                Power Plants
-                            </p>
+                            <div>
+                                <h3 style="color:black">750+</h3>
+                                <p>
+                                    Manpower
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon5.png" alt=""
-                        style="max-width:64px;max-height:64px;">
-                    <div>
+                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon6.png" alt=""
+                            style="max-width:64px;max-height:64px;">
                         <div>
-                            <h3 style="color:#fcd03b">5</h3>
-                            <p>
-                                Industrial Facilities Built
-                            </p>
-                        </div>
-                    </div>
-                    <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon6.png" alt=""
-                        style="max-width:64px;max-height:64px;">
-                    <div>
-                        <div>
-                            <h3 style="color:#fcd03b">8,000+</h3>
-                            <p>
-                                Total Manhour 2025
-                            </p>
+                            <div>
+                                <h3 style="color:black">8,000+</h3>
+                                <p>
+                                    Total Manhour 2024-2025
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +118,7 @@ defineProps({ blogs: Array })
         </div>
     </section>
 
-    <section id="services" class="services px-5">
+    <section id="services" class="services section-bg">
         <div class="container">
             <h4>
                 News & Events
@@ -132,136 +128,41 @@ defineProps({ blogs: Array })
 
                 <div v-for="(blog, idx) in blogs" :key="blog.id" class="col-lg-3 col-md-6" data-aos="fade-right"
                     :data-aos-delay="1100 + idx * 100" style="padding: 0 6px 12px 6px;">
-                    <div class="card" style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-                        <img class="card-img-top"
-                            :src="blog.image ? `/storage/${blog.image}` : '/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'"
-                            alt="Card image cap" style="max-height: 30vh; object-fit: cover; width: 100%;" />
-                        <div class="card-body">
-                            <p
-                                style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
-                                {{ new Date(blog.published_at).toLocaleDateString('id-ID', {
-                                    year: 'numeric', month: 'long',
-                                    day: 'numeric'
-                                }) }}
-                            </p>
-                            <a :href="route('newsDetail', blog.slug)">
+                    <a :href="route('newsDetail', blog.slug)">
+                        <div class="card"
+                            style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+                            <img class="card-img-top"
+                                :src="blog.image ? `/storage/${blog.image}` : '/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'"
+                                alt="Card image cap"
+                                style="max-height: 30vh;min-height: 30vh; object-fit: cover; width: 100%;" />
+                            <div class="card-body">
+                                <p
+                                    style="border-bottom: 3px solid black; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
+                                    {{ new Date(blog.published_at).toLocaleDateString('id-ID', {
+                                        year: 'numeric', month: 'long',
+                                        day: 'numeric'
+                                    }) }}
+                                </p>
+
                                 <h5 class="card-title text-black">
                                     {{ blog.title }}
                                 </h5>
-                            </a>
-                            <p class="card-text">
-                                {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 64) }}
-                            </p>
+                                <p class="card-text">
+                                    {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 56) + '...' }}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
             </div>
-            <a href="#" rel="noopener noreferrer" class="btn-get-started">
+            <a :href="route('news')" rel="noopener noreferrer" class="btn-get-started">
                 Discover More
             </a>
         </div>
     </section>
 
-    <section id="milestones" class="milestones-section">
-        <div class="container" data-aos="fade-up">
-            <div class="section-header">
-                <h2>Project Milestones</h2>
-                <p>Our journey through the years</p>
-            </div>
-
-            <div class="milestones-container">
-                <!-- Year Group Template -->
-                <div class="year-group">
-                    <div class="year-header">2018</div>
-                    <div class="milestone-card company-event">
-                        <h3>Company Founded</h3>
-                        <p>PT Makadia Grup International was established in Jakarta, Indonesia.</p>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2019</div>
-                    <div class="milestone-card">
-                        <h3>Enerco RPO TDAE Plant Operation & Maintenance</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2020</div>
-                    <div class="milestone-card">
-                        <h3>Tangguh Expansion Plant Preservation</h3>
-                        
-                    </div>
-                    <div class="milestone-card">
-                        <h3>Muria Sumba Manis Refinery Piping</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>Enerco Heat Exchanger Maintenance</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2022</div>
-                    <div class="milestone-card">
-                        <h3>RDMP RU-V OSBL Tanks Project</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>Pertamina Turnaround Piping</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>Muria Sugar Refinery Maintenance</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2023</div>
-                    <div class="milestone-card">
-                        <h3>LINE Ethylene Plant Project</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>Air Products UOI Indonesia</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>Air Products SMIP Piping</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2024</div>
-                    <div class="milestone-card">
-                        <h3>RDMP RU-V ISBL Tanks</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>LINE Catalyst Loading</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>UOI Turnaround & Maintenance</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>LINE Manpower Supply</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2025</div>
-                    <div class="milestone-card company-event">
-                        <h3>Company Rebranding</h3>
-                        <p>PT Makadia Grup International changes name to <strong>RAYA KONSTRUKSI</strong>.</p>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>Air Products Offsite SMR</h3>
-                    </div>
-                    <div class="milestone-card">
-                        <h3>Air Products Catalyst Loading</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="locations" class="services section-bg px-5">
+    <section id="locations" class="services px-5">
         <div class="container" data-aos="fade-up">
             <div class="row">
                 <div class="col-4">
@@ -270,7 +171,7 @@ defineProps({ blogs: Array })
                         Our subsidiaries and offices across the globe.
                     </p>
                     <br>
-                    <a href="#" rel="noopener noreferrer" class="btn-get-started">
+                    <a :href="route('whoWeAre')" rel="noopener noreferrer" class="btn-get-started">
                         Discover More
                     </a>
                 </div>
@@ -286,27 +187,13 @@ defineProps({ blogs: Array })
         </div>
     </section>
 </template>
-<style>
-.greyscale {
-    object-fit: scale-down;
-    /* display: flex; */
-    justify-content: center !important;
-    align-items: center !important;
-}
-</style>
 <script>
 export default {
     data() {
     },
     mounted() {
-        // Panggil fungsi resizeMap saat komponen di-mount
-        // this.resizeMap();
-        // window.addEventListener('resize', this.resizeMap);
     },
-    beforeDestroy() {
-        // Hapus event listener saat komponen di-destroy
-        // window.removeEventListener('resize', this.resizeMap);
-    },
+    beforeDestroy() { },
     methods: {
     }
 };

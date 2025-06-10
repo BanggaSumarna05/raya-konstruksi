@@ -13,44 +13,44 @@ import '/node_modules/vue-preloader/dist/style.css';
                 Clients & Partners
             </h4>
             <div class="row gy-4">
-                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1100">
+                <div class="col-2 col-sm-6 col-lg-2" data-aos="fade-right" data-aos-delay="1100">
                     <div class="card">
-                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-air-products.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/logo-air-products.png" alt="">
                     </div>
                 </div>
-                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1200">
+                <div class="col-2 col-sm-6 col-lg-2" data-aos="fade-right" data-aos-delay="1200">
                     <div class="card">
-                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-enerco.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/logo-enerco.png" alt="">
                     </div>
                 </div>
-                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1300">
+                <div class="col-2 col-sm-6 col-lg-2" data-aos="fade-right" data-aos-delay="1300">
                     <div class="card">
-                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-jadestone.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/logo-jadestone.png" alt="">
                     </div>
                 </div>
-                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1400">
+                <div class="col-2 col-sm-6 col-lg-2" data-aos="fade-right" data-aos-delay="1400">
                     <div class="card">
-                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-msm.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/logo-msm.png" alt="">
                     </div>
                 </div>
-                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1500">
+                <div class="col-2 col-sm-6 col-lg-2" data-aos="fade-right" data-aos-delay="1500">
                     <div class="card">
-                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/kine-jo-logo.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/kine-jo-logo.png" alt="">
                     </div>
                 </div>
-                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1600">
+                <div class="col-2 col-sm-6 col-lg-2" data-aos="fade-right" data-aos-delay="1600">
                     <div class="card">
-                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-asraya.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/logo-asraya.png" alt="">
                     </div>
                 </div>
-                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1700">
+                <div class="col-2 col-sm-6 col-lg-2" data-aos="fade-right" data-aos-delay="1700">
                     <div class="card">
-                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/logo-unilever.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/logo-unilever.png" alt="">
                     </div>
                 </div>
-                <div class="col-3 col-sm-6 col-lg-3" data-aos="fade-right" data-aos-delay="1800">
+                <div class="col-2 col-sm-6 col-lg-2" data-aos="fade-right" data-aos-delay="1800">
                     <div class="card">
-                        <img class="greyscale card-bg img-fluid" src="/assets/img/client/swg.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/swg.png" alt="">
                     </div>
                 </div>
 

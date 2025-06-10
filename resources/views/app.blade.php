@@ -45,6 +45,7 @@
     <!-- Template Main CSS File -->
     <link href="/assets/css/main.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Scripts -->
     @routes
     @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])

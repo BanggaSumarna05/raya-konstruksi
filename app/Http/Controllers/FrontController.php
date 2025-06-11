@@ -772,7 +772,7 @@ class FrontController extends Controller
 
     public function news()
     {
-        $blogs = Blog::where('is_published', 1)->orderBy('published_at', 'desc')->get()->take(16);
+        $blogs = Blog::where('is_published', 1)->orderBy('published_at', 'desc')->paginate(4);
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1news', [
             'blogs' => $blogs

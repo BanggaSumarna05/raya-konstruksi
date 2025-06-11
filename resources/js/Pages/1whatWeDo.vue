@@ -10,9 +10,7 @@ import '/node_modules/vue-preloader/dist/style.css';
     <section id="catalyst-loading" class="constructions" style="padding-top:10%">
         <div class="container" data-aos="fade-up">
             <h1 class="mb-5">What We Do</h1>
-
-
-            <div class="row justify-content-around gy-4" id="construction">
+            <div class="row justify-content-around gy-4" id="construction" style="padding-top: 8vh; ">
                 <div class="col-lg-6 img-bg" style="
                         background-image: url('/assets/img/piping-2.jpg');
                         background-repeat: no-repeat;
@@ -43,7 +41,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 </div>
             </div>
 
-            <div class="row justify-content-around gy-4" id="catalyst-loading">
+            <div class="row justify-content-around gy-4" id="catalyst-loading" style="padding-top: 15vh; ">
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-left">
                     <h2>Catalyst Handling</h2>
                     <p class="rapih">
@@ -74,7 +72,7 @@ import '/node_modules/vue-preloader/dist/style.css';
             </div>
 
 
-            <div class="row justify-content-around gy-4" id="plant-maintenance">
+            <div class="row justify-content-around gy-4" id="plant-maintenance" style="padding-top: 15vh; ">
                 <div class="col-lg-6 img-bg" style="
                         background-image: url('/assets/img/plant-maintenance.png');
                         background-repeat: no-repeat;
@@ -101,13 +99,13 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <li>Steam Tracing</li>
                         <li>Internal Parts Installation</li>
                     </ul>
-                    <a href="#" class="btn btn-get-started" style="max-width: 40%;">Discover
+                    <a :href="route('plantMaintenance')" class="btn btn-get-started" style="max-width: 40%;">Discover
                         More <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
 
-            <div class="row justify-content-around gy-4" id="engineering">
+            <div class="row justify-content-around gy-4" id="engineering" style="padding-top: 15vh; padding-bottom: 8vh; ">
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
                     <h2>Engineering & Manpower Supply</h2>
                     <p class="rapih">
@@ -137,8 +135,6 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: cover;
                     " data-aos="fade-left" data-aos-delay="100"></div>
             </div>
-
-
         </div>
     </section>
 </template>

@@ -8,7 +8,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 
     <Head title="Health, Safety & Environment" />
 
-    <section id="services" class="services section-bg" style="padding-top: 10%;">
+    <section id="services" class="services section-bg mb-10" style="padding-top: 10%;">
         <div class="container" data-aos="fade-down">
             <div class="row justify-content-center">
                 <div class="col-9">
@@ -17,74 +17,37 @@ import '/node_modules/vue-preloader/dist/style.css';
                 </div>
                 <div class="col-9">
                     <p class="">
-                        The Health, Safety and Environmental (HSE) requirements by many clients, the national HSE
-                        regulations as well as international ISOs standards which RAYA KONSTRUKSI have been subscribing
-                        to for more
-                        than 20 years, have been continuously raised to higher levels or change to suit the work
-                        condition. The increase in HSE requirements and standards have indirectly pushed RAYA KONSTRUKSI
-                        and all its
-                        subsidiaries to improve further, otherwise RAYA KONSTRUKSI will be left behind and not be
-                        competitive.
-                        Nevertheless, looking ahead, as all these changes in HSE requirements, is meant for improving
-                        our workers safety and health and to maintain a sustainable work to the environment, RAYA
-                        KONSTRUKSI will
-                        keep abreast with all the changes and demands by the clients and will continuously improve its
-                        HSE management system.
+                        The Health, Safety, and Environmental (HSE) requirements set by many clients, national HSE
+                        regulations, and international ISO standards—subscribed to by RAYA KONSTRUKSI for over seven
+                        years—have continued to evolve, becoming increasingly stringent to adapt to changing work
+                        conditions. These rising standards have indirectly driven RAYA KONSTRUKSI and all its
+                        subsidiaries to continuously improve; otherwise, the company risks falling behind and becoming
+                        uncompetitive. Nevertheless, we view these changes as positive steps toward enhancing worker
+                        safety, health, and sustainable environmental practices. RAYA KONSTRUKSI remains committed to
+                        keeping pace with all client demands and regulatory updates, continually enhancing its HSE
+                        management system.
                         <br><br>
-                        In its commitment to improve RAYA KONSTRUKSI’ HSE management system to suit the current
-                        conditions, RAYA KONSTRUKSI
-                        management had introduced and expeditiously carried several activities which include monthly
-                        RAYA KONSTRUKSI
-                        Group HSE Committee meetings together with all subsidiary Directors and including HSE
-                        teleconferences and HSE Committee meetings with its parent company in Japan. In increasing
-                        safety culture amongst RAYA KONSTRUKSI Group, RAYA KONSTRUKSI had organised annual HSE
-                        Conferences with all subsidiary
-                        companies where key management staff and the HSE Managers attending the event present their HSE
-                        performances as well as measures on improving their HSE management.
+                        In its commitment to adapt the HSE management system to current conditions, RAYA KONSTRUKSI’s
+                        management has implemented and expedited several key initiatives. These include monthly HSE
+                        Committee meetings attended by company directors, regular HSE teleconferences, and the
+                        establishment of a dedicated HSE Committee. To strengthen the safety culture within the company,
+                        we also organize annual HSE Conferences where key management staff and HSE managers present
+                        their performance reports and outline measures for further improvements.
                         <br><br>
-                        In its goal to maintaining consistency in HSE management requirements amongst all its subsidiary
-                        companies, RAYA KONSTRUKSI had introduced several share portals in its intranet system such as
-                        HSE training
-                        materials which are customised design to suit RAYA KONSTRUKSI work activities and HSE forms and
-                        risk
-                        assessments as well as a special share portal will be developed soon on sharing of HSE posters /
-                        banners artworks for HSE awareness and promotions. All these materials are shared with all RAYA
-                        KONSTRUKSI
-                        Group of Companies representatives, for standardisation, consistency, and efficiency.
+                        To ensure all RAYA KONSTRUKSI projects operate safely, promote good health, and uphold
+                        sustainable environmental practices, the HSE Department conducts regular visits to project sites
+                        and offices. These visits involve inspections, internal HSE audits, and ongoing support for all
+                        workplaces—reinforcing the principle that ‘prevention is better than cure’ in our efforts to
+                        avoid accidents and environmental harm.
                         <br><br>
-                        In increasing HSE knowledge amongst staff at all workplaces, RAYA KONSTRUKSI has developed an
-                        e-learning
-                        programme on Health, Safety and Environment (HSE). The e-learning training portal is created via
-                        intranet system and accessible by RAYA KONSTRUKSI employees around the globe, so as long as
-                        there is
-                        internet connection available. The HSE training material are carefully developed by RAYA
-                        KONSTRUKSI HSE
-                        Department to suit RAYA KONSTRUKSI construction business operation, with the intention to
-                        increase HSE
-                        awareness amongst RAYA KONSTRUKSI employees. Having a knowledgeable workforce in HSE at the
-                        workplace is
-                        crucial in order to prevent accident and at the same time become an asset to the company.
-                        <br><br>
-                        For ensuring all RAYA KONSTRUKSI and subsidiary companies are working safely, maintaining good
-                        health with
-                        good and sustainable environmental practices at the workplaces, RAYA KONSTRUKSI HSE Department
-                        initiates
-                        periodical visits to project sites and offices to inspect, conduct internal HSE audits and
-                        provide continuous support to all workplaces to promote a culture of ‘prevention is better than
-                        cure’ in all its efforts to prevent accidents and environmental damage.
-                        <br><br>
-                        As evidence of hard work and dedication of its Management and staff, RAYA KONSTRUKSI and
-                        subsidiary
-                        companies had received several safety awards from our clients as well as at national level, in
-                        recognition for maintaining exemplary high level of safety at the worksites. In motivating and
-                        expressing gratitude to all management and staff in carrying proper and good safety practices at
-                        their workplaces, RAYA KONSTRUKSI management had given special awards during the annual staff
-                        day.
+                        As a testament to the dedication of our management and staff, RAYA KONSTRUKSI has received
+                        numerous safety awards from clients and at the national level, recognizing our commitment to
+                        maintaining exemplary safety standards at worksites. To further motivate and appreciate
+                        employees who uphold strong safety practices, the company also presents special awards during
+                        its annual Staff Day.
                     </p>
-                    
-                    <img src="/assets/img/projects/msm/msm-12.jpg" 
-                    class="img-fluid"
-                    alt="">
+
+                    <img src="/assets/img/projects/msm/msm-12.jpg" class="img-fluid" alt="">
                 </div>
             </div>
         </div>

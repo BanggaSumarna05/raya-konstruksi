@@ -16,27 +16,24 @@ defineProps({ blogs: Array })
     <section id="hero" class="hero">
 
 
-        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-item active"
-                style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')"></div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (3).jpeg')"></div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (4).jpeg')"></div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (9).jpeg')"></div>
-            <div class="carousel-item " style="background-image: url('assets/img/hero-carousel/uoi-1 (10).jpeg')"></div>
-            <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/header-7.jpg)"></div>
-            <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/header-4.jpg)"></div>
-            <div class="carousel-item " style="background-image: url(assets/img/hero-carousel/header-2.jpg)"></div>
-            <div class="carousel-item " style="background-image: url(assets/img/hero-carousel/header-5.jpg)"></div>
-            <div class="carousel-item " style="background-image: url(assets/img/hero-carousel/header-6.jpg)">
+        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000">
+            <div class="carousel-item active" style="background-image: url('assets/img/hero-carousel/header-6.jpg')">
             </div>
+            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')">
+            </div>
+            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/header-1.jpg')"></div>
+            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/header-2.jpg')"></div>
+            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/header-5.jpg')"></div>
+            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/header-7.jpg')"></div>
+            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/uoi-1 (9).jpeg')"></div>
         </div>
     </section>
 
     <section id="services" class="services">
         <div class="container">
-            <h2 class="pb-10">RAYA At A Glance</h2>
+            <h2 class="pb-10">RAYA AT A GLANCE</h2>
             <div class="row">
-                <div class="col-4">
+                <div class="col-sm-12 col-lg-4">
                     <p>
                         RAYA is leading construction company based in Indonesia.
                         <br><br>
@@ -48,70 +45,104 @@ defineProps({ blogs: Array })
                         Discover More
                     </a>
                 </div>
-                <div class="col-8">
-                    <div class="px-5" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;">
-                        <div>
-                            <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon1-1.png" alt=""
-                                style="max-width:64px;max-height:64px;">
+                <div class="col-sm-12 col-lg-8">
+                    <div class="px-5 row">
+                        <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon1-1.png" alt=""
+                                    style="max-width:64px;max-height:64px;">
+                            </center>
                         </div>
-                        <div>
-                            <div>
-                                <h3 style="color:black">7</h3>
-                                <p>
-                                    Years History
-                                </p>
-                            </div>
+                        <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <div>
+                                    <h3 style="color:black">7</h3>
+                                    <p>
+                                        Years History
+                                    </p>
+                                </div>
+                            </center>
                         </div>
-                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon2.png" alt=""
-                            style="max-width:64px;max-height:64px;">
-                        <div>
-                            <div>
-                                <h3 style="color:black">20+</h3>
-                                <p>
-                                    Projects
-                                </p>
-                            </div>
+                        <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon2.png" alt=""
+                                    style="max-width:64px;max-height:64px;">
+                            </center>
                         </div>
-                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon3.png" alt=""
-                            style="max-width:64px;max-height:64px;">
-                        <div>
-                            <div>
-                                <h3 style="color:black">200,000+</h3>
-                                <p>
-                                    Piping
-                                </p>
-                            </div>
+                        <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <div>
+                                    <h3 style="color:black">20+</h3>
+                                    <p>
+                                        Projects
+                                    </p>
+                                </div>
+                            </center>
                         </div>
-                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon4.png" alt=""
-                            style="max-width:64px;max-height:64px;">
-                        <div>
-                            <div>
-                                <h3 style="color:black">10+</h3>
-                                <p>
-                                    Catalyst Loading
-                                </p>
-                            </div>
+                        <!-- <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon3.png" alt=""
+                                    style="max-width:64px;max-height:64px;">
+                            </center>
+                        </div> -->
+                        <!-- <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <div>
+                                    <h3 style="color:black">200,000+</h3>
+                                    <p>
+                                        Piping
+                                    </p>
+                                </div>
+                            </center>
+                        </div> -->
+                        <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon4.png" alt=""
+                                    style="max-width:64px;max-height:64px;">
+                            </center>
                         </div>
-                        <!-- <i class="fa fa-briefcase fa-4x" style="color: #868686;" aria-hidden="true"></i> -->
-                        <img src="assets/img/worker.svg" alt="" style="max-width:64px;max-height:64px; color:red">
-                        <div>
-                            <div>
-                                <h3 style="color:black">750+</h3>
-                                <p>
-                                    Manpower
-                                </p>
-                            </div>
+                        <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <div>
+                                    <h3 style="color:black">3</h3>
+                                    <p>
+                                        Catalyst Loading
+                                    </p>
+                                </div>
+                            </center>
                         </div>
-                        <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon6.png" alt=""
-                            style="max-width:64px;max-height:64px;">
-                        <div>
-                            <div>
-                                <h3 style="color:black">8,000+</h3>
-                                <p>
-                                    Total Manhour 2024-2025
-                                </p>
-                            </div>
+                        <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <img src="assets/img/worker.svg" alt=""
+                                    style="max-width:64px;max-height:64px; color:red">
+                            </center>
                         </div>
+                        <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <div>
+                                    <h3 style="color:black">750+</h3>
+                                    <p>
+                                        Manpower
+                                    </p>
+                                </div>
+                            </center>
+                        </div>
+                        <!-- <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon6.png" alt=""
+                                    style="max-width:64px;max-height:64px;">
+                            </center>
+                        </div> -->
+                        <!-- <div class="col-sm-6 col-lg-2">
+                            <center>
+                                <div>
+                                    <h3 style="color:black">8,000+</h3>
+                                    <p>
+                                        Total Manhour 2024-2025
+                                    </p>
+                                </div>
+                            </center>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -162,24 +193,24 @@ defineProps({ blogs: Array })
         </div>
     </section>
 
-    <section id="locations" class="services px-5">
+    <section id="locations" class="services pb-10">
         <div class="container" data-aos="fade-up">
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-4 col-sm-12">
                     <h4>Our Locations</h4>
                     <p>
-                        Our subsidiaries and offices across the globe.
+                        Our subsidiaries and offices across the indonesia.
                     </p>
                     <br>
                     <a :href="route('whoWeAre')" rel="noopener noreferrer" class="btn-get-started">
                         Discover More
                     </a>
                 </div>
-                <div class="col-8">
+                <div class="col-lg-8 col-sm-12">
                     <div class="responsive">
                         <center>
                             <img class="img-thumbnail" src="/assets/img/map.png" usemap="#image-map"
-                                style="border: 0px;background-color: transparent;">
+                                style="border: 0px;background-color: transparent; min-height: 100%;">
                         </center>
                     </div>
                 </div>

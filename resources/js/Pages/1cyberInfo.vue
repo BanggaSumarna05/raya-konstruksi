@@ -8,7 +8,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 
     <Head title="Cyber Security Information" />
 
-    <section id="services" class="services section-bg" style="padding-top: 10%;">
+    <section id="services" class="services section-bg mb-10" style="padding-top: 10%;">
         <div class="container" data-aos="fade-down">
             <div class="row justify-content-center">
                 <div class="col-9">
@@ -41,12 +41,12 @@ import '/node_modules/vue-preloader/dist/style.css';
                         legitimate
                         message from one sent by a fake sender.<br><br>
 
-                        To improve the security of its own communications, for every RAYA Construction International
+                        To improve the security of its own communications, for every RAYA KONSTRUKSI INTERNATIONAL
                         domain,
-                        RAYA Construction International uses three
+                        RAYA KONSTRUKSI INTERNATIONAL uses three
                         protocols that
                         work together to ensure the validity and reliability of an e-mail message:<br><br>
-                    <ul>
+                    
                         <li>
                             <b>SPF</b> (Sender Policy Framework): lets the domain owner authorise IP addresses that are
                             allowed to
@@ -72,9 +72,9 @@ import '/node_modules/vue-preloader/dist/style.css';
                             authentication
                             checks, or doesn’t meet the authentication requirements in your DMARC policy record.
                         </li>
-                    </ul>
+                    <br>
 
-                    RAYA Construction International recommends that all potential recipients of e-mail messages that
+                    RAYA KONSTRUKSI INTERNATIONAL recommends that all potential recipients of e-mail messages that
                     look like
                     they come from one
                     of the
@@ -82,7 +82,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     that
                     <b>do not pass these checks</b>.<br><br>
 
-                    RAYA Construction International considers the adoption of these protocols in e-mail communications
+                    RAYA KONSTRUKSI INTERNATIONAL considers the adoption of these protocols in e-mail communications
                     strategic
                     and advises all the companies in its supply chain to adopt them.<br><br>
 

@@ -7,7 +7,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 <template>
 
     <Head title="Client & Partners" />
-    <section id="alt-services-2" class="alt-services-2 section" style="padding-top:10%">
+    <section id="alt-services-2" class="alt-services-2 section mb-10" style="padding-top:10%">
         <div class="container">
             <h4>
                 Clients & Partners

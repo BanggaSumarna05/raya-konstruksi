@@ -16,7 +16,7 @@ defineProps({
 
     <Head title="Catalyst Loading" />
     <!-- End Breadcrumbs -->
-    <section id="constructions" class="constructions" style="padding-top: 10%;">
+    <section id="constructions" class="constructions mb-10" style="padding-top: 10%;">
         <div class="container" data-aos="fade-up">
             <div class="section-header">
                 <h2>Catalyst Loading</h2>

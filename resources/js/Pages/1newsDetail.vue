@@ -9,7 +9,7 @@ const props = defineProps({ blog: Object })
 
     <Head title="News Title" />
 
-    <section id="services" class="services section-bg" style="padding-top: 10%;">
+    <section id="services" class="services section-bg mb-10" style="padding-top: 10%;">
         <div class="container mt-5" data-aos="fade-down">
             <div class="row justify-content-center">
                 <div class="col-9">

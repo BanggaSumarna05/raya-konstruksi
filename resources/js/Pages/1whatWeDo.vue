@@ -7,7 +7,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 <template>
 
     <Head title="What We Do" />
-    <section id="catalyst-loading" class="constructions" style="padding-top:10%">
+    <section id="catalyst-loading" class="constructions mb-10" style="padding-top:10%">
         <div class="container" data-aos="fade-up">
             <h1 class="mb-5">What We Do</h1>
             <div class="row justify-content-around gy-4" id="construction" style="padding-top: 8vh; ">
@@ -19,7 +19,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: cover;
                     " data-aos="fade-left" data-aos-delay="100"></div>
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
-                    <h2>Construction & Fabrication</h2>
+                    <h2 class="text-upper">
+                        CONSTRUCTION & FABRICATION</h2>
                     <p class="rapih">
                         Our team of skilled engineers and workers collaborate to bring your visions to life
                         across a range of disciplines, including Integrated Steel Structure Fabrication and
@@ -43,7 +44,8 @@ import '/node_modules/vue-preloader/dist/style.css';
 
             <div class="row justify-content-around gy-4" id="catalyst-loading" style="padding-top: 15vh; ">
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-left">
-                    <h2>Catalyst Handling</h2>
+                    <h2>
+                        CATALYST LOADING</h2>
                     <p class="rapih">
                         Catalysts play a pivotal role in accelerating industrial processes, we address the
                         critical challenges of loading and unloading these compounds within reactors. To ensure
@@ -81,7 +83,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-position: center;
                     " data-aos="fade-keft" data-aos-delay="100"></div>
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
-                    <h2>Plant Maintenance</h2>
+                    <h2>PLANT MAINTENANCE</h2>
                     <p class="rapih">
                         Driven by an unwavering commitment to client satisfaction, our skilled and dedicated
                         team consistently delivers exceptional results. Our expertise shines through in
@@ -105,7 +107,7 @@ import '/node_modules/vue-preloader/dist/style.css';
             </div>
 
 
-            <div class="row justify-content-around gy-4" id="engineering" style="padding-top: 15vh; padding-bottom: 8vh; ">
+            <!-- <div class="row justify-content-around gy-4" id="engineering" style="padding-top: 15vh; padding-bottom: 8vh; ">
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
                     <h2>Engineering & Manpower Supply</h2>
                     <p class="rapih">
@@ -134,7 +136,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-position: center;
                         background-size: cover;
                     " data-aos="fade-left" data-aos-delay="100"></div>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>

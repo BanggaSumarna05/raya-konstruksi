@@ -8,35 +8,34 @@ import '/node_modules/vue-preloader/dist/style.css';
 
     <Head title="Quality & Risk Management" />
 
-    <section id="services" class="services section-bg" style="padding-top: 10%;">
+    <section id="services" class="services section-bg mb-10" style="padding-top: 10%;">
         <div class="container" data-aos="fade-down">
             <div class="row justify-content-center">
                 <div class="col-9">
                     <h4>
-                        Quality & Risk Management</h4>
+                        Quality Department</h4>
                     <br><br>
                 </div>
                 <div class="col-9">
                     <p class="">
-
-                        Risk Management Department (RMD) spearheads risk management activities and manages the
-                        Integrated Management System in RAYA and subsidiaries in the RAYA Group of Companies. With a
-                        robust risk management framework which comprises of a stringent project tender review process
-                        and monthly Project Risk Evaluation initiative, RMD takes a proactive stance towards the
-                        managing of project risk and the delivery of quality and defect free products to our clients.
-                        The team also visits project sites under various stages of construction spanning across the
-                        region to perform internal assessment and audit on site operations.
+                        The Quality Department (QD) leads quality-related initiatives and manages the Integrated
+                        Management System (IMS) across RAYA and its subsidiaries within the RAYA Group of Companies.
+                        With a robust risk management framework including a stringent project tender review process and
+                        the monthly Project Risk Evaluation initiative QD adopts a proactive approach to managing
+                        project risks and ensuring the delivery of high-quality, defect-free products to clients. The
+                        team also conducts internal assessments and audits at project sites in various stages of
+                        construction across the region.
                         <br><br>
-                        On the Integrated Management Systems (IMS) front, RAYA’s IMS is certified to the following
-                        international standards QMS ISO 9001, EMS ISO 14001 and OHS ISO 45001. RMD conducts annual
-                        audits and regular assessment exercises within RAYA to ensure that functional components such as
-                        corporate governance, risk management, internal control, and quality assurance are properly
-                        implemented, effective and complied with by all employees.
+                        In terms of Integrated Management Systems, RAYA’s IMS is certified to several international
+                        standards. The Quality Department carries out annual audits and regular assessment exercises to
+                        ensure that key elements such as corporate governance, risk management, internal controls, and
+                        quality assurance are effectively implemented, properly maintained, and consistently followed by
+                        all employees.
                         <br><br>
-                        The key objective for RMD is to ensure that a strong quality culture and awareness of risks
-                        pervade every member of RAYA’s Group of Companies. Successfully achieving this objective will
-                        help achieve RAYA Group’s mission of providing superior and comprehensive engineering solutions
-                        to customers worldwide.
+                        The primary objective of the Quality Department is to foster a strong quality culture and
+                        promote risk awareness throughout every level of the RAYA Group of Companies. Successfully
+                        embedding these values supports RAYA Group’s mission of delivering superior and comprehensive
+                        engineering solutions to customers worldwide.
                     </p>
 
                     <img src="/assets/img/projects/lotte-mps/lotte-mps (3).jpeg" class="img-fluid" alt="">

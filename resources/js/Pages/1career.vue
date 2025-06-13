@@ -10,20 +10,23 @@ import '/node_modules/vue-preloader/dist/style.css';
 
     <section id="services" class="services px-5" style="padding-top:10%">
         <div class="container">
-            <h1>
+            <h1 class="pb-10">
                 Careers
             </h1>
-            <br><br><br>
             <h4>
                 Why Join Us
             </h4>
             <p>
                 Investing in human capital is our HR philosophy. We make every effort to enhance the skills, knowledge,
                 experience and wellbeing of our people in order for them to cope with the demands of the job and perform
-                to their level best. We recognise the collective efforts and contributions of our people and that our
-                success is attributed to our shared commitment and perseverance towards providing superior and
-                comprehensive engineering solutions to our customers worldwide! We welcome you to join us and we are
-                confident that you will find plenty of reasons to build and shape your career with RAYA!
+                to their level best.<br><br>
+
+                We recognise the collective efforts and contributions of our people and that our success is attributed
+                to our shared commitment and perseverance towards providing superior and comprehensive engineering
+                solutions to our customers worldwide!<br><br>
+
+                We welcome you to join us and we are confident that you will find plenty of reasons to build and shape
+                your career with <strong>RAYA</strong>!
             </p>
             <div class="row gy-4 justify-content-around mt-5">
                 <div class="col-9">
@@ -42,8 +45,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1100" style="padding: 8px">
                             <div class="card h-100" style="width: 100%; border-radius: 0px; border: none;">
-                                <img class="card-img-top" src="/assets/img/management.jpg"
-                                    alt="Card image cap" style="height: 350px; object-fit: cover; width: 100%;" />
+                                <img class="card-img-top" src="/assets/img/culture2.jpg" alt="Card image cap"
+                                    style="height: 350px; object-fit: cover; width: 100%;" />
                                 <div class="card-body d-flex align-items-end" style="min-height: 100px;">
                                     <h5
                                         style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
@@ -54,8 +57,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1100" style="padding: 8px">
                             <div class="card h-100" style="width: 100%; border-radius: 0px; border: none;">
-                                <img class="card-img-top" src="/assets/projects/msm-2/gal-2.jpeg"
-                                    alt="Card image cap" style="height: 350px; object-fit: cover; width: 100%;" />
+                                <img class="card-img-top" src="/assets/projects/msm-2/gal-2.jpeg" alt="Card image cap"
+                                    style="height: 350px; object-fit: cover; width: 100%;" />
                                 <div class="card-body d-flex align-items-end" style="min-height: 100px;">
                                     <h5
                                         style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
@@ -73,7 +76,7 @@ import '/node_modules/vue-preloader/dist/style.css';
     </section>
 
     <section class="services">
-        <div class="container" >
+        <div class="container">
             <div class="row">
                 <div class="col-8">
                     <img src="/assets/img/projects/msm/msm-13.jpg" alt="" class="img-fluid"
@@ -99,7 +102,7 @@ import '/node_modules/vue-preloader/dist/style.css';
             </div>
         </div>
     </section>
-    <section class="services">
+    <section class="services mb-10">
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -116,8 +119,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                     </div>
                 </div>
                 <div class="col-8">
-                    <img src="https://jel.com.sg/wp-content/uploads/2022/01/Fraud-image-1024x577.jpg" alt=""
-                        class="img-fluid" style="max-height: 450px; width: 100%; object-fit: cover;">
+                    <img src="/assets/img/fraud2.jpg" alt="" class="img-fluid"
+                        style="max-height: 450px; width: 100%; object-fit: cover;">
                 </div>
             </div>
         </div>

@@ -38,14 +38,14 @@ const loadMore = () => {
 <template>
 
     <Head title="News & Event" />
-    <section id="services" class="services section-bg" style="padding-top: 12%;">
+    <section id="services" class="services section-bg mb-10" style="padding-top: 10%;">
         <div class="container">
-            <h4>News & Events</h4>
+            <h1 class="pb-10">News & Event</h1>
             <br />
             <div class="row">
                 <div v-for="(blog, idx) in allBlogs" :key="blog.id" class="col-lg-3 col-md-6" data-aos="fade-right"
                     :data-aos-delay="1100 + idx * 100" style="padding: 0 6px 12px 6px;">
-                    <a :href="route('newsDetail', blog.id)">
+                    <a :href="route('newsDetail', blog.slug)">
                         <div class="card"
                             style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
                             <img class="card-img-top"
@@ -58,7 +58,7 @@ const loadMore = () => {
                                     {{ new Date(blog.published_at).toLocaleDateString('id-ID', {
                                         year: 'numeric',
                                         month: 'long',
-                                    day: 'numeric'
+                                        day: 'numeric'
                                     }) }}
                                 </p>
                                 <h5 class="card-title text-black">{{ blog.title }}</h5>
@@ -72,7 +72,7 @@ const loadMore = () => {
             </div>
 
             <button v-if="currentPage < lastPage" @click="loadMore" class="btn-get-started" :disabled="loading"
-                style="border: none; background: #fcd03b; color: #000; padding: 10px 24px; border-radius: 4px; margin: 24px auto 0; display: block;">
+                style="border: none; background: rgb(31,31,31); color: #fcd03b; padding: 10px 24px; border-radius: 4px; margin: 24px auto 0; display: block;">
                 {{ loading ? 'Loading...' : 'Load More' }}
             </button>
         </div>

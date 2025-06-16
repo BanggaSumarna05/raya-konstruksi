@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Makadia Group International'),
+    'name' => env('APP_NAME', 'RAYA KONSTRUKSI INTERNATIONAL'),
 
     /*
     |--------------------------------------------------------------------------
@@ -117,7 +117,6 @@ return [
     | Supported drivers: "file", "cache"
     |
     */
-
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),

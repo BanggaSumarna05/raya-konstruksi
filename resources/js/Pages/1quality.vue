@@ -18,10 +18,11 @@ import '/node_modules/vue-preloader/dist/style.css';
                 </div>
                 <div class="col-9">
                     <p class="">
-                        The Quality Department (QD) leads quality-related initiatives and manages the Integrated
-                        Management System (IMS) across RAYA and its subsidiaries within the RAYA Group of Companies.
+                        The Quality Department leads quality-related initiatives and manages the Integrated
+                        Management System (IMS).
                         With a robust risk management framework including a stringent project tender review process and
-                        the monthly Project Risk Evaluation initiative QD adopts a proactive approach to managing
+                        the monthly Project Risk Evaluation initiative Quality Department adopts a proactive approach to
+                        managing
                         project risks and ensuring the delivery of high-quality, defect-free products to clients. The
                         team also conducts internal assessments and audits at project sites in various stages of
                         construction across the region.
@@ -37,7 +38,6 @@ import '/node_modules/vue-preloader/dist/style.css';
                         embedding these values supports RAYA Group’s mission of delivering superior and comprehensive
                         engineering solutions to customers worldwide.
                     </p>
-
                     <img src="/assets/img/projects/lotte-mps/lotte-mps (3).jpeg" class="img-fluid" alt="">
                 </div>
             </div>

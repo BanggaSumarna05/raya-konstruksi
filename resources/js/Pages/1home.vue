@@ -16,7 +16,7 @@ defineProps({ blogs: Array })
     <section id="hero" class="hero">
 
 
-        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000">
+        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
             <div class="carousel-item active" style="background-image: url('assets/img/hero-carousel/header-6.jpg')">
             </div>
             <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')">

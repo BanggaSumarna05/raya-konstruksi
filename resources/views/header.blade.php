@@ -21,8 +21,8 @@
                         <li><a href="{{ route('whoWeAre') }}#vision">Vision & Mission</a></li>
                         <li><a href="{{ route('whoWeAre') }}#core-values">Core Values</a></li>
                         <li><a href="{{ route('whoWeAre') }}#milestones">Key Milestones</a></li>
-                        <li><a
-                                href="{{ Route::is('corporateStructure') || Request::is('who-we-are/*') ? 'active' : '' }}">Leadership</a>
+                        <li><a href="{{ route('corporateStructure') }}"
+                                class="{{ Route::is('corporateStructure') || Request::is('who-we-are/*') ? 'active' : '' }}">Leadership</a>
                         </li>
 
                         <li><a href="{{ route('clientPartner') }}">Client & Partners</a></li>

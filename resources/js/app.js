@@ -16,6 +16,8 @@ createInertiaApp({
             import.meta.glob("./Pages/**/*.vue")
         ),
     setup({ el, App, props, plugin }) {
+        // Hapus atribut data-page dari elemen root
+        el.removeAttribute("data-page");
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
@@ -24,8 +26,4 @@ createInertiaApp({
     progress: {
         color: "#4B5563",
     },
-}).then((app) => {
-    const appRender = app;
-    appRender.body = appRender.body.replace(/data-page=".*?"/, "");
-    return appRender;
 });

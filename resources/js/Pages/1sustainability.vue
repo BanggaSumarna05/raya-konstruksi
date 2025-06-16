@@ -7,16 +7,16 @@ import '/node_modules/vue-preloader/dist/style.css';
 <template>
 
     <Head title="Sustainability" />
-    <section id="services" class="services container" style="padding-top:10%">
+    <section id="services" class="services container" style="padding-top:15vh">
         <h1 class="pb-10">Sustainability</h1>
         <div class="container">
             <div class="row">
-                <div class="col-7">
+                <div class="col-lg-7 col-sm-12">
                     <img class="img-thumbnail" src="/assets/img/projects/akatara/akatara (1).jpg" style="border: 0px;background-color: transparent;
                         min-height: 430px;max-height: 430px;min-width: 100%; object-fit: cover;
                         ">
                 </div>
-                <div class="col-5">
+                <div class="col-lg-5 col-sm-12">
                     <div style="padding-top:25%">
                         <h4>HEALTH, SAFETY & ENVIRONTMENT</h4>
                         <p>
@@ -37,7 +37,7 @@ import '/node_modules/vue-preloader/dist/style.css';
     <section id="services" class="services px-5">
         <div class="container">
             <div class="row">
-                <div class="col-5">
+                <div class="col-lg-5 col-sm-12">
                     <div style="padding-top:25%">
                         <h4>QUALITY DEPARTMENT</h4>
                         <p>Quality Department spearheads risk management activities and manages the
@@ -48,7 +48,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     </div>
 
                 </div>
-                <div class="col-7">
+                <div class="col-lg-7 col-sm-12">
                     <img src="/assets/img/qrm.jpg"
                         style="min-height: 430px;max-height: 430px;min-width: 100%; object-fit: cover;">
                 </div>
@@ -59,12 +59,12 @@ import '/node_modules/vue-preloader/dist/style.css';
     <section id="services" class="services px-5 mb-10">
         <div class="container">
             <div class="row">
-                <div class="col-7">
+                <div class="col-lg-7 col-sm-12">
                     <img src="/assets/img/respon.jpg" style="
                         min-height: 430px;max-height: 430px;min-width: 100%; object-fit: cover;
                         ">
                 </div>
-                <div class="col-5">
+                <div class="col-lg-5 col-sm-12">
                     <div style="padding-top:25%">
                         <h4>
                             CORPORATE SOCIAL RESPONSIBILITY</h4>

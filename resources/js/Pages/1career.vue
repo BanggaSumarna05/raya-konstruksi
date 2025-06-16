@@ -8,7 +8,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 
     <Head title="Careers" />
 
-    <section id="services" class="services px-5" style="padding-top:10%">
+    <section id="services" class="services" style="padding-top:10%">
         <div class="container">
             <h1 class="pb-10">
                 Careers
@@ -29,7 +29,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                 your career with <strong>RAYA</strong>!
             </p>
             <div class="row gy-4 justify-content-around mt-5">
-                <div class="col-9">
+
+                <div class="col-lg-9 col-sm-12">
                     <div class="row">
                         <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="1100" style="padding: 8px">
                             <div class="card h-100" style="width: 100%; border-radius: 0px; border: none;">
@@ -78,11 +79,11 @@ import '/node_modules/vue-preloader/dist/style.css';
     <section class="services">
         <div class="container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-lg-8 col-sm-12">
                     <img src="/assets/img/projects/msm/msm-13.jpg" alt="" class="img-fluid"
                         style="max-height: 450px; width: 100%; object-fit: cover;">
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-sm-12">
                     <div style="padding-top: 20%;">
                         <h3>
                             Job Opportunities
@@ -102,10 +103,11 @@ import '/node_modules/vue-preloader/dist/style.css';
             </div>
         </div>
     </section>
+
     <section class="services mb-10">
         <div class="container">
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-4 col-sm-12">
                     <div style="padding-top: 20%;">
                         <h3>
                             Recruitment Fraud
@@ -118,7 +120,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-lg-8 col-sm-12">
                     <img src="/assets/img/fraud2.jpg" alt="" class="img-fluid"
                         style="max-height: 450px; width: 100%; object-fit: cover;">
                 </div>

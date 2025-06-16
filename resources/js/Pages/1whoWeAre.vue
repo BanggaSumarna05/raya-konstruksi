@@ -317,7 +317,7 @@ onMounted(() => {
     <section id="alt-services-2" class="alt-services-2 section">
         <div class="container">
             <div class="row">
-                <div class="col-3">
+                <div class="col-sm-12 col-lg-3">
                     <div class="card border-0">
                         <img class="card-img-top" src="/assets/img/web4-1.jpg" alt="Card image cap">
                         <div class="card-body">
@@ -330,7 +330,7 @@ onMounted(() => {
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-12 col-lg-3">
                     <div class="card border-0">
                         <img class="card-img-top" src="https://jel.com.sg/wp-content/uploads/2020/12/related3.jpg"
                             alt="Card image cap">

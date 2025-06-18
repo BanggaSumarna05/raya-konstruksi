@@ -1,0 +1,18 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background (optional) -->
+  <rect width="200" height="200" fill="#FFF8F0" />
+  
+  <!-- Circuit Path -->
+  <path d="M60 80 C40 120, 80 160, 120 160 C160 160, 160 100, 140 60" stroke="#2570ac" stroke-width="12" fill="none" stroke-linecap="round" />
+  
+  <!-- Circuit Nodes -->
+  <circle cx="60" cy="80" r="10" fill="#FFCF99" />  <!-- Node 1 -->
+  <circle cx="120" cy="160" r="10" fill="#FFCF99" /> <!-- Node 2 -->
+  <circle cx="140" cy="60" r="10" fill="#FFCF99" />  <!-- Node 3 -->
+  
+  <!-- Hidden "U" -->
+  <path d="M70 100 Q50 140, 70 160" stroke="#111d4a" stroke-width="3" stroke-dasharray="4" fill="none" />
+  
+  <!-- Text -->
+  <text x="100" y="190" font-family="Poppins, sans-serif" font-weight="bold" font-size="20" text-anchor="middle" fill="#1E1E24">Ultrastack</text>
+</svg>

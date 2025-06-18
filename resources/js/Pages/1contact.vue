@@ -25,7 +25,7 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                         <br>
                         <h5>PT RAYA KONSTRUKSI INTERNASIONAL</h5>
                         <p>
-                            Talavera Office Park, 17th Floor.
+                            Talavera Office Park, 15th Floor.
                             <br>
                             Jl. TB Simatupang No.Kav. 22 - 26, South Jakarta, Indonesia
                         </p>

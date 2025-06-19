@@ -35,7 +35,6 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <li>Mechanical Erection</li>
                         <li>Tank Fabrication</li>
                         <li>Tank Installation</li>
-                        <li>Equipment Rental</li>
                     </ul>
                     <a href="#" class="btn btn-get-started" style="max-width: 40%;">Discover
                         More <i class="bi bi-arrow-right"></i></a>

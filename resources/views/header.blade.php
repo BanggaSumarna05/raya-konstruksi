@@ -43,7 +43,6 @@
                         class="{{ Route::is('sustainability') || Request::is('sustainability/*') ? 'active' : '' }}">Sustainability</a>
                     <ul>
                         <li><a href="{{ route('safety') }}">Health, Safety & Environment</a></li>
-                        <li><a href="{{ route('quality') }}">Quality Department</a></li>
                         <li><a href="{{ route('respon') }}">Corporate Social Responsibility
                             </a></li>
                     </ul>

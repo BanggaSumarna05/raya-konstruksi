@@ -34,36 +34,9 @@ import '/node_modules/vue-preloader/dist/style.css';
         </div>
     </section>
 
-    <section id="services" class="services px-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-sm-12">
-                    <div style="padding-top:25%">
-                        <h4>QUALITY DEPARTMENT</h4>
-                        <p>Quality Department spearheads risk management activities and manages the
-                            Integrated Management System in company.</p>
-                        <a :href="route('quality')" rel="noopener noreferrer" class="btn-get-started">
-                            Discover More
-                        </a>
-                    </div>
-
-                </div>
-                <div class="col-lg-7 col-sm-12">
-                    <img src="/assets/img/qrm.jpg"
-                        style="min-height: 430px;max-height: 430px;min-width: 100%; object-fit: cover;">
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="services" class="services px-5 mb-10">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 col-sm-12">
-                    <img src="/assets/img/respon.jpg" style="
-                        min-height: 430px;max-height: 430px;min-width: 100%; object-fit: cover;
-                        ">
-                </div>
                 <div class="col-lg-5 col-sm-12">
                     <div style="padding-top:25%">
                         <h4>
@@ -77,7 +50,11 @@ import '/node_modules/vue-preloader/dist/style.css';
                     </div>
 
                 </div>
-
+                <div class="col-lg-7 col-sm-12">
+                    <img src="/assets/img/respon.jpg" style="
+                        min-height: 430px;max-height: 430px;min-width: 100%; object-fit: cover;
+                        ">
+                </div>
             </div>
         </div>
     </section>

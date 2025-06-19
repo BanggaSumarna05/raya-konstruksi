@@ -33,7 +33,7 @@
                         Sustainability</h4>
                     <ul>
                         <li><a href="{{ route('sustainability') }}">Health, Safety & Environment</a></li>
-                        <li><a href="{{ route('whatWeDo') }}#catalyst-loading">Quality & Risk Management</a></li>
+                        {{-- <li><a href="{{ route('whatWeDo') }}#catalyst-loading">Quality & Risk Management</a></li> --}}
                         {{-- <li><a href="{{ route('whatWeDo') }}#catalyst-loading">QOHSE Policy</a></li> --}}
                         {{-- <li><a href="{{ route('whatWeDo') }}#catalyst-loading">Awards & Certificates</a></li> --}}
                         <li><a href="{{ route('whatWeDo') }}#catalyst-loading">Corporate Social Responsibility</a></li>
@@ -75,12 +75,12 @@
                         Follow Us</h4>
                     <ul>
                         <li>
-                            <a href="https://id.linkedin.com/company/makadia" aria-label="L2inkedIn">
+                            <a href="https://www.linkedin.com/company/makadia/posts/?feedView=all" aria-label="L2inkedIn">
                                 <i class="bi bi-linkedin"></i> Linkedin
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/makadiagroup/" aria-label="Instagram">
+                            <a href="https://www.instagram.com/rayakonstruksi_/" aria-label="Instagram">
                                 <i class="bi bi-instagram"></i> Instagram
                             </a>
                         </li>

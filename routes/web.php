@@ -21,7 +21,7 @@ Route::get('/what-we-do/plant-maintenance', [FrontController::class, 'plantMaint
 #sustainability
 Route::get('/sustainability', [FrontController::class, 'sustainability'])->name('sustainability');
 Route::get('/sustainability/health-n-safety', [FrontController::class, 'safety'])->name('safety');
-Route::get('/sustainability/quality-n-risk-management', [FrontController::class, 'quality'])->name('quality');
+// Route::get('/sustainability/quality-n-risk-management', [FrontController::class, 'quality'])->name('quality');
 Route::get('/sustainability/corporate-social-responsibility', [FrontController::class, 'respon'])->name('respon');
 
 #careers

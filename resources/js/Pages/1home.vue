@@ -14,18 +14,13 @@ defineProps({ blogs: Array })
     <Head title="Home" />
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero">
-
-
-        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-            <div class="carousel-item active" style="background-image: url('assets/img/hero-carousel/header-6.jpg')">
-            </div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/adsorbent (4).jpg')">
-            </div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/header-1.jpg')"></div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/header-2.jpg')"></div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/header-5.jpg')"></div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/header-7.jpg')"></div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/uoi-1 (9).jpeg')"></div>
+        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+            <div
+                class="carousel-item active"
+                style="background-image: url('assets/img/hero-carousel/hover-1.png'); background-position: center top; background-size: cover;"
+            ></div>
+            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/hover-2.jpg')">
+            </div>            
         </div>
     </section>
 
@@ -56,7 +51,7 @@ defineProps({ blogs: Array })
                         <div class="col-sm-6 col-lg-2">
                             <center>
                                 <div>
-                                    <h3 style="color:black">7</h3>
+                                    <h3 style="color:black">8</h3>
                                     <p>
                                         Years History
                                     </p>

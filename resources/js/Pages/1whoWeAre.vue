@@ -30,7 +30,7 @@ onMounted(() => {
             <h1 class="pb-10">Who We Are</h1>
             <div class="row justify-content-around gy-4">
                 <div class="col-lg-6 col-sm-12 " data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/img/hero-carousel/header-6.jpg" alt="" class="img-fluid"
+                    <img src="assets/img/hero-carousel/hover-1.png" alt="" class="img-fluid"
                         style="max-height: 18vdh!important;">
                 </div>
                 <div class="features-image col-lg-5 col-sm-12 order-1 order-lg-1 aos-init aos-animate"

@@ -18,10 +18,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-9">
                     <p class="">
                         The Health, Safety, and Environmental (HSE) requirements set by many clients, national HSE
-                        regulations, and international ISO standards—subscribed to by RAYA KONSTRUKSI for over seven
+                        regulations, and international ISO standards—subscribed to by RAYA KONSTRUKSI for over eight
                         years—have continued to evolve, becoming increasingly stringent to adapt to changing work
-                        conditions. These rising standards have indirectly driven RAYA KONSTRUKSI and all its
-                        subsidiaries to continuously improve; otherwise, the company risks falling behind and becoming
+                        conditions. These rising standards have indirectly driven RAYA KONSTRUKSI to continuously
+                        improve; otherwise, the company risks falling behind and becoming
                         uncompetitive. Nevertheless, we view these changes as positive steps toward enhancing worker
                         safety, health, and sustainable environmental practices. RAYA KONSTRUKSI remains committed to
                         keeping pace with all client demands and regulatory updates, continually enhancing its HSE
@@ -39,14 +39,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         and offices. These visits involve inspections, internal HSE audits, and ongoing support for all
                         workplaces—reinforcing the principle that ‘prevention is better than cure’ in our efforts to
                         avoid accidents and environmental harm.
-                        <br><br>
-                        As a testament to the dedication of our management and staff, RAYA KONSTRUKSI has received
-                        numerous safety awards from clients and at the national level, recognizing our commitment to
-                        maintaining exemplary safety standards at worksites. To further motivate and appreciate
-                        employees who uphold strong safety practices, the company also presents special awards during
-                        its annual Staff Day.
                     </p>
-
                     <img src="/assets/img/projects/msm/msm-12.jpg" class="img-fluid" alt="">
                 </div>
             </div>

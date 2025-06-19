@@ -3,7 +3,37 @@ import { Head, Link } from '@inertiajs/vue3';
 import { VuePreloader } from 'vue-preloader';
 import '/node_modules/vue-preloader/dist/style.css';
 </script>
+<style>
+.card-hover-bg {
+    /* Only grayscale the background image, not the content */
+    position: relative;
+    overflow: hidden;
+}
 
+.card-hover-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: inherit;
+    background-position: inherit;
+    background-repeat: inherit;
+    background-size: inherit;
+    filter: grayscale(1);
+    z-index: 0;
+    pointer-events: none;
+    /* Copy the background image from the inline style */
+    opacity: 1;
+}
+
+.card-hover-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+.card-hover-bg:hover::before {
+    filter: grayscale(0.2);
+}
+</style>
 <template>
 
     <Head title="Corporate Structure" />

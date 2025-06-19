@@ -63,7 +63,7 @@ const loadMore = () => {
                                 </p>
                                 <h5 class="card-title text-black">{{ blog.title }}</h5>
                                 <p class="card-text">
-                                    {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 32) }}
+                                    {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 32) +'...'}}
                                 </p>
                             </div>
                         </div>

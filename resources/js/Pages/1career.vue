@@ -121,7 +121,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12">
-                    <img src="/assets/img/fraud-4.jpg" alt="" class="img-fluid"
+                    <img src="/assets/img/fraud-5.jpeg" alt="" class="img-fluid"
                         style="max-height: 450px; width: 100%; object-fit: cover;">
                 </div>
             </div>

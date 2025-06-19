@@ -25,7 +25,7 @@ import '/node_modules/vue-preloader/dist/style.css';
     opacity: 1;
 }
 
-.card-hover-bg > * {
+.card-hover-bg>* {
     position: relative;
     z-index: 1;
 }
@@ -40,7 +40,7 @@ import '/node_modules/vue-preloader/dist/style.css';
     <section id="alt-services-2" class="alt-services-2 section mb-10" style="padding-top:15vh">
         <div class="container">
             <h4>
-                Board Of Director
+                Pesident Commissioner
             </h4>
             <div class="row">
                 <div class="col-md-4 mb-4">
@@ -55,15 +55,32 @@ import '/node_modules/vue-preloader/dist/style.css';
                         </div>
                     </div>
                 </div>
+            </div>
+            <h4>
+                Board Of Directors
+            </h4>
+            <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="card p-3 card-hover-bg" style="
                     background-image: url('/assets/img/andhika-1.png');
                         background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 16vh auto; min-height: 12em;">
+                        background-size: 17.2vh auto; min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #fcd03b; display: inline-block;">Andhika Sutanto</h5>
                             <p style="font-size: 12px;padding-top: 12px;">President Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card p-3 card-hover-bg" style="
+                    background-image: url('/assets/img/jimmy-1.png');
+                        background-position: right bottom; background-repeat: no-repeat;
+                        background-size: 16.8vh auto; min-height: 12em;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold pb-3"
+                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Robby Satria</h5>
+                            <p style="font-size: 12px;padding-top: 12px;">Director</p>
                         </div>
                     </div>
                 </div>

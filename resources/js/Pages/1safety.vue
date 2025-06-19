@@ -16,7 +16,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <br><br>
                 </div>
                 <div class="col-9">
-                    <p class="">
+                    <p class="rapih">
                         The Health, Safety, and Environmental (HSE) requirements set by many clients, national HSE
                         regulations, and international ISO standards—subscribed to by RAYA KONSTRUKSI for over eight
                         years—have continued to evolve, becoming increasingly stringent to adapt to changing work

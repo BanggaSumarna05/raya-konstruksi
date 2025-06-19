@@ -28,13 +28,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                         meticulously craft every detail to reflect your unique aspirations.
                     </p>
                     <ul class="ul-2">
-                        <li>Steel Structure Fabrication</li>
-                        <li>Steel Structure Installation</li>
-                        <li>Piping Fabrication</li>
-                        <li>Piping Installation</li>
+                        <li>Steel Structure Fabrication & Installation</li>
+                        <li>Piping Fabrication & Installation</li>
                         <li>Mechanical Erection</li>
-                        <li>Tank Fabrication</li>
-                        <li>Tank Installation</li>
+                        <li>Tank Fabrication & Installation</li>
                     </ul>
                     <a href="#" class="btn btn-get-started" style="max-width: 40%;">Discover
                         More <i class="bi bi-arrow-right"></i></a>

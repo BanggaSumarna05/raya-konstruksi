@@ -9,7 +9,8 @@ const props = defineProps({
 
 // Fungsi helper untuk konversi link YouTube ke embed iframe
 function convertYoutubeLinksToIframe(content) {
-    const youtubeRegex = /https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/g;
+    // Regex untuk menangkap link YouTube biasa, youtu.be, dan shorts
+    const youtubeRegex = /https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]+)/g;
 
     return content.replace(youtubeRegex, (match, videoId) => {
         return `

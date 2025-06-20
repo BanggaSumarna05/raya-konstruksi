@@ -23,7 +23,7 @@
                     <ul>
                         <li><a href="{{ route('catalyst-loading') }}#catalyst-loading">Catalyst Loading</a></li>
                         <li><a href="{{ route('plantMaintenance') }}">Plant Maintenance</a></li>
-                        <li><a href="{{ route('whatWeDo') }}#engineering">Engineering & Manpower Supply</a></li>
+                        {{-- <li><a href="{{ route('whatWeDo') }}#engineering">Engineering & Manpower Supply</a></li> --}}
                         <li><a href="{{ route('whatWeDo') }}#construction">Construction & Fabrication</a></li>
                     </ul>
                 </div>

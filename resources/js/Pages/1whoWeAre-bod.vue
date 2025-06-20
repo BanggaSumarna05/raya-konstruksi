@@ -79,7 +79,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: 16.8vh auto; min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Robby Satria</h5>
+                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Jimmy Sanjaya</h5>
                             <p style="font-size: 12px;padding-top: 12px;">Director</p>
                         </div>
                     </div>

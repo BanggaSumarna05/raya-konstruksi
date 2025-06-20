@@ -63,7 +63,7 @@ defineProps({
                             <td class="border px-4 py-2">GOOD</td>
                             <td class="border px-4 py-2">MEDAN, RIAU, JAKARTA</td>
                         </tr>
-                        <tr class="bg-yellow-50">
+                        <tr >
                             <td class="border px-4 py-2">4</td>
                             <td class="border px-4 py-2">FORKLIFT</td>
                             <td class="border px-4 py-2">5</td>
@@ -73,7 +73,7 @@ defineProps({
                             <td class="border px-4 py-2">GOOD</td>
                             <td class="border px-4 py-2">MEDAN, RIAU, JAKARTA</td>
                         </tr>
-                        <tr>
+                        <tr class="bg-yellow-50">
                             <td class="border px-4 py-2">5</td>
                             <td class="border px-4 py-2">VIBRO COMPACTOR</td>
                             <td class="border px-4 py-2">5</td>
@@ -86,7 +86,7 @@ defineProps({
                         <tr>
                             <td class="border px-4 py-2">6</td>
                             <td class="border px-4 py-2">DUMP TRUCK</td>
-                            <td class="border px-4 py-2">30</td>
+                            <td class="border px-4 py-2">20</td>
                             <td class="border px-4 py-2">20 TON</td>
                             <td class="border px-4 py-2">TRONTON - HINO</td>
                             <td class="border px-4 py-2">2015 - UP</td>
@@ -100,16 +100,6 @@ defineProps({
                             <td class="border px-4 py-2">8 TON</td>
                             <td class="border px-4 py-2">HINO</td>
                             <td class="border px-4 py-2">2015 - UP</td>
-                            <td class="border px-4 py-2">GOOD</td>
-                            <td class="border px-4 py-2">MEDAN, RIAU, JAKARTA</td>
-                        </tr>
-                        <tr class="bg-yellow-50">
-                            <td class="border px-4 py-2">8</td>
-                            <td class="border px-4 py-2">MOTOR GRADER</td>
-                            <td class="border px-4 py-2">20</td>
-                            <td class="border px-4 py-2">10 – 70 TON</td>
-                            <td class="border px-4 py-2">MR-100 H, TR-160 M, TR-250 M</td>
-                            <td class="border px-4 py-2">2006 - UP</td>
                             <td class="border px-4 py-2">GOOD</td>
                             <td class="border px-4 py-2">MEDAN, RIAU, JAKARTA</td>
                         </tr>

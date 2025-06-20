@@ -815,6 +815,19 @@ class FrontController extends Controller
         ]);
     }
 
+    public function heaveyRental()
+    {
+        $data = [];
+        $data['title'] = 'Heavy Equipment Rental';
+        $data['desc'] = "Plant maintenance is the service and repair of assets and equipment. During normal operation, assets may accumulate wear-and-tear that needs to be addressed. Deviations outside of normal operation of cause the majority of damage to equipment and assets.";
+        SEOMeta::setTitle($data['title']);
+        SEOMeta::setDescription($data['desc']);
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1services-equipment', [
+            'data' => $data
+        ]);
+    }
+
 
 
 

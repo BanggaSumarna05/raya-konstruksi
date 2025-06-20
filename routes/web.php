@@ -17,6 +17,7 @@ Route::get('/who-we-are/clients-partners', [FrontController::class, 'clientPartn
 Route::get('/what-we-do', [FrontController::class, 'whatWeDo'])->name('whatWeDo');
 Route::get('/what-we-do/catalyst-loading', [FrontController::class, 'catalystLoading'])->name('catalyst-loading');
 Route::get('/what-we-do/plant-maintenance', [FrontController::class, 'plantMaintenance'])->name('plantMaintenance');
+Route::get('/what-we-do/heavy-rental-equipment', [FrontController::class, 'heaveyRental'])->name('heaveyRental');
 
 #sustainability
 Route::get('/sustainability', [FrontController::class, 'sustainability'])->name('sustainability');

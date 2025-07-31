@@ -13,8 +13,7 @@ import '/node_modules/vue-preloader/dist/style.css';
             <div class="row">
                 <div class="col-lg-7 col-sm-12">
                     <img class="img-thumbnail" src="/assets/img/projects/akatara/akatara (1).jpg" style="border: 0px;background-color: transparent;
-                        min-height: 430px;max-height: 430px;min-width: 100%; object-fit: cover;
-                        ">
+                        min-height: 430px;max-height: 430px;min-width: 100%; object-fit: cover;">
                 </div>
                 <div class="col-lg-5 col-sm-12">
                     <div style="padding-top:25%">

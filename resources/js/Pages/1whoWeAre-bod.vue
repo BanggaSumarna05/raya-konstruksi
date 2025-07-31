@@ -50,7 +50,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: 18vh auto; min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Robby Satria</h5>
+                                style="border-bottom: 5px solid #2a4184; display: inline-block;">Robby Satria</h5>
                             <p style="font-size: 12px;padding-top: 12px;">President Commissioner</p>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: 17.2vh auto; min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Andhika Sutanto</h5>
+                                style="border-bottom: 5px solid #2a4184; display: inline-block;">Andhika Sutanto</h5>
                             <p style="font-size: 12px;padding-top: 12px;">President Director</p>
                         </div>
                     </div>
@@ -79,7 +79,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: 16.8vh auto; min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Jimmy Sanjaya</h5>
+                                style="border-bottom: 5px solid #2a4184; display: inline-block;">Jimmy Sanjaya</h5>
                             <p style="font-size: 12px;padding-top: 12px;">Director</p>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: 16vh auto; min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Henry Adrianto</h5>
+                                style="border-bottom: 5px solid #2a4184; display: inline-block;">Henry Adrianto</h5>
                             <p style="font-size: 12px;padding-top: 12px;">Vice President Bussiness Operation</p>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: 16vh auto; min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Suwoto</h5>
+                                style="border-bottom: 5px solid #2a4184; display: inline-block;">Suwoto</h5>
                             <p style="font-size: 12px;padding-top: 12px;">Sr. Manager Proposal & Estimator</p>
                         </div>
                     </div>
@@ -120,7 +120,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         background-size: 20vh auto; min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
-                                style="border-bottom: 5px solid #fcd03b; display: inline-block;">Anggi Simatupang</h5>
+                                style="border-bottom: 5px solid #2a4184; display: inline-block;">Anggi Simatupang</h5>
                             <p style="font-size: 12px;padding-top: 12px;">Manager Bussiness Development</p>
                         </div>
                     </div>

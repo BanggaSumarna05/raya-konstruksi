@@ -38,7 +38,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                                     alt="Card image cap" style="height: 350px; object-fit: cover; width: 100%;" />
                                 <div class="card-body d-flex align-items-end" style="min-height: 100px;">
                                     <h5
-                                        style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
+                                        style="border-bottom: 3px solid #2a4184; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
                                         Our People
                                     </h5>
                                 </div>
@@ -50,7 +50,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                                     style="height: 350px; object-fit: cover; width: 100%;" />
                                 <div class="card-body d-flex align-items-end" style="min-height: 100px;">
                                     <h5
-                                        style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
+                                        style="border-bottom: 3px solid #2a4184; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
                                         Our Culture
                                     </h5>
                                 </div>
@@ -62,7 +62,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                                     style="height: 350px; object-fit: cover; width: 100%;" />
                                 <div class="card-body d-flex align-items-end" style="min-height: 100px;">
                                     <h5
-                                        style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
+                                        style="border-bottom: 3px solid #2a4184; display: inline-block; margin-bottom: 0; padding-bottom: 6px;">
                                         People Development
                                     </h5>
                                 </div>

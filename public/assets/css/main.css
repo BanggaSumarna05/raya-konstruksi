@@ -22,7 +22,7 @@
 /* Colors */
 :root {
     --color-default: #364d59;
-    --color-primary: #fcd03b;
+    --color-primary: #2a4184;
     --color-secondary: #52565e;
 }
 
@@ -46,7 +46,7 @@ a {
 }
 
 a:hover {
-    color: #ffc732;
+    color: #2a4184;
     text-decoration: none;
 }
 
@@ -185,12 +185,12 @@ section {
 
 .scroll-top i {
     font-size: 24px;
-    color: var(--color-secondary);
+    color: white;
     line-height: 0;
 }
 
 .scroll-top:hover {
-    background: #ffc732;
+    background: #2a4184;
     color: #fff;
 }
 
@@ -375,7 +375,7 @@ section {
         visibility: hidden;
         background: #fff;
         box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-        transition: 0.3s;
+        transition: 02.3s;
     }
 
     .navbar .dropdown ul li {
@@ -490,7 +490,7 @@ section {
     .navbar .active,
     .navbar .active:focus,
     .navbar li:hover > a {
-        color: #fcd03b;
+        color: #2a4184;
     }
 
     .navbar .dropdown ul,
@@ -510,7 +510,7 @@ section {
 
     .mobile-nav-show {
         position: relative;
-        color: #fff;
+        color: #2a4184;
         font-size: 28px;
         cursor: pointer;
         line-height: 0;
@@ -520,7 +520,7 @@ section {
     }
 
     .mobile-nav-hide {
-        color: #fff;
+        color: #2a4184;
         font-size: 32px;
         cursor: pointer;
         line-height: 0;
@@ -2850,7 +2850,7 @@ li::marker {
 }
 
 .company-event {
-    background-color: #fff9e6;
+    background-color: whitesmoke;
     border-left: 4px solid var(--color-primary);
 }
 
@@ -2870,7 +2870,7 @@ li::marker {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #e0b420;
+    background: #2a4184;
 }
 
 .milestone-stack {

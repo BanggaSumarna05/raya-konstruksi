@@ -54,7 +54,7 @@ const loadMore = () => {
                                 style="max-height: 30vh;min-height: 30vh; object-fit: cover; width: 100%;" />
                             <div class="card-body">
                                 <p
-                                    style="border-bottom: 3px solid #fcd03b; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
+                                    style="border-bottom: 3px solid #2a4184; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
                                     {{ new Date(blog.published_at).toLocaleDateString('id-ID', {
                                         year: 'numeric',
                                         month: 'long',
@@ -72,7 +72,7 @@ const loadMore = () => {
             </div>
 
             <button v-if="currentPage < lastPage" @click="loadMore" class="btn-get-started" :disabled="loading"
-                style="border: none; background: rgb(31,31,31); color: #fcd03b; padding: 10px 24px; border-radius: 4px; margin: 24px auto 0; display: block;">
+                style="border: none; color: #2a4184; padding: 10px 24px; border-radius: 4px; margin: 24px auto 0; display: block;">
                 {{ loading ? 'Loading...' : 'Load More' }}
             </button>
         </div>

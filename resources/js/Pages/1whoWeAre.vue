@@ -221,8 +221,6 @@ onMounted(() => {
                 <p>Our journey through the years</p>
             </div>
 
-            <div ref="topScroll" class="milestones-scroll-top"></div>
-
             <div class="milestones-container">
                 <div class="year-group">
                     <div class="year-header">2018</div>
@@ -323,7 +321,7 @@ onMounted(() => {
                         <div class="card-body">
                             <a :href="route('corporateStructure')">
                                 <h5 class="card-title mb-2"
-                                    style="border-bottom: 4px solid #fcd03b; margin-bottom: 5vdh; padding: 0.5em; width: 70%; color:black; ">
+                                    style="border-bottom: 4px solid #2a4184; margin-bottom: 5vdh; padding: 0.5em; width: 70%; color:black; ">
                                     Leadership
                                 </h5>
                             </a>
@@ -337,7 +335,7 @@ onMounted(() => {
                         <div class="card-body">
                             <a :href="route('clientPartner')">
                                 <h5 class="card-title mb-2"
-                                    style="border-bottom: 4px solid #fcd03b; margin-bottom: 5vdh; padding: 0.5em; width: 70%; color:black; ">
+                                    style="border-bottom: 4px solid #2a4184; margin-bottom: 5vdh; padding: 0.5em; width: 70%; color:black; ">
                                     Client & Partners
                                 </h5>
                             </a>

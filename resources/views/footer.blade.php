@@ -5,7 +5,7 @@
 
                 <div class="col-lg-2 col-md-2 footer-links" data-aos="fade-up" data-aos-delay="100">
                     <h4
-                        style="border-bottom: 3px solid #fcd03b; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
+                        style="border-bottom: 3px solid #2a4184; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
                         Who We are</h4>
                     <ul>
                         <li><a href="{{ route('whoWeAre') }}#company-profile">Company Profile</a></li>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-lg-2 col-md-2 footer-links" data-aos="fade-up" data-aos-delay="100">
                     <h4
-                        style="border-bottom: 3px solid #fcd03b; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
+                        style="border-bottom: 3px solid #2a4184; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
                         What We Do</h4>
                     <ul>
                         <li><a href="{{ route('catalyst-loading') }}#catalyst-loading">Catalyst Loading</a></li>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-lg-2 col-md-2 footer-links" data-aos="fade-up" data-aos-delay="100">
                     <h4
-                        style="border-bottom: 3px solid #fcd03b; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
+                        style="border-bottom: 3px solid #2a4184; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
                         Sustainability</h4>
                     <ul>
                         <li><a href="{{ route('sustainability') }}">Health, Safety & Environment</a></li>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-lg-2 col-md-2 footer-links" data-aos="fade-up" data-aos-delay="100">
                     <h4
-                        style="border-bottom: 3px solid #fcd03b; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
+                        style="border-bottom: 3px solid #2a4184; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
                         Careers</h4>
                     <ul>
                         <li>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-lg-2 col-md-2 footer-links" data-aos="fade-up" data-aos-delay="100">
                     <h4
-                        style="border-bottom: 3px solid #fcd03b; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
+                        style="border-bottom: 3px solid #2a4184; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
                         News & Events</h4>
                     <ul>
                         <li><a href="#">News</a></li>
@@ -64,13 +64,13 @@
                 </div>
                 <div class="col-lg-2 col-md-2 footer-links" data-aos="fade-up" data-aos-delay="100">
                     <h4
-                        style="border-bottom: 3px solid #fcd03b; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
+                        style="border-bottom: 3px solid #2a4184; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;">
                         Contact Us</h4>
                     <ul>
                         <a href="{{ route('contactUs') }}" class="{{ Route::is('contactUs') ? 'active' : '' }}">Get In
                             Touch</a>
                     </ul>
-                    <h4 style="border-bottom: 3px solid #fcd03b; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;"
+                    <h4 style="border-bottom: 3px solid #2a4184; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;"
                         class="mt-5">
                         Follow Us</h4>
                     <ul>

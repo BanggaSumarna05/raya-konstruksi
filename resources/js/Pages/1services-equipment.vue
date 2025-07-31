@@ -9,18 +9,18 @@ defineProps({
 </script>
 <style>
 .th {
-    background-color: #fcd03b !important;
+    background-color: #2a4184 !important;
 }
 </style>
 <template>
 
-    <Head title="Heavy Equipment List" />
+    <Head title="Heavy Equipment's" />
     <section id="constructions" class="constructions mb-10" style="padding-top: 10%;">
         <div class="container" data-aos="fade-up">
             <h2 class="text-center font-bold text-4xl pb-5">List of Heavy Equipment</h2>
             <div class="overflow-x-auto">
-                <table class="min-w-full border border-gray-300">
-                    <thead>
+                <table class="min-w-full border border-gray-300 ">
+                    <thead class="bg-blue-900 text-white">
                         <tr>
                             <th class="th px-4 py-2 border text-left">NO.</th>
                             <th class="th px-4 py-2 border text-left">EQUIPMENT</th>
@@ -33,7 +33,7 @@ defineProps({
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-yellow-50">
+                        <tr class="bg-blue-50">
                             <td class="border px-4 py-2">1</td>
                             <td class="border px-4 py-2">EXCAVATOR</td>
                             <td class="border px-4 py-2">10</td>
@@ -53,7 +53,7 @@ defineProps({
                             <td class="border px-4 py-2">GOOD</td>
                             <td class="border px-4 py-2">MEDAN, RIAU, JAKARTA</td>
                         </tr>
-                        <tr class="bg-yellow-50">
+                        <tr class="bg-blue-50">
                             <td class="border px-4 py-2">3</td>
                             <td class="border px-4 py-2">MOBILE BOOM CRANE</td>
                             <td class="border px-4 py-2">10</td>
@@ -73,7 +73,7 @@ defineProps({
                             <td class="border px-4 py-2">GOOD</td>
                             <td class="border px-4 py-2">MEDAN, RIAU, JAKARTA</td>
                         </tr>
-                        <tr class="bg-yellow-50">
+                        <tr class="bg-blue-50">
                             <td class="border px-4 py-2">5</td>
                             <td class="border px-4 py-2">VIBRO COMPACTOR</td>
                             <td class="border px-4 py-2">5</td>
@@ -93,7 +93,7 @@ defineProps({
                             <td class="border px-4 py-2">GOOD</td>
                             <td class="border px-4 py-2">MEDAN, RIAU, JAKARTA</td>
                         </tr>
-                        <tr class="bg-yellow-50">
+                        <tr class="bg-blue-50">
                             <td class="border px-4 py-2">7</td>
                             <td class="border px-4 py-2">TRUCK</td>
                             <td class="border px-4 py-2">20</td>

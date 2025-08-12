@@ -120,7 +120,6 @@ onMounted(() => {
                                         style="max-width: 64px;max-height: 64px;">
                                 </div>
                             </center>
-
                             <h5 class="card-title mb-2 text-uppercase"
                                 style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
                                 Committed</h5>

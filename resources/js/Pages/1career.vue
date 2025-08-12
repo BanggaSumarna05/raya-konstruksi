@@ -104,7 +104,7 @@ import '/node_modules/vue-preloader/dist/style.css';
         </div>
     </section>
 
-    <section class="services mb-10">
+    <section class="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-12">

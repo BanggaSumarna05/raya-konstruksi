@@ -75,7 +75,7 @@
                         Follow Us</h4>
                     <ul>
                         <li>
-                            <a href="https://www.linkedin.com/company/makadia/posts/?feedView=all" aria-label="L2inkedIn">
+                            <a href="https://www.linkedin.com/company/rayakonstruksi/posts/?feedView=all" aria-label="L2inkedIn" target="_blank">
                                 <i class="bi bi-linkedin"></i> Linkedin
                             </a>
                         </li>

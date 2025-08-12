@@ -38,7 +38,7 @@ const loadMore = () => {
 <template>
 
     <Head title="News & Event" />
-    <section id="services" class="services section-bg mb-10" style="padding-top: 10%;">
+    <section id="services" class="services section-bg" style="padding-top: 10%;">
         <div class="container">
             <h1 class="pb-10">News & Event</h1>
             <br />

@@ -148,7 +148,7 @@ section {
 
 .breadcrumbs ol a {
     color: rgba(255, 255, 255, 0.8);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .breadcrumbs ol a:hover {
@@ -324,7 +324,7 @@ section {
         color: black;
         text-transform: uppercase;
         white-space: nowrap;
-        transition: 0.3s;
+        transition: 0.2s;
         position: relative;
     }
 
@@ -345,7 +345,7 @@ section {
         background-color: var(--color-primary);
         visibility: hidden;
         width: 0px;
-        transition: all 0.3s ease-in-out 0s;
+        transition: all 0.2s ease-in-out 0s;
     }
 
     .navbar a:hover:before,
@@ -448,7 +448,7 @@ section {
         width: 100%;
         max-width: 400px;
         bottom: 0;
-        transition: 0.3s;
+        transition: 0.2s;
         z-index: 9997;
     }
 
@@ -460,7 +460,7 @@ section {
         /* background: rgba(0, 0, 0, 0.8); */
         background: whitesmoke;
         overflow-y: auto;
-        transition: 0.3s;
+        transition: 0.2s;
         z-index: 9998;
     }
 
@@ -476,7 +476,7 @@ section {
         color: black;
         white-space: nowrap;
         text-transform: uppercase;
-        transition: 0.3s;
+        transition: 0.2s;
     }
 
     .navbar a i,
@@ -750,7 +750,7 @@ section {
 .services .service-item .icon i {
     color: var(--color-secondary);
     font-size: 40px;
-    transition: ease-in-out 0.3s;
+    transition: ease-in-out 0.2s;
     z-index: 2;
     position: relative;
     line-height: 1.8;
@@ -766,7 +766,7 @@ section {
     z-index: 1;
     top: 10px;
     right: -15px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .services .service-item h3 {
@@ -778,7 +778,7 @@ section {
     position: relative;
     display: inline-block;
     border-bottom: 4px solid #ebebed;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .services .service-item p {
@@ -810,7 +810,7 @@ section {
 
 .features .nav-link {
     padding: 15px 0;
-    transition: 0.3s;
+    transition: 0.2s;
     color: var(--color-secondary);
     border-radius: 0;
     display: flex;
@@ -910,7 +910,7 @@ section {
     margin: 0 10px;
     line-height: 1;
     margin-bottom: 5px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .projects .portfolio-flters li:hover,
@@ -939,7 +939,7 @@ section {
 }
 
 .projects .portfolio-content img {
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .projects .portfolio-content .portfolio-info {
@@ -947,7 +947,7 @@ section {
     position: absolute;
     inset: 0;
     z-index: 3;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 0.2s;
     background: rgba(0, 0, 0, 0.6);
     padding: 15px;
 }
@@ -980,7 +980,7 @@ section {
     font-size: 26px;
     top: calc(50% - 14px);
     color: #fff;
-    transition: 0.3s;
+    transition: 0.2s;
     line-height: 1.2;
 }
 
@@ -1164,7 +1164,7 @@ section {
     line-height: 0;
     box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.08);
     background-color: #fff;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .alt-services .icon-box:hover i {
@@ -1180,7 +1180,7 @@ section {
 
 .alt-services .icon-box h4 a {
     color: #000;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .alt-services .icon-box h4 a:hover {
@@ -1258,7 +1258,7 @@ section {
 
 .about .watch-video i {
     font-size: 32px;
-    transition: 0.3s;
+    transition: 0.2s;
     color: var(--color-primary);
 }
 
@@ -1266,7 +1266,7 @@ section {
     font-weight: 600;
     color: var(--color-secondary);
     margin-left: 8px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .about .watch-video:hover a {
@@ -1349,19 +1349,19 @@ section {
 .team .member .member-img .social {
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
     padding-bottom: 20px;
-    transition: 0.3s;
+    transition: 0.2s;
     visibility: hidden;
     opacity: 0;
 }
 
 .team .member .member-img .social a {
-    transition: 0.3s;
+    transition: 0.2s;
     color: #fff;
     font-size: 20px;
     margin: 0 8px;
@@ -1468,7 +1468,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .project-details .swiper-button-prev:hover:after,
@@ -1526,7 +1526,7 @@ section {
     background: var(--color-primary);
     color: #fff;
     border-radius: 50px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .project-details .portfolio-info .btn-visit:hover {
@@ -1616,7 +1616,7 @@ section {
     border-left: 3px solid #d9e3e8;
     margin: 20px 0;
     color: var(--color-secondary);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .service-details .services-list a.active {
@@ -1800,7 +1800,7 @@ section {
 --------------------------------------------------------------*/
 .recent-blog-posts .post-item {
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .recent-blog-posts .post-item .post-img img {
@@ -1827,7 +1827,7 @@ section {
     font-size: 24px;
     color: var(--color-secondary);
     font-weight: 700;
-    transition: 0.3s;
+    transition: 0.2s;
     margin-bottom: 15px;
 }
 
@@ -1851,7 +1851,7 @@ section {
     align-items: center;
     font-weight: 600;
     line-height: 1;
-    transition: 0.3s;
+    transition: 0.2s;
     color: #838893;
 }
 
@@ -2005,7 +2005,7 @@ section {
 .hero .carousel-control-prev,
 .hero .carousel-control-next {
     z-index: 3;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .hero .carousel-control-prev:focus,
@@ -2035,7 +2035,7 @@ section {
 
 .blog .blog-pagination li {
     margin: 0 5px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .blog .blog-pagination li a {
@@ -2062,7 +2062,7 @@ section {
 --------------------------------------------------------------*/
 .blog .posts-list .post-item {
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .blog .posts-list .post-img img {
@@ -2089,7 +2089,7 @@ section {
     font-size: 24px;
     color: var(--color-secondary);
     font-weight: 700;
-    transition: 0.3s;
+    transition: 0.2s;
     margin-bottom: 15px;
 }
 
@@ -2117,7 +2117,7 @@ section {
     align-items: center;
     font-weight: 600;
     line-height: 1;
-    transition: 0.3s;
+    transition: 0.2s;
     color: #838893;
 }
 
@@ -2227,7 +2227,7 @@ section {
     font-size: 14px;
     display: inline-block;
     line-height: 1;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .blog .blog-details .meta-top a:hover {
@@ -2246,7 +2246,7 @@ section {
 
 .blog .blog-details .meta-bottom a {
     color: rgba(82, 86, 94, 0.8);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .blog .blog-details .meta-bottom a:hover {
@@ -2345,7 +2345,7 @@ section {
 
 .blog .sidebar .search-form form {
     background: #fff;
-    border: 1px solid rgba(82, 86, 94, 0.3);
+    border: 1px solid rgba(82, 86, 94, 0.2);
     padding: 3px 10px;
     position: relative;
 }
@@ -2373,7 +2373,7 @@ section {
     margin: -1px;
     background: var(--color-primary);
     color: var(--color-secondary);
-    transition: 0.3s;
+    transition: 0.2s;
     border-radius: 0 4px 4px 0;
     line-height: 0;
 }
@@ -2397,7 +2397,7 @@ section {
 
 .blog .sidebar .categories ul a {
     color: var(--color-secondary);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .blog .sidebar .categories ul a:hover {
@@ -2430,7 +2430,7 @@ section {
 
 .blog .sidebar .recent-posts h4 a {
     color: var(--color-secondary);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .blog .sidebar .recent-posts h4 a:hover {
@@ -2464,7 +2464,7 @@ section {
     margin: 0 6px 8px 0;
     border: 1px solid rgba(131, 136, 147, 0.4);
     display: inline-block;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .blog .sidebar .tags ul a:hover {
@@ -2511,7 +2511,7 @@ section {
 .blog .comments .comment h5 a {
     font-weight: bold;
     color: var(--color-default);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .blog .comments .comment h5 a:hover {
@@ -2647,7 +2647,7 @@ section {
     border-radius: 4px;
     width: 36px;
     height: 36px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .footer .footer-content .social-links a:hover {
@@ -2683,7 +2683,7 @@ section {
 
 .footer .footer-content .footer-links ul a {
     color: black;
-    transition: 0.3s;
+    transition: 0.2s;
     display: inline-block;
     line-height: 1;
     position: relative;
@@ -2700,7 +2700,7 @@ section {
     background-color: var(--color-primary);
     visibility: hidden;
     width: 0px;
-    transition: all 0.3s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
 }
 
 .footer .footer-content .footer-links ul a:hover {
@@ -2822,7 +2822,7 @@ li::marker {
     border-radius: 0;
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
     padding: 20px;
-    transition: 0.3s;
+    transition: 0.2s;
     border: 1px solid rgba(82, 86, 94, 0.2);
 }
 

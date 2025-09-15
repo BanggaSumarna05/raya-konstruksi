@@ -1016,19 +1016,19 @@ section {
 }
 
 .testimonials .testimonial-item {
-    box-sizing: content-box;
-    padding: 30px 30px 30px 60px;
-    margin: 0 15px 30px 0;
+    /* box-sizing: content-box; */
+    /* padding: 30px 30px 30px 60px; */
+    /* margin: 0 15px 30px 0; */
     min-height: 200px;
-    box-shadow: 0px 2px 20px rgba(82, 86, 94, 0.1);
+    /* box-shadow: 0px 2px 20px rgba(82, 86, 94, 0.1); */
     position: relative;
-    background: #fff;
+    /* background: #fff; */
 }
 
 .testimonials .testimonial-item .testimonial-img {
     width: 90px;
     border-radius: 10px;
-    border: 6px solid #fff;
+    /* border: 6px solid #fff; */
     position: absolute;
     left: -45px;
 }

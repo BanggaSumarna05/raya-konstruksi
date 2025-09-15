@@ -1,6 +1,5 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import { VuePreloader } from 'vue-preloader';
 import '/node_modules/vue-preloader/dist/style.css';
 </script>
 
@@ -96,10 +95,64 @@ import '/node_modules/vue-preloader/dist/style.css';
                             and creative solutions for our increasingly diverse clients. We welcome and value individual
                             differences. Join RAYA and carve a career path to match your skills and aspirations!
                         </p>
-                        <a href="http://pekerjakita.com/" target="_blank" class="btn-get-started">Search Jobs <i
-                                class="bi bi-arrow-right"></i></a>
+                        <!-- <a href="http://pekerjakita.com/" target="_blank" class="btn-get-started">Search Jobs <i
+                                class="bi bi-arrow-right"></i></a> -->
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container" data-aos="fade-up">
+            <div class="slides-2 swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap d-flex justify-content-between flex-wrap">
+                            <div class="testimonial-item" style="flex: 30%; ">
+                                <iframe
+                                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7370785958134231041"
+                                    height="1006" width="100%" frameborder="0" allowfullscreen=""
+                                    title="Posting tersemat"></iframe>
+                            </div>
+                            <div class="testimonial-item" style="flex: 30%; ">
+                                <iframe
+                                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7370786151672000512"
+                                    height="1006" width="100%" frameborder="0" allowfullscreen=""
+                                    title="Posting tersemat"></iframe>
+                            </div>
+                            <div class="testimonial-item" style="flex: 30%; ">
+                                <iframe
+                                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368933077215055872"
+                                    height="1048" width="100%" frameborder="0" allowfullscreen=""
+                                    title="Posting tersemat"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap d-flex justify-content-between flex-wrap">
+                            <div class="testimonial-item" style="flex: 30%; ">
+                                <iframe
+                                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368551084253986818"
+                                    height="1006" width="100%" frameborder="0" allowfullscreen=""
+                                    title="Posting tersemat"></iframe>
+                            </div>
+                            <div class="testimonial-item" style="flex: 30%; ">
+                                <iframe
+                                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368294514458836994"
+                                    height="670" width="100%" frameborder="0" allowfullscreen=""
+                                    title="Posting tersemat"></iframe>
+                            </div>
+                            <div class="testimonial-item" style="flex: 30%; ">
+                                <iframe
+                                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368294009443635200"
+                                    height="1006" width="100%" frameborder="0" allowfullscreen=""
+                                    title="Posting tersemat"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination" style="margin-top:10%"></div>
             </div>
         </div>
     </section>
@@ -133,6 +186,30 @@ export default {
     data() {
     },
     mounted() {
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            autoplay: {
+                delay: 50000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'slide',
+        });
+
+        // Pause autoplay when window/tab is focused, resume when blurred
+        window.addEventListener('focus', () => {
+            swiper.autoplay.stop();
+        });
+        window.addEventListener('blur', () => {
+            swiper.autoplay.start();
+        });
     },
     beforeDestroy() {
         // Hapus event listener saat komponen di-destroy

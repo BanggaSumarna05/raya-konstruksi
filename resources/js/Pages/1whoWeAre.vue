@@ -23,7 +23,6 @@ onMounted(() => {
 </script>
 
 <template>
-
     <Head title="Who We Are" />
     <section id="company-profile" class="alt-services-2 section mb-10" style="padding-top:10%">
         <div class="container">
@@ -56,7 +55,7 @@ onMounted(() => {
             <div class="row">
                 <div class="col-sm-12 col-lg-4">
                     <h4>Vision</h4>
-                </div>
+                </div>q
                 <div class="col-sm-12 col-lg-6">
                     <p>
                         Delivering Excellent Engineering & Construction Services

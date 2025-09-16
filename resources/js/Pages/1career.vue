@@ -27,7 +27,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 We welcome you to join us and we are confident that you will find plenty of reasons to build and shape
                 your career with <strong>RAYA</strong>!
             </p>
-            <div class="row gy-4 justify-content-around mt-5">
+            <!-- <div class="row gy-4 justify-content-around mt-5">
 
                 <div class="col-lg-9 col-sm-12">
                     <div class="row">
@@ -71,7 +71,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -124,7 +124,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                             <div class="testimonial-item" style="flex: 30%; ">
                                 <iframe
                                     src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368933077215055872"
-                                    height="1048" width="100%" frameborder="0" allowfullscreen=""
+                                    height="1006" width="100%" frameborder="0" allowfullscreen=""
                                     title="Posting tersemat"></iframe>
                             </div>
                         </div>
@@ -140,7 +140,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                             <div class="testimonial-item" style="flex: 30%; ">
                                 <iframe
                                     src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368294514458836994"
-                                    height="670" width="100%" frameborder="0" allowfullscreen=""
+                                    height="1006" width="100%" frameborder="0" allowfullscreen=""
                                     title="Posting tersemat"></iframe>
                             </div>
                             <div class="testimonial-item" style="flex: 30%; ">

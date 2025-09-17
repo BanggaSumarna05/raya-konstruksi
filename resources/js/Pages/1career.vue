@@ -111,6 +111,12 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <div class="testimonial-wrap d-flex justify-content-between flex-wrap">
                             <div class="testimonial-item" style="flex: 30%; ">
                                 <iframe
+                                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7373984848153292800"
+                                    height="1006" width="100%" frameborder="0" allowfullscreen=""
+                                    title="Posting tersemat"></iframe>
+                            </div>
+                            <div class="testimonial-item" style="flex: 30%; ">
+                                <iframe
                                     src="https://www.linkedin.com/embed/feed/update/urn:li:share:7370785958134231041"
                                     height="1006" width="100%" frameborder="0" allowfullscreen=""
                                     title="Posting tersemat"></iframe>
@@ -121,16 +127,16 @@ import '/node_modules/vue-preloader/dist/style.css';
                                     height="1006" width="100%" frameborder="0" allowfullscreen=""
                                     title="Posting tersemat"></iframe>
                             </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap d-flex justify-content-between flex-wrap">
                             <div class="testimonial-item" style="flex: 30%; ">
                                 <iframe
                                     src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368933077215055872"
                                     height="1006" width="100%" frameborder="0" allowfullscreen=""
                                     title="Posting tersemat"></iframe>
                             </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial-wrap d-flex justify-content-between flex-wrap">
                             <div class="testimonial-item" style="flex: 30%; ">
                                 <iframe
                                     src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368551084253986818"
@@ -143,12 +149,19 @@ import '/node_modules/vue-preloader/dist/style.css';
                                     height="1006" width="100%" frameborder="0" allowfullscreen=""
                                     title="Posting tersemat"></iframe>
                             </div>
+
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap d-flex justify-content-between flex-wrap">
                             <div class="testimonial-item" style="flex: 30%; ">
                                 <iframe
                                     src="https://www.linkedin.com/embed/feed/update/urn:li:share:7368294009443635200"
                                     height="1006" width="100%" frameborder="0" allowfullscreen=""
                                     title="Posting tersemat"></iframe>
                             </div>
+                            <div class="testimonial-item" style="flex: 30%; "></div>
+                            <div class="testimonial-item" style="flex: 30%; "></div>
                         </div>
                     </div>
                 </div>

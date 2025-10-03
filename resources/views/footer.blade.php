@@ -46,7 +46,7 @@
                     <ul>
                         <li>
                             <a href="{{ route('career') }}" class="{{ Route::is('career') ? 'active' : '' }}">Why Join
-                                US</a>
+                                Us</a>
                         </li>
                         <li>
                             <a href="{{ route('career') }}" class="{{ Route::is('career') ? 'active' : '' }}">Job

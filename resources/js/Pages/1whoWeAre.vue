@@ -23,6 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
+
     <Head title="Who We Are" />
     <section id="company-profile" class="alt-services-2 section mb-10" style="padding-top:10%">
         <div class="container">
@@ -65,7 +66,7 @@ onMounted(() => {
             </div>
             <div class="row pt-5">
                 <div class="col-sm-12 col-lg-4">
-                    <h4>Mision</h4>
+                    <h4>Mission</h4>
                 </div>
                 <div class="col-sm-12 col-lg-6">
                     <li>
@@ -74,7 +75,7 @@ onMounted(() => {
                         construction and heavy equipment services.
                     </li>
                     <li>
-                        Building satisfying career for our team by implementing agile mindset and continuous
+                        Building satisfying careers for our team by implementing agile mindset and continuous
                         learning to
                         adapt into changes in the industry.
                     </li>
@@ -181,9 +182,8 @@ onMounted(() => {
                             <h5 class="card-title mb-2 text-uppercase"
                                 style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
                                 Ownership</h5>
-                            <p class="card-text mt-3">We uphold a strong work and moral ethics aligning with
-                                applicable law and
-                                regulation.
+                            <p class="card-text mt-3">We take full responsibility for our work and are accountable for
+                                delivering results that meet the company’s goals.
                             </p>
                         </div>
                     </div>

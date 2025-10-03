@@ -17,11 +17,11 @@ import '/node_modules/vue-preloader/dist/style.css';
                 </div>
                 <div class="col-lg-5 col-sm-12">
                     <div style="padding-top:25%">
-                        <h4>HEALTH, SAFETY & ENVIRONTMENT</h4>
+                        <h4>HEALTH, SAFETY & ENVIRONMENT</h4>
                         <p>
-                            RAYA through the dedication of its Management and staff, received
+                            RAYA Through the dedication of its management and staff, RAYA has received
                             several awards from our clients in recognition for maintaining exemplary levels of safety at
-                            the worksites as well as being able to be committed to maintaining a high level of service
+                            the worksites while remaining committed to maintaining a high level of service
                             excellence and efficiency during the course of our projects.
                         </p>
                         <a :href="route('safety')" rel="noopener noreferrer" class="btn-get-started">
@@ -42,7 +42,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                             CORPORATE SOCIAL RESPONSIBILITY</h4>
                         <p>Volunteerism is an important pillar of our corporate giving. We want to build an implicit
                             sense of public service
-                            that permeates our identity in the communities which we operate in.</p>
+                            that permeates our identity in the communities in which we operate.</p>
                         <a :href="route('respon')" rel="noopener noreferrer" class="btn-get-started">
                             Discover More
                         </a>

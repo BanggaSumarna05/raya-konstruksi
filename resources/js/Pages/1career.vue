@@ -16,11 +16,11 @@ import '/node_modules/vue-preloader/dist/style.css';
                 Why Join Us
             </h4>
             <p>
-                Investing in human capital is our HR philosophy. We make every effort to enhance the skills, knowledge,
-                experience and wellbeing of our people in order for them to cope with the demands of the job and perform
+                Investing in human capital is our HR philosophy. We are committed to enhancing the skills, knowledge,
+                experience and wellbeing of our people in order for them to meet the demands of the job and perform
                 to their level best.<br><br>
 
-                We recognise the collective efforts and contributions of our people and that our success is attributed
+                We recognise the collective efforts and contributions of our people our success is built on
                 to our shared commitment and perseverance towards providing superior and comprehensive engineering
                 solutions to our customers worldwide!<br><br>
 

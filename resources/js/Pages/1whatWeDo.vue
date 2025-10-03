@@ -53,7 +53,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <li>Inert Condition</li>
                         <li>Sock Loading</li>
                         <li>Dense Loading</li>
-                        <li>Unloading Catalyst</li>
+                        <li>Catalyst Loading</li>
                         <li>Licensed Technicians</li>
                         <li>Loading Equipment</li>
                     </ul>

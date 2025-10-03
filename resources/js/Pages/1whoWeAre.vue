@@ -55,7 +55,7 @@ onMounted(() => {
             <div class="row">
                 <div class="col-sm-12 col-lg-4">
                     <h4>Vision</h4>
-                </div>q
+                </div>
                 <div class="col-sm-12 col-lg-6">
                     <p>
                         Delivering Excellent Engineering & Construction Services

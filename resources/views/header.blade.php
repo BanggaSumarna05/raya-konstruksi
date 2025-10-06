@@ -34,6 +34,7 @@
                         <li><a href="{{ route('whatWeDo') }}#construction">Construction & Fabrication</a></li>
                         <li><a href="{{ route('catalyst-loading') }}">Catalyst Loading</a></li>
                         <li><a href="{{ route('plantMaintenance') }}">Plant Maintenance</a></li>
+                        <li><a href="{{ route('portfolio') }}">Soil & Civil Works</a></li>
                         <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
                         <li><a href="{{ route('heaveyRental') }}">Heavy Equipment List</a></li>
                     </ul>

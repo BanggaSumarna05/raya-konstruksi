@@ -17,14 +17,14 @@ defineProps({ blogs: Array })
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
             <div
                 class="carousel-item active"
-                style="background-image: url('assets/img/hero-carousel/hover-1-new.jpg'); background-position: center top; background-size: cover;"
+                style="background-image: url('assets/img/hero-carousel/hover-1-new.jpg'); background-position: top 100 center; background-size: cover;"
             ></div>
             <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/hover-2-new.jpg')">
             </div>            
         </div>
     </section>
 
-    <section id="services" class="services">
+    <!-- <section id="services" class="services">
         <div class="container">
             <h2 class="pb-10">RAYA AT A GLANCE</h2>
             <div class="row">
@@ -74,22 +74,6 @@ defineProps({ blogs: Array })
                                 </div>
                             </center>
                         </div>
-                        <!-- <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon3.png" alt=""
-                                    style="max-width:64px;max-height:64px;">
-                            </center>
-                        </div> -->
-                        <!-- <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <div>
-                                    <h3 style="color:black">200,000+</h3>
-                                    <p>
-                                        Piping
-                                    </p>
-                                </div>
-                            </center>
-                        </div> -->
                         <div class="col-sm-6 col-lg-2">
                             <center>
                                 <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon4.png" alt=""
@@ -122,27 +106,11 @@ defineProps({ blogs: Array })
                                 </div>
                             </center>
                         </div>
-                        <!-- <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon6.png" alt=""
-                                    style="max-width:64px;max-height:64px;">
-                            </center>
-                        </div> -->
-                        <!-- <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <div>
-                                    <h3 style="color:black">8,000+</h3>
-                                    <p>
-                                        Total Manhour 2024-2025
-                                    </p>
-                                </div>
-                            </center>
-                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section id="services" class="services section-bg">
         <div class="container">

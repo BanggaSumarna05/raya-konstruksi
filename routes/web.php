@@ -18,6 +18,7 @@ Route::get('/what-we-do', [FrontController::class, 'whatWeDo'])->name('whatWeDo'
 Route::get('/what-we-do/catalyst-loading', [FrontController::class, 'catalystLoading'])->name('catalyst-loading');
 Route::get('/what-we-do/plant-maintenance', [FrontController::class, 'plantMaintenance'])->name('plantMaintenance');
 Route::get('/what-we-do/raya-konstruksi-portfolio', [FrontController::class, 'portfolio'])->name('portfolio');
+// Route::get('/what-we-do/raya-konstruksi-portfolio-soil', [FrontController::class, 'portfolioSoil'])->name('portfolio-soil');
 Route::get('/what-we-do/heavy-rental-equipment', [FrontController::class, 'heavyRental'])->name('heaveyRental');
 
 #sustainability

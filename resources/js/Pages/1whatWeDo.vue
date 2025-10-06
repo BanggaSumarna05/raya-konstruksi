@@ -12,7 +12,7 @@ import '/node_modules/vue-preloader/dist/style.css';
             <h1 class="mb-5">What We Do</h1>
             <div class="row justify-content-around gy-4" id="construction" style="padding-top: 8vh; ">
                 <div class="col-lg-6 img-bg" style="
-                        background-image: url('/assets/img/piping-2.jpg');
+                        background-image: url('/assets/img/cover-const.jpg');
                         background-repeat: no-repeat;
                         background-attachment: fixed;
                         background-position: center;
@@ -32,6 +32,9 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <li>Piping Fabrication & Installation</li>
                         <li>Mechanical Erection</li>
                         <li>Tank Fabrication & Installation</li>
+                        <li>
+                            Equipment Rental & Operation
+                        </li>
                     </ul>
                     <a href="#" class="btn btn-get-started" style="max-width: 40%;">Discover
                         More <i class="bi bi-arrow-right"></i></a>
@@ -49,19 +52,21 @@ import '/node_modules/vue-preloader/dist/style.css';
                         equipment and deploy highly skilled personnel.
                     </p>
                     <ul class="ul-2">
-                        <li>Atmospheric Condition</li>
-                        <li>Inert Condition</li>
-                        <li>Sock Loading</li>
-                        <li>Dense Loading</li>
-                        <li>Catalyst Loading</li>
-                        <li>Licensed Technicians</li>
-                        <li>Loading Equipment</li>
+                        <li>Atmospheric & Inert Condition</li>
+                        <li>Sock & Dense Loading</li>
+                        <li>
+                            Change Of catalyst
+                        </li>
+                        <li>Industrial Grade Vacuum</li>
+                        <li>
+                            Licensed Technicians
+                        </li>
                     </ul>
                     <a :href="route('catalyst-loading')" class="btn btn-get-started" style="max-width: 40%;">Discover
                         More <i class="bi bi-arrow-right"></i></a>
                 </div>
                 <div class="col-lg-6 img-bg" style="
-                        background-image: url('/assets/img/catalyst-loading-3.png');
+                        background-image: url('/assets/img/cover-catalyst.jpg');
                         background-repeat: no-repeat;
                         background-attachment: fixed;
                         background-position: center;
@@ -72,7 +77,7 @@ import '/node_modules/vue-preloader/dist/style.css';
 
             <div class="row justify-content-around gy-4" id="plant-maintenance" style="padding-top: 15vh; ">
                 <div class="col-lg-6 img-bg" style="
-                        background-image: url('/assets/img/plant-maintenance.png');
+                        background-image: url('/assets/img/cover-plant.jpg');
                         background-repeat: no-repeat;
                         background-attachment: fixed;
                         background-size: cover;
@@ -105,6 +110,46 @@ import '/node_modules/vue-preloader/dist/style.css';
             <div class="row justify-content-around gy-4" id="plant-maintenance" style="padding-top: 15vh; ">
 
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
+                    <h2>SOIL & CIVIL WORKS</h2>
+                    <p class="rapih">
+                        We deliver comprehensive civil construction
+                        and roadwork services to support industrial and
+                        infrastructure development projects. Our experienced
+                        team ensures precision, safety, and quality at every
+                        stage — from design, groundwork, and structural
+                        concrete to final pavement finishing.
+                    </p>
+                    <ul class="ul-2">
+                        <li>Earthworks & Site Preparation</li>
+                        <li>Concrete & Foundation Works</li>
+                        <li>Drainage & Culvert Systems</li>
+                        <li>Road Base & Asphalt Pavement</li>
+                        <li>Industrial Access Roads</li>
+                        <li>Slope Protection & Retaining Walls</li>
+                        <li>Structural Repair & Rehabilitation</li>
+                        <li>Road Marking & Safety Works</li>
+                    </ul>
+                    <a :href="route('portfolio')" class="btn btn-get-started" style="max-width: 40%;">Discover
+                        More <i class="bi bi-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-6 img-bg" style="
+                        background-image: url('/assets/img/cover-soil.jpg');
+                        background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        background-size: cover;
+                        background-position: center;
+                    " data-aos="fade-keft" data-aos-delay="100"></div>
+            </div>
+
+            <div class="row justify-content-around gy-4" id="plant-maintenance" style="padding-top: 15vh; ">
+                <div class="col-lg-6 img-bg" style="
+                        background-image: url('/assets/img/portfolio-header.jpg');
+                        background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        background-size: cover;
+                        background-position: center;
+                    " data-aos="fade-keft" data-aos-delay="100"></div>
+                <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
                     <h2>PORTFOLIO</h2>
                     <p class="rapih">
                         Our construction portfolio showcases a diverse range of successful projects, including
@@ -113,16 +158,9 @@ import '/node_modules/vue-preloader/dist/style.css';
                         results for clients across various sectors, ensuring every project meets industry standards and
                         client expectations.
                     </p>
-                    <a :href="route('portfolio')" class="btn btn-get-started" style="max-width: 40%;">Discover
+                    <a :href="route('portfolio')" target="_blank" class="btn btn-get-started" style="max-width: 40%;">Discover
                         More <i class="bi bi-arrow-right"></i></a>
                 </div>
-                <div class="col-lg-6 img-bg" style="
-                        background-image: url('/assets/img/portfolio-header.jpg');
-                        background-repeat: no-repeat;
-                        background-attachment: fixed;
-                        background-size: cover;
-                        background-position: center;
-                    " data-aos="fade-keft" data-aos-delay="100"></div>
             </div>
 
 

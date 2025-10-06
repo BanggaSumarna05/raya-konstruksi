@@ -102,6 +102,29 @@ import '/node_modules/vue-preloader/dist/style.css';
                 </div>
             </div>
 
+            <div class="row justify-content-around gy-4" id="plant-maintenance" style="padding-top: 15vh; ">
+
+                <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">
+                    <h2>PORTFOLIO</h2>
+                    <p class="rapih">
+                        Our construction portfolio showcases a diverse range of successful projects, including
+                        industrial facilities, steel structure fabrication, mechanical and piping installations, and
+                        turnkey solutions. With a commitment to quality, safety, and innovation, we deliver reliable
+                        results for clients across various sectors, ensuring every project meets industry standards and
+                        client expectations.
+                    </p>
+                    <a :href="route('portfolio')" class="btn btn-get-started" style="max-width: 40%;">Discover
+                        More <i class="bi bi-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-6 img-bg" style="
+                        background-image: url('/assets/img/portfolio-header.jpg');
+                        background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        background-size: cover;
+                        background-position: center;
+                    " data-aos="fade-keft" data-aos-delay="100"></div>
+            </div>
+
 
             <!-- <div class="row justify-content-around gy-4" id="engineering" style="padding-top: 15vh; padding-bottom: 8vh; ">
                 <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-right">

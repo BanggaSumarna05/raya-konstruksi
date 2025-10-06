@@ -757,6 +757,12 @@ class FrontController extends Controller
         ]);
     }
 
+    public function portfolio()
+    {
+        return response()->file(public_path('assets/pdf/Raya_-_Road_Construction_Work.pdf'));
+    }
+
+
     public function heavyRental()
     {
         $data = [];

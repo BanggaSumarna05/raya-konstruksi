@@ -517,6 +517,7 @@ section {
         transition: 0.5s;
         z-index: 9999;
         padding-right: 10px;
+        transform: translateY(4px);
     }
 
     .mobile-nav-hide {

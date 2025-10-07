@@ -25,7 +25,7 @@ onMounted(() => {
 <template>
 
     <Head title="Who We Are" />
-    <section id="company-profile" class="alt-services-2 section mb-10" style="padding-top:10%">
+    <section id="company-profile" class="alt-services-2 section mb-10 mt-5" >
         <div class="container">
             <h1 class="pb-10">Who We Are</h1>
             <div class="row justify-content-around gy-4">
@@ -301,9 +301,12 @@ onMounted(() => {
                         <h3>Air Products Catalyst Loading</h3>
                     </div>
                     <div class="milestone-card text-uppercase company-event">
-                        <h3>Company Rebranding</h3>
-                        <p>PT Makadia Grup International changes name to <strong>RAYA KONSTRUKSI INTERNASIONAL</strong>.
-                        </p>
+                        <h3>Rebranding</h3>
+                        <p>PT Makadia Grup International has been rebranded as <strong>RAYA KONSTRUKSI
+                                INTERNASIONAL</strong></p>
+                    </div>
+                    <div class="milestone-card text-uppercase">
+                        <h3>Apical KRN</h3>
                     </div>
                 </div>
             </div>

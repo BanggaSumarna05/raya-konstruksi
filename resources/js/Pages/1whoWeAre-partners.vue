@@ -15,6 +15,11 @@ import '/node_modules/vue-preloader/dist/style.css';
             <div class="row gy-4">
                 <div class="col-sm-12 col-lg-2" data-aos="fade-right" data-aos-delay="1100">
                     <div class="card">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/apical-retina.png" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-2" data-aos="fade-right" data-aos-delay="1100">
+                    <div class="card">
                         <img class="p-2 card-bg img-fluid" src="/assets/img/client/logo-air-products.png" alt="">
                     </div>
                 </div>

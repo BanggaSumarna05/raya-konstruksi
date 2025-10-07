@@ -65,8 +65,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <div class="testimonial-wrap d-flex justify-content-between flex-wrap">
                             <div v-for="(post, postIndex) in slide" :key="postIndex" class="testimonial-item"
                                 style="flex: 30%;">
-                                <iframe :src="post" height="1006" width="100%" frameborder="0" allowfullscreen
-                                    title="LinkedIn post"></iframe>
+                                <a href="https://www.linkedin.com/company/rayakonstruksi/posts/?feedView=all">
+                                    <iframe :src="post" height="1006" width="100%" frameborder="0" allowfullscreen
+                                        title="LinkedIn post"></iframe>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -105,7 +107,6 @@ export default {
     data() {
         return {
             linkedinPosts: [
-                // 🔹 Masukkan semua link LinkedIn di sini aja
                 'https://www.linkedin.com/embed/feed/update/urn:li:share:7379845617990356992',
                 'https://www.linkedin.com/embed/feed/update/urn:li:share:7379361489352192000',
                 'https://www.linkedin.com/embed/feed/update/urn:li:share:7373984848153292800',
@@ -120,7 +121,6 @@ export default {
     },
 
     computed: {
-        // 🔹 Bagi otomatis per 3 iframe per slide
         chunkedPosts() {
             const chunkSize = 3;
             const chunks = [];
@@ -135,7 +135,7 @@ export default {
         const swiper = new Swiper('.swiper', {
             loop: true,
             autoplay: {
-                delay: 50000,
+                delay: 10000,
                 disableOnInteraction: false,
             },
             pagination: {
@@ -159,8 +159,8 @@ export default {
     },
 
     beforeDestroy() {
-        window.removeEventListener('focus', () => {});
-        window.removeEventListener('blur', () => {});
+        window.removeEventListener('focus', () => { });
+        window.removeEventListener('blur', () => { });
     },
 
     methods: {}

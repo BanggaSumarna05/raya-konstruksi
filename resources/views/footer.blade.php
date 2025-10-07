@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/rayakonstruksi_/" aria-label="Instagram">
+                            <a href="https://www.instagram.com/rayakonstruksiinternasional/" aria-label="Instagram">
                                 <i class="bi bi-instagram"></i> Instagram
                             </a>
                         </li>

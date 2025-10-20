@@ -46,8 +46,11 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-md-4 mb-4">
                     <div class="card p-3 card-hover-bg" style="
                     background-image: url('/assets/img/robby-2.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 18vh auto; min-height: 12em;">
+                    background-position: right bottom;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    min-height: 12em;
+                ">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #2a4184; display: inline-block;">Robby Satria</h5>
@@ -63,8 +66,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-md-4 mb-4">
                     <div class="card p-3 card-hover-bg" style="
                     background-image: url('/assets/img/andhika-1.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 17.2vh auto; min-height: 12em;">
+                        background-position: right bottom;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #2a4184; display: inline-block;">Andhika Sutanto</h5>
@@ -75,8 +80,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-md-4 mb-4">
                     <div class="card p-3 card-hover-bg" style="
                     background-image: url('/assets/img/jimmy-1.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 16.8vh auto; min-height: 12em;">
+                        background-position: right bottom;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #2a4184; display: inline-block;">Jimmy Sanjaya</h5>
@@ -92,8 +99,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-md-4 mb-4">
                     <div class="card p-3 card-hover-bg" style="
                     background-image: url('/assets/img/Henry Adrianto.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 16vh auto; min-height: 12em;">
+                        background-position: right bottom;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #2a4184; display: inline-block;">Henry Adrianto</h5>
@@ -104,8 +113,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-md-4 mb-4">
                     <div class="card p-3 card-hover-bg" style="
                     background-image: url('/assets/img/Suwoto.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 16vh auto; min-height: 12em;">
+                        background-position: right bottom;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #2a4184; display: inline-block;">Suwoto</h5>
@@ -116,8 +127,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                 <div class="col-md-4 mb-4">
                     <div class="card p-3 card-hover-bg" style="
                     background-image: url('/assets/img/anggi1.png');
-                        background-position: right bottom; background-repeat: no-repeat;
-                        background-size: 20vh auto; min-height: 12em;">
+                        background-position: right bottom;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    min-height: 12em;">
                         <div class="card-body">
                             <h5 class="card-title fw-bold pb-3"
                                 style="border-bottom: 5px solid #2a4184; display: inline-block;">Anggi Simatupang</h5>

@@ -14,7 +14,8 @@
                     <a href="{{ route('whoWeAre') }}"
                         class="
                      {{ Route::is('whoWeAre') || Request::is('who-we-are/*') ? 'active' : '' }}
-                     ">Who We Are</a>
+                     ">Who
+                        We Are</a>
                     <ul>
                         <li><a href="{{ route('whoWeAre') }}#company-profile">Company Profile</a></li>
                         <li><a href="{{ route('whoWeAre') }}#vision">Vision & Mission</a></li>
@@ -34,8 +35,7 @@
                         <li><a href="{{ route('whatWeDo') }}#construction">Construction & Fabrication</a></li>
                         <li><a href="{{ route('catalyst-loading') }}">Catalyst Loading</a></li>
                         <li><a href="{{ route('plantMaintenance') }}">Plant Maintenance</a></li>
-                        <li><a href="{{ route('portfolio') }}">Soil & Civil Works</a></li>
-                        <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
+                        <li><a href="{{ route('whatWeDo') }}">Soil & Civil Works</a></li>
                         <li><a href="{{ route('heaveyRental') }}">Heavy Equipment List</a></li>
                     </ul>
                 </li>
@@ -61,6 +61,10 @@
                     <a href="{{ route('contactUs') }}"
                         class="{{ Route::is('contactUs') || Request::is('contactUs/*') ? 'active' : '' }}">Contact
                         Us</a>
+                </li>
+                <li>
+                    <a href="{{ route('portfolio') }}" target="_blank"
+                        class="{{ Route::is('portfolio') || Request::is('portfolio/*') ? 'active' : '' }}">Portfolio</a>
                 </li>
             </ul>
         </nav>

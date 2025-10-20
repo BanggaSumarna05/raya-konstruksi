@@ -45,7 +45,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                 </div>
                 <div class="col-sm-12 col-lg-2" data-aos="fade-right" data-aos-delay="1600">
                     <div class="card">
-                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/logo-asraya.png" alt="">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/asraya-green.png" alt="">
                     </div>
                 </div>
                 <div class="col-sm-12 col-lg-2" data-aos="fade-right" data-aos-delay="1700">

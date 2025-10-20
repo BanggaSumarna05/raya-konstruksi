@@ -35,7 +35,7 @@ import '/node_modules/vue-preloader/dist/style.css';
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-sm-12">
-                    <img src="/assets/img/projects/msm/msm-13.jpg" alt="" class="img-fluid"
+                    <img src="/assets/img/projects/lotte-catalyst/catalyst-3.jpeg" alt="" class="img-fluid"
                         style="max-height: 450px; width: 100%; object-fit: cover;">
                 </div>
                 <div class="col-lg-4 col-sm-12">

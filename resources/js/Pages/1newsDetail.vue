@@ -36,9 +36,9 @@ function convertYoutubeLinksToIframe(content) {
                     <hr>
                 </div>
                 <div class="col-9">
-                    <img class="card-img-top"
+                    <img class="responsive img-fluid w-100 mb-4"
                         :src="blog.image ? `/storage/${blog.image}` : '/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'"
-                        alt="Card image cap" style="max-height: 30vh; object-fit: cover; width: 100%;" />
+                        :alt="blog.title" />
 
                     <div class="d-flex justify-content-between align-items-center my-3 text-muted"
                         style="font-size: 0.95em;">

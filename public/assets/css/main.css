@@ -375,7 +375,7 @@ section {
         visibility: hidden;
         background: #fff;
         box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-        transition: 02.3s;
+        transition: 1all 0.3s ease-in-out;
     }
 
     .navbar .dropdown ul li {

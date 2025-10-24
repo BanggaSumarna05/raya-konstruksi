@@ -11,148 +11,190 @@ defineProps({
 .th {
     background-color: yellow !important;
 }
+
+.content-ul {
+    list-style-type: disc !important;
+    list-style-position: outside;
+    padding-left: 1.5rem !important;
+    margin: 0 0 1rem 0;
+    color: #444444;
+}
 </style>
 <template>
 
     <Head title="Plant Maintenance" />
-    <!-- End Breadcrumbs -->
-    <section id="constructions" class="constructions mb-10" style="padding-top: 10%;">
+    <section id="constructions" class="constructions" style="padding-top: 10%;">
         <div class="container" data-aos="fade-up">
             <div class="section-header">
                 <h2>Plant Maintenance</h2>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <img src="/assets/img/plant-maintenance.png" alt="" class="img-fluid">
-                </div>
-                <div class="col-6">
-                    <p class="rapih">
-                        We consistently deliver reliable results across the Oil & Gas, Oleochemical, and Petrochemical
-                        sectors.
-                        Plant maintenance involves servicing and repairing assets affected by wear or abnormal
-                        operation.
-                        It includes both scheduled maintenance (based on equipment age or usage) and unscheduled
-                        maintenance (due to failures or operational issues).
-                        While maintenance may cause short-term disruption, delaying it often results in significantly
-                        higher long-term costs.
-                    </p>
-                </div>
-            </div>
-            <br><br>
-            <div class="row justify-content-around gy-4">
-                <div class="col-lg-6 d-flex flex-column" data-aos="fade-right">
-                    <h3>Increasing asset efficiency</h3>
-                    <hr />
-                    <p class="rapih">
-                        Wear, fouling, and poor maintenance reduce energy efficiency and push equipment beyond optimal
-                        performance.
-                        Although well-maintained assets perform better, frequent disruptions can reduce throughput—often
-                        costing 5–10 times more than the repair itself. Minimizing downtime is essential for
-                        profitability.
-                    </p>
-                </div>
-                <div class="col-lg-6 d-flex flex-column" data-aos="fade-right">
-                    <h3>Inefficient maintenance models</h3>
-                    <hr />
-                    <p class="rapih">
-                        Run-to-failure is risky and expensive due to unplanned downtime and potential part shortages.
-                        Calendar-based schedules are better but may not reflect real-world conditions like input
-                        changes.
-                        Prescriptive analytics help reduce both unexpected breakdowns and unnecessary scheduled
-                        maintenance.
-                    </p>
-                </div>
-                <div class="col-lg-6 d-flex flex-column" data-aos="fade-right">
-                    <h3>Calculating the right maintenance interval</h3>
-                    <hr />
-                    <p class="rapih">
-                        Time- or usage-based scheduling helps plan ahead. However, relying solely on OEM guidelines and
-                        past experience may miss environmental or input variations that affect wear.
-                        Prescriptive analytics and predictive tools help optimize timing and minimize risk.
-                    </p>
-                </div>
-                <div class="col-lg-6 d-flex flex-column" data-aos="fade-right">
-                    <h3>Using predictive maintenance to efficiency</h3>
-                    <hr />
-                    <p class="rapih">
-                        Predictive maintenance leverages sensors and data to detect early signs of failure by comparing
-                        real-time data to historical trends.
-                        AI and machine learning improve accuracy, enabling earlier interventions, better planning, and
-                        reduced operational impact.
-                    </p>
-                </div>
+                <p class="rapih">
+                    <b>RAYA</b> delivers reliable plant maintenance solutions across the <b>Oil & Gas, Oleochemical, and
+                        Petrochemical sectors</b>. Our services cover both scheduled and unscheduled maintenance,
+                    including
+                    routine inspections, equipment servicing, full-scale shutdown or turnaround execution. With
+                    disciplined planning, certified manpower and strict HSE compliance, we ensure your facility
+                    operates safely, efficiently & with minimized downtime helping prevent costly failures and
+                    extending asset life.
+                </p>
             </div>
 
-            <!-- below were update -->
-            <section id="services-cards" class="services-cards">
-                <div class="container aos-init aos-animate" data-aos="fade-up">
-                    <h3>Comparasion</h3>
-                    <hr />
-                    <table class="table align-items-center"
-                        style="width: 100%; background-color: red; font-size: 1.55vh;">
-                        <thead>
-                            <tr>
-                                <th>Method</th>
-                                <th>Key Features</th>
-                                <th>Advantages</th>
-                                <th>Disadvantages</th>
-                                <th>Best For</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Corrective (CM)</td>
-                                <td>After failure</td>
-                                <td>No scheduling needed</td>
-                                <td>High unplanned downtime</td>
-                                <td>Non-critical equipment</td>
-                            </tr>
-                            <tr>
-                                <td>Preventive (PM)</td>
-                                <td>Time/usage-based routine</td>
-                                <td>Reduces risk of failure</td>
-                                <td>Possibly high maintenance cost</td>
-                                <td>Critical/essential equipment</td>
-                            </tr>
-                            <tr>
-                                <td>Predictive (PdM)</td>
-                                <td>Condition monitored via sensors</td>
-                                <td>Efficient & timely</td>
-                                <td>High investment in tools & training</td>
-                                <td>High-value or vital assets</td>
-                            </tr>
-                            <tr>
-                                <td>Condition-Based (CBM)</td>
-                                <td>Triggered by abnormal parameter readings</td>
-                                <td>Cost-effective, avoids overdoing</td>
-                                <td>Requires real-time monitoring tools</td>
-                                <td>Pumps, motors, valves</td>
-                            </tr>
-                            <tr>
-                                <td>Reliability-Centered (RCM)</td>
-                                <td>Risk-based and analytical</td>
-                                <td>Optimizes reliability</td>
-                                <td>Complex analysis and implementation</td>
-                                <td>Complex systems</td>
-                            </tr>
-                            <tr>
-                                <td>Total Productive (TPM)</td>
-                                <td>Involves all employees</td>
-                                <td>Builds proactive culture</td>
-                                <td>Needs training & cultural change</td>
-                                <td>Large-scale manufacturing</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="pt-5">
-                    <h2>Contact</h2>
-                    <hr />
-                    We’d love to hear from you! Feel free to reach out to us at
-                    <a href="mailto:marketing@rayakonstruksi.com">marketing@rayakonstruksi.com</a>
-                    for inquiries or collaborations.
+            <section id="services-cards" class="">
+                <h2>Scope of Services</h2>
+                <hr>
+                <p class="align-items-center">
+                    Plant maintenance requires different approaches depending on equipment condition and operational
+                    needs. <b>RAYA</b> applies the appropriate maintenance method to ensure safe performance,
+                    extended asset life,
+                    and minimized downtime. Our comprehensive services include:
+                </p>
+                <br>
+                <div class="row justify-content-around ">
+                    <div class="col-lg-3 d-flex flex-column" data-aos="fade-right">
+                        <h3>
+                            Preventive & Predictive Maintenance
+                        </h3>
+                        <hr>
+                        Proactive maintenance to prevent costly breakdowns.
+                        <ul class="content-ul">
+                            <li>
+                                Routine inspection & servicing.
+                            </li>
+                            <li>
+                                Lubrication, calibration & alignment.
+                            </li>
+                            <li>
+                                Vibration, temperature & condition monitoring.
+                            </li>
+                            <li>
+                                Performance analysis & maintenance recommendations.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 d-flex flex-column" data-aos="fade-right">
+                        <h3>
+                            Corrective Maintenance & Overhaul
+                        </h3>
+                        <hr>
+                        Restoring equipment performance when issues occur.
+                        <ul class="content-ul">
+                            <li>
+                                Mechanical repair & component replacement.
+                            </li>
+                            <li>
+                                Pump, valve, and rotating equipment servicing.
+                            </li>
+                            <li>
+                                Alignment, balancing & diagnostics.
+                            </li>
+                            <li>
+                                Major overhaul during planned downtime.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 d-flex flex-column" data-aos="fade-right">
+                        <h3>
+                            Shutdown & Turnaround Execution
+                        </h3>
+                        <hr>
+                        Time-critical maintenance with precise scheduling and coordination.
+                        <ul class="content-ul">
+                            <li>
+                                Routine inspection & servicing
+                            </li>
+                            <li>
+                                Lubrication, calibration & alignment
+                            </li>
+                            <li>
+                                Vibration, temperature & condition monitoring
+                            </li>
+                            <li>
+                                Performance analysis & maintenance recommendations
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 d-flex flex-column" data-aos="fade-right">
+                        <h3>
+                            Reliability Improvement &nbsp;&nbsp;&nbsp;&nbsp;
+                        </h3>
+                        <hr>
+                        Enhancing equipment reliability for long-term operational stability.
+                        <ul class="content-ul">
+                            <li>
+                                Root Cause Failure Analysis (RCA / RCFA)
+                            </li>
+                            <li>
+                                Operation & maintenance optimization
+                            </li>
+                            <li>
+                                Life cycle and efficiency evaluation
+                            </li>
+                            <li>
+                                Safety & compliance improvement strategies
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </section>
+
+            <center>
+                <img src="/assets/img/footer-1.jpg" style="border-radius: 6px;"
+                    alt="Construction & Fabrication" class="img-fluid" />
+            </center>
+            <section id="services-cards" class="">
+                <h3>Comparison</h3>
+                <hr />
+                <table class="table align-items-center" style="width: 100%; background-color: red; font-size: 1.55vh;">
+                    <thead>
+                        <tr>
+                            <th>Maintenance Level</th>
+                            <th>Application Condition</th>
+                            <th>Activities Included</th>
+                            <th>Expected Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Routine / Preventive Maintenance</td>
+                            <td>Equipment operating normally with expected wear</td>
+                            <td>Inspection, cleaning, lubrication, calibration, scheduled part replacement</td>
+                            <td>Maintain stability & prevent premature failure</td>
+                        </tr>
+                        <tr>
+                            <td>Predictive / Condition-Based Maintenance</td>
+                            <td>Early signs of deviation detected via monitoring</td>
+                            <td>Vibration/temperature trending, oil analysis, targeted inspections</td>
+                            <td>Detect faults early & reduce unplanned downtime</td>
+                        </tr>
+                        <tr>
+                            <td>Corrective Maintenance</td>
+                            <td>Performance reduced or malfunction identified</td>
+                            <td>Troubleshooting, component repair/replacement, alignment & testing</td>
+                            <td>Restore equipment efficiency & reliability</td>
+                        </tr>
+                        <tr>
+                            <td>Overhaul / Major Repair</td>
+                            <td>Asset at end-of-service cycle or requiring full restoration</td>
+                            <td>Disassembly, inspection, refurbishment, precision rebuild</td>
+                            <td>Reset equipment to near-new condition</td>
+                        </tr>
+                        <tr>
+                            <td>Shutdown / Turnaround Maintenance</td>
+                            <td>Planned full-plant or partial area downtime</td>
+                            <td>Multi-discipline execution, job sequencing, QA/QC, HSE oversight</td>
+                            <td>Complete maintenance with minimal production interruption</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div class="pt-2">
+                <h2>Contact</h2>
+                <hr />
+                We’d love to hear from you! Feel free to reach out to us at
+                <a href="mailto:marketing@rayakonstruksi.com">marketing@rayakonstruksi.com</a>
+                for inquiries or collaborations.
+            </div>
         </div>
     </section>
+
 </template>

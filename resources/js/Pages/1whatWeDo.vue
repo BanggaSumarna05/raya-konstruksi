@@ -36,7 +36,8 @@ import '/node_modules/vue-preloader/dist/style.css';
                             Equipment Rental & Operation
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-get-started" style="max-width: 40%;">Discover
+                    <a :href="route('constructionFabrication')" class="btn btn-get-started"
+                        style="max-width: 40%;">Discover
                         More <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>

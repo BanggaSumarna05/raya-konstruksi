@@ -744,11 +744,24 @@ class FrontController extends Controller
         ]);
     }
 
+    public function constructionFabrication()
+    {
+        $data = [];
+        $data['title'] = 'Construction & Fabrication Indonesia';
+        $data['desc'] = "Raya Konstruksi provides comprehensive construction and fabrication services covering structural, piping, and tank systems. Backed by experienced engineers and modern facilities reliability across industries.";
+        SEOMeta::setTitle($data['title']);
+        SEOMeta::setDescription($data['desc']);
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('1construction-fabrication', [
+            'data' => $data
+        ]);
+    }
+
     public function plantMaintenance()
     {
         $data = [];
         $data['title'] = 'Plant Maintenance Indonesia';
-        $data['desc'] = "Plant maintenance is the service and repair of assets and equipment. During normal operation, assets may accumulate wear-and-tear that needs to be addressed. Deviations outside of normal operation of cause the majority of damage to equipment and assets.";
+        $data['desc'] = "Plant maintenance is key to maximizing efficiency, reducing downtime and cutting costs. Learn all about strategies, essential tools, and more!";
         SEOMeta::setTitle($data['title']);
         SEOMeta::setDescription($data['desc']);
         SEOMeta::addKeyword($this->keywords);

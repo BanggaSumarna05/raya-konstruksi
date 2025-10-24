@@ -15,6 +15,7 @@ Route::get('/who-we-are/clients-partners', [FrontController::class, 'clientPartn
 
 #what we do
 Route::get('/what-we-do', [FrontController::class, 'whatWeDo'])->name('whatWeDo');
+Route::get('/what-we-do/construction-fabrication', [FrontController::class, 'constructionFabrication'])->name('constructionFabrication');
 Route::get('/what-we-do/catalyst-loading', [FrontController::class, 'catalystLoading'])->name('catalyst-loading');
 Route::get('/what-we-do/plant-maintenance', [FrontController::class, 'plantMaintenance'])->name('plantMaintenance');
 Route::get('/raya-konstruksi-portfolio', [FrontController::class, 'portfolio'])->name('portfolio');

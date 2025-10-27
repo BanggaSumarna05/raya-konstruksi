@@ -33,6 +33,10 @@ class BlogResource extends Resource
                     ->directory('blog-images'),
                 Forms\Components\Toggle::make('is_published')
                     ->label('Published'),
+                Forms\Components\RichEditor::make('content')
+                    ->fileAttachmentsDisk('public')        // tempat penyimpanan
+                    ->fileAttachmentsDirectory('posts')    // foldernya
+                    ->fileAttachmentsVisibility('public'),
                 Forms\Components\DateTimePicker::make('published_at'),
             ]);
     }

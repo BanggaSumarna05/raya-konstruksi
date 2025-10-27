@@ -34,11 +34,6 @@ class BlogResource extends Resource
                 Forms\Components\Toggle::make('is_published')
                     ->label('Published'),
                 Forms\Components\DateTimePicker::make('published_at'),
-                Forms\Components\FileUpload::make('video')
-                    ->label('Video (optional)')
-                    ->directory('blog/videos')
-                    ->acceptedFileTypes(['video/mp4', 'video/webm'])
-                    ->maxSize(500000), // 500 MB jika server mengizinkan
             ]);
     }
 

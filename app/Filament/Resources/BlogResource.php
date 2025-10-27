@@ -26,19 +26,24 @@ class BlogResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
+
                 Forms\Components\RichEditor::make('content')
-                    ->required(),
+                    ->required()
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('blog-images')
+                    ->fileAttachmentsVisibility('public'),
+
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory('blog-images'),
+
                 Forms\Components\Toggle::make('is_published')
                     ->label('Published'),
-                Forms\Components\RichEditor::fileAttachmentsDisk('public')        // tempat penyimpanan
-                    ->fileAttachmentsDirectory('blog-images')    // foldernya
-                    ->fileAttachmentsVisibility('public'),
+
                 Forms\Components\DateTimePicker::make('published_at'),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {

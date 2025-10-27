@@ -8,20 +8,38 @@ const props = defineProps({
 });
 
 // Fungsi helper untuk konversi link YouTube ke embed iframe
-function convertYoutubeLinksToIframe(content) {
-    // Regex untuk menangkap link YouTube biasa, youtu.be, dan shorts
-    const youtubeRegex = /https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]+)/g;
+function convertMedia(content) {
+    if (!content) return content;
 
-    return content.replace(youtubeRegex, (match, videoId) => {
+    // 1) Embed YouTube
+    const youtubeRegex = /https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]+)/g;
+    content = content.replace(youtubeRegex, (match, videoId) => {
         return `
-      <div class="ratio ratio-16x9 my-3">
-        <iframe src="https://www.youtube.com/embed/${videoId}" 
-                title="YouTube video" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
-      </div>`;
+        <div class="ratio ratio-16x9 my-4">
+            <iframe src="https://www.youtube.com/embed/${videoId}"
+                title="YouTube video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                style="width:100%; height:100%; border:0;">
+            </iframe>
+        </div>`;
     });
+
+    // 2) Embed video lokal (mp4/webm)
+    const localVideoRegex = /(https?:\/\/[^\s]+?\.(mp4|webm)|\/storage\/[^\s]+?\.(mp4|webm))/g;
+    content = content.replace(localVideoRegex, (url) => {
+        return `
+        <div class="my-4">
+            <video controls style="width:100%; border-radius:10px;">
+                <source src="${url}" type="video/mp4">
+                Browser kamu tidak mendukung video.
+            </video>
+        </div>`;
+    });
+
+    return content;
 }
+
 </script>
 
 <template>
@@ -57,7 +75,7 @@ function convertYoutubeLinksToIframe(content) {
                     </div>
 
                     <!-- Render konten dengan auto embed YouTube -->
-                    <div v-html="convertYoutubeLinksToIframe(blog.content)"></div>
+                    <div v-html="convertMedia(blog.content)"></div>
                 </div>
             </div>
         </div>

@@ -26,24 +26,21 @@ class BlogResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-
                 Forms\Components\RichEditor::make('content')
-                    ->required()
-                    ->fileAttachmentsDisk('public')
-                    ->fileAttachmentsDirectory('blog-images')
-                    ->fileAttachmentsVisibility('public'),
-
+                    ->required(),
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory('blog-images'),
-
                 Forms\Components\Toggle::make('is_published')
                     ->label('Published'),
-
                 Forms\Components\DateTimePicker::make('published_at'),
+                Forms\Components\FileUpload::make('video')
+                    ->label('Video (optional)')
+                    ->directory('blog/videos')
+                    ->acceptedFileTypes(['video/mp4', 'video/webm'])
+                    ->maxSize(500000), // 500 MB jika server mengizinkan
             ]);
     }
-
 
     public static function table(Table $table): Table
     {

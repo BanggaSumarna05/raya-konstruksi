@@ -17,5 +17,6 @@ class Blog extends Model
         'user_id',
         'is_published',
         'published_at',
+        'video'
     ];
 }

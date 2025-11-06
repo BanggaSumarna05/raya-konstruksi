@@ -27,11 +27,28 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                             PT RAYA KONSTRUKSI INTERNASIONAL
                         </h4>
                         <br><br>
-                        <a href="mailto:marketing@rayakonstruksi.com" style="color: black">
+                        <center>
+                            <a href="mailto:marketing@rayakonstruksi.com" type="button" class="btn text-black"
+                                style="
+                                background-image: 
+                                 /* linear-gradient(to left, #2a4184, #52565e); */
+                                url('https://img.freepik.com/free-vector/monochrome-realistic-liquid-effect-background_474888-7310.jpg?semt=ais_hybrid&w=740&q=80') ;
+                                background-size: cover;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-attachment: fixed;
+                                border-radius: 14px;
+                                padding: 50px;
+                                ">
+                                <b>marketing@rayakonstruksi.com</b>
+                            </a>
+                        </center>
+
+                        <!-- <a href="mailto:marketing@rayakonstruksi.com" style="color: black">
                             <i class="bi bi-envelope-fill" style="margin-right: 6px"></i>
                             <b>marketing@rayakonstruksi.com</b>
                             <i class="bi bi-box-arrow-up-right" style="margin-left: 6px"></i>
-                        </a>
+                        </a> -->
                         <br><br>
                         <h5>HEAD OFFICE JAKARTA</h5>
                         <div class="row" style="border-bottom: solid 1px black;">
@@ -60,8 +77,8 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                                 </p>
                             </div>
                             <div class="col-4">
-                                <a href="https://www.google.com/maps/place/Jl.+Dwikora+I+No.16,+Suka+Maju,+Kec.+Sail,+Kota+Pekanbaru,+Riau+28115/@0.5177796,101.4628545,17z/data=!3m1!4b1!4m5!3m4!1s0x31d5ac265500d6d1:0x137509788843f687!8m2!3d0.5177742!4d101.4654348?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: black; margin-left: 10px;"
-                                    class="see-on-maps-link">
+                                <a href="https://www.google.com/maps/place/Jl.+Dwikora+I+No.16,+Suka+Maju,+Kec.+Sail,+Kota+Pekanbaru,+Riau+28115/@0.5177796,101.4628545,17z/data=!3m1!4b1!4m5!3m4!1s0x31d5ac265500d6d1:0x137509788843f687!8m2!3d0.5177742!4d101.4654348?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank" style="color: black; margin-left: 10px;" class="see-on-maps-link">
                                     <i class="bi bi-geo-alt-fill" style="margin-right: 6px"></i>
                                     <b>See On Maps</b>
                                 </a>
@@ -77,8 +94,8 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                                 </p>
                             </div>
                             <div class="col-4">
-                                <a href="https://www.google.com/maps/search/Jl.+Balai+Kimia+l+15,+RT+15%2FRW+9,+Pekayon,+Kec.+Ps.+Rebo,+East+Jakarta,+Jakarta+13790,+Indonesia/@-6.3444593,106.8569056,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: black; margin-left: 10px;"
-                                    class="see-on-maps-link">
+                                <a href="https://www.google.com/maps/search/Jl.+Balai+Kimia+l+15,+RT+15%2FRW+9,+Pekayon,+Kec.+Ps.+Rebo,+East+Jakarta,+Jakarta+13790,+Indonesia/@-6.3444593,106.8569056,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank" style="color: black; margin-left: 10px;" class="see-on-maps-link">
                                     <i class="bi bi-geo-alt-fill" style="margin-right: 6px"></i>
                                     <b>See On Maps</b>
                                 </a>

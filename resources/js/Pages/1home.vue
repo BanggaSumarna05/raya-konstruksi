@@ -2,6 +2,7 @@
 import { Head, Link } from '@inertiajs/vue3';
 import { VuePreloader } from 'vue-preloader';
 import '/node_modules/vue-preloader/dist/style.css';
+import MapMultipleMarker from '@/Components/MapMultipleMarker.vue';
 
 defineProps({ blogs: Array })
 
@@ -15,12 +16,11 @@ defineProps({ blogs: Array })
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero">
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
-            <div
-                class="carousel-item active"
-                style="background-image: url('assets/img/hero-carousel/hover-1-new.jpg'); background-position: top 100 center; background-size: cover;"
-            ></div>
+            <div class="carousel-item active"
+                style="background-image: url('assets/img/hero-carousel/hover-1-new.jpg'); background-position: top 100 center; background-size: cover;">
+            </div>
             <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/hover-2-new.jpg')">
-            </div>            
+            </div>
         </div>
     </section>
 
@@ -172,8 +172,11 @@ defineProps({ blogs: Array })
                 <div class="col-lg-8 col-sm-12">
                     <div class="responsive">
                         <center>
-                            <img class="img-thumbnail" src="/assets/img/map.png" usemap="#image-map"
-                                style="border: 0px;background-color: transparent; min-height: 100%;">
+                            <!-- <img class="img-thumbnail" src="/assets/img/map.png" usemap="#image-map"
+                                style="border: 0px;background-color: transparent; min-height: 100%;"> -->
+                            <div @click.prevent.stop>
+                                <MapMultipleMarker />
+                            </div>
                         </center>
                     </div>
                 </div>

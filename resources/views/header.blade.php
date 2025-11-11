@@ -10,12 +10,22 @@
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
             <ul>
+                <li class="d-flex d-lg-none pb-15">
+                    <a href="{{ route('index') }}" class="logo d-flex align-items-center">
+                        <img src="/assets/img/logo-raya.png" alt="Logo Raya Konstruksi International"
+                            title="Logo Makadia Group International">
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="{{ route('whoWeAre') }}"
                         class="
                      {{ Route::is('whoWeAre') || Request::is('who-we-are/*') ? 'active' : '' }}
                      ">Who
-                        We Are</a>
+                        We Are
+                        <span class="d-lg-none">
+                            <i class="bi bi-chevron-right"></i>
+                        </span>
+                    </a>
                     <ul>
                         <li><a href="{{ route('whoWeAre') }}#company-profile">Company Profile</a></li>
                         <li><a href="{{ route('whoWeAre') }}#vision">Vision & Mission</a></li>
@@ -30,7 +40,10 @@
                 </li>
                 <li class="dropdown"><a href="{{ route('whatWeDo') }}"
                         class="{{ Route::is('whatWeDo') || Request::is('what-we-do/*') ? 'active' : '' }}">What We
-                        Do</a>
+                        Do
+                        <span class="d-lg-none">
+                            <i class="bi bi-chevron-right"></i>
+                        </span></a>
                     <ul>
                         <li><a href="{{ route('whatWeDo') }}#construction">Construction & Fabrication</a></li>
                         <li><a href="{{ route('catalyst-loading') }}">Catalyst Loading</a></li>
@@ -41,7 +54,10 @@
                 </li>
                 <li class="dropdown">
                     <a href="{{ route('sustainability') }}"
-                        class="{{ Route::is('sustainability') || Request::is('sustainability/*') ? 'active' : '' }}">Sustainability</a>
+                        class="{{ Route::is('sustainability') || Request::is('sustainability/*') ? 'active' : '' }}">Sustainability
+                    <span class="d-lg-none">
+                        <i class="bi bi-chevron-right"></i>
+                    </span></a>
                     <ul>
                         <li><a href="{{ route('safety') }}">Health, Safety & Environment</a></li>
                         <li><a href="{{ route('respon') }}">Corporate Social Responsibility
@@ -51,20 +67,36 @@
                 <li>
                     <a href="{{ route('news') }}"
                         class="{{ Route::is('news') || Request::is('news-n-event/*') ? 'active' : '' }}">News &
-                        Events</a>
+                        Events<span class="d-lg-none">
+                        <i class="bi bi-chevron-right"></i>
+                    </span></a>
                 </li>
                 <li>
                     <a href="{{ route('career') }}"
-                        class="{{ Route::is('career') || Request::is('career/*') ? 'active' : '' }}">Careers</a>
+                        class="{{ Route::is('career') || Request::is('career/*') ? 'active' : '' }}">Careers<span class="d-lg-none">
+                        <i class="bi bi-chevron-right"></i>
+                    </span></a>
                 </li>
                 <li>
                     <a href="{{ route('contactUs') }}"
                         class="{{ Route::is('contactUs') || Request::is('contactUs/*') ? 'active' : '' }}">Contact
-                        Us</a>
+                        Us<span class="d-lg-none">
+                        <i class="bi bi-chevron-right"></i>
+                    </span></a>
                 </li>
                 <li>
                     <a href="{{ route('portfolio') }}" target="_blank"
-                        class="{{ Route::is('portfolio') || Request::is('portfolio/*') ? 'active' : '' }}">Portfolio</a>
+                        class="{{ Route::is('portfolio') || Request::is('portfolio/*') ? 'active' : '' }}">Portfolio<span class="d-lg-none">
+                        <i class="bi bi-chevron-right"></i>
+                    </span></a>
+                </li>
+                <li class="d-flex d-lg-none pt-75">
+                    <div>
+                        <div class="copyright m-3">
+                            &copy; Copyright <b>RAYA Construction International</b> 2025 All Rights
+                            Reserved
+                        </div>
+                    </div>
                 </li>
             </ul>
         </nav>

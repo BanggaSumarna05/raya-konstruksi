@@ -25,19 +25,21 @@ onMounted(() => {
 <template>
 
     <Head title="Who We Are" />
-    <section id="company-profile" class="alt-services-2 section mb-10 mt-5" >
+    <section id="company-profile" class="alt-services-2 section mb-10 mt-5">
         <div class="container">
             <h1 class="pb-10">Who We Are</h1>
             <div class="row justify-content-around gy-4">
                 <div class="col-lg-6 col-sm-12 " data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/img/hero-carousel/hover-1.png" alt="" class="img-fluid"
-                        style="max-height: 18vdh!important;">
+                    <img src="assets/img/hero-carousel/hover-1.png" alt="" class="img-fluid" loading="lazy"
+                        style="max-height: 18vdh!important;"
+                        onload="this.previousElementSibling.classList.add('hidden'); this.classList.remove('opacity-0');"
+                        onerror="this.previousElementSibling.classList.remove('hidden'); this.classList.add('hidden');">
                 </div>
                 <div class="features-image col-lg-5 col-sm-12 order-1 order-lg-1 aos-init aos-animate"
                     data-aos="fade-up" data-aos-delay="100">
                     <h3>Company Profile</h3>
                     <p class="rapih">
-                        RAYA KONSTRUKSI, established in 2018, is a leading provider of Engineering & Construction
+                        <b>RAYA KONSTRUKSI</b> established in 2018, is a leading provider of Engineering & Construction
                         services, specializing in Piping & Mechanical Construction, Equipment Rental, and Operation &
                         Maintenance.
                         <br><br>
@@ -58,10 +60,15 @@ onMounted(() => {
                     <h4>Vision</h4>
                 </div>
                 <div class="col-sm-12 col-lg-6">
-                    <p>
-                        Delivering Excellent Engineering & Construction Services
-                        for Global Industrial Clients
-                    </p>
+                    <div class="row">
+                        <div class="col-sm-1 col-lg-1">
+                            <!-- <li></li> -->
+                        </div>
+                        <div class="col-sm-11 col-lg-11">
+                            Delivering Excellent Engineering & Construction Services
+                            for Global Industrial Clients
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row pt-5">
@@ -69,19 +76,30 @@ onMounted(() => {
                     <h4>Mission</h4>
                 </div>
                 <div class="col-sm-12 col-lg-6">
-                    <li>
-                        Achieving extraordinary result for our industrial clients through a culture of
-                        excellence in
-                        construction and heavy equipment services.
-                    </li>
-                    <li>
-                        Building satisfying careers for our team by implementing agile mindset and continuous
-                        learning to
-                        adapt into changes in the industry.
-                    </li>
-                    <li>
-                        Applying best practices in safety, quality, and project management.
-                    </li>
+                    <div class="row">
+                        <div class="col-sm-1 col-lg-1">
+                            <li></li>
+                        </div>
+                        <div class="col-sm-11 col-lg-11">
+                            Achieving extraordinary result for our industrial clients through a culture of
+                            excellence in
+                            construction and heavy equipment services.
+                        </div>
+                        <div class="col-sm-1 col-lg-1">
+                            <li></li>
+                        </div>
+                        <div class="col-sm-11 col-lg-11">
+                            Building satisfying careers for our team by implementing agile mindset and continuous
+                            learning to
+                            adapt into changes in the industry.
+                        </div>
+                        <div class="col-sm-1 col-lg-1">
+                            <li></li>
+                        </div>
+                        <div class="col-sm-11 col-lg-11">
+                            Applying best practices in safety, quality, and project management.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

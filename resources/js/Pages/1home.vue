@@ -24,7 +24,7 @@ defineProps({ blogs: Array })
         </div>
     </section>
 
-    <!-- <section id="services" class="services">
+    <section id="services" class="services">
         <div class="container">
             <h2 class="pb-10">RAYA AT A GLANCE</h2>
             <div class="row">
@@ -36,7 +36,7 @@ defineProps({ blogs: Array })
                         RAYA provides a full range of services in procurement, construction and maintenance
                         across the world.
                     </p>
-                    <a href="#" rel="noopener noreferrer" class="btn-get-started">
+                    <a :href="route('whoWeAre')" rel="noopener noreferrer" class="btn-get-started">
                         Discover More
                     </a>
                 </div>
@@ -85,7 +85,7 @@ defineProps({ blogs: Array })
                                 <div>
                                     <h3 style="color:black">3</h3>
                                     <p>
-                                        Catalyst Loading
+                                        Catalyst Handling
                                     </p>
                                 </div>
                             </center>
@@ -110,7 +110,7 @@ defineProps({ blogs: Array })
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <section id="services" class="services section-bg">
         <div class="container">

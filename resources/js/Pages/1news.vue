@@ -50,8 +50,11 @@ const loadMore = () => {
                             style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
                             <img class="card-img-top"
                                 :src="blog.image ? `/storage/${blog.image}` : '/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'"
-                                alt="Card image cap"
-                                style="max-height: 30vh;min-height: 30vh; object-fit: cover; width: 100%;" />
+                                :alt="(blog.title)"
+                                style="max-height: 30vh;min-height: 30vh; object-fit: cover; width: 100%;"
+                                loading="lazy"
+                                onload="this.previousElementSibling.classList.add('hidden'); this.classList.remove('opacity-0');"
+                                onerror="this.previousElementSibling.classList.remove('hidden'); this.classList.add('hidden');" />
                             <div class="card-body">
                                 <p
                                     style="border-bottom: 3px solid #2a4184; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
@@ -63,7 +66,7 @@ const loadMore = () => {
                                 </p>
                                 <h5 class="card-title text-black">{{ blog.title }}</h5>
                                 <p class="card-text">
-                                    {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 32) +'...'}}
+                                    {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 32) + '...' }}
                                 </p>
                             </div>
                         </div>

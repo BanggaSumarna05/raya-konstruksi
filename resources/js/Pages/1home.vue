@@ -172,11 +172,11 @@ defineProps({ blogs: Array })
                 <div class="col-lg-8 col-sm-12">
                     <div class="responsive">
                         <center>
-                            <!-- <img class="img-thumbnail" src="/assets/img/map.png" usemap="#image-map"
-                                style="border: 0px;background-color: transparent; min-height: 100%;"> -->
-                            <div @click.prevent.stop>
+                            <img class="img-thumbnail" src="/assets/img/map.png" usemap="#image-map"
+                                style="border: 0px;background-color: transparent; min-height: 100%;">
+                            <!-- <div @click.prevent.stop>
                                 <MapMultipleMarker />
-                            </div>
+                            </div> -->
                         </center>
                     </div>
                 </div>

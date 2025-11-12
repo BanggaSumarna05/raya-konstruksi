@@ -13,7 +13,7 @@
                 <li class="d-flex d-lg-none pb-15">
                     <a href="{{ route('index') }}" class="logo d-flex align-items-center">
                         <img src="/assets/img/logo-raya.png" alt="Logo Raya Konstruksi International"
-                            title="Logo Makadia Group International">
+                            title="Raya Konstruksi International">
                     </a>
                 </li>
                 <li class="dropdown">
@@ -55,9 +55,9 @@
                 <li class="dropdown">
                     <a href="{{ route('sustainability') }}"
                         class="{{ Route::is('sustainability') || Request::is('sustainability/*') ? 'active' : '' }}">Sustainability
-                    <span class="d-lg-none">
-                        <i class="bi bi-chevron-right"></i>
-                    </span></a>
+                        <span class="d-lg-none">
+                            <i class="bi bi-chevron-right"></i>
+                        </span></a>
                     <ul>
                         <li><a href="{{ route('safety') }}">Health, Safety & Environment</a></li>
                         <li><a href="{{ route('respon') }}">Corporate Social Responsibility
@@ -68,27 +68,29 @@
                     <a href="{{ route('news') }}"
                         class="{{ Route::is('news') || Request::is('news-n-event/*') ? 'active' : '' }}">News &
                         Events<span class="d-lg-none">
-                        <i class="bi bi-chevron-right"></i>
-                    </span></a>
+                            <i class="bi bi-chevron-right"></i>
+                        </span></a>
                 </li>
                 <li>
                     <a href="{{ route('career') }}"
-                        class="{{ Route::is('career') || Request::is('career/*') ? 'active' : '' }}">Careers<span class="d-lg-none">
-                        <i class="bi bi-chevron-right"></i>
-                    </span></a>
+                        class="{{ Route::is('career') || Request::is('career/*') ? 'active' : '' }}">Careers<span
+                            class="d-lg-none">
+                            <i class="bi bi-chevron-right"></i>
+                        </span></a>
                 </li>
                 <li>
                     <a href="{{ route('contactUs') }}"
                         class="{{ Route::is('contactUs') || Request::is('contactUs/*') ? 'active' : '' }}">Contact
                         Us<span class="d-lg-none">
-                        <i class="bi bi-chevron-right"></i>
-                    </span></a>
+                            <i class="bi bi-chevron-right"></i>
+                        </span></a>
                 </li>
                 <li>
                     <a href="{{ route('portfolio') }}" target="_blank"
-                        class="{{ Route::is('portfolio') || Request::is('portfolio/*') ? 'active' : '' }}">Portfolio<span class="d-lg-none">
-                        <i class="bi bi-chevron-right"></i>
-                    </span></a>
+                        class="{{ Route::is('portfolio') || Request::is('portfolio/*') ? 'active' : '' }}">Portfolio<span
+                            class="d-lg-none">
+                            <i class="bi bi-chevron-right"></i>
+                        </span></a>
                 </li>
                 <li class="d-flex d-lg-none pt-75">
                     <div>

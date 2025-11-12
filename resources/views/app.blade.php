@@ -97,6 +97,7 @@
 <body class="font-sans antialiased">
     @include('header')
     @inertia
+
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
@@ -127,6 +128,39 @@
     <script src="/assets/vendor/php-email-form/validate.js"></script>
     <!-- Template Main JS File -->
     <script src="/assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.35/bundled/lenis.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inisialisasi Lenis dengan konfigurasi sama seperti versi React
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: t => 1 - Math.pow(1 - t, 4),
+                smoothWheel: true,
+                smoothTouch: false,
+            });
+
+            // Jalankan RAF loop (scroll animation)
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            // Saat navigasi Inertia → scroll halus ke atas (meniru router.on('navigate'))
+            document.addEventListener('inertia:navigate', () => {
+                lenis.scrollTo(0, {
+                    immediate: false
+                }); // false = tetap halus
+            });
+
+            // Bersihkan saat reload halaman (meniru cleanup useEffect)
+            window.addEventListener('beforeunload', () => {
+                if (lenis.destroy) lenis.destroy();
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>

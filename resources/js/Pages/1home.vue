@@ -14,14 +14,57 @@ defineProps({ blogs: Array })
 
     <Head title="Home" />
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero">
+    <section id="hero" class="hero" style="margin-top: 0px; min-height: 90%;">
+        <img src="/assets/img/logo-raya-clean.png" alt="Logo Raya Konstruksi International"
+            title="Logo Raya Konstruksi International" class="logo d-flex hero-logo"
+            style="position: absolute; top: -3%; left: 16%; z-index: 1000; max-width: 450px; width: auto; padding:80px;" />
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
             <div class="carousel-item active"
                 style="background-image: url('assets/img/hero-carousel/hover-1-new.jpg'); background-position: top 100 center; background-size: cover;">
             </div>
-            <div class="carousel-item" style="background-image: url('assets/img/hero-carousel/hover-2-new.jpg')">
+            <div class="carousel-item" style="background-image: url('assets/img/projects/airproduct/cover-1.jpg')">
+            </div>
+            <div
+                style="position: absolute; top: 85%; left: 36%; z-index: 1000; max-width: 450px; width: auto; padding:80px;">
+                <nav id="navbar" class="navbar text-white">
+                    <ul>
+                        <li>
+                            <a href="{{ route('whoWeAre') }}" class="text-white">Who
+                                We Are<span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('whatWeDo') }}" class="text-white">What We Do<span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('sustainability') }}" class="text-white">Sustainability<span
+                                    class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('news') }}" class="text-white">News & Events<span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('contactUs') }}" class="text-white">Contact Us<span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('portfolio') }}" class="text-white">Portfolio<span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span></a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
+
     </section>
 
     <section id="services" class="services">
@@ -30,11 +73,13 @@ defineProps({ blogs: Array })
             <div class="row">
                 <div class="col-sm-12 col-lg-4">
                     <p>
-                        RAYA is leading construction company based in Indonesia.
+                        <b>RAYA</b> is a trusted construction company based in Indonesia.
                         <br><br>
-                        With multifaceted project management capabilities and a strong diverse workforce.
-                        RAYA provides a full range of services in procurement, construction and maintenance
-                        across the world.
+                        <b>RAYA</b> delivers comprehensive solutions in <strong>fabrication, plant maintenance, catalyst
+                            handling & civil
+                            works</strong> for industrial projects across the region.
+                        <br><br>
+                        
                     </p>
                     <a :href="route('whoWeAre')" rel="noopener noreferrer" class="btn-get-started">
                         Discover More
@@ -42,7 +87,7 @@ defineProps({ blogs: Array })
                 </div>
                 <div class="col-sm-12 col-lg-8">
                     <div class="px-5 row">
-                        <div class="col-sm-6 col-lg-2">
+                        <!-- <div class="col-sm-6 col-lg-2">
                             <center>
                                 <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon1-1.png" alt=""
                                     style="max-width:64px;max-height:64px;">
@@ -57,10 +102,10 @@ defineProps({ blogs: Array })
                                     </p>
                                 </div>
                             </center>
-                        </div>
+                        </div> -->
                         <div class="col-sm-6 col-lg-2">
                             <center>
-                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon2.png" alt=""
+                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon5.png" alt=""
                                     style="max-width:64px;max-height:64px;">
                             </center>
                         </div>
@@ -189,9 +234,43 @@ export default {
     data() {
     },
     mounted() {
-    },
-    beforeDestroy() { },
-    methods: {
+        const header = document.querySelector('#header') || document.querySelector('header') || document.querySelector('.navbar');
+        const hero = document.querySelector('#hero');
+        if (!header || !hero) return;
+
+        header.style.transition = header.style.transition || 'transform 0.25s ease, opacity 0.25s ease';
+
+        /* helper to hide/show */
+        const hideHeader = () => {
+            header.style.transform = 'translateY(0%)';
+            header.style.opacity = '0';
+            header.setAttribute('aria-hidden', 'true');
+        };
+        const showHeader = () => {
+            header.style.transform = 'translateY(0)';
+            header.style.opacity = '1';
+            header.setAttribute('aria-hidden', 'false');
+        };
+
+        /* check position relative to hero */
+        const onScroll = () => {
+            // If scrolled all the way to the top, hide header
+            if (window.scrollY === 0) {
+                hideHeader();
+                return;
+            }
+
+            const heroBottom = hero.getBoundingClientRect().bottom;
+            if (heroBottom <= 0) showHeader();
+            else hideHeader();
+        };
+
+        /* initial state and listener */
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        /* keep reference so it can be removed later if needed */
+        this._onScroll = onScroll;
     }
-};
+}
 </script>

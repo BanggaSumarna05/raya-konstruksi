@@ -40,7 +40,7 @@ import '/node_modules/vue-preloader/dist/style.css';
     <section id="alt-services-2" class="alt-services-2 section mb-10" style="padding-top:15vh">
         <div class="container">
             <h4>
-                Pesident Commissioner
+                President Commissioner
             </h4>
             <div class="row">
                 <div class="col-md-4 mb-4">

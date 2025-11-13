@@ -49,8 +49,10 @@ import '/node_modules/vue-preloader/dist/style.css';
                             new
                             ideas
                             and creative solutions for our increasingly diverse clients. We welcome and value individual
-                            differences. Join RAYA and carve a career path to match your skills and aspirations!
+                            differences. Join <b>RAYA</b> and carve a career path to match your skills and aspirations!
                         </p>
+                        <a href="https://pekerjakita.com/" target="_blank" class="btn-get-started">PekerjaKita<i
+                                class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@ import '/node_modules/vue-preloader/dist/style.css';
                         </h3>
                         <p>
                             If you have queries regarding the legitimacy of the recruitment offer that you have
-                            received, you may send your query to it@rayakonstruksi.com.
+                            received, you may send your query to <b>it@rayakonstruksi.com</b>.
                         </p>
                         <a :href="route('cyberInfo')" target="_blank" class="btn-get-started">Discover More <i
                                 class="bi bi-arrow-right"></i></a>

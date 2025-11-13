@@ -780,8 +780,6 @@ class FrontController extends Controller
         return response()->file(public_path('assets/pdf/Raya_-_Soil.pdf'));
     }
 
-
-
     public function heavyRental()
     {
         $data = [];

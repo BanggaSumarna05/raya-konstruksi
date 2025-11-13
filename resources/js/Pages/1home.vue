@@ -20,7 +20,7 @@ defineProps({ blogs: Array })
             style="position: absolute; top: -3%; left: 16%; z-index: 1000; max-width: 450px; width: auto; padding:80px;" />
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
             <div class="carousel-item active"
-                style="background-image: url('assets/img/hero-carousel/hover-1-new.jpg'); background-position: top 100 center; background-size: cover;">
+                style="background-image: url('assets/img/hero-carousel/hover-1-new.jpg'); background-position: top 0 center; background-size: cover;">
             </div>
             <div class="carousel-item" style="background-image: url('assets/img/projects/airproduct/cover-1.jpg')">
             </div>
@@ -29,34 +29,33 @@ defineProps({ blogs: Array })
                 <nav id="navbar" class="navbar text-white">
                     <ul>
                         <li>
-                            <a href="{{ route('whoWeAre') }}" class="text-white">Who
+                            <a :href="route('whoWeAre')" class="text-white">Who
                                 We Are<span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
                                 </span></a>
                         </li>
                         <li>
-                            <a href="{{ route('whatWeDo') }}" class="text-white">What We Do<span class="d-lg-none">
+                            <a :href="route('whatWeDo')" class="text-white">What We Do<span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
                                 </span></a>
                         </li>
                         <li>
-                            <a href="{{ route('sustainability') }}" class="text-white">Sustainability<span
-                                    class="d-lg-none">
+                            <a :href="route('sustainability')" class="text-white">Sustainability<span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
                                 </span></a>
                         </li>
                         <li>
-                            <a href="{{ route('news') }}" class="text-white">News & Events<span class="d-lg-none">
+                            <a :href="route('news')" class="text-white">News & Events<span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
                                 </span></a>
                         </li>
                         <li>
-                            <a href="{{ route('contactUs') }}" class="text-white">Contact Us<span class="d-lg-none">
+                            <a :href="route('contactUs')" class="text-white">Contact Us<span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
                                 </span></a>
                         </li>
                         <li>
-                            <a href="{{ route('portfolio') }}" class="text-white">Portfolio<span class="d-lg-none">
+                            <a :href="route('portfolio')" class="text-white">Portfolio<span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
                                 </span></a>
                         </li>
@@ -79,7 +78,7 @@ defineProps({ blogs: Array })
                             handling & civil
                             works</strong> for industrial projects across the region.
                         <br><br>
-                        
+
                     </p>
                     <a :href="route('whoWeAre')" rel="noopener noreferrer" class="btn-get-started">
                         Discover More

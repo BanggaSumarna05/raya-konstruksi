@@ -12,7 +12,7 @@
             <ul>
                 <li class="d-flex d-lg-none pb-15">
                     <a href="{{ route('index') }}" class="logo d-flex align-items-center">
-                        <img src="/assets/img/logo-raya.png" alt="Logo Raya Konstruksi International"
+                        <img src="/assets/img/logo-raya-clean.png" alt="Logo Raya Konstruksi International"
                             title="Raya Konstruksi International">
                     </a>
                 </li>

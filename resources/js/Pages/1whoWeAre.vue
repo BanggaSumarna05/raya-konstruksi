@@ -319,8 +319,8 @@ onMounted(() => {
                         <h3>Air Products Catalyst Loading</h3>
                     </div>
                     <div class="milestone-card text-uppercase company-event">
-                        <h3>Rebranding</h3>
-                        <p>PT Makadia Grup International has been rebranded as <strong>RAYA KONSTRUKSI
+                        <h3>CORPORATE REBRANDING</h3>
+                        <p>PT Makadia Grup International has officially been rebranded as <strong>RAYA KONSTRUKSI
                                 INTERNASIONAL</strong></p>
                     </div>
                     <div class="milestone-card text-uppercase">

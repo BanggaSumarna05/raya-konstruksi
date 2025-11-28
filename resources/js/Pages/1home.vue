@@ -15,8 +15,9 @@ defineProps({ blogs: Array })
     <Head title="Home" />
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero" style="margin-top: 0px; min-height: 90%;">
-        <img src="/assets/img/logo-raya-clean.png" alt="Logo Raya Konstruksi International"
-            title="Logo Raya Konstruksi International" class="logo d-flex hero-logo"
+        <img v-if="!isMobile" id="mainLogo" src="/assets/img/logo-raya-clean.png"
+            alt="Logo Raya Konstruksi International" title="Logo Raya Konstruksi International"
+            class="logo d-flex hero-logo"
             style="position: absolute; top: -3%; left: 16%; z-index: 1000; max-width: 450px; width: auto; padding:80px;" />
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
             <div class="carousel-item active"
@@ -26,38 +27,55 @@ defineProps({ blogs: Array })
             </div>
             <div
                 style="position: absolute; top: 85%; left: 36%; z-index: 1000; max-width: 450px; width: auto; padding:80px;">
-                <nav id="navbar" class="navbar text-white">
+                <nav id="navbar" class="navbar">
                     <ul>
                         <li>
-                            <a :href="route('whoWeAre')" class="text-white">Who
-                                We Are<span class="d-lg-none">
+                            <a :href="route('whoWeAre')" :class="isMobile ? 'text-black' : 'text-white'">
+                                Who We Are
+                                <span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
-                                </span></a>
+                                </span>
+                            </a>
                         </li>
                         <li>
-                            <a :href="route('whatWeDo')" class="text-white">What We Do<span class="d-lg-none">
+                            <a :href="route('whatWeDo')" :class="isMobile ? 'text-black' : 'text-white'">
+                                What We Do
+                                <span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
-                                </span></a>
+                                </span>
+                            </a>
                         </li>
                         <li>
-                            <a :href="route('sustainability')" class="text-white">Sustainability<span class="d-lg-none">
+                            <a :href="route('sustainability')" :class="isMobile ? 'text-black' : 'text-white'">
+                                Sustainability
+                                <span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
-                                </span></a>
+                                </span>
+                            </a>
                         </li>
                         <li>
-                            <a :href="route('news')" class="text-white">News & Events<span class="d-lg-none">
+                            <a :href="route('news')" :class="isMobile ? 'text-black' : 'text-white'">
+                                News & Events
+                                <span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
-                                </span></a>
+                                </span>
+                            </a>
                         </li>
                         <li>
-                            <a :href="route('contactUs')" class="text-white">Contact Us<span class="d-lg-none">
+                            <a :href="route('contactUs')" :class="isMobile ? 'text-black' : 'text-white'">
+                                Contact Us
+                                <span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
-                                </span></a>
+                                </span>
+                            </a>
                         </li>
                         <li>
-                            <a :href="route('portfolio')" class="text-white">Portfolio<span class="d-lg-none">
+                            <a :href="route('portfolio')" :class="isMobile ? 'text-black' : 'text-white'">
+                                Portfolio
+                                <span class="d-lg-none">
                                     <i class="bi bi-chevron-right"></i>
-                                </span></a>
+                                </span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -230,9 +248,12 @@ defineProps({ blogs: Array })
 </template>
 <script>
 export default {
+
     data() {
+        return { isMobile: /iPhone|iPad|iPod|Android|Lenis/i.test(navigator.userAgent) }
     },
     mounted() {
+        // console.log('here:' + this.isMobile);
         const header = document.querySelector('#header') || document.querySelector('header') || document.querySelector('.navbar');
         const hero = document.querySelector('#hero');
         if (!header || !hero) return;
@@ -264,12 +285,16 @@ export default {
             else hideHeader();
         };
 
-        /* initial state and listener */
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
-
-        /* keep reference so it can be removed later if needed */
-        this._onScroll = onScroll;
+        if (!this.isMobile) {
+            /* initial state and listener */
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+            /* keep reference so it can be removed later if needed */
+            this._onScroll = onScroll;
+        } else {
+            const mainLogo = document.getElementById('mainLogo');
+            mainLogo.style.display = 'none';
+        }
     }
 }
 </script>

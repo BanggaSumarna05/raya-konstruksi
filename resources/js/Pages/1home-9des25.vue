@@ -14,131 +14,74 @@ defineProps({ blogs: Array })
 
     <Head title="Home" />
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero" style="height: 100vh; min-height: 100vh; position: relative;">
-        <div id="hero-carousel" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="6000">
-
-            <!-- Slide 1 -->
-            <div class="carousel-item active position-relative h-100" style="background-image: url('/assets/img/hero-carousel/hover-1-new.jpg');
-                   background-position: center right;
-                   background-size: cover; background-repeat: no-repeat;">
-
-                <!-- DARK OVERLAY -->
-                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.45);"></div>
-
-                <!-- CONTENT -->
-                <div class="container position-relative d-flex align-items-center h-100"
-                    style="z-index: 2; padding-bottom: 8vh;">
-                    <div class="row justify-content-start">
-
-                        <div class="col-12 col-md-10 col-lg-8">
-                            <h1 class="text-white fw-bold mb-4" style="line-height: 1.2; font-size: 3rem;">
-                                Reliable Construction & Engineering Solutions You Can Count On
-                            </h1>
-                        </div>
-
-                        <div class="col-12 col-md-10 col-lg-8">
-                            <h5 class="text-white" style="line-height: 1.6; font-weight: 300;">
-                                <strong>Raya Konstruksi</strong> helps clients execute construction and industrial
-                                projects with strict quality control, reliable timelines, and a professional team
-                                committed
-                                to delivering clean, safe, and efficient work from planning to final handover.
-                            </h5>
-                        </div>
-
-                    </div>
-                </div>
+    <section id="hero" class="hero" style="margin-top: 0px; min-height: 90%;">
+        <img v-if="!isMobile" id="mainLogo" src="/assets/img/logo-raya-clean.png"
+            alt="Logo Raya Konstruksi International" title="Logo Raya Konstruksi International"
+            class="logo d-flex hero-logo"
+            style="position: absolute; top: -3%; left: 16%; z-index: 1000; max-width: 450px; width: auto; padding:80px;" />
+        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+            <div class="carousel-item active"
+                style="background-image: url('assets/img/hero-carousel/hover-1-new.jpg'); background-position: top 0 center; background-size: cover;">
             </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item position-relative h-100" style="background-image: url('assets/img/projects/airproduct/cover-1.jpg');
-                   background-position: center; background-size: cover; background-repeat: no-repeat;">
-
-                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.35);"></div>
-
-                <div class="container position-relative d-flex align-items-center h-100"
-                    style="z-index: 2; padding-bottom: 8vh;">
-                    <div class="row justify-content-start">
-
-                        <div class="col-12 col-md-10 col-lg-8">
-                            <h1 class="text-white fw-bold mb-4" style="line-height: 1.2; font-size: 3rem;">
-                                Delivering High-Quality Construction, Fabrication & Engineering Services
-                            </h1>
-                        </div>
-
-                        <div class="col-12 col-md-10 col-lg-8">
-                            <h5 class="text-white" style="line-height: 1.6; font-weight: 300;">
-                                <strong>Raya Konstruksi</strong> provides end-to-end solutions including structural
-                                fabrication, civil works, installation, maintenance, and project execution—ensuring
-                                every
-                                client receives reliable workmanship, safe operations, and on-time delivery.
-                            </h5>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="carousel-item" style="background-image: url('assets/img/projects/airproduct/cover-1.jpg')">
             </div>
-
-            <!-- Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon">&lsaquo;</span>
-            </button>
-
-            <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next"
-                style="background-color: transparent;">
-                <span class="carousel-control-next-icon">&rsaquo;</span>
-            </button>
-
-        </div>
-    </section>
-
-    <section class="services-section" style="margin-top: -260px; position: relative; z-index: 10; padding-left: 300px;">
-        <div class="container-fluid px-0">
-            <div class="row g-0 text-white">
-
-                <!-- Construction & Fabrication -->
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div style="background:#4CAF50; padding:40px;">
-                        <div style="font-size:40px; margin-bottom:20px;">
-                            <i class="bi bi-building" style="font-size:40px;"></i>
-                        </div>
-                        <h3 class="fw-bold mb-3">Construction & Fabrication</h3>
-                        <p style="margin:0;">
-                            Delivering high-quality civil works, steel fabrication, and industrial construction with
-                            strict safety and compliance standards.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Catalyst Loading -->
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div style="background:#FFB300; padding:40px;">
-                        <div style="font-size:40px; margin-bottom:20px;">
-                            <i class="bi bi-lightning" style="font-size:40px;"></i>
-                        </div>
-                        <h3 class="fw-bold mb-3">Catalyst Loading</h3>
-                        <p style="margin:0;">
-                            Professional catalyst loading, unloading, and reactor handling services following global
-                            refinery safety standards.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Plant Maintenance -->
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div style="background:#2a4184; padding:40px;">
-                        <div style="font-size:40px; margin-bottom:20px;">
-                            <i class="bi bi-gear-wide-connected" style="font-size:40px;"></i>
-                        </div>
-                        <h3 class="fw-bold mb-3">Plant Maintenance</h3>
-                        <p style="margin:0;">
-                            Comprehensive plant maintenance for industrial facilities, ensuring safe operations and
-                            minimal downtime.
-                        </p>
-                    </div>
-                </div>
-
+            <div
+                style="position: absolute; top: 85%; left: 36%; z-index: 1000; max-width: 450px; width: auto; padding:80px;">
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li>
+                            <a :href="route('whoWeAre')" :class="isMobile ? 'text-black' : 'text-white'">
+                                Who We Are
+                                <span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a :href="route('whatWeDo')" :class="isMobile ? 'text-black' : 'text-white'">
+                                What We Do
+                                <span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a :href="route('sustainability')" :class="isMobile ? 'text-black' : 'text-white'">
+                                Sustainability
+                                <span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a :href="route('news')" :class="isMobile ? 'text-black' : 'text-white'">
+                                News & Events
+                                <span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a :href="route('contactUs')" :class="isMobile ? 'text-black' : 'text-white'">
+                                Contact Us
+                                <span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a :href="route('portfolio')" :class="isMobile ? 'text-black' : 'text-white'">
+                                Portfolio
+                                <span class="d-lg-none">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
+
     </section>
 
     <section id="services" class="services">
@@ -303,3 +246,55 @@ defineProps({ blogs: Array })
         </div>
     </section>
 </template>
+<script>
+export default {
+
+    data() {
+        return { isMobile: /iPhone|iPad|iPod|Android|Lenis/i.test(navigator.userAgent) }
+    },
+    mounted() {
+        // console.log('here:' + this.isMobile);
+        const header = document.querySelector('#header') || document.querySelector('header') || document.querySelector('.navbar');
+        const hero = document.querySelector('#hero');
+        if (!header || !hero) return;
+
+        header.style.transition = header.style.transition || 'transform 0.25s ease, opacity 0.25s ease';
+
+        /* helper to hide/show */
+        const hideHeader = () => {
+            header.style.transform = 'translateY(0%)';
+            header.style.opacity = '0';
+            header.setAttribute('aria-hidden', 'true');
+        };
+        const showHeader = () => {
+            header.style.transform = 'translateY(0)';
+            header.style.opacity = '1';
+            header.setAttribute('aria-hidden', 'false');
+        };
+
+        /* check position relative to hero */
+        const onScroll = () => {
+            // If scrolled all the way to the top, hide header
+            if (window.scrollY === 0) {
+                hideHeader();
+                return;
+            }
+
+            const heroBottom = hero.getBoundingClientRect().bottom;
+            if (heroBottom <= 0) showHeader();
+            else hideHeader();
+        };
+
+        if (!this.isMobile) {
+            /* initial state and listener */
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+            /* keep reference so it can be removed later if needed */
+            this._onScroll = onScroll;
+        } else {
+            const mainLogo = document.getElementById('mainLogo');
+            mainLogo.style.display = 'none';
+        }
+    }
+}
+</script>

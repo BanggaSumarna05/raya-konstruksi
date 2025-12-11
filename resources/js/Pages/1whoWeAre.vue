@@ -98,7 +98,7 @@ onMounted(() => {
         </div>
     </section>
 
-    <section id="vision" class="services pt-5 bg-primary">
+    <section id="vision" class="services pt-5 bg-primary1">
         <div class="ml-10 mr-10">
             <div class="row">
                 <div class="col-4 col-md-4 col-lg-4 col-sm-12">

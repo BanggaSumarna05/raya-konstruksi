@@ -53,6 +53,17 @@ onMounted(() => {
 });
 </script>
 
+<style>
+.img-cover {
+    width: 100%;
+    height: 250px;
+    /* boleh kamu sesuaikan, misal 300px */
+    object-fit: cover;
+    object-position: center;
+    /* border-radius: 8px; */
+}
+</style>
+
 <template>
 
     <Head title="Who We Are" />
@@ -198,7 +209,7 @@ onMounted(() => {
             <div class="row">
                 <div class="col-sm-12 col-lg-3">
                     <div class="card border-0">
-                        <img class="card-img-top" src="/assets/img/web4-1.jpg" alt="Card image cap">
+                        <img class="card-img-top img-cover" src="/assets/img/handshake-1.jpg" alt="Card image cap">
                         <div class="card-body">
                             <a :href="route('corporateStructure')">
                                 <h5 class="card-title mb-2"
@@ -211,8 +222,7 @@ onMounted(() => {
                 </div>
                 <div class="col-sm-12 col-lg-3">
                     <div class="card border-0">
-                        <img class="card-img-top" src="/assets/img/handshake-3.jpg" alt="Card image cap"
-                            style="min-height: 25vh;">
+                        <img class="card-img-top img-cover" src="/assets/img/handshake-3.jpg" alt="Card image cap">
                         <div class="card-body">
                             <a :href="route('clientPartner')">
                                 <h5 class="card-title mb-2"

@@ -84,86 +84,89 @@ onMounted(() => {
         </div>
     </section>
 
-    <section id="vision" class="services pt-5 
-    
-    bg-primary1
-    ">
+    <section id="vision" class="services pt-5 bg-primary1">
         <div class="container">
             <div class="row">
-                <div class="col-6 col-md-6 col-lg-6 col-sm-12">
-                    <div class="col-sm-12 col-lg-">
-                        <h4>Vision</h4>
-                    </div>
-                    <div class="col-sm-12 col-lg-6">
-                        <div class="row">
-                            <div class="col-sm-1 col-lg-1">
-                                <!-- • -->
-                            </div>
-                            <div class="col-sm-11 col-lg-11">
-                                Delivering Excellent Engineering & Construction Services
-                                for Global Industrial Clients
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-6 col-lg-6 col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-">
-                            <h4>Mission</h4>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="row">
-                                <div class="col-sm-1 col-lg-1">
-                                    •
-                                </div>
-                                <div class="col-sm-11 col-lg-11">
-                                    Achieving extraordinary result for our industrial clients through a culture of
-                                    excellence in
-                                    construction and heavy equipment services.
-                                </div>
-                                <div class="col-sm-1 col-lg-1">
-                                    •
-                                </div>
-                                <div class="col-sm-11 col-lg-11">
-                                    Building satisfying careers for our team by implementing agile mindset and
-                                    continuous
-                                    learning to
-                                    adapt into changes in the industry.
-                                </div>
-                                <div class="col-sm-1 col-lg-1">
-                                    •
-                                </div>
-                                <div class="col-sm-11 col-lg-11">
-                                    Applying best practices in safety, quality, and project management.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+                <!-- Vision -->
+                <div class="col-12 col-md-6">
+                    <h4>Vision</h4>
+                    <div class="row mt-3">
+                        <div class="col-1">•</div>
+                        <div class="col-11">
+                            <p class="rapih">
+                                Applying best practices in safety, quality, and project management.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission -->
+                <div class="col-12 col-md-6">
+                    <h4>Mission</h4>
+
+                    <!-- Item 1 -->
+                    <div class="row mt-3">
+                        <div class="col-1">•</div>
+                        <div class="col-11">
+                            <p class="rapih">
+                                Achieving extraordinary result for our industrial clients through
+                                a culture of excellence in construction and heavy equipment services.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="row mt-3">
+                        <div class="col-1">•</div>
+                        <div class="col-11">
+                            <p class="rapih">
+                                Building satisfying careers for our team by implementing agile mindset
+                                and continuous learning to adapt into changes in the industry.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="row mt-3">
+                        <div class="col-1">•</div>
+                        <div class="col-11">
+                            <p class="rapih">
+                                Applying best practices in safety, quality, and project management.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     </section>
+
 
     <section id="core-values" class="services pt-5">
         <div class="container">
             <center>
                 <h4>Core Values</h4>
-                <br>
-                <strong>
-                    RAYA values of excellence and reliability are deeply embedded in our identity, guiding our vision,
-                    mission & every aspect of our operations.
-                </strong>
-                <br><br></br>
-                <p>
-                    As we continue to evolve and strengthen our culture, these values shape our collective identity and
-                    reinforce our essential role in delivering dependable, value-driven construction solutions.
-                    <br><br>
-                    In line with the shifting demands of the construction and infrastructure landscape, our values guide
-                    us through a transformative journey, reflecting our commitment to adapt, innovate, and consistently
-                    meet the industry’s ever-changing challenges.
-                </p>
             </center>
+            <br>
+            <strong>
+                <p class="rapih">
+                    RAYA values of excellence and reliability are deeply embedded in our identity, guiding our
+                    vision,
+                    mission & every aspect of our operations.
+                </p>
+            </strong>
+            <br><br></br>
+            <p class="rapih">
+                As we continue to evolve and strengthen our culture, these values shape our collective identity and
+                reinforce our essential role in delivering dependable, value-driven construction solutions.
+                <br><br>
+                In line with the shifting demands of the construction and infrastructure landscape, our values guide
+                us through a transformative journey, reflecting our commitment to adapt, innovate, and consistently
+                meet the industry’s ever-changing challenges.
+            </p>
+
 
             <div class="row px-2">
                 <div v-for="(v, i) in valuesData" :key="i" class="col-sm-12 col-lg-4 p-4">
@@ -180,7 +183,7 @@ onMounted(() => {
                                 {{ v.title }}
                             </h5>
 
-                            <p class="card-text mt-3 mb-3">
+                            <p class="card-text mt-3 mb-3 p-2 rapih">
                                 {{ v.text }}
                             </p>
                         </div>
@@ -190,7 +193,7 @@ onMounted(() => {
         </div>
     </section>
 
-    <section id="alt-services-2" class="alt-services-2 section">
+    <section id="alt-services-2" class="alt-services-2">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-lg-3">
@@ -208,7 +211,8 @@ onMounted(() => {
                 </div>
                 <div class="col-sm-12 col-lg-3">
                     <div class="card border-0">
-                        <img class="card-img-top" src="/assets/img/handshake-3.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="/assets/img/handshake-3.jpg" alt="Card image cap"
+                            style="min-height: 25vh;">
                         <div class="card-body">
                             <a :href="route('clientPartner')">
                                 <h5 class="card-title mb-2"

@@ -94,7 +94,7 @@ export default {
     </section>
 
 
-    <section id="services" class="alt-services section bg-primary">
+    <section id="services" class="alt-services section bg-primary1">
         <div class="container">
             <div class="row">
                 <div class="col-4 col-md-4 col-lg-4 col-sm-12">

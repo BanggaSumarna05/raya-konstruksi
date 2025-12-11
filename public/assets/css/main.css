@@ -74,7 +74,7 @@ section {
     background-color: #f5f6f7;
 }
 
-.bg-primary {
+.bg-primary1 {
     background-color: var(--color-primary) !important;
     color: white !important;
 }

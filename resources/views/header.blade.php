@@ -29,8 +29,8 @@
                     <ul>
                         <li><a href="{{ route('whoWeAre') }}#company-profile">Company Profile</a></li>
                         <li><a href="{{ route('whoWeAre') }}#vision">Vision & Mission</a></li>
-                        <li><a href="{{ route('whoWeAre') }}#core-values">Core Values</a></li>
-                        <li><a href="{{ route('whoWeAre') }}#milestones">Key Milestones</a></li>
+                        {{-- <li><a href="{{ route('whoWeAre') }}#core-values">Core Values</a></li> --}}
+                        {{-- <li><a href="{{ route('whoWeAre') }}#milestones">Key Milestones</a></li> --}}
                         <li><a href="{{ route('corporateStructure') }}"
                                 class="{{ Route::is('corporateStructure') || Request::is('who-we-are/*') ? 'active' : '' }}">Leadership</a>
                         </li>
@@ -49,7 +49,7 @@
                         <li><a href="{{ route('catalyst-loading') }}">Catalyst Loading</a></li>
                         <li><a href="{{ route('plantMaintenance') }}">Plant Maintenance</a></li>
                         <li><a href="{{ route('whatWeDo') }}">Soil & Civil Works</a></li>
-                        <li><a href="{{ route('heaveyRental') }}">Heavy Equipment List</a></li>
+                        {{-- <li><a href="{{ route('heaveyRental') }}">Heavy Equipment List</a></li> --}}
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -82,13 +82,6 @@
                     <a href="{{ route('contactUs') }}"
                         class="{{ Route::is('contactUs') || Request::is('contactUs/*') ? 'active' : '' }}">Contact
                         Us<span class="d-lg-none">
-                            <i class="bi bi-chevron-right"></i>
-                        </span></a>
-                </li>
-                <li>
-                    <a href="{{ route('portfolio') }}" target="_blank"
-                        class="{{ Route::is('portfolio') || Request::is('portfolio/*') ? 'active' : '' }}">Portfolio<span
-                            class="d-lg-none">
                             <i class="bi bi-chevron-right"></i>
                         </span></a>
                 </li>

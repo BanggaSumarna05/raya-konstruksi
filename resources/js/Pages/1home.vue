@@ -91,7 +91,7 @@ defineProps({ blogs: Array })
         </div>
     </section>
 
-    <section class="services-section" style="margin-top: -260px; position: relative; z-index: 10; padding-left: 300px;">
+    <section class="services-section" style="margin-top: -36vh; position: relative; z-index: 10; padding-left: 300px;">
         <div class="container-fluid px-0">
             <div class="row g-0 text-white">
 
@@ -113,7 +113,9 @@ defineProps({ blogs: Array })
                 <div class="col-md-4 d-flex align-items-stretch">
                     <div style="background:#FFB300; padding:40px;">
                         <div style="font-size:40px; margin-bottom:20px;">
-                            <i class="bi bi-lightning" style="font-size:40px;"></i>
+                            <img
+                            style="max-width: 54px; max-height: 54px; filter: brightness(0) invert(1);"
+                            src="https://static.thenounproject.com/png/5552098-200.png" alt="">
                         </div>
                         <h3 class="fw-bold mb-3">Catalyst Loading</h3>
                         <p style="margin:0;">
@@ -139,140 +141,66 @@ defineProps({ blogs: Array })
 
             </div>
         </div>
-    </section>
+    </section>    
 
-    <section id="services" class="services">
+    <section id="alt-services" class="alt-services section">
         <div class="container">
-            <h2 class="pb-10">RAYA AT A GLANCE</h2>
-            <div class="row">
-                <div class="col-sm-12 col-lg-4">
-                    <p>
-                        <b>RAYA</b> is a trusted construction company based in Indonesia.
-                        <br><br>
-                        <b>RAYA</b> delivers comprehensive solutions in <strong>fabrication, plant maintenance, catalyst
-                            handling & civil
-                            works</strong> for industrial projects across the region.
-                        <br><br>
-
+            <div class="row justify-content-around gy-4">
+                <div class="features-image col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"><img
+                        src="/assets/img/culture2.jpg" alt=""></div>
+                <div class="col-lg-5 d-flex flex-column justify-content-center aos-init aos-animate" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <strong>
+                        RAYA AT A GLANCE
+                    </strong>
+                    <br>
+                    <h1>
+                        RAYA is a trusted construction company based in Indonesia.
+                    </h1>
+                    <br>
+                    <p class="lead"><strong>
+                            RAYA
+                        </strong> delivers comprehensive solutions in fabrication, plant maintenance, catalyst
+                        handling & civil works for industrial projects across the region.
                     </p>
-                    <a :href="route('whoWeAre')" rel="noopener noreferrer" class="btn-get-started">
-                        Discover More
-                    </a>
-                </div>
-                <div class="col-sm-12 col-lg-8">
-                    <div class="px-5 row">
-                        <!-- <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon1-1.png" alt=""
-                                    style="max-width:64px;max-height:64px;">
-                            </center>
+                    <div class="row g-4 mt-4">
+                        <div class="col-6 col-md-4">
+                            <div class="text-center p-3 rounded" style="background: #f8f9fa;">
+                                <center>
+                                    <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon5.png" alt=""
+                                        style="max-width:48px;max-height:48px; margin-bottom:12px;">
+                                </center>
+                                <h4 class="fw-bold mb-2" style="font-size:28px;">20+</h4>
+                                <p class="mb-0" style="font-size:14px; color:#666;">Projects</p>
+                            </div>
                         </div>
-                        <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <div>
-                                    <h3 style="color:black">8</h3>
-                                    <p>
-                                        Years History
-                                    </p>
-                                </div>
-                            </center>
-                        </div> -->
-                        <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon5.png" alt=""
-                                    style="max-width:64px;max-height:64px;">
-                            </center>
+                        <div class="col-6 col-md-4">
+                            <div class="text-center p-3 rounded" style="background: #f8f9fa;">
+                                <center>
+                                    <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon4.png" alt=""
+                                        style="max-width:48px;max-height:48px; margin-bottom:12px;">
+                                </center>
+                                <h4 class="fw-bold mb-2" style="font-size:28px;">3</h4>
+                                <p class="mb-0" style="font-size:14px; color:#666;">Catalyst Handling</p>
+                            </div>
                         </div>
-                        <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <div>
-                                    <h3 style="color:black">20+</h3>
-                                    <p>
-                                        Projects
-                                    </p>
-                                </div>
-                            </center>
-                        </div>
-                        <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <img src="https://jel.com.sg/wp-content/uploads/2020/11/icon4.png" alt=""
-                                    style="max-width:64px;max-height:64px;">
-                            </center>
-                        </div>
-                        <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <div>
-                                    <h3 style="color:black">3</h3>
-                                    <p>
-                                        Catalyst Handling
-                                    </p>
-                                </div>
-                            </center>
-                        </div>
-                        <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <img src="assets/img/worker.svg" alt=""
-                                    style="max-width:64px;max-height:64px; color:red">
-                            </center>
-                        </div>
-                        <div class="col-sm-6 col-lg-2">
-                            <center>
-                                <div>
-                                    <h3 style="color:black">750+</h3>
-                                    <p>
-                                        Manpower
-                                    </p>
-                                </div>
-                            </center>
+                        <div class="col-6 col-md-4">
+                            <div class="text-center p-3 rounded" style="background: #f8f9fa;">
+                                <center>
+                                    <img src="assets/img/worker.svg" alt=""
+                                        style="max-width:48px;max-height:48px; margin-bottom:12px;">
+                                </center>
+                                <h4 class="fw-bold mb-2" style=" font-size:28px;">750+</h4>
+                                <p class="mb-0" style="font-size:14px; color:#666;">Manpower</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
-    </section>
 
-    <section id="services" class="services section-bg">
-        <div class="container">
-            <h4>
-                News & Events
-            </h4>
-            <br>
-            <div class="row ">
-
-                <div v-for="(blog, idx) in blogs" :key="blog.id" class="col-lg-3 col-md-6" data-aos="fade-right"
-                    :data-aos-delay="1100 + idx * 100" style="padding: 0 6px 12px 6px;">
-                    <a :href="route('newsDetail', blog.slug)">
-                        <div class="card"
-                            style="width: 100%; border-radius: 0px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-                            <img class="card-img-top"
-                                :src="blog.image ? `/storage/${blog.image}` : '/assets/img/projects/lotte-catalyst/catalyst (4).jpeg'"
-                                alt="Card image cap"
-                                style="max-height: 30vh;min-height: 30vh; object-fit: cover; width: 100%;" />
-                            <div class="card-body">
-                                <p
-                                    style="border-bottom: 3px solid black; display: inline-block; margin-bottom: 18px; padding-bottom: 6px;">
-                                    {{ new Date(blog.published_at).toLocaleDateString('id-ID', {
-                                        year: 'numeric', month: 'long',
-                                        day: 'numeric'
-                                    }) }}
-                                </p>
-
-                                <h5 class="card-title text-black">
-                                    {{ blog.title }}
-                                </h5>
-                                <p class="card-text">
-                                    {{ blog.content.replace(/<[^>]*>/g, '').slice(0, 56) + '...' }}
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-            <a :href="route('news')" rel="noopener noreferrer" class="btn-get-started">
-                Discover More
-            </a>
-        </div>
     </section>
 
     <section id="locations" class="services pb-10">

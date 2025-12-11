@@ -75,7 +75,7 @@ const loadMore = () => {
             </div>
 
             <button v-if="currentPage < lastPage" @click="loadMore" class="btn-get-started" :disabled="loading"
-                style="border: none; color: #2a4184; padding: 10px 24px; border-radius: 4px; margin: 24px auto 0; display: block;">
+                style="border: none; color: white; padding: 10px 24px; border-radius: 4px; margin: 24px auto 0; display: block;">
                 {{ loading ? 'Loading...' : 'Load More' }}
             </button>
         </div>

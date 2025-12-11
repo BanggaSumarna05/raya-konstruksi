@@ -21,7 +21,52 @@ onMounted(() => {
     syncScroll(content, top);
 });
 </script>
+<style>
+.core-values-list .icon-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    /* background: #f1f1f1; */
+    filter: brightness(0) invert(1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.core-values-list .icon-wrapper img {
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.core-values-list h5 {
+    border-bottom: 2px solid #ccc;
+    display: inline-block;
+}
+
+.vision-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.vision-list li {
+    margin-bottom: .5rem;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.mission-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.mission-list li {
+    margin-bottom: .75rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+</style>
 <template>
 
     <Head title="Who We Are" />
@@ -53,283 +98,127 @@ onMounted(() => {
         </div>
     </section>
 
-    <section id="vision" class="services pt-5 section-bg">
-        <div class="container">
+    <section id="vision" class="services pt-5 bg-primary">
+        <div class="ml-10 mr-10">
             <div class="row">
-                <div class="col-sm-12 col-lg-4">
-                    <h4>Vision</h4>
-                </div>
-                <div class="col-sm-12 col-lg-6">
-                    <div class="row">
-                        <div class="col-sm-1 col-lg-1">
-                            <!-- <li></li> -->
+                <div class="col-4 col-md-4 col-lg-4 col-sm-12">
+                    <!-- <div class="row">
+                        <div class="col-12 col-sm-12 col-lg-12">
+                            Driven by innovation and a commitment to excellence, we deliver solutions that empower our
+                            clients and elevate industry standards.
+                            <br><br>
+                            Our Vision and Mission reflect the values that guide every step we take toward sustainable
+                            growth and impactful results.
+                            <br><br><br>
                         </div>
-                        <div class="col-sm-11 col-lg-11">
-                            Delivering Excellent Engineering & Construction Services
-                            for Global Industrial Clients
-                        </div>
+                    </div> -->
+                    <div class="vision-section">
+                        <h4 class="mb-3">Vision</h4>
+
+                        <ul class="vision-list">
+                            <li>Delivering Excellent Engineering & Construction Services for Global Industrial Clients
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mission-section pt-5">
+                        <h4 class="mb-3">Mission</h4>
+
+                        <ul class="mission-list">
+                            <li>
+                                Achieving extraordinary results for our industrial clients through a culture of
+                                excellence in
+                                construction and heavy equipment services.
+                            </li>
+                            <li>
+                                Building satisfying careers for our team by implementing an agile mindset and continuous
+                                learning
+                                to adapt to changes in the industry.
+                            </li>
+                            <li>
+                                Applying best practices in safety, quality, and project management.
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div class="row pt-5">
-                <div class="col-sm-12 col-lg-4">
-                    <h4>Mission</h4>
-                </div>
-                <div class="col-sm-12 col-lg-6">
-                    <div class="row">
-                        <div class="col-sm-1 col-lg-1">
-                            <li></li>
-                        </div>
-                        <div class="col-sm-11 col-lg-11">
-                            Achieving extraordinary result for our industrial clients through a culture of
-                            excellence in
-                            construction and heavy equipment services.
-                        </div>
-                        <div class="col-sm-1 col-lg-1">
-                            <li></li>
-                        </div>
-                        <div class="col-sm-11 col-lg-11">
-                            Building satisfying careers for our team by implementing agile mindset and continuous
-                            learning to
-                            adapt into changes in the industry.
-                        </div>
-                        <div class="col-sm-1 col-lg-1">
-                            <li></li>
-                        </div>
-                        <div class="col-sm-11 col-lg-11">
-                            Applying best practices in safety, quality, and project management.
-                        </div>
+                <div class="col-4 col-md-4 col-lg-4 col-sm-12">
+                    <div>
+                        <img src="/assets/img/breadcrumbs-bg.jpg" alt="" style="" loading="lazy"
+                            onload="this.previousElementSibling?.classList.add('hidden'); this.classList.remove('opacity-0');"
+                            onerror="this.previousElementSibling?.classList.remove('hidden'); this.classList.add('hidden');">
                     </div>
                 </div>
+                <div class="col-4 col-md-4 col-lg-4 col-sm-12">
+                    <center class="mb-4">
+                        <h4>Core Values</h4>
+                    </center>
+                    <ul class="list-unstyled core-values-list" style=" column-count: 2;">
+                        <li class="d-flex align-items-start mb-4">
+                            <div>
+                                <b>Adaptive</b>
+                                <p class="mb-0">We implement continuous improvement to in the industry.</p>
+                            </div>
+                        </li>
+
+                        <li class="d-flex align-items-start mb-4">
+                            <div>
+                                <b>Committed</b>
+                                <p class="mb-0">We are committed to delivering the highest quality standards through
+                                    best
+                                    practices.</p>
+                            </div>
+                        </li>
+
+                        <li class="d-flex align-items-start mb-4">
+                            <div>
+                                <b>Trustworthy</b>
+                                <p class="mb-0">We aim to gain our clients’ trust through responsible actions and
+                                    long-term
+                                    relationships.</p>
+                            </div>
+                        </li>
+
+                        <li class="d-flex align-items-start mb-4">
+                            <div>
+                                <b>Integrity</b>
+                                <p class="mb-0">We uphold strong work ethics aligned with applicable laws and
+                                    regulations.</p>
+                            </div>
+                        </li>
+
+                        <li class="d-flex align-items-start mb-4">
+                            <div>
+                                <b>Ownership</b>
+                                <p class="mb-0">We take full responsibility and are accountable for delivering results
+                                    that meet
+                                    company goals.</p>
+                            </div>
+                        </li>
+
+                        <li class="d-flex align-items-start mb-4">
+                            <div>
+                                <b>Safety</b>
+                                <p class="mb-0">We encourage initiative and teamwork for the best interest of the
+                                    company.</p>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
             </div>
+
         </div>
     </section>
 
     <section id="core-values" class="services pt-5">
         <div class="container">
-            <h4>Core Values</h4>
-            <div class="row px-2">
-                <div class="col-sm-12 col-lg-2 p-4">
-                    <div class="h-100">
-                        <div class="card-body text-center">
-                            <center>
-                                <div class="card"
-                                    style="border-radius: 50%; background-color: #f1f1f1; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="/assets/img/values/ADAPTIVE.png" alt=""
-                                        style="max-width: 64px;max-height: 64px;">
-                                </div>
-                            </center>
-                            <h5 class="card-title mb-2 text-uppercase"
-                                style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
-                                Adaptive</h5>
-                            <p class="card-text mt-3">
-                                We implement continuous improvement to in the industry.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-2 p-4">
-                    <div class="h-100">
-                        <div class="card-body text-center">
-                            <center>
-                                <div class="card"
-                                    style="border-radius: 50%; background-color: #f1f1f1; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="/assets/img/values/COMMITED.png" alt=""
-                                        style="max-width: 64px;max-height: 64px;">
-                                </div>
-                            </center>
-                            <h5 class="card-title mb-2 text-uppercase"
-                                style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
-                                Committed</h5>
-                            <p class="card-text mt-3">
-                                We are committed to delivering the highest quality standards through best practices.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-2 p-4">
-                    <div class="h-100">
-                        <div class="card-body text-center">
-                            <center>
-                                <div class="card"
-                                    style="border-radius: 50%; background-color: #f1f1f1; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="/assets/img/values/TRUSTWORTHY.png" alt=""
-                                        style="max-width: 64px;max-height: 64px;">
-                                </div>
-                            </center>
-                            <h5 class="card-title mb-2 text-uppercase"
-                                style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
-                                Trustworthy</h5>
-                            <p class="card-text mt-3">We aim to gain our client trust through responsible
-                                actions and positive longterm relationships with our
-                                stakeholders.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-2 p-4">
-                    <div class="h-100">
-                        <div class="card-body text-center">
-                            <center>
-                                <div class="card"
-                                    style="border-radius: 50%; background-color: #f1f1f1; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="/assets/img/values/INTEGRITY.png" alt=""
-                                        style="max-width: 64px;max-height: 64px;">
-                                </div>
-                            </center>
-                            <h5 class="card-title mb-2 text-uppercase"
-                                style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
-                                Integrity</h5>
-                            <p class="card-text mt-3">We uphold a strong work and moral ethics aligning with
-                                applicable law and
-                                regulation.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-2 p-4">
-                    <div class="h-100">
-                        <div class="card-body text-center">
-                            <center>
-                                <div class="card"
-                                    style="border-radius: 50%; background-color: #f1f1f1; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="/assets/img/values/OWNERSHIP.png" alt=""
-                                        style="max-width: 64px;max-height: 64px;">
-                                </div>
-                            </center>
-                            <h5 class="card-title mb-2 text-uppercase"
-                                style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
-                                Ownership</h5>
-                            <p class="card-text mt-3">We take full responsibility for our work and are accountable for
-                                delivering results that meet the company’s goals.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-2 p-4">
-                    <div class="h-100">
-                        <div class="card-body text-center">
-                            <center>
-                                <div class="card"
-                                    style="border-radius: 50%; background-color: #f1f1f1; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="/assets/img/values/SAFETY.png" alt=""
-                                        style="max-width: 64px;max-height: 64px;">
-                                </div>
-                            </center>
-                            <h5 class="card-title mb-2 text-uppercase"
-                                style="border-bottom: 2px solid grey; margin-bottom: 5vdh; padding: 0.5em;">
-                                Safety</h5>
-                            <p class="card-text mt-3"> We encourage everyone to take initiative and contribute as a
-                                team for the
-                                best interest of company.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
         </div>
     </section>
 
-    <section id="milestones" class="milestones-section">
-        <div class="container" data-aos="fade-up">
-            <div class="section-header">
-                <h4>Project Milestones</h4>
-                <p>Our journey through the years</p>
-            </div>
 
-            <div class="milestones-container">
-                <div class="year-group">
-                    <div class="year-header">2018</div>
-                    <div class="milestone-card text-uppercase company-event">
-                        <h3>Company Founded</h3>
-                        <p>PT Makadia Grup International was established in Jakarta, Indonesia.</p>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2019</div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>Enerco RPO TDAE Plant Operation & Maintenance</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2020</div>
-                    <!-- <div class="milestone-card text-uppercase">
-                        <h3>Tangguh Expansion Plant Preservation</h3>
-
-                    </div> -->
-                    <div class="milestone-card text-uppercase">
-                        <h3>Muria Sumba Manis Refinery Piping</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>Enerco Heat Exchanger Maintenance</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2022</div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>RDMP RU-V OSBL Tanks Project</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>Pertamina Turnaround Piping</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>Muria Sugar Refinery Maintenance</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2023</div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>LINE Ethylene Plant Project</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>Air Products UOI Indonesia</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>Air Products SMIP Piping</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2024</div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>RDMP RU-V ISBL Tanks</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>LINE Catalyst Loading</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>UOI Turnaround & Maintenance</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>LINE Manpower Supply</h3>
-                    </div>
-                </div>
-
-                <div class="year-group">
-                    <div class="year-header">2025</div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>Air Products Offsite SMR</h3>
-                    </div>
-
-                    <div class="milestone-card text-uppercase">
-                        <h3>Air Products Catalyst Loading</h3>
-                    </div>
-                    <div class="milestone-card text-uppercase company-event">
-                        <h3>CORPORATE REBRANDING</h3>
-                        <p>PT Makadia Grup International has officially been rebranded as <strong>RAYA KONSTRUKSI
-                                INTERNASIONAL</strong></p>
-                    </div>
-                    <div class="milestone-card text-uppercase">
-                        <h3>Apical KRN</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section id="alt-services-2" class="alt-services-2 section">
         <div class="container">

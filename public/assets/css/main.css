@@ -24,8 +24,11 @@
     --color-default: #364d59;
     --color-primary: #2a4184;
     --color-secondary: #52565e;
+    --color-primary2: #1f3063; /*  warna primary yang lebih gelap*/
 }
-
+.text-primary {
+    color: var(--color-primary) !important;
+}
 /* Smooth scroll behavior */
 :root {
     /* scroll-behavior: smooth !important; */
@@ -69,6 +72,24 @@ section {
 
 .section-bg {
     background-color: #f5f6f7;
+}
+
+.bg-primary {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+}
+.bg-primary2 {
+    background-color: var(--color-primary2) !important;
+    color: white !important;
+}
+
+.bg-white {
+    background-color: #ffff;
+    color: var(--color-primary);
+}
+.bg-whitesmoke {
+    background-color: whitesmoke;
+    color: var(--color-primary);
 }
 
 .section-header {
@@ -2772,10 +2793,11 @@ li::marker {
     letter-spacing: 1px;
     display: inline-block;
     padding: 6px 20px;
-    border-radius: 50px;
+    /* border-radius: 50px; */
     transition: 0.5s;
     margin: 24px 0px;
-    color: var(--color-default);
+    color: white;
+    background-color: var(--color-primary);
     border: 2px solid var(--color-default);
 }
 
@@ -2901,4 +2923,9 @@ li::marker {
     overflow-x: auto;
     min-width: 100%;
     scroll-behavior: smooth;
+}
+
+.card {
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
 }

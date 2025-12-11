@@ -101,7 +101,7 @@ onMounted(() => {
     <section id="vision" class="services pt-5 bg-primary1">
         <div class="ml-10 mr-10">
             <div class="row">
-                <div class="col-4 col-md-4 col-lg-4 col-sm-12">
+                <div class="col-6 col-md-6 col-lg-6 col-sm-12">
                     <!-- <div class="row">
                         <div class="col-12 col-sm-12 col-lg-12">
                             Driven by innovation and a commitment to excellence, we deliver solutions that empower our
@@ -140,14 +140,14 @@ onMounted(() => {
                         </ul>
                     </div>
                 </div>
-                <div class="col-4 col-md-4 col-lg-4 col-sm-12">
+                <!-- <div class="col-6 col-md-6 col-lg-6 col-sm-12">
                     <div>
                         <img src="/assets/img/breadcrumbs-bg.jpg" alt="" style="" loading="lazy"
                             onload="this.previousElementSibling?.classList.add('hidden'); this.classList.remove('opacity-0');"
                             onerror="this.previousElementSibling?.classList.remove('hidden'); this.classList.add('hidden');">
                     </div>
-                </div>
-                <div class="col-4 col-md-4 col-lg-4 col-sm-12">
+                </div> -->
+                <div class="col-6 col-md-6 col-lg-6 col-sm-12">
                     <center class="mb-4">
                         <h4>Core Values</h4>
                     </center>

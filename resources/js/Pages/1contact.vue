@@ -68,7 +68,7 @@ let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
                             </div>
                         </div>
                         <br>
-                        <h5>RIAU OFFICE</h5>
+                        <h5>RIAU BRANCH OFFICE</h5>
                         <div class="row" style="border-bottom: solid 1px black;">
                             <div class="col-8">
                                 <p>

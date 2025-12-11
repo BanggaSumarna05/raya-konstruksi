@@ -6,7 +6,38 @@ import { onMounted, ref } from 'vue';
 
 const topScroll = ref(null);
 const contentScroll = ref(null);
-
+const valuesData = [
+    {
+        img: "/assets/img/values/ADAPTIVE.png",
+        title: "Adaptive",
+        text: "We implement continuous improvement to in the industry."
+    },
+    {
+        img: "/assets/img/values/COMMITED.png",
+        title: "Committed",
+        text: "We are committed to delivering the highest quality standards through best practices."
+    },
+    {
+        img: "/assets/img/values/TRUSTWORTHY.png",
+        title: "Trustworthy",
+        text: "We aim to gain our client trust through responsible actions and long-term relationships."
+    },
+    {
+        img: "/assets/img/values/INTEGRITY.png",
+        title: "Integrity",
+        text: "We uphold strong work and moral ethics aligned with laws and regulations."
+    },
+    {
+        img: "/assets/img/values/OWNERSHIP.png",
+        title: "Ownership",
+        text: "We take full responsibility for our work and are accountable for delivering results."
+    },
+    {
+        img: "/assets/img/values/SAFETY.png",
+        title: "Safety",
+        text: "We encourage initiative and teamwork for the best interest of the company."
+    }
+];
 onMounted(() => {
     const top = topScroll.value;
     const content = contentScroll.value;
@@ -21,52 +52,7 @@ onMounted(() => {
     syncScroll(content, top);
 });
 </script>
-<style>
-.core-values-list .icon-wrapper {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    /* background: #f1f1f1; */
-    filter: brightness(0) invert(1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.core-values-list .icon-wrapper img {
-    max-width: 48px;
-    max-height: 48px;
-}
-
-.core-values-list h5 {
-    border-bottom: 2px solid #ccc;
-    display: inline-block;
-}
-
-.vision-list {
-    list-style: disc;
-    padding-left: 1.5rem;
-    margin: 0;
-}
-
-.vision-list li {
-    margin-bottom: .5rem;
-    line-height: 1.6;
-    font-size: 1.05rem;
-}
-
-.mission-list {
-    list-style: disc;
-    padding-left: 1.5rem;
-    margin: 0;
-}
-
-.mission-list li {
-    margin-bottom: .75rem;
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
-</style>
 <template>
 
     <Head title="Who We Are" />
@@ -98,114 +84,62 @@ onMounted(() => {
         </div>
     </section>
 
-    <section id="vision" class="services pt-5 bg-primary1">
-        <div class="ml-10 mr-10">
+    <section id="vision" class="services pt-5 
+    
+    bg-primary1
+    ">
+        <div class="container">
             <div class="row">
                 <div class="col-6 col-md-6 col-lg-6 col-sm-12">
-                    <!-- <div class="row">
-                        <div class="col-12 col-sm-12 col-lg-12">
-                            Driven by innovation and a commitment to excellence, we deliver solutions that empower our
-                            clients and elevate industry standards.
-                            <br><br>
-                            Our Vision and Mission reflect the values that guide every step we take toward sustainable
-                            growth and impactful results.
-                            <br><br><br>
+                    <div class="col-sm-12 col-lg-">
+                        <h4>Vision</h4>
+                    </div>
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="row">
+                            <div class="col-sm-1 col-lg-1">
+                                <!-- • -->
+                            </div>
+                            <div class="col-sm-11 col-lg-11">
+                                Delivering Excellent Engineering & Construction Services
+                                for Global Industrial Clients
+                            </div>
                         </div>
-                    </div> -->
-                    <div class="vision-section">
-                        <h4 class="mb-3">Vision</h4>
-
-                        <ul class="vision-list">
-                            <li>Delivering Excellent Engineering & Construction Services for Global Industrial Clients
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mission-section pt-5">
-                        <h4 class="mb-3">Mission</h4>
-
-                        <ul class="mission-list">
-                            <li>
-                                Achieving extraordinary results for our industrial clients through a culture of
-                                excellence in
-                                construction and heavy equipment services.
-                            </li>
-                            <li>
-                                Building satisfying careers for our team by implementing an agile mindset and continuous
-                                learning
-                                to adapt to changes in the industry.
-                            </li>
-                            <li>
-                                Applying best practices in safety, quality, and project management.
-                            </li>
-                        </ul>
                     </div>
                 </div>
-                <!-- <div class="col-6 col-md-6 col-lg-6 col-sm-12">
-                    <div>
-                        <img src="/assets/img/breadcrumbs-bg.jpg" alt="" style="" loading="lazy"
-                            onload="this.previousElementSibling?.classList.add('hidden'); this.classList.remove('opacity-0');"
-                            onerror="this.previousElementSibling?.classList.remove('hidden'); this.classList.add('hidden');">
-                    </div>
-                </div> -->
                 <div class="col-6 col-md-6 col-lg-6 col-sm-12">
-                    <center class="mb-4">
-                        <h4>Core Values</h4>
-                    </center>
-                    <ul class="list-unstyled core-values-list" style=" column-count: 2;">
-                        <li class="d-flex align-items-start mb-4">
-                            <div>
-                                <b>Adaptive</b>
-                                <p class="mb-0">We implement continuous improvement to in the industry.</p>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-">
+                            <h4>Mission</h4>
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="row">
+                                <div class="col-sm-1 col-lg-1">
+                                    •
+                                </div>
+                                <div class="col-sm-11 col-lg-11">
+                                    Achieving extraordinary result for our industrial clients through a culture of
+                                    excellence in
+                                    construction and heavy equipment services.
+                                </div>
+                                <div class="col-sm-1 col-lg-1">
+                                    •
+                                </div>
+                                <div class="col-sm-11 col-lg-11">
+                                    Building satisfying careers for our team by implementing agile mindset and
+                                    continuous
+                                    learning to
+                                    adapt into changes in the industry.
+                                </div>
+                                <div class="col-sm-1 col-lg-1">
+                                    •
+                                </div>
+                                <div class="col-sm-11 col-lg-11">
+                                    Applying best practices in safety, quality, and project management.
+                                </div>
                             </div>
-                        </li>
-
-                        <li class="d-flex align-items-start mb-4">
-                            <div>
-                                <b>Committed</b>
-                                <p class="mb-0">We are committed to delivering the highest quality standards through
-                                    best
-                                    practices.</p>
-                            </div>
-                        </li>
-
-                        <li class="d-flex align-items-start mb-4">
-                            <div>
-                                <b>Trustworthy</b>
-                                <p class="mb-0">We aim to gain our clients’ trust through responsible actions and
-                                    long-term
-                                    relationships.</p>
-                            </div>
-                        </li>
-
-                        <li class="d-flex align-items-start mb-4">
-                            <div>
-                                <b>Integrity</b>
-                                <p class="mb-0">We uphold strong work ethics aligned with applicable laws and
-                                    regulations.</p>
-                            </div>
-                        </li>
-
-                        <li class="d-flex align-items-start mb-4">
-                            <div>
-                                <b>Ownership</b>
-                                <p class="mb-0">We take full responsibility and are accountable for delivering results
-                                    that meet
-                                    company goals.</p>
-                            </div>
-                        </li>
-
-                        <li class="d-flex align-items-start mb-4">
-                            <div>
-                                <b>Safety</b>
-                                <p class="mb-0">We encourage initiative and teamwork for the best interest of the
-                                    company.</p>
-                            </div>
-                        </li>
-
-                    </ul>
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
 
         </div>
@@ -213,12 +147,48 @@ onMounted(() => {
 
     <section id="core-values" class="services pt-5">
         <div class="container">
+            <center>
+                <h4>Core Values</h4>
+                <br>
+                <strong>
+                    RAYA values of excellence and reliability are deeply embedded in our identity, guiding our vision,
+                    mission & every aspect of our operations.
+                </strong>
+                <br><br></br>
+                <p>
+                    As we continue to evolve and strengthen our culture, these values shape our collective identity and
+                    reinforce our essential role in delivering dependable, value-driven construction solutions.
+                    <br><br>
+                    In line with the shifting demands of the construction and infrastructure landscape, our values guide
+                    us through a transformative journey, reflecting our commitment to adapt, innovate, and consistently
+                    meet the industry’s ever-changing challenges.
+                </p>
+            </center>
 
+            <div class="row px-2">
+                <div v-for="(v, i) in valuesData" :key="i" class="col-sm-12 col-lg-4 p-4">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-body text-center">
+                            <center><img :src="v.img" alt="" style="max-width: 64px; max-height: 64px;
+                                     filter: brightness(0) saturate(100%) invert(27%) sepia(29%) saturate(1234%) hue-rotate(191deg) brightness(71%) contrast(95%);
+                                    ">
+                                </img>
+                            </center>
 
+                            <h5 class="card-title mb-2 text-uppercase"
+                                style="border-bottom: 2px solid grey; padding: 0.5em;">
+                                {{ v.title }}
+                            </h5>
+
+                            <p class="card-text mt-3 mb-3">
+                                {{ v.text }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
-
 
     <section id="alt-services-2" class="alt-services-2 section">
         <div class="container">
@@ -238,8 +208,7 @@ onMounted(() => {
                 </div>
                 <div class="col-sm-12 col-lg-3">
                     <div class="card border-0">
-                        <img class="card-img-top" src="https://jel.com.sg/wp-content/uploads/2020/12/related3.jpg"
-                            alt="Card image cap">
+                        <img class="card-img-top" src="/assets/img/handshake-3.jpg" alt="Card image cap">
                         <div class="card-body">
                             <a :href="route('clientPartner')">
                                 <h5 class="card-title mb-2"

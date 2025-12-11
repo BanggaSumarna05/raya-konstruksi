@@ -4,7 +4,7 @@
         <!-- Slider Area -->
         <div class="row align-items-stretch slider-wrapper no-gap">
             <!-- LEFT (TEXT BLOCK) -->
-            <div class="col-lg-6 left-pane" :style="{ backgroundColor: activeSlide.bg }">
+            <div class="col-lg-6 left-pane" :style="{ backgroundColor: activeSlide.bg, paddingRight: '0px' }">
                 <div class="p-5 text-white">
                     <h4 class="fw-bold">{{ activeSlide.title }}</h4>
                     <p class="mt-3 description" v-html="activeSlide.description"></p>
@@ -12,17 +12,17 @@
             </div>
 
             <!-- RIGHT (IMAGE BLOCK) -->
-            <div class="col-lg-6 right-pane">
+            <div class="col-lg-6 right-pane" style="padding-left: 0px;">
                 <img :src="activeSlide.image" class="img-fluid w-100 h-100 object-fit-cover" />
             </div>
         </div>
 
         <!-- SLIDER CONTROLS -->
         <div class="d-flex justify-content-center gap-2 my-4">
-            <button class="btn bg-primary " @click="prevSlide">
+            <button class="btn bg-primary1" @click="prevSlide">
                 <i class="bi bi-chevron-left"></i>
             </button>
-            <button class="btn  bg-primary" @click="nextSlide">
+            <button class="btn  bg-primary1" @click="nextSlide">
                 <i class="bi bi-chevron-right"></i>
             </button>
         </div>
@@ -110,18 +110,18 @@ export default {
                     title: "CARE Cards (Safety Observations)",
                     description:
                         `All workers at all Sites conduct daily <strong>Safety Observations</strong> (unsafe acts and unsafe conditions) using an online system. Insights derived from these observations (known as <strong>CARE Cards</strong>) are used to develop targeted campaigns for corrective actions and continuous improvement. Crucially, any competent, trained worker has the <strong>obligation and responsibility to stop work</strong> immediately if they deem a situation unsafe or detect imminent danger.`,
-                    image: "/assets/img/projects/msm/cover.jpg",
+                    image: "/assets/img/projects/lotte/lotte-6.png",
                     bg: "#2a4184"
                 },
                 {
                     title: "Safety Induction",
                     description:
                         `A <strong>mandatory</strong> safety induction program is required for all new employees, contractors, and visitors, valid for a defined period. The content of this essential induction program is regularly reviewed and updated.`,
-                    image: "/assets/img/projects/uoi-1/uoi-1 (8).jpeg",
+                    image: "/assets/img/projects/msm/msm-13.jpg",
                     bg: "#2a4184"
                 },
                 {
-                    title: "Management Walkabouts",
+                    title: "Management walkthrough",
                     description:
                         `We conduct <strong>Management Walkabouts</strong> to facilitate constructive engagement with our workers and contractors. These engagements are vital for the continuous development, implementation, evaluation, and improvement of the HSE management system and practices.`,
                     image: "/assets/img/projects/msm/msm-11.jpg",

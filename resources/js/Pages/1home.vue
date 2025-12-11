@@ -154,8 +154,8 @@ defineProps({ blogs: Array })
                         RAYA AT A GLANCE
                     </strong>
                     <br>
-                    <h1>
-                        RAYA is a trusted construction company based in Indonesia.
+                    <h1 >
+                        RAYA IS A TRUSTED CONSTRUCTION COMPANY BASED IN INDONESIA.
                     </h1>
                     <br>
                     <p class="lead"><strong>
@@ -209,7 +209,7 @@ defineProps({ blogs: Array })
                 <div class="col-lg-4 col-sm-12">
                     <h4>Our Locations</h4>
                     <p>
-                        Our subsidiaries and offices across the indonesia.
+                        Our projects and offices across the indonesia.
                     </p>
                     <br>
                     <a :href="route('whoWeAre')" rel="noopener noreferrer" class="btn-get-started">

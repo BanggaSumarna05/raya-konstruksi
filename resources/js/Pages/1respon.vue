@@ -2,63 +2,204 @@
 import { Head, Link } from '@inertiajs/vue3';
 import { VuePreloader } from 'vue-preloader';
 import '/node_modules/vue-preloader/dist/style.css';
+import HseSlide from '@/Pages/1safety-hseSlide.vue'
+
+// let hsePolicy = [
+//     {
+//         no: '01',
+//         title: 'Embracing HSE as a core value and an integral part of our business culture',
+//         no: '02',
+//         title: 'Complying with applicable HSE laws and regulations and industry standards',
+//         no: '03',
+//         title: 'Managing HSE risk and opportunities related to our workplace and operations',
+//         no: '04',
+//         title: 'Demonstrating HSE ownership through visible informing, influencing and inspiring leadership',
+//         no: '05',
+//         title: 'Reinforcing safe work behaviours through consultation and participation by our workers',
+//         no: '06',
+//         title: 'Learning from what we and others do through sharing and collaboration',
+//     }
+// ]
+</script>
+<script>
+export default {
+    data() {
+        return {
+            Sdgs: [
+                {
+                    no: 'SDG 6',
+                    title: 'Clean Water and Sanitation',
+                    img: "/assets/img/sdg/Sustainable_Development_Goal_06CleanWaterSanitation.svg"
+                },
+                {
+                    no: 'SDG 7',
+                    title: 'Affordable and Clean Energy',
+                    img: "/assets/img/sdg/Sustainable_Development_Goal_07CleanEnergy.svg"
+                },
+                {
+                    no: 'SDG 9',
+                    title: 'Industry, Innovation, and Infrastructure',
+                    img: "/assets/img/sdg/Sustainable_Development_Goal_09Industry.png"
+                },
+                {
+                    no: 'SDG 11',
+                    title: 'Sustainable Cities and Communities',
+                    img: "/assets/img/sdg/Sustainable_Development_Goal_11SustainableCities.svg"
+                },
+
+                {
+                    no: 'SDG 12',
+                    title: 'Responsible Consumption and Production',
+                    img: "/assets/img/sdg/Sustainable_Development_Goal_12ResponsibleConsumption.svg"
+                },
+                {
+                    no: 'SDG 13',
+                    title: 'Climate Action',
+                    img: "/assets/img/sdg/Sustainable_Development_Goal_13Climate.svg"
+                }
+            ]
+
+        };
+    }
+};
 </script>
 
 <template>
+    <!-- <VuePreloader background-color="black" color="black" transition-type="fade-up" :loading-speed="40"
+        :transition-speed="600" @loading-is-over="loadingIsOver" @transition-is-over="transitionIsOver"></VuePreloader> -->
 
-    <Head title="Corporate Social Responsibility" />
+    <Head title="Home" />
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero" style="height: 100vh; min-height: 100vh; position: relative;">
+        <div id="hero-carousel" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="6000"
+            style="padding-bottom: 0px!important;">
 
-    <section id="services" class="services section-bg  mb-10" style="padding-top: 10%;">
-        <div class="container" data-aos="fade-down">
-            <div class="row justify-content-center">
-                <div class="col-9">
-                    <h4>
-                        Corporate Social Responsibility</h4>
-                    <br><br>
+            <!-- Slide 1 -->
+            <div class="carousel-item active position-relative h-100" style="background-image: url('/assets/img/respon.jpg');
+                   background-position: center right;
+                   background-size: cover; background-repeat: no-repeat;">
+
+                <!-- DARK OVERLAY -->
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.45);"></div>
+
+                <!-- CONTENT -->
+                <div class="container position-relative d-flex align-items-center justify-content-center h-100"
+                    style="z-index: 2;">
+                    <div class="row justify-content-center">
+
+                        <div class="col-12 col-md-10 col-lg-8 text-center">
+                            <h1 class="text-white fw-bold mb-4" style="line-height: 1.2; font-size: 3rem;">
+                                Corporate Social Responsibility
+                            </h1>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="col-9">
-                    <img src="/assets/img/respon.jpg" class="img-fluid pb-5" alt="">
-                    <p class="rapih">
-                        <strong>“We Care, We Share”: RAYA KONSTRUKSI Organizes Clothing Donation Drive for Orphans at
-                            Yayasan Ihsanul Karim</strong><br><br>
-                        As part of its ongoing commitment to social responsibility and community care, <strong>RAYA
-                            KONSTRUKSI</strong> recently organized a clothing donation drive for the orphans at
-                        <strong>Yayasan Ihsanul Karim</strong>, located in Pasar Minggu, South Jakarta. Held on
-                        <strong>Friday, June 21st, 2024</strong>, the event was a heartwarming success that reflected
-                        the company’s dedication to the well-being of those in need.<br><br>
-                        The initiative, titled <strong>“We Care, We Share,”</strong> was led by the <strong>Human
-                            Resources and Corporate Communications Departments</strong> of RAYA KONSTRUKSI. The goal was
-                        to provide high-quality clothing to orphans, ensuring they have suitable outfits for a variety
-                        of occasions. Employees of RAYA KONSTRUKSI enthusiastically supported the cause by generously
-                        contributing clothing throughout the campaign.<br><br>
-                        <strong>Collaborative Effort for Meaningful Impact</strong><br><br>
-                        The donation period took place from <strong>June 11th to June 19th, 2024</strong>, at the RAYA
-                        KONSTRUKSI Head Office in <strong>Talavera Office Park</strong>. During this time, employees
-                        donated a diverse range of clothing, including children’s wear, adult clothing, and hijabs for
-                        the girls. The HR team carefully sorted all items to ensure that each child would receive
-                        clothing that was appropriate and in good condition.<br><br>
-                        <strong>A Memorable Day of Giving</strong><br><br>
-                        On the afternoon of <strong>June 21st at 3:00 PM WIB</strong>, representatives from the HR and
-                        Corporate Communications Departments visited Yayasan Ihsanul Karim to personally deliver the
-                        donations. The visit was filled with emotional moments, as the children gratefully received the
-                        clothing with excitement and joy.<br><br>
-                        The donations included casual wear, festive outfits, and traditional garments, ensuring the
-                        children were equipped with clothing for both daily and special occasions. The smiles and
-                        appreciation from the children and the foundation’s staff underscored the true value and impact
-                        of the initiative.<br><br>
-                        <strong>Ongoing Commitment to Social Responsibility</strong><br><br>
-                        This donation drive stands as a clear reflection of <strong>RAYA KONSTRUKSI’s</strong>
-                        commitment to giving back to the community. By addressing the immediate needs of orphans at
-                        Yayasan Ihsanul Karim, the company not only offered material support but also demonstrated the
-                        power of compassion and corporate social responsibility.<br><br>
-                        The success of the <strong>“We Care, We Share”</strong> initiative sets a positive example for
-                        future efforts. RAYA KONSTRUKSI remains committed to supporting various social causes, fostering
-                        a culture of generosity, empathy, and community engagement within the organization. Future
-                        initiatives will continue to address the evolving needs of the community, reinforcing the
-                        company’s role as a responsible and caring corporate citizen.
+            </div>
+
+        </div>
+    </section>
+
+    <section id="services" class="alt-services section bg-primary2">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-md-4 col-lg-4 col-sm-12">
+                    <strong>
+                        CSR at Raya
+                    </strong>
+                    <br>
+                    <h4 class="text-white">
+                        Corporate Social Responsibility
+                    </h4>
+                </div>
+                <div class="col-8 col-md-8 col-lg-8 col-sm-12">
+                    Corporate Social Responsibility (CSR) at <strong>Raya Konstruksi</strong> is grounded in the
+                    understanding that
+                    business sustainability requires a balanced responsibility across economic performance, social
+                    contribution, and environmental stewardship. CSR integrated into the <strong>RAYA
+                        Konstruksi</strong> operational
+                    and strategic framework to ensure long-term value creation for all stakeholders.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="safety" class="safety pb-10 bg-white">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-8 col-sm-12">
+                    <h4>Dual Responsibility</h4>
+                    <p>
+                        <strong>Raya Konstruksi</strong> recognizes its dual responsibility as a corporate entity.
+                        The company is accountable not only for achieving sound economic performance, its
+                        for fulfilling its responsibilities toward society and the environment.
+                        <br><br>
+                        Economic responsibility ensures business continuity, operational excellence, and value creation.
+                        Concurrently, social and environmental responsibilities guide the company to operate
+                        ethically, minimize negative
+                        impacts, and contribute positively to the communities and ecosystems in which it operates.
+                    </p>
+
+                    <p>
+                        CSR at <strong>Raya Konstruksi</strong> is designed to address the expectations and
+                        responsibilities toward a
+                        broad range of stakeholders, including employees, customers, suppliers, communities, and the
+                        environment. The company is committed to fostering sustainable development through initiatives
+                        that promote
+                        social well-being, environmental conservation, and economic growth.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <img src="/assets/img/globe.png" alt=""
+                        style="mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="csr" class="csr pb-10 bg-whitesmoke">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12">
+                    <h2 style="text-align: left;" class="text-primary">
+                        <strong>
+                            Sustainable Development Goals (SDGs) <br>
+                            in Construction Industry
+                        </strong>
+                    </h2>
+                </div>
+
+                <div class="col-lg-8 col-sm-12">
+                    <p>
+                        <strong>The Sustainable Development Goals (SDGs) </strong>are highly relevant to the
+                        construction industry, given
+                        its significant contribution to energy consumption, resource utilization, and environmental
+                        impact. As a key driver of infrastructure development, the construction sector plays a strategic
+                        role in supporting sustainable economic growth while reducing environmental and social risks.
+                        <br><br>
+                        <strong>Raya Konstruksi</strong> is committed to advancing sustainable construction practices
+                        through the
+                        application of green building principles, improved energy and water efficiency, responsible use
+                        of materials, and fair and ethical working practices. These efforts are essential to minimizing
+                        negative environmental impact while enhancing long-term value for society.
                     </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <section id="csr-list" class="pb-10 bg-white">
+        <div class="container">
+            <div class="row gy-4 pt-4">
+                <h4>Our initiatives directly support several priority SDGs, including:</h4>
+                <div class="col-lg-2 col-md-3 col-sm-6 mb-3" v-for="(item, index) in Sdgs" :key="index"
+                    data-aos="fade-up" :data-aos-delay="(index + 1) * 100">
+                    <div class="card bg-white h-100 shadow-sm border-0 overflow-hidden">
+                        <img :src="item.img" alt="SDG" class="" style="object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </template>

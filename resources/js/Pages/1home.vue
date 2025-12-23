@@ -9,11 +9,9 @@ defineProps({ blogs: Array })
 </script>
 
 <template>
-    <!-- <VuePreloader background-color="black" color="black" transition-type="fade-up" :loading-speed="40"
-        :transition-speed="600" @loading-is-over="loadingIsOver" @transition-is-over="transitionIsOver"></VuePreloader> -->
 
     <Head title="Home" />
-    <!-- ======= Hero Section ======= -->
+    
     <section id="hero" class="hero" style="height: 100vh; min-height: 100vh; position: relative;">
         <div id="hero-carousel" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="6000">
 
@@ -113,9 +111,8 @@ defineProps({ blogs: Array })
                 <div class="col-md-4 d-flex align-items-stretch">
                     <div style="background:#FFB300; padding:40px;">
                         <div style="font-size:40px; margin-bottom:20px;">
-                            <img
-                            style="max-width: 54px; max-height: 54px; filter: brightness(0) invert(1);"
-                            src="https://static.thenounproject.com/png/5552098-200.png" alt="">
+                            <img style="max-width: 54px; max-height: 54px; filter: brightness(0) invert(1);"
+                                src="https://static.thenounproject.com/png/5552098-200.png" alt="">
                         </div>
                         <h3 class="fw-bold mb-3">Catalyst Loading</h3>
                         <p style="margin:0;">
@@ -141,7 +138,7 @@ defineProps({ blogs: Array })
 
             </div>
         </div>
-    </section>    
+    </section>
 
     <section id="alt-services" class="alt-services section">
         <div class="container">
@@ -154,7 +151,7 @@ defineProps({ blogs: Array })
                         RAYA AT A GLANCE
                     </strong>
                     <br>
-                    <h1 >
+                    <h1>
                         RAYA IS A TRUSTED CONSTRUCTION COMPANY BASED IN INDONESIA.
                     </h1>
                     <br>
@@ -197,10 +194,7 @@ defineProps({ blogs: Array })
                     </div>
                 </div>
             </div>
-
-
         </div>
-
     </section>
 
     <section id="locations" class="services pb-10">
@@ -230,4 +224,5 @@ defineProps({ blogs: Array })
             </div>
         </div>
     </section>
+
 </template>

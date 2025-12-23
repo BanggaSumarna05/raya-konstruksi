@@ -155,7 +155,7 @@ onMounted(() => {
     </section>
 
 
-    <section id="core-values" class="services pt-5">
+    <section id="core-values" class="services pt-5 bg-whitesmoke">
         <div class="container">
             <center>
                 <h4>Core Values</h4>

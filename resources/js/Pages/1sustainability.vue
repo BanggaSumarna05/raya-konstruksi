@@ -40,9 +40,9 @@ import '/node_modules/vue-preloader/dist/style.css';
                     <div style="padding-top:25%">
                         <h4>
                             CORPORATE SOCIAL RESPONSIBILITY</h4>
-                        <p>Volunteerism is an important pillar of our corporate giving. We want to build an implicit
-                            sense of public service
-                            that permeates our identity in the communities in which we operate.</p>
+                        Raya Konstruksi is grounded in the understanding that
+                        business sustainability requires a balanced responsibility across economic performance, social
+                        contribution, and environmental stewardship.
                         <a :href="route('respon')" rel="noopener noreferrer" class="btn-get-started">
                             Discover More
                         </a>

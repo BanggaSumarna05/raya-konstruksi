@@ -128,37 +128,36 @@
     <script src="/assets/vendor/php-email-form/validate.js"></script>
     <!-- Template Main JS File -->
     <script src="/assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.35/bundled/lenis.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script> --}}
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Inisialisasi Lenis dengan konfigurasi sama seperti versi React
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: t => 1 - Math.pow(1 - t, 4),
-                smoothWheel: true,
-                smoothTouch: false,
-            });
+        // window.addEventListener('load', () => {
+        //     if (!window.Lenis) {
+        //         console.error('Lenis not found in window')
+        //         return
+        //     }
 
-            // Jalankan RAF loop (scroll animation)
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-            requestAnimationFrame(raf);
+        //     const lenis = new window.Lenis({
+        //         duration: 1.2,
+        //         easing: t => 1 - Math.pow(1 - t, 4),
+        //         smoothWheel: true,
+        //         smoothTouch: false,
+        //     })
 
-            // Saat navigasi Inertia → scroll halus ke atas (meniru router.on('navigate'))
-            document.addEventListener('inertia:navigate', () => {
-                lenis.scrollTo(0, {
-                    immediate: false
-                }); // false = tetap halus
-            });
+        //     function raf(time) {
+        //         lenis.raf(time)
+        //         requestAnimationFrame(raf)
+        //     }
+        //     requestAnimationFrame(raf)
 
-            // Bersihkan saat reload halaman (meniru cleanup useEffect)
-            window.addEventListener('beforeunload', () => {
-                if (lenis.destroy) lenis.destroy();
-            });
-        });
+            // document.addEventListener('inertia:navigate', () => {
+            //     lenis.scrollTo(0, {
+            //         immediate: false
+            //     })
+            // })
+        // })
     </script>
+
 
 
 </body>

@@ -98,7 +98,7 @@ export default {
                     bg: "#2a4184"
                 },
                 {
-                    title: "Group HSE Standards (Repeat - Please confirm if this is intentional)",
+                    title: "Group HSE Standards",
                     description:
                         `Standards are documented requirements, rules or instructions that support the <strong>RAYA</strong> HSE Policy in relation to specific activities or to address specific risks, threats or impacts. <strong>Eight (8)</strong> HSE Standards have been developed for implementation across the Group. These are HSE Performance Monitoring and Reporting, HSE Risk Management, Incident Investigation, Management of Change, Emergency Management, HSE Audit, HSE Consequence Management and GHG Emissions. All Sites are expected to develop and implement appropriate Safe Work Procedures based on these Standards.`,
                     image: "/assets/img/projects/akatara/cover-1.jpg",

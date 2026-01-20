@@ -63,6 +63,11 @@ import '/node_modules/vue-preloader/dist/style.css';
                         <img class="p-2 card-bg img-fluid" src="/assets/img/client/maxiterm.jpg" alt="">
                     </div>
                 </div>
+                <div class="col-sm-12 col-lg-2" data-aos="fade-right" data-aos-delay="1800">
+                    <div class="card">
+                        <img class="p-2 card-bg img-fluid" src="/assets/img/client/tata.jpg" alt="">
+                    </div>
+                </div>
 
             </div>
         </div>

@@ -219,7 +219,7 @@ export default {
                 </div>
             </div>
 
-            <div class="row gy-4 pt-4">
+            <div class="row gy-4 pt-4"  >
                 <div class="col-lg-4 col-md-4 col-sm-6 mb-2" v-for="(item, index) in hsePolicy" :key="index"
                     data-aos="fade-up" :data-aos-delay="(index + 1) * 100">
                     <div class="card bg-white p-10 h-100 w-80">

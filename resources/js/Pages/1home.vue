@@ -11,7 +11,7 @@ defineProps({ blogs: Array })
 <template>
 
     <Head title="Home" />
-    
+
     <section id="hero" class="hero" style="height: 100vh; min-height: 100vh; position: relative;">
         <div id="hero-carousel" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="6000">
 

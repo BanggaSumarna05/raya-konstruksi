@@ -109,6 +109,9 @@ export default {
     data() {
         return {
             linkedinPosts: [
+                'https://www.linkedin.com/embed/feed/update/urn:li:share:7419212018609680384',
+                'https://www.linkedin.com/embed/feed/update/urn:li:share:7416807758823391233',
+                'https://www.linkedin.com/embed/feed/update/urn:li:share:7416807549393461249',                
                 'https://www.linkedin.com/embed/feed/update/urn:li:share:7379845617990356992',
                 'https://www.linkedin.com/embed/feed/update/urn:li:share:7379361489352192000',
                 'https://www.linkedin.com/embed/feed/update/urn:li:share:7373984848153292800',

@@ -26,3 +26,14 @@ test.txt
 
 # Python scripts (local tooling only)
 *.py
+
+# Vite dev server — jangan pernah masuk git
+/public/hot
+
+# Archive files
+*.zip
+*.z01
+*.z02
+*.z03
+*.tar.gz
+*.rar

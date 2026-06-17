@@ -13,12 +13,17 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Cache;
 
 class BlogResource extends Resource
 {
     protected static ?string $model = Blog::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+
+    protected static ?string $navigationLabel = 'News / Blog';
+
+    protected static ?string $navigationGroup = 'Content Management';
 
     public static function form(Form $form): Form
     {
@@ -26,15 +31,24 @@ class BlogResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('Judul'),
                 Forms\Components\RichEditor::make('content')
-                    ->required(),
+                    ->required()
+                    ->label('Konten')
+                    ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
                     ->image()
-                    ->directory('blog-images'),
+                    ->disk('public')
+                    ->directory('blog-images')
+                    ->visibility('public')
+                    ->label('Thumbnail / Featured Image'),
                 Forms\Components\Toggle::make('is_published')
-                    ->label('Published'),
-                Forms\Components\DateTimePicker::make('published_at'),
+                    ->label('Published')
+                    ->default(false),
+                Forms\Components\DateTimePicker::make('published_at')
+                    ->label('Tanggal Publish')
+                    ->default(now()),
             ]);
     }
 
@@ -42,22 +56,41 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('slug')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('user.name')->label('Author')->sortable(),
+                Tables\Columns\ImageColumn::make('image')
+                    ->disk('public')
+                    ->label('Gambar')
+                    ->defaultImageUrl(fn () => asset('assets/img/placeholder.jpg')),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable()
+                    ->sortable()
+                    ->limit(50)
+                    ->label('Judul'),
+                Tables\Columns\TextColumn::make('slug')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Author')
+                    ->sortable(),
                 Tables\Columns\IconColumn::make('is_published')
                     ->boolean()
                     ->label('Published'),
                 Tables\Columns\TextColumn::make('published_at')
-                    ->dateTime()
-                    ->sortable(),
+                    ->dateTime('d M Y H:i')
+                    ->sortable()
+                    ->label('Tanggal Publish'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->label('Created')
-                    ->sortable(),
+                    ->dateTime('d M Y')
+                    ->label('Dibuat')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('published_at', 'desc')
             ->filters([
-                //
+                Tables\Filters\TernaryFilter::make('is_published')
+                    ->label('Status')
+                    ->trueLabel('Published')
+                    ->falseLabel('Draft'),
                 TrashedFilter::make(),
             ])
             ->actions([
@@ -76,9 +109,15 @@ class BlogResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
+    }
+
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 
     public static function getPages(): array

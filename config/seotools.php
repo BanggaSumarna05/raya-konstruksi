@@ -639,8 +639,8 @@ return [
                 "Perencanaan Eksekusi Proyek Industri",
                 "Solusi Manajemen Risiko dan Biaya"
             ],
-            'canonical'    => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
-            'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
+            'canonical'    => null, // null = auto-generate from Url::full()
+            'robots'       => 'all', // index, follow
         ],
         /*
          * Webmaster tags are always added.
@@ -661,12 +661,12 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => false, //'Over 9000 Thousand!', // set false to total remove
-            'description' => false, //'For those who helped create the Genki Dama', // set false to total remove
-            'url'         => false, // Set null for using Url::current(), set false to total remove
-            'type'        => false,
-            'site_name'   => false,
-            'images'      => [],
+            'title'       => 'Raya Konstruksi Internasional',
+            'description' => 'Raya Konstruksi Internasional menyediakan layanan Catalyst Loading dan Catalyst Handling yang aman, efisien, dan sesuai standar industri.',
+            'url'         => null, // null = auto-generate from Url::current()
+            'type'        => 'website',
+            'site_name'   => 'Raya Konstruksi Internasional',
+            'images'      => ['/assets/img/og-default.webp'],
         ],
     ],
     'twitter' => [
@@ -674,8 +674,10 @@ return [
          * The default values to be used by the twitter cards generator.
          */
         'defaults' => [
-            //'card'        => 'summary',
-            //'site'        => '@LuizVinicius73',
+            'card'        => 'summary_large_image',
+            'site'        => '@RayaKonstruksi',
+            'title'       => 'Raya Konstruksi Internasional',
+            'description' => 'Raya Konstruksi Internasional menyediakan layanan Catalyst Loading dan Catalyst Handling yang aman, efisien, dan sesuai standar industri.',
         ],
     ],
     'json-ld' => [

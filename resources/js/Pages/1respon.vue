@@ -1,205 +1,170 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import { VuePreloader } from 'vue-preloader';
-import '/node_modules/vue-preloader/dist/style.css';
-import HseSlide from '@/Pages/1safety-hseSlide.vue'
-
-// let hsePolicy = [
-//     {
-//         no: '01',
-//         title: 'Embracing HSE as a core value and an integral part of our business culture',
-//         no: '02',
-//         title: 'Complying with applicable HSE laws and regulations and industry standards',
-//         no: '03',
-//         title: 'Managing HSE risk and opportunities related to our workplace and operations',
-//         no: '04',
-//         title: 'Demonstrating HSE ownership through visible informing, influencing and inspiring leadership',
-//         no: '05',
-//         title: 'Reinforcing safe work behaviours through consultation and participation by our workers',
-//         no: '06',
-//         title: 'Learning from what we and others do through sharing and collaboration',
-//     }
-// ]
 </script>
+
 <script>
 export default {
     data() {
         return {
-            Sdgs: [
-                {
-                    no: 'SDG 6',
-                    title: 'Clean Water and Sanitation',
-                    img: "/assets/img/sdg/Sustainable_Development_Goal_06CleanWaterSanitation.svg"
-                },
-                {
-                    no: 'SDG 7',
-                    title: 'Affordable and Clean Energy',
-                    img: "/assets/img/sdg/Sustainable_Development_Goal_07CleanEnergy.svg"
-                },
-                {
-                    no: 'SDG 9',
-                    title: 'Industry, Innovation, and Infrastructure',
-                    img: "/assets/img/sdg/Sustainable_Development_Goal_09Industry.png"
-                },
-                {
-                    no: 'SDG 11',
-                    title: 'Sustainable Cities and Communities',
-                    img: "/assets/img/sdg/Sustainable_Development_Goal_11SustainableCities.svg"
-                },
-
-                {
-                    no: 'SDG 12',
-                    title: 'Responsible Consumption and Production',
-                    img: "/assets/img/sdg/Sustainable_Development_Goal_12ResponsibleConsumption.svg"
-                },
-                {
-                    no: 'SDG 13',
-                    title: 'Climate Action',
-                    img: "/assets/img/sdg/Sustainable_Development_Goal_13Climate.svg"
-                }
-            ]
-
+            sdgs: [
+                { no: 'SDG 6',  title: 'Clean Water and Sanitation',                img: "/assets/img/sdg/Sustainable_Development_Goal_06CleanWaterSanitation.svg" },
+                { no: 'SDG 7',  title: 'Affordable and Clean Energy',               img: "/assets/img/sdg/Sustainable_Development_Goal_07CleanEnergy.svg" },
+                { no: 'SDG 9',  title: 'Industry, Innovation, and Infrastructure',  img: "/assets/img/sdg/Sustainable_Development_Goal_09Industry.webp" },
+                { no: 'SDG 11', title: 'Sustainable Cities and Communities',        img: "/assets/img/sdg/Sustainable_Development_Goal_11SustainableCities.svg" },
+                { no: 'SDG 12', title: 'Responsible Consumption and Production',    img: "/assets/img/sdg/Sustainable_Development_Goal_12ResponsibleConsumption.svg" },
+                { no: 'SDG 13', title: 'Climate Action',                            img: "/assets/img/sdg/Sustainable_Development_Goal_13Climate.svg" },
+            ],
         };
-    }
+    },
 };
 </script>
 
 <template>
-    <!-- <VuePreloader background-color="black" color="black" transition-type="fade-up" :loading-speed="40"
-        :transition-speed="600" @loading-is-over="loadingIsOver" @transition-is-over="transitionIsOver"></VuePreloader> -->
+    <Head title="Corporate Social Responsibility" />
 
-    <Head title="Home" />
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero" style="height: 100vh; min-height: 100vh; position: relative;">
-        <div id="hero-carousel" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="6000"
-            style="padding-bottom: 0px!important;">
+    <!-- ── Page Hero ── -->
+    <section class="page-hero" style="background-image: url('/assets/img/respon.webp');">
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-body">
+            <span class="section-eyebrow">Sustainability</span>
+            <h1 class="page-hero-title">Corporate Social<br />Responsibility</h1>
+            <p class="page-hero-sub">
+                Business sustainability through balanced responsibility across economic performance,
+                social contribution, and environmental stewardship.
+            </p>
+        </div>
+    </section>
 
-            <!-- Slide 1 -->
-            <div class="carousel-item active position-relative h-100" style="background-image: url('/assets/img/respon.jpg');
-                   background-position: center right;
-                   background-size: cover; background-repeat: no-repeat;">
-
-                <!-- DARK OVERLAY -->
-                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.45);"></div>
-
-                <!-- CONTENT -->
-                <div class="container position-relative d-flex align-items-center justify-content-center h-100"
-                    style="z-index: 2;">
-                    <div class="row justify-content-center">
-
-                        <div class="col-12 col-md-10 col-lg-8 text-center">
-                            <h1 class="text-white fw-bold mb-4" style="line-height: 1.2; font-size: 3rem;">
-                                Corporate Social Responsibility
-                            </h1>
+    <!-- ── CSR Overview ── -->
+    <section class="csr-section">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="section-eyebrow">CSR at RAYA</span>
+                    <h2 class="section-title mt-2">Our Corporate<br />Social Responsibility</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-body">
+                        CSR at <strong>Raya Konstruksi</strong> is grounded in the understanding that business
+                        sustainability requires a balanced responsibility across economic performance, social
+                        contribution, and environmental stewardship. CSR is integrated into RAYA's operational
+                        and strategic framework to ensure long-term value creation for all stakeholders.
+                    </p>
+                </div>
+                <div class="col-lg-7 ps-lg-5" data-aos="fade-left" data-aos-delay="80">
+                    <!-- Dual responsibility cards -->
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="csr-pillar-card">
+                                <div class="csr-pillar-icon"><i class="bi bi-bar-chart-fill"></i></div>
+                                <h5 class="csr-pillar-title">Economic Responsibility</h5>
+                                <p class="csr-pillar-desc">Ensuring business continuity, operational excellence, and value creation for all stakeholders.</p>
+                            </div>
                         </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="services" class="alt-services section bg-primary2">
-        <div class="container">
-            <div class="row">
-                <div class="col-4 col-md-4 col-lg-4 col-sm-12">
-                    <strong>
-                        CSR at Raya
-                    </strong>
-                    <br>
-                    <h4 class="text-white">
-                        Corporate Social Responsibility
-                    </h4>
-                </div>
-                <div class="col-8 col-md-8 col-lg-8 col-sm-12">
-                    Corporate Social Responsibility (CSR) at <strong>Raya Konstruksi</strong> is grounded in the
-                    understanding that
-                    business sustainability requires a balanced responsibility across economic performance, social
-                    contribution, and environmental stewardship. CSR integrated into the <strong>RAYA
-                        Konstruksi</strong> operational
-                    and strategic framework to ensure long-term value creation for all stakeholders.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="safety" class="safety pb-10 bg-white">
-        <div class="container" data-aos="fade-up">
-            <div class="row">
-                <div class="col-lg-8 col-sm-12">
-                    <h4>Dual Responsibility</h4>
-                    <p>
-                        <strong>Raya Konstruksi</strong> recognizes its dual responsibility as a corporate entity.
-                        The company is accountable not only for achieving sound economic performance, its
-                        for fulfilling its responsibilities toward society and the environment.
-                        <br><br>
-                        Economic responsibility ensures business continuity, operational excellence, and value creation.
-                        Concurrently, social and environmental responsibilities guide the company to operate
-                        ethically, minimize negative
-                        impacts, and contribute positively to the communities and ecosystems in which it operates.
-                    </p>
-
-                    <p>
-                        CSR at <strong>Raya Konstruksi</strong> is designed to address the expectations and
-                        responsibilities toward a
-                        broad range of stakeholders, including employees, customers, suppliers, communities, and the
-                        environment. The company is committed to fostering sustainable development through initiatives
-                        that promote
-                        social well-being, environmental conservation, and economic growth.
-                    </p>
-                </div>
-                <div class="col-lg-4 col-sm-12">
-                    <img src="/assets/img/globe.png" alt=""
-                        style="mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="csr" class="csr pb-10 bg-whitesmoke">
-        <div class="container" data-aos="fade-up">
-            <div class="row">
-                <div class="col-lg-4 col-sm-12">
-                    <h2 style="text-align: left;" class="text-primary">
-                        <strong>
-                            Sustainable Development Goals (SDGs) <br>
-                            in Construction Industry
-                        </strong>
-                    </h2>
-                </div>
-
-                <div class="col-lg-8 col-sm-12">
-                    <p>
-                        <strong>The Sustainable Development Goals (SDGs) </strong>are highly relevant to the
-                        construction industry, given
-                        its significant contribution to energy consumption, resource utilization, and environmental
-                        impact. As a key driver of infrastructure development, the construction sector plays a strategic
-                        role in supporting sustainable economic growth while reducing environmental and social risks.
-                        <br><br>
-                        <strong>Raya Konstruksi</strong> is committed to advancing sustainable construction practices
-                        through the
-                        application of green building principles, improved energy and water efficiency, responsible use
-                        of materials, and fair and ethical working practices. These efforts are essential to minimizing
-                        negative environmental impact while enhancing long-term value for society.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="csr-list" class="pb-10 bg-white">
-        <div class="container">
-            <div class="row gy-4 pt-4">
-                <h4>Our initiatives directly support several priority SDGs, including:</h4>
-                <div class="col-lg-2 col-md-3 col-sm-6 mb-3" v-for="(item, index) in Sdgs" :key="index"
-                    data-aos="fade-up" :data-aos-delay="(index + 1) * 100">
-                    <div class="card bg-white h-100 shadow-sm border-0 overflow-hidden">
-                        <img :src="item.img" alt="SDG" class="" style="object-fit: contain;">
+                        <div class="col-md-6">
+                            <div class="csr-pillar-card">
+                                <div class="csr-pillar-icon"><i class="bi bi-people-fill"></i></div>
+                                <h5 class="csr-pillar-title">Social Responsibility</h5>
+                                <p class="csr-pillar-desc">Fostering social well-being through ethical operations and community contribution.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="csr-pillar-card">
+                                <div class="csr-pillar-icon"><i class="bi bi-tree-fill"></i></div>
+                                <h5 class="csr-pillar-title">Environmental Stewardship</h5>
+                                <p class="csr-pillar-desc">Minimising environmental impact and contributing positively to the ecosystems we operate in.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="csr-pillar-card">
+                                <div class="csr-pillar-icon"><i class="bi bi-globe-asia-australia"></i></div>
+                                <h5 class="csr-pillar-title">Governance &amp; Compliance</h5>
+                                <p class="csr-pillar-desc">Operating ethically with transparent governance aligned to laws and international standards.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ── SDGs ── -->
+    <section class="csr-section" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="row gy-4 mb-10">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="section-eyebrow">Global Alignment</span>
+                    <h2 class="section-title mt-2">Sustainable Development<br />Goals (SDGs)</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <p class="section-body">
+                        The <strong>SDGs</strong> are highly relevant to the construction industry given its
+                        significant contribution to energy consumption, resource utilisation, and environmental
+                        impact. As a key driver of infrastructure development, the construction sector plays a
+                        strategic role in supporting sustainable economic growth.
+                    </p>
+                    <p class="section-body mt-3">
+                        <strong>Raya Konstruksi</strong> is committed to advancing sustainable construction
+                        practices through green building principles, improved energy and water efficiency,
+                        responsible use of materials, and fair and ethical working practices.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sdg-heading mb-4" data-aos="fade-up">
+                <h4 class="section-title" style="font-size: 18px;">Our initiatives directly support:</h4>
+            </div>
+
+            <div class="row g-4">
+                <div v-for="(sdg, i) in sdgs" :key="i"
+                     class="col-6 col-md-4 col-lg-2"
+                     data-aos="fade-up" :data-aos-delay="i * 60">
+                    <div class="sdg-card">
+                        <img :src="sdg.img" :alt="sdg.title" class="sdg-img" />
+                        <p class="sdg-label">{{ sdg.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
+
+<style scoped>
+.csr-section { padding: 80px 0; background: #fff; }
+.mt-3 { margin-top: 16px !important; }
+.mb-4 { margin-bottom: 20px !important; }
+.mb-10 { margin-bottom: 48px !important; }
+
+/* Pillar cards */
+.csr-pillar-card {
+    background: var(--bg-light); border: 1px solid var(--border);
+    border-top: 4px solid var(--navy); border-radius: 12px;
+    padding: 22px 20px; height: 100%;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.csr-pillar-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-top-color: var(--gold); }
+.csr-pillar-icon {
+    width: 44px; height: 44px; background: var(--navy);
+    border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 18px; color: var(--gold);
+    margin-bottom: 14px;
+}
+.csr-pillar-title {
+    font-family: var(--font-head); font-size: 14px; font-weight: 800;
+    color: var(--navy); margin-bottom: 8px;
+}
+.csr-pillar-desc { font-size: 13px; color: var(--text-body); line-height: 1.6; margin: 0; }
+
+/* SDG cards */
+.sdg-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.sdg-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.sdg-img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+.sdg-label {
+    font-family: var(--font-body); font-size: 11px; font-weight: 700;
+    color: var(--text-body); margin: 8px 0 0; line-height: 1.3;
+}
+</style>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Mail\InqueryMail;
 use App\Models\Blog;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -645,7 +647,13 @@ class FrontController extends Controller
 
     public function index()
     {
-        $blogs = Blog::where('is_published', 1)->orderBy('published_at', 'desc')->get()->take(4);
+        $blogs = Cache::remember('home_blogs', now()->addHours(2), fn () =>
+            Blog::with('user')
+                ->where('is_published', 1)
+                ->orderBy('published_at', 'desc')
+                ->limit(4)
+                ->get()
+        );
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1home', [
             'blogs' => $blogs
@@ -715,7 +723,12 @@ class FrontController extends Controller
 
     public function news()
     {
-        $blogs = Blog::where('is_published', 1)->orderBy('published_at', 'desc')->paginate(4);
+        $blogs = Cache::remember('news_listing_' . request('page', 1), now()->addMinutes(30), fn () =>
+            Blog::with('user')
+                ->where('is_published', 1)
+                ->orderBy('published_at', 'desc')
+                ->paginate(4)
+        );
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1news', [
             'blogs' => $blogs
@@ -724,7 +737,16 @@ class FrontController extends Controller
 
     public function newsDetail($slug)
     {
-        $blog = Blog::where('slug', $slug)->first();
+        $blog = Cache::remember("blog_{$slug}", now()->addHours(6), fn () =>
+            Blog::with('user')->where('slug', $slug)->where('is_published', 1)->first()
+        );
+
+        // Don't cache null â€” if result is null, forget and abort
+        if (!$blog) {
+            Cache::forget("blog_{$slug}");
+            abort(404);
+        }
+
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1newsDetail', [
             'blog' => $blog
@@ -734,8 +756,8 @@ class FrontController extends Controller
     public function catalystLoading()
     {
         $data = [];
-        $data['title'] = 'Catalyst Handle Indonesia';
-        $data['desc'] = "Catalyst Loading The process of placing a catalyst into a chemical reactor to facilitate reactions without being consumed during the process. This step is critical to ensure reaction efficiency, uniform catalyst distribution, and maximum conversion of reactants to products. Here's how catalyst loading works. We carry out the loading process using Big-Bags or Drums, depending on the preferences of our clients or the situation of the equipment to be loaded and its location in the plant. Catalyst loading process with DRUMS The main benefit of the drums is that they are reusable, so once emptied they can be returned to the supplier. This considerably reduces waste generation at the plant. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. Big bags are large and flexible bags made of strong materials used to transport bulk material (in this case catalyst). Big-bags are easier to handle due to their “flexibility” and are more adaptable in case of limited manoeuvring space. On the other hand, are often discarded once they have been used, so we generate waste and need to dispose of them properly. In terms of the manoeuvre, the process consists of placing the hopper in the mouth of the reactor, and then raising the big bags without the need to move the hopper at each manoeuvre. Catalyst Method In catalyst loading, there are many methods that are often used, that's why we commonly use the 3 method's below Dry Catalyst Loading Dry catalyst loading involves the introduction of solid catalysts into the reactor without using any auxiliary equipment or liquid medium. commodi magnam occaecati. Dense Catalyst Loading Dense loading optimizes catalyst placement by maximizing packing density and reducing void spaces in the reactor. This method often requires specialized equipment, such as dense loading machines. Sock Catalyst Loading Sock loading employs a sock or tubular bag to guide catalysts into the reactor gently, minimizing physical damage to fragile materials.";
+        $data['title'] = 'Catalyst Handling Indonesia';
+        $data['desc'] = "Catalyst Loading The process of placing a catalyst into a chemical reactor to facilitate reactions without being consumed during the process. This step is critical to ensure reaction efficiency, uniform catalyst distribution, and maximum conversion of reactants to products. Here's how catalyst loading works. We carry out the loading process using Big-Bags or Drums, depending on the preferences of our clients or the situation of the equipment to be loaded and its location in the plant. Catalyst loading process with DRUMS The main benefit of the drums is that they are reusable, so once emptied they can be returned to the supplier. This considerably reduces waste generation at the plant. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. Big bags are large and flexible bags made of strong materials used to transport bulk material (in this case catalyst). Big-bags are easier to handle due to their â€œflexibilityâ€ and are more adaptable in case of limited manoeuvring space. On the other hand, are often discarded once they have been used, so we generate waste and need to dispose of them properly. In terms of the manoeuvre, the process consists of placing the hopper in the mouth of the reactor, and then raising the big bags without the need to move the hopper at each manoeuvre. Catalyst Method In catalyst loading, there are many methods that are often used, that's why we commonly use the 3 method's below Dry Catalyst Loading Dry catalyst loading involves the introduction of solid catalysts into the reactor without using any auxiliary equipment or liquid medium. commodi magnam occaecati. Dense Catalyst Loading Dense loading optimizes catalyst placement by maximizing packing density and reducing void spaces in the reactor. This method often requires specialized equipment, such as dense loading machines. Sock Catalyst Loading Sock loading employs a sock or tubular bag to guide catalysts into the reactor gently, minimizing physical damage to fragile materials.";
         SEOMeta::setTitle($data['title']);
         SEOMeta::setDescription($data['desc']);
         SEOMeta::addKeyword($this->keywords);
@@ -772,7 +794,17 @@ class FrontController extends Controller
 
     public function portfolio()
     {
-        return response()->file(public_path('assets/pdf/Raya_-_Road_Construction_Work.pdf'));
+        SEOMeta::setTitle('Our Projects & Portfolio | Raya Konstruksi');
+        SEOMeta::setDescription('Discover our ongoing and completed projects across Indonesia.');
+        SEOMeta::addKeyword($this->keywords);
+
+        $projects = Cache::remember('portfolio_projects', now()->addHours(6), fn () =>
+            Project::all()
+        );
+
+        return Inertia::render('1portfolio', [
+            'projects' => $projects
+        ]);
     }
 
     public function portfolioSoil()
@@ -793,21 +825,13 @@ class FrontController extends Controller
         ]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public function equipment()
+    {
+        SEOMeta::setTitle('Equipment List | Raya Konstruksi');
+        SEOMeta::setDescription('Heavy equipment and machinery available for rental and project use.');
+        SEOMeta::addKeyword($this->keywords);
+        return Inertia::render('equipment/index');
+    }
 
 
 
@@ -829,25 +853,32 @@ class FrontController extends Controller
 
     public function submitEmail(Request $request)
     {
+        // Validate all form fields + reCAPTCHA before sending
+        $request->validate([
+            'g-recaptcha-response' => ['required', 'recaptcha'],
+        ], [
+            'g-recaptcha-response.required' => 'Please complete the CAPTCHA verification.',
+            'g-recaptcha-response.recaptcha' => 'CAPTCHA verification failed. Please try again.',
+        ]);
+
+        $validated = $request->validate([
+            'name'    => ['required', 'string', 'max:100'],
+            'email'   => ['required', 'email', 'max:255'],
+            'phone'   => ['nullable', 'string', 'max:30'],
+            'company' => ['nullable', 'string', 'max:150'],
+            'subject' => ['nullable', 'string', 'max:255'],
+            'message' => ['required', 'string', 'min:10', 'max:5000'],
+        ]);
+
         try {
-            $data = $request->all();
-            Mail::to("marketing@rayakonstruksi.com")->send(new InqueryMail($data));
-            return redirect()->back();
+            $recipient = config('mail.inquiry_recipient', 'marketing@rayakonstruksi.com');
+            Mail::to($recipient)->send(new InqueryMail($validated));
+            return redirect()->back()->with('success', 'Your inquiry has been sent. We will contact you shortly.');
         } catch (\Throwable $th) {
-            throw $th;
+            report($th);
+            return redirect()->back()->with('error', 'Failed to send inquiry. Please try again or contact us directly.');
         }
     }
 
-    // public function catalystLoading()
-    // {
-    //     $data = [];
-    //     $data['title'] = 'Catalyst Handle Indonesia';
-    //     $data['desc'] = "Catalyst Loading The process of placing a catalyst into a chemical reactor to facilitate reactions without being consumed during the process. This step is critical to ensure reaction efficiency, uniform catalyst distribution, and maximum conversion of reactants to products. Here's how catalyst loading works. We carry out the loading process using Big-Bags or Drums, depending on the preferences of our clients or the situation of the equipment to be loaded and its location in the plant. Catalyst loading process with DRUMS The main benefit of the drums is that they are reusable, so once emptied they can be returned to the supplier. This considerably reduces waste generation at the plant. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. Big bags are large and flexible bags made of strong materials used to transport bulk material (in this case catalyst). Big-bags are easier to handle due to their “flexibility” and are more adaptable in case of limited manoeuvring space. On the other hand, are often discarded once they have been used, so we generate waste and need to dispose of them properly. In terms of the manoeuvre, the process consists of placing the hopper in the mouth of the reactor, and then raising the big bags without the need to move the hopper at each manoeuvre. Catalyst Method In catalyst loading, there are many methods that are often used, that's why we commonly use the 3 method's below Dry Catalyst Loading Dry catalyst loading involves the introduction of solid catalysts into the reactor without using any auxiliary equipment or liquid medium. commodi magnam occaecati. Dense Catalyst Loading Dense loading optimizes catalyst placement by maximizing packing density and reducing void spaces in the reactor. This method often requires specialized equipment, such as dense loading machines. Sock Catalyst Loading Sock loading employs a sock or tubular bag to guide catalysts into the reactor gently, minimizing physical damage to fragile materials.";
-    //     SEOMeta::setTitle($data['title']);
-    //     SEOMeta::setDescription($data['desc']);
-    //     SEOMeta::addKeyword($this->keywords);
-    //     return Inertia::render('1service-catalyst', [
-    //         'data' => $data
-    //     ]);
-    // }
 }
+

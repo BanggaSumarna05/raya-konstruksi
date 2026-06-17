@@ -14,3 +14,15 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Debug & profiling artifacts
+lh-*.txt
+lh*.json
+lighthouse-*.html
+lighthouse-*.json
+lighthouse-result.json
+test.txt
+*.lh.json
+
+# Python scripts (local tooling only)
+*.py

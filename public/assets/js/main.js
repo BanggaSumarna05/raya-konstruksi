@@ -38,6 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
+   * Dismiss mobile nav when clicking outside the drawer panel
+   */
+  document.addEventListener('click', function(event) {
+    if (!document.querySelector('body').classList.contains('mobile-nav-active')) return;
+    const navbar = document.querySelector('#navbar');
+    const navShow = document.querySelector('.mobile-nav-show');
+    const navHide = document.querySelector('.mobile-nav-hide');
+    // If click is outside the navbar panel AND not on the toggle buttons, close
+    if (!navbar.contains(event.target) && !navShow.contains(event.target) && !navHide.contains(event.target)) {
+      mobileNavToogle();
+    }
+  });
+
+  /**
    * Hide mobile nav on same-page/hash links
    */
   document.querySelectorAll('#navbar a').forEach(navbarlink => {

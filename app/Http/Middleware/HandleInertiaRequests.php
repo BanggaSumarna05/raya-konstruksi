@@ -34,8 +34,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'recaptcha_site_key' => config('services.google_recaptcha.site_key'),
-            'recaptcha_secret_key' => config('services.google_recaptcha.secret_key'),
+            // reCAPTCHA keys are shared via AppServiceProvider::boot()
         ];
     }
 }

@@ -1,26 +1,24 @@
-<header id="header" class="header d-flex align-items-center" style="background-color: white">
+<header id="header" class="header d-flex align-items-center">
     <div class="container container-fluid container-xl d-flex align-items-center justify-content-between">
 
         <a href="{{ route('index') }}" class="logo d-flex align-items-center">
-            <img src="/assets/img/logo-raya.png" alt="Logo Raya Konstruksi International"
-                title="Logo Makadia Group International">
+            <img src="/assets/img/logo-raya-polos.webp" alt="Logo Raya Konstruksi International"
+                title="Logo Raya Konstruksi International" width="149" height="44">
         </a>
 
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list" style="color:#2a4184"></i>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list" style="color:#1B2F6E"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
             <ul>
                 <li class="d-flex d-lg-none pb-15">
                     <a href="{{ route('index') }}" class="logo d-flex align-items-center">
-                        <img src="/assets/img/logo-raya-clean.png" alt="Logo Raya Konstruksi International"
-                            title="Raya Konstruksi International">
+                        <img src="/assets/img/logo-raya-polos.webp" alt="Logo Raya Konstruksi International"
+                            title="Raya Konstruksi International" width="149" height="44">
                     </a>
                 </li>
                 <li class="dropdown">
                     <a href="{{ route('whoWeAre') }}"
-                        class="
-                     {{ Route::is('whoWeAre') || Request::is('who-we-are/*') ? 'active' : '' }}
-                     ">Who
+                        class="{{ Route::is('whoWeAre') || Request::is('who-we-are/*') ? 'active' : '' }}">Who
                         We Are
                         <span class="d-lg-none">
                             <i class="bi bi-chevron-right"></i>
@@ -28,14 +26,11 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('whoWeAre') }}#company-profile">Company Profile</a></li>
-                        <li><a href="{{ route('whoWeAre') }}#vision">Vision & Mission</a></li>
-                        {{-- <li><a href="{{ route('whoWeAre') }}#core-values">Core Values</a></li> --}}
-                        {{-- <li><a href="{{ route('whoWeAre') }}#milestones">Key Milestones</a></li> --}}
-                        <li><a href="{{ route('corporateStructure') }}"
-                                class="{{ Route::is('corporateStructure') || Request::is('who-we-are/*') ? 'active' : '' }}">Leadership</a>
-                        </li>
-
-                        <li><a href="{{ route('clientPartner') }}">Client & Partners</a></li>
+                        <li><a href="{{ route('whoWeAre') }}#vision">Vision &amp; Mission</a></li>
+                        {{-- <li><a href="{{ route('corporateStructure') }}"
+                                class="{{ Route::is('corporateStructure') ? 'active' : '' }}">Leadership</a>
+                        </li> --}}
+                        <li><a href="{{ route('clientPartner') }}">Client &amp; Partners</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="{{ route('whatWeDo') }}"
@@ -45,11 +40,10 @@
                             <i class="bi bi-chevron-right"></i>
                         </span></a>
                     <ul>
-                        <li><a href="{{ route('whatWeDo') }}#construction">Construction & Fabrication</a></li>
-                        <li><a href="{{ route('catalyst-loading') }}">Catalyst Loading</a></li>
-                        <li><a href="{{ route('plantMaintenance') }}">Plant Maintenance</a></li>
-                        <li><a href="{{ route('whatWeDo') }}">Soil & Civil Works</a></li>
-                        {{-- <li><a href="{{ route('heaveyRental') }}">Heavy Equipment List</a></li> --}}
+                        <li><a href="{{ route('whatWeDo') }}#construction">Construction &amp; Fabrication</a></li>
+                        <li><a href="{{ route('catalyst-loading') }}">Catalyst Handling</a></li>
+                        <li><a href="{{ route('plantMaintenance') }}">Operation & Maintenance</a></li>
+                        <li><a href="{{ route('whatWeDo') }}#civil">Soil &amp; Civil Works</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -59,14 +53,14 @@
                             <i class="bi bi-chevron-right"></i>
                         </span></a>
                     <ul>
-                        <li><a href="{{ route('safety') }}">Health, Safety & Environment</a></li>
+                        <li><a href="{{ route('safety') }}">Health, Safety &amp; Environment</a></li>
                         <li><a href="{{ route('respon') }}">Corporate Social Responsibility
                             </a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="{{ route('news') }}"
-                        class="{{ Route::is('news') || Request::is('news-n-event/*') ? 'active' : '' }}">News &
+                        class="{{ Route::is('news') || Request::is('news-n-event/*') ? 'active' : '' }}">News &amp;
                         Events<span class="d-lg-none">
                             <i class="bi bi-chevron-right"></i>
                         </span></a>
@@ -80,7 +74,7 @@
                 </li>
                 <li>
                     <a href="{{ route('contactUs') }}"
-                        class="{{ Route::is('contactUs') || Request::is('contactUs/*') ? 'active' : '' }}">Contact
+                        class="{{ Route::is('contactUs') ? 'active' : '' }}">Contact
                         Us<span class="d-lg-none">
                             <i class="bi bi-chevron-right"></i>
                         </span></a>
@@ -88,7 +82,7 @@
                 <li class="d-flex d-lg-none pt-75">
                     <div>
                         <div class="copyright m-3">
-                            &copy; Copyright <b>RAYA Construction International</b> 2025 All Rights
+                            &copy; Copyright <b>RAYA Construction International</b> 2026 All Rights
                             Reserved
                         </div>
                     </div>
@@ -101,22 +95,13 @@
 </header>
 
 <script>
-    window.onscroll = function() {
-        myFunction();
-    };
-
-
     var header = document.getElementById("header");
-    var sticky = header.offsetTop;
 
-    function myFunction() {
-        // header.style.backgroundColor = "white";
-        if (window.pageYOffset > (sticky + 150)) {
-            header.classList.add("sticky");
-            // header.style.backgroundColor = "white";
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
         } else {
-            header.classList.remove("sticky");
-            // header.style.backgroundColor = "white";
+            header.classList.remove("scrolled");
         }
-    }
+    });
 </script>

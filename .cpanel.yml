@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/rayakonstruksi/public_html/raya-konstruksi
+    - /bin/cp -R * $DEPLOYPATH

@@ -13,9 +13,18 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-                sans: ["Josefin Sans", ...defaultTheme.fontFamily.sans],
-                sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
+                sans: ["Pliant", ...defaultTheme.fontFamily.sans],
+                heading: ["Bricolage Grotesque", ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                navy: {
+                    DEFAULT: "#1B2F6E",
+                    dark: "#142257",
+                },
+                gold: {
+                    DEFAULT: "#F59E0B",
+                    dark: "#D97706",
+                },
             },
         },
     },

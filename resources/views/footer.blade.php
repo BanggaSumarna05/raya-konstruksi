@@ -4,10 +4,10 @@
         <div class="container px-20 pt-10">
             <div class="row">
                 <div class="col-lg-2 col-md-2 footer-links" data-aos="fade-up" data-aos-delay="100">
-                    <h1 class="text-white">
-                        RAYA
+                    <h2 class="text-white">
+                        <img src="{{ asset('assets/img/logo-raya-polos.webp') }}" alt="Raya Konstruksi Internasional" width="100" height="auto" style="width: 100px">
                         {{-- KONSTRUKSI INTERNASIONAL --}}
-                    </h1>
+                    </h2>
                 </div>
                 <div class="col-lg-2 col-md-2 footer-links" data-aos="fade-up" data-aos-delay="100">
                     <h4 style="border-bottom: 3px solid #ffff; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;"
@@ -29,11 +29,11 @@
                         What We Do</h4>
                     <ul>
                         <li><a href="{{ route('catalyst-loading') }}#catalyst-loading" class="text-white">Catalyst
-                                Loading</a></li>
-                        <li><a href="{{ route('plantMaintenance') }}" class="text-white">Plant Maintenance</a></li>
+                                Handling</a></li>
+                        <li><a href="{{ route('plantMaintenance') }}" class="text-white">Operation & Maintenance</a></li>
                         <li><a href="{{ route('whatWeDo') }}#construction" class="text-white">Construction &
                                 Fabrication</a></li>
-                        <li><a href="{{ route('whatWeDo') }}#construction" class="text-white">Soil & Civil Works</a>
+                        <li><a href="{{ route('whatWeDo') }}#construction" class="text-white">Civil & Road Works</a>
                         </li>
                         {{-- <li><a href="{{ route('whatWeDo') }}#construction">Portfolio</a></li>
                         <li><a href="{{ route('heaveyRental') }}">Heavy Equipment List</a></li> --}}
@@ -83,9 +83,11 @@
                         class="text-white">
                         Contact Us</h4>
                     <ul>
-                        <a href="{{ route('contactUs') }}"
-                            class="{{ Route::is('contactUs') ? 'active' : '' }} text-white">Get In
-                            Touch</a>
+                        <li>
+                            <a href="{{ route('contactUs') }}"
+                                class="{{ Route::is('contactUs') ? 'active' : '' }} text-white">Get In
+                                Touch</a>
+                        </li>
                     </ul>
                     <h4 style="border-bottom: 3px solid #ffff; display: inline-block; padding-bottom: 12px; margin-bottom: 16px;"
                         class="mt-5 text-white">
@@ -120,7 +122,7 @@
 <style>
     .improved-footer {
         position: relative;
-        background-color: #2a4184;
+        background-color: #0a0a0a;
         /* tetap solid */
         overflow: hidden;
         z-index: 1;
@@ -132,7 +134,7 @@
         position: absolute;
         inset: 0;
 
-        background-image: url('/assets/img/logo-raya-clean-footer.png');
+        background-image: url('/assets/img/logo-raya-clean-footer.webp');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -142,16 +144,14 @@
 
         /* Inilah kuncinya → hanya gambar yang kena gradasi */
         -webkit-mask-image: linear-gradient(to bottom,
-                rgba(0, 0, 0, 0.4),
-                /* bagian atas 100% terlihat */
-                rgba(0, 0, 0, 0.3),
-                /* tengah 50% transparan */
+                rgba(0, 0, 0, 0.15),
+                /* bagian atas lebih subtle di hitam */
+                rgba(0, 0, 0, 0.08),
                 rgba(0, 0, 0, 0)
-                /* bawah hilang total */
             );
         mask-image: linear-gradient(to bottom,
-                rgba(0, 0, 0, 0.4),
-                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.08),
                 rgba(0, 0, 0, 0));
 
         z-index: -1;

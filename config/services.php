@@ -31,8 +31,13 @@ return [
         ],
     ],
 
-    // novendra captcha mgi
-    'key' => env('GOOGLE_RECAPTCHA_KEY', ''),
-    'secret' => env('GOOGLE_RECAPTCHA_SECRET', ''),
+    // reCAPTCHA v2 credentials
+    'recaptcha' => [
+        'site_key'   => env('RECAPTCHA_SITE_KEY', ''),
+        'secret_key' => env('RECAPTCHA_SECRET_KEY', ''),
+    ],
+
+    // Inquiry email recipient
+    'inquiry_recipient' => env('MAIL_INQUIRY_RECIPIENT', 'marketing@rayakonstruksi.com'),
 
 ];

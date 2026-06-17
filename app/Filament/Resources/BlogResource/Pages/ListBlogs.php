@@ -5,6 +5,7 @@ namespace App\Filament\Resources\BlogResource\Pages;
 use App\Filament\Resources\BlogResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Support\Facades\Cache;
 
 class ListBlogs extends ListRecords
 {

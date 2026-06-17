@@ -100,4 +100,12 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Inquiry Recipient
+    |--------------------------------------------------------------------------
+    | The email address that receives all inquiry form submissions.
+    */
+    'inquiry_recipient' => env('MAIL_INQUIRY_RECIPIENT', 'marketing@rayakonstruksi.com'),
+
 ];

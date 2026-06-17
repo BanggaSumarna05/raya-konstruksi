@@ -12,15 +12,14 @@ class ReCaptcha
         $response = $client->post(
             'https://www.google.com/recaptcha/api/siteverify',
             [
-                'form_params' =>
-                [
-                    'secret' => '6LcPescpAAAAANrRTOkbTGKCGNP7SOei--7ktbJv',
-                    'response' => $value
-                ]
+                'form_params' => [
+                    'secret'   => config('services.recaptcha.secret_key'),
+                    'response' => $value,
+                ],
             ]
         );
 
-        $body = json_decode((string)$response->getBody());
+        $body = json_decode((string) $response->getBody());
         return $body->success;
     }
     public function rules()

@@ -1,2 +1,16 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Disallow admin and auth pages
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /verify-email
+Disallow: /log-viewer
+
+# Sitemap
+Sitemap: https://www.rayakonstruksi.com/sitemap.xml

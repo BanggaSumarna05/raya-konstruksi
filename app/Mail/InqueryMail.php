@@ -19,7 +19,7 @@ class InqueryMail extends Mailable
      */
     public function __construct($data)
     {
-        $data = $this->data;
+        $this->data = $data;
     }
 
     /**

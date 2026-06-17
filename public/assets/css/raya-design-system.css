@@ -1,0 +1,528 @@
+/*
+ * RAYA KONSTRUKSI — Design System
+ * Single source of truth for all UI components.
+ * Applied across all pages for visual consistency.
+ * 
+ * FONT USAGE:
+ * - Heading (h1-h6, titles, headlines): Bricolage Grotesque (var(--font-head))
+ * - Body (paragraphs, text, descriptions): Pliant (var(--font-body))
+ */
+
+/* ============================================================
+   TOKENS
+============================================================ */
+:root {
+    --navy:        #1B2F6E;
+    --navy-dark:   #142257;
+    --navy-light:  #2a47a0;
+    --gold:        #F59E0B;
+    --gold-dark:   #D97706;
+    --white:       #ffffff;
+    --bg-light:    #f8f9fb;
+    --bg-section:  #f0f2f8;
+    --text-dark:   #1a1a1a;
+    --text-body:   #555555;
+    --text-muted:  #888888;
+    --border:      #e5e7eb;
+    
+    /* Typography */
+    --font-head:   "Bricolage Grotesque", sans-serif;  /* For headings only */
+    --font-body:   "Pliant", sans-serif;               /* For body text */
+    
+    /* Layout */
+    --radius-btn:  50px;
+    --radius-card: 14px;
+    --shadow-sm:   0 4px 16px rgba(27,47,110,0.10);
+    --shadow-md:   0 10px 32px rgba(27,47,110,0.14);
+    --shadow-lg:   0 20px 60px rgba(27,47,110,0.16);
+}
+
+/* ============================================================
+   PAGE HERO — standard inner-page hero banner
+   Usage: <section class="page-hero">
+            <div class="page-hero-overlay"></div>
+            <div class="container page-hero-body">
+              <span class="section-eyebrow">...</span>
+              <h1 class="page-hero-title">...</h1>
+              <p class="page-hero-sub">...</p>
+            </div>
+          </section>
+============================================================ */
+.page-hero {
+    position: relative;
+    min-height: 46vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--navy-dark);
+    background-size: cover;
+    background-position: center;
+}
+.page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(105deg,
+            rgba(11,11,11,0.85) 0%,
+            rgba(27,47,110,0.60) 50%,
+            rgba(11,11,11,0.30) 100%
+        ),
+        linear-gradient(to top,
+            rgba(11,11,11,0.80) 0%,
+            transparent 50%
+        );
+    z-index: 1;
+    pointer-events: none;
+}
+.page-hero-body {
+    position: relative;
+    z-index: 2;
+    padding-top: 120px;
+    padding-bottom: 60px;
+}
+.page-hero-title {
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    margin: 12px 0 0;
+}
+.page-hero-sub {
+    font-family: var(--font-body);
+    font-size: clamp(14px, 1.4vw, 17px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.72);
+    margin: 16px 0 0;
+    max-width: 560px;
+    line-height: 1.65;
+}
+
+/* ============================================================
+   SECTION HELPERS
+============================================================ */
+.section-eyebrow {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+.section-title {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: clamp(22px, 2.8vw, 34px);
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+.section-divider {
+    width: 48px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+.section-body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-body);
+    line-height: 1.75;
+}
+
+/* ============================================================
+   BUTTON SYSTEM
+   .btn-primary   → navy solid pill
+   .btn-outline   → navy outline pill
+   .btn-ghost     → white outline pill (dark backgrounds)
+   .btn-link-nav  → underline text link
+============================================================ */
+.btn-primary,
+.btn-outline,
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 13px 28px;
+    border-radius: var(--radius-btn);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.22s, color 0.22s, border-color 0.22s,
+                transform 0.2s, box-shadow 0.22s;
+}
+
+.btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    border: 2px solid var(--navy);
+    box-shadow: 0 4px 18px rgba(27,47,110,0.22);
+}
+.btn-primary:hover {
+    background: var(--navy-dark);
+    border-color: var(--navy-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(27,47,110,0.32);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+}
+.btn-outline:hover {
+    background: var(--navy);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(8px);
+}
+.btn-ghost:hover {
+    border-color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.10);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* btn sizes */
+.btn-sm { font-size: 12px; padding: 9px 20px; }
+.btn-lg { font-size: 15px; padding: 16px 36px; }
+
+.btn-link-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+.btn-link-nav:hover { color: var(--gold); }
+
+/* ============================================================
+   CARD — standard content card
+============================================================ */
+.raya-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.raya-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+}
+.raya-card-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.raya-card:hover .raya-card-img { transform: scale(1.05); }
+.raya-card-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.raya-card-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+.raya-card-badge {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.raya-card-badge--gold { background: var(--gold); color: var(--navy); }
+
+/* ============================================================
+   STAT ITEM
+============================================================ */
+.raya-stat { display: flex; flex-direction: column; }
+.raya-stat-num {
+    font-family: var(--font-head);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: -1px;
+}
+.raya-stat-num sup {
+    font-size: 0.55em;
+    color: var(--gold);
+    font-weight: 900;
+    vertical-align: super;
+}
+.raya-stat-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+}
+/* Stat on dark bg */
+.raya-stat--light .raya-stat-num { color: var(--white); }
+.raya-stat--light .raya-stat-num sup { color: #93a8e8; }
+.raya-stat--light .raya-stat-label { color: rgba(255,255,255,0.45); font-weight: 700; }
+
+/* ============================================================
+   NUMBERED LIST (service lists)
+============================================================ */
+.raya-num-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.raya-num-list li {
+    display: flex;
+    align-items: stretch;
+    background: #f1f3f9;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: var(--font-body);
+}
+.raya-num-list .num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+.raya-num-list .text {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    font-weight: 500;
+    color: var(--text-body);
+    line-height: 1.3;
+}
+
+/* ============================================================
+   SECTION DIVIDER LINE
+============================================================ */
+.raya-divider-line {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 60px 0;
+}
+
+/* ============================================================
+   HSE POLICY CARD
+============================================================ */
+.hse-policy-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: 28px 24px;
+    height: 100%;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.hse-policy-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+.hse-policy-num {
+    font-family: var(--font-head);
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 12px;
+    opacity: 0.15;
+}
+.hse-policy-text {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-body);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ============================================================
+   CORE VALUES CARD
+============================================================ */
+.values-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: 32px 24px;
+    text-align: center;
+    height: 100%;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.values-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+    border-top-color: var(--gold);
+}
+.values-card-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%)
+            invert(15%) sepia(72%) saturate(800%)
+            hue-rotate(200deg) brightness(80%) contrast(105%);
+    transition: filter 0.3s;
+}
+.values-card:hover .values-card-icon {
+    filter: brightness(0) saturate(100%)
+            invert(62%) sepia(80%) saturate(500%)
+            hue-rotate(10deg) brightness(100%) contrast(95%);
+}
+.values-card-title {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.values-card-text {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ============================================================
+   CONTACT INFO ROW
+============================================================ */
+.contact-info-row {
+    display: flex;
+    gap: 12px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+}
+.contact-info-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.contact-info-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+}
+.contact-info-value {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 500;
+    line-height: 1.5;
+}
+.contact-maps-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    text-decoration: none;
+    margin-top: 4px;
+    transition: color 0.2s;
+}
+.contact-maps-link:hover { color: var(--gold); }
+
+/* ============================================================
+   UTILITY
+============================================================ */
+.text-navy   { color: var(--navy) !important; }
+.text-gold   { color: var(--gold) !important; }
+.bg-navy     { background-color: var(--navy) !important; }
+.bg-gold     { background-color: var(--gold) !important; }
+.divider-navy { width: 48px; height: 4px; background: var(--navy); border-radius: 2px; }
+.divider-gold { width: 48px; height: 4px; background: var(--gold); border-radius: 2px; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+    .page-hero { min-height: 38vh; }
+    .page-hero-title { letter-spacing: -0.5px; }
+    .page-hero-body { padding-top: 90px; padding-bottom: 40px; }
+    .btn-primary, .btn-outline, .btn-ghost { font-size: 12px; padding: 11px 22px; }
+}
+
+/* ============================================================
+   FOOTER CLS PREVENTION
+   Reserves layout space before footer content renders to
+   prevent Cumulative Layout Shift from footer images/content.
+   min-height reserves space; contain:layout prevents reflow
+   from affecting elements outside the footer.
+============================================================ */
+#footer,
+.footer {
+    min-height: 300px;
+    contain: layout;
+}
+
+.footer img {
+    aspect-ratio: attr(width) / attr(height);
+}

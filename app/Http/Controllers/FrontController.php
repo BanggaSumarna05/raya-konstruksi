@@ -656,9 +656,12 @@ class FrontController extends Controller
                 ->get()
         );
         try {
-            $clients = Cache::remember('active_clients', now()->addHours(6), fn () =>
-                Client::where('is_active', true)->orderBy('order', 'asc')->get()
-            );
+            $clients = Client::where('is_active', true)->orderBy('order', 'asc')->get()->map(fn ($c) => [
+                'id' => $c->id,
+                'name' => $c->name,
+                'logo_url' => $c->logo_url,
+                'url' => $c->url,
+            ])->values();
         } catch (\Throwable $e) {
             $clients = collect();
         }
@@ -685,9 +688,12 @@ class FrontController extends Controller
     public function clientPartner()
     {
         try {
-            $clients = Cache::remember('active_clients', now()->addHours(6), fn () =>
-                Client::where('is_active', true)->orderBy('order', 'asc')->get()
-            );
+            $clients = Client::where('is_active', true)->orderBy('order', 'asc')->get()->map(fn ($c) => [
+                'id' => $c->id,
+                'name' => $c->name,
+                'logo_url' => $c->logo_url,
+                'url' => $c->url,
+            ])->values();
         } catch (\Throwable $e) {
             $clients = collect();
         }

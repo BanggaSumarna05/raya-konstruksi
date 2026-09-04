@@ -655,9 +655,13 @@ class FrontController extends Controller
                 ->limit(4)
                 ->get()
         );
-        $clients = Cache::remember('active_clients', now()->addHours(6), fn () =>
-            Client::where('is_active', true)->orderBy('order', 'asc')->get()
-        );
+        try {
+            $clients = Cache::remember('active_clients', now()->addHours(6), fn () =>
+                Client::where('is_active', true)->orderBy('order', 'asc')->get()
+            );
+        } catch (\Throwable $e) {
+            $clients = collect();
+        }
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1home', [
             'blogs' => $blogs,
@@ -680,9 +684,13 @@ class FrontController extends Controller
 
     public function clientPartner()
     {
-        $clients = Cache::remember('active_clients', now()->addHours(6), fn () =>
-            Client::where('is_active', true)->orderBy('order', 'asc')->get()
-        );
+        try {
+            $clients = Cache::remember('active_clients', now()->addHours(6), fn () =>
+                Client::where('is_active', true)->orderBy('order', 'asc')->get()
+            );
+        } catch (\Throwable $e) {
+            $clients = collect();
+        }
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1whoWeAre-partners', [
             'clients' => $clients

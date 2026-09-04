@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Sedang Ditingkatkan | PT Raya Konstruksi Internasional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0f1d;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --primary-navy: #1b2f6e;
+            --accent-gold: #f1a52b;
+            --accent-gold-glow: rgba(241, 165, 43, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-glow-1 {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(27, 47, 110, 0.35) 0%, rgba(10, 15, 29, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(241, 165, 43, 0.15) 0%, rgba(10, 15, 29, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .grid-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .maintenance-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 680px;
+            padding: 2.5rem 1.5rem;
+            margin: auto;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-card);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                        0 0 0 1px rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+
+        .brand-logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-navy), #254096);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 16px rgba(27, 47, 110, 0.4);
+        }
+
+        .brand-logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .brand-logo-text span {
+            color: var(--accent-gold);
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(241, 165, 43, 0.1);
+            border: 1px solid rgba(241, 165, 43, 0.3);
+            border-radius: 100px;
+            color: var(--accent-gold);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            margin-bottom: 1.75rem;
+            letter-spacing: 0.02em;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background-color: var(--accent-gold);
+            opacity: 0.6;
+            animation: pulseRing 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .description {
+            font-size: 0.975rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            width: 75%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-navy), var(--accent-gold));
+            border-radius: 100px;
+            position: relative;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 2.25rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 1rem 0.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(241, 165, 43, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            margin: 0 auto 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+        }
+
+        .feature-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .actions-wrap {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary-gold {
+            background: var(--accent-gold);
+            color: #0f172a;
+            box-shadow: 0 4px 14px var(--accent-gold-glow);
+        }
+
+        .btn-primary-gold:hover {
+            background: #f5b041;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(241, 165, 43, 0.4);
+        }
+
+        .btn-secondary-dark {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary-dark:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .maintenance-footer {
+            margin-top: 2rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 640px) {
+            .glass-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .actions-wrap {
+                flex-direction: column;
+            }
+
+            .btn-action {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+    <div class="grid-pattern"></div>
+
+    <div class="maintenance-container">
+        <div class="glass-card">
+            <div class="brand-logo">
+                <div class="brand-logo-icon">R</div>
+                <div class="brand-logo-text">
+                    RAYA KONSTRUKSI
+                    <span>Internasional</span>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="status-badge">
+                <span class="pulse-dot"></span>
+                PEMBARUAN SISTEM SEDANG BERLANGSUNG
+            </div>
+
+            <h1 class="title">Website Sedang Dalam Pemeliharaan</h1>
+
+            <p class="description">
+                Kami sedang melakukan pembaruan rutin dan peningkatan infrastruktur server untuk memberikan layanan yang lebih cepat, aman, dan handal bagi Anda.
+            </p>
+
+            <div class="progress-box">
+                <div class="progress-header">
+                    <span>Progres Pemeliharaan</span>
+                    <span style="color: var(--accent-gold);">Proses Finalisasi</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">Keamanan Tinggi</div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 14 8a5.974 5.974 0 0 1-1.01 3.32.5.5 0 1 1-.84-.543A4.974 4.974 0 0 0 13 8a5 5 0 0 0-5-5z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">Performa Lebih Cepat</div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.89-3.41.88-2.52 2.52l.16.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.89 1.64.88 3.41 2.52 2.52l.292-.16a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.89 3.41-.88 2.52-2.52l-.16-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.89-1.64-.88-3.41-2.52-2.52l-.292.16a.873.873 0 0 1-1.255-.52l-.094-.319z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">Fitur Terbaru</div>
+                </div>
+            </div>
+
+            <div class="actions-wrap">
+                <a href="https://wa.me/6281110582233" target="_blank" class="btn-action btn-primary-gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.644 1.932 6.56 6.56 0 0 1 1.928 4.644c-.004 3.639-2.961 6.597-6.566 6.597z"/>
+                    </svg>
+                    Hubungi via WhatsApp
+                </a>
+                <a href="mailto:info@rayakonstruksi.com" class="btn-action btn-secondary-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                    </svg>
+                    Kirim Email
+                </a>
+            </div>
+
+            <div class="maintenance-footer">
+                &copy; PT RAYA KONSTRUKSI INTERNASIONAL. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

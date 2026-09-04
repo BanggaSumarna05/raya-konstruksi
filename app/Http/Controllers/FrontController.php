@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\InqueryMail;
 use App\Models\Blog;
+use App\Models\Client;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -654,9 +655,13 @@ class FrontController extends Controller
                 ->limit(4)
                 ->get()
         );
+        $clients = Cache::remember('active_clients', now()->addHours(6), fn () =>
+            Client::where('is_active', true)->orderBy('order', 'asc')->get()
+        );
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1home', [
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'clients' => $clients
         ]);
     }
 
@@ -675,8 +680,13 @@ class FrontController extends Controller
 
     public function clientPartner()
     {
+        $clients = Cache::remember('active_clients', now()->addHours(6), fn () =>
+            Client::where('is_active', true)->orderBy('order', 'asc')->get()
+        );
         SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('1whoWeAre-partners');
+        return Inertia::render('1whoWeAre-partners', [
+            'clients' => $clients
+        ]);
     }
 
     public function whatWeDo()

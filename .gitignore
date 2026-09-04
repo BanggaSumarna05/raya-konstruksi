@@ -1,5 +1,6 @@
 /.phpunit.cache
 /node_modules
+/public/storage
 /storage/*.key
 /vendor
 .env
@@ -14,6 +15,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/.kiro
 
 # Debug & profiling artifacts
 lh-*.txt
@@ -37,3 +39,7 @@ test.txt
 *.z03
 *.tar.gz
 *.rar
+
+# OS generated files
+.DS_Store
+Thumbs.db

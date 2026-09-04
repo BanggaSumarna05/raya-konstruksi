@@ -1,22 +1,12 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 
-const clients = [
-    { img: "/assets/img/client/lotte-chemical.webp",    alt: "Lotte Chemical" },
-    { img: "/assets/img/client/logo-air-products.webp", alt: "Air Products" },
-    { img: "/assets/img/client/logo-unilever.webp",     alt: "Unilever Oleochemical" },
-    { img: "/assets/img/client/apical-retina.webp",     alt: "Apical Group" },
-    { img: "/assets/img/client/logo-jadestone.webp",    alt: "Jadestone Energy" },
-    { img: "/assets/img/client/bukit-asam.webp",   alt: "Bukit Asam" },
-    { img: "/assets/img/client/OKI.webp",          alt: "OKI Pulp & Paper" },
-    { img: "/assets/img/client/logo-msm.webp",          alt: "Muria Sumba Manis" },
-    { img: "/assets/img/client/logo-enerco.webp",       alt: "Enerco" },
-    { img: "/assets/img/client/kine-jo-logo.webp",      alt: "Kine Jo" },
-    { img: "/assets/img/client/logo-asraya.webp",       alt: "Casa Asraya" },
-    { img: "/assets/img/client/swg.webp",               alt: "SWG" },
-    { img: "/assets/img/client/maxiterm.webp",          alt: "Maxiterm" },
-    { img: "/assets/img/client/tata.webp",              alt: "Tatamulia Nusantara Indah" },
-];
+defineProps({
+    clients: {
+        type: Array,
+        default: () => []
+    }
+});
 </script>
 
 <template>
@@ -41,7 +31,7 @@ const clients = [
             <div class="row justify-content-center text-center gy-4">
                 <div class="col-6 col-md-3">
                     <div class="pi-stat">
-                        <div class="pi-num">17<sup>+</sup></div>
+                        <div class="pi-num">{{ clients && clients.length ? clients.length : '17' }}<sup>+</sup></div>
                         <div class="pi-label">Industry Clients</div>
                     </div>
                 </div>
@@ -81,12 +71,12 @@ const clients = [
             </div>
 
             <div class="row g-4">
-                <div v-for="(c, i) in clients" :key="i"
+                <div v-for="(c, i) in clients" :key="c.id || i"
                      class="col-6 col-md-3 col-lg-2"
                      data-aos="fade-up" :data-aos-delay="i % 6 * 60">
                     <div class="partner-card">
-                        <img :src="c.img" :alt="c.alt" class="partner-logo" />
-                        <p class="partner-name">{{ c.alt }}</p>
+                        <img :src="c.logo_url" :alt="c.name" class="partner-logo" />
+                        <p class="partner-name">{{ c.name }}</p>
                     </div>
                 </div>
             </div>

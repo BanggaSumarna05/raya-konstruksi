@@ -1,6 +1,12 @@
-﻿<script setup>
+<script setup>
 import { Head, Link } from "@inertiajs/vue3";
-defineProps({ blogs: Array });
+defineProps({
+    blogs: Array,
+    clients: {
+        type: Array,
+        default: () => []
+    }
+});
 </script>
 
 <template>
@@ -53,47 +59,25 @@ defineProps({ blogs: Array });
                 </div>
                 <div class="hero-stat-divider"></div>
                 <div class="hero-stat">
-                    <span class="hero-stat-num">21</span>
+                    <span class="hero-stat-num">{{ clients && clients.length ? clients.length : '17' }}<span class="stat-plus">+</span></span>
                     <span class="hero-stat-label">Corporate Clients</span>
                 </div>
             </div>
         </div>
 
         <!-- Client logo marquee strip -->
-        <div class="hero-logos-wrap">
+        <div v-if="clients && clients.length > 0" class="hero-logos-wrap">
             <div class="hero-logos-inner">
                 <div class="hero-marquee-track">
                     <div class="hero-marquee-set" aria-hidden="false">
-                        <div class="hero-logo-box"><img src="/assets/img/client/tata.webp"              alt="Tatamulia"        class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/lotte-chemical.webp"    alt="Lotte Chemical"   class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-air-products.webp" alt="Air Products"     class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-unilever.webp"     alt="Unilever"         class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/apical-retina.webp"     alt="Apical Group"     class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-jadestone.webp"    alt="Jadestone Energy" class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/bukit-asam.webp"        alt="Bukit Asam"       class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/OKI.webp"               alt="OKI Pulp & Paper" class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-msm.webp"          alt="MSM"              class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-enerco.webp"       alt="Enerco"           class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/kine-jo-logo.webp"      alt="Kine Jo"          class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-asraya.webp"       alt="Casa Asraya"      class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/swg.webp"               alt="SWG"              class="hero-logo" width="88" height="44" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/maxiterm.webp"          alt="Maxiterm"         class="hero-logo" width="88" height="44" /></div>
+                        <div v-for="c in clients" :key="'hero-' + c.id" class="hero-logo-box">
+                            <img :src="c.logo_url" :alt="c.name" class="hero-logo" width="88" height="44" />
+                        </div>
                     </div>
                     <div class="hero-marquee-set" aria-hidden="true">
-                        <div class="hero-logo-box"><img src="/assets/img/client/tata.webp"              alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/lotte-chemical.webp"    alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-air-products.webp" alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-unilever.webp"     alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/apical-retina.webp"     alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-jadestone.webp"    alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/bukit-asam.webp"        alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/OKI.webp"               alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-msm.webp"          alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-enerco.webp"       alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/kine-jo-logo.webp"      alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/logo-asraya.webp"       alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/swg.webp"               alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
-                        <div class="hero-logo-box"><img src="/assets/img/client/maxiterm.webp"          alt="" class="hero-logo" width="88" height="44" loading="lazy" /></div>
+                        <div v-for="c in clients" :key="'hero-dup-' + c.id" class="hero-logo-box">
+                            <img :src="c.logo_url" alt="" class="hero-logo" width="88" height="44" loading="lazy" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -513,7 +497,7 @@ defineProps({ blogs: Array });
     <!-- ============================================================
          9. CLIENTS
     ============================================================ -->
-    <section class="clients-section">
+    <section v-if="clients && clients.length > 0" class="clients-section">
         <div class="container">
             <div class="clients-header">
                 <div class="clients-header-left">
@@ -532,30 +516,14 @@ defineProps({ blogs: Array });
                 <div class="clients-fade clients-fade--right"></div>
                 <div class="clients-marquee-track">
                     <div class="clients-marquee-set">
-                        <div class="client-logo-card"><img src="/assets/img/client/lotte-chemical.webp"    alt="Lotte Chemical"        class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-pertamina.svg"    alt="Pertamina"             class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-air-products.webp" alt="Air Products"          class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-unilever.webp"     alt="Unilever Oleochemical" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/apical-retina.webp"     alt="Apical Group"          class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-jadestone.webp"    alt="Jadestone Energy"      class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/bukit-asam.webp"        alt="Bukit Asam"            class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/OKI.webp"               alt="OKI Pulp &amp; Paper"  class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-msm.webp"          alt="Muria Sumba Manis"     class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-enerco.webp"       alt="Enerco"                class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-asraya.webp"       alt="Casa Asraya"           class="client-logo-img" loading="lazy" width="130" height="44" /></div>
+                        <div v-for="c in clients" :key="'sec-' + c.id" class="client-logo-card">
+                            <img :src="c.logo_url" :alt="c.name" class="client-logo-img" loading="lazy" width="130" height="44" />
+                        </div>
                     </div>
                     <div class="clients-marquee-set" aria-hidden="true">
-                        <div class="client-logo-card"><img src="/assets/img/client/lotte-chemical.webp"    alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-pertamina.svg"    alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-air-products.webp" alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-unilever.webp"     alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/apical-retina.webp"     alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-jadestone.webp"    alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/bukit-asam.webp"        alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/OKI.webp"               alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-msm.webp"          alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-enerco.webp"       alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
-                        <div class="client-logo-card"><img src="/assets/img/client/logo-asraya.webp"       alt="" class="client-logo-img" loading="lazy" width="130" height="44" /></div>
+                        <div v-for="c in clients" :key="'sec-dup-' + c.id" class="client-logo-card">
+                            <img :src="c.logo_url" alt="" class="client-logo-img" loading="lazy" width="130" height="44" />
+                        </div>
                     </div>
                 </div>
             </div>

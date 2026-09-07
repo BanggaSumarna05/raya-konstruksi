@@ -1,5 +1,5 @@
 <header id="header" class="header d-flex align-items-center">
-    <div class="container container-fluid container-xl d-flex align-items-center justify-content-between">
+    <div class="header-inner d-flex align-items-center justify-content-between">
 
         <a href="{{ route('index') }}" class="logo d-flex align-items-center">
             <img src="/assets/img/logo-raya-polos.webp" alt="Logo Raya Konstruksi International"

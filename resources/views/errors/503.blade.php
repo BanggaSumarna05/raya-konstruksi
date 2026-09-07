@@ -27,7 +27,7 @@
 
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
+            background: url('/assets/img/cover-const.webp') center/cover no-repeat fixed;
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -36,6 +36,17 @@
             overflow-x: hidden;
             position: relative;
         }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background: linear-gradient(135deg, rgba(5,8,22,0.93) 0%, rgba(11,20,55,0.88) 60%, rgba(5,8,22,0.80) 100%);
+            pointer-events: none;
+        }
+
+        .bg-glow-1 { display: none; }
+        .bg-glow-2 { display: none; }
+        .grid-pattern { display: none; }
 
         .bg-glow-1 {
             position: absolute;

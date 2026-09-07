@@ -218,9 +218,10 @@
         }
     </style>
     {{-- favicon --}}
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon.png">
+    <link rel="shortcut icon" href="/icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
@@ -229,6 +230,71 @@
 </head>
 
 <body class="font-sans antialiased">
+
+    <!-- Loading splash — tampil instan sebelum JS/CSS async selesai -->
+    <div id="raya-splash">
+        <div class="raya-splash-inner">
+            <img src="/assets/img/logo-raya-polos.webp" alt="Raya Konstruksi" class="raya-splash-logo" width="160" height="48" />
+            <div class="raya-splash-bar"><div class="raya-splash-progress"></div></div>
+        </div>
+    </div>
+
+    <style>
+        #raya-splash {
+            position: fixed; inset: 0; z-index: 99999;
+            background: #0D1B40;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        #raya-splash.raya-splash--hidden {
+            opacity: 0; visibility: hidden; pointer-events: none;
+        }
+        .raya-splash-inner {
+            display: flex; flex-direction: column; align-items: center; gap: 28px;
+        }
+        .raya-splash-logo {
+            height: 44px; width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0;
+            animation: splash-logo-in 0.5s 0.1s ease forwards;
+        }
+        @keyframes splash-logo-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .raya-splash-bar {
+            width: 140px; height: 2px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 2px; overflow: hidden;
+        }
+        .raya-splash-progress {
+            height: 100%; width: 0%;
+            background: #F59E0B;
+            border-radius: 2px;
+            animation: splash-progress 1.2s 0.2s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        @keyframes splash-progress {
+            0%   { width: 0%; }
+            60%  { width: 75%; }
+            100% { width: 100%; }
+        }
+    </style>
+
+    <script>
+        (function() {
+            function hideSplash() {
+                var el = document.getElementById('raya-splash');
+                if (el) el.classList.add('raya-splash--hidden');
+            }
+            // Sembunyikan setelah halaman siap + minimum 1.5s agar progress bar selesai
+            var minWait = new Promise(function(r){ setTimeout(r, 1500); });
+            var pageReady = new Promise(function(r){
+                if (document.readyState === 'complete') r();
+                else window.addEventListener('load', r);
+            });
+            Promise.all([minWait, pageReady]).then(hideSplash);
+        })();
+    </script>
     @unless(Request::is('login', 'register', 'forgot-password', 'reset-password', 'reset-password/*', 'verify-email'))
         @include('header')
     @endunless

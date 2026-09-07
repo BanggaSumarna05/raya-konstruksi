@@ -1,5 +1,7 @@
 <script setup>
+import { ref } from "vue";
 import { Head, Link } from "@inertiajs/vue3";
+
 defineProps({
     blogs: Array,
     clients: {
@@ -7,6 +9,14 @@ defineProps({
         default: () => []
     }
 });
+
+const heroVideo = ref(null);
+
+function onVideoCanPlay() {
+    if (heroVideo.value) {
+        heroVideo.value.classList.add('hero-bg-video--ready');
+    }
+}
 </script>
 
 <template>
@@ -17,29 +27,39 @@ defineProps({
     ============================================================ -->
     <section id="hero" class="hero-section">
 
-        <div class="hero-bg"></div>
+        <div class="hero-bg-poster" aria-hidden="true"></div>
+        <video
+            class="hero-bg-video"
+            autoplay muted loop playsinline
+            preload="none"
+            aria-hidden="true"
+            @canplay="onVideoCanPlay"
+            ref="heroVideo"
+        >
+            <source src="/assets/img/hero-carousel/hero-main.webm" type="video/webm" />
+        </video>
         <div class="hero-overlay"></div>
         <div class="hero-grain" aria-hidden="true"></div>
 
         <div class="hero-body">
-            <h1 class="hero-headline">
-                BUILDING TOMORROW,<br />
-                TODAY.
-            </h1>
+            <div class="hero-content">
+                <h1 class="hero-headline">
+                    BUILDING TOMORROW,<br />
+                    TODAY.
+                </h1>
 
-            <div class="hero-rule"></div>
-            <p class="hero-sub">Excellence meet innovation to deliver unparalleled solutions for all your needs.
-                
-            </p>
+                <div class="hero-rule"></div>
+                <p class="hero-sub">Excellence meet innovation to deliver unparalleled solutions for all your needs.</p>
 
-            <div class="hero-ctas">
-                <Link :href="route('portfolio')" class="hero-cta-primary">
-                    View Portfolio
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" /></svg>
-                </Link>
-                <Link :href="route('contactUs')" class="hero-cta-ghost">
-                    Contact Us
-                </Link>
+                <div class="hero-ctas">
+                    <Link :href="route('portfolio')" class="hero-cta-primary">
+                        View Portfolio
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" /></svg>
+                    </Link>
+                    <Link :href="route('contactUs')" class="hero-cta-ghost">
+                        Contact Us
+                    </Link>
+                </div>
             </div>
 
             <div class="hero-stats">
@@ -778,65 +798,92 @@ defineProps({
 ============================================================ */
 .hero-section {
     position: relative; width: 100%; min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
+    display: flex; flex-direction: column; justify-content: space-between;
     overflow: hidden; background-color: #0B0B0B;
-    /* NOTE: 'contain: layout paint' was removed — it caused position:fixed
-       elements (navbar) to be clipped relative to this section instead of
-       the viewport, making the header disappear on scroll in mobile browsers */
     will-change: auto;
 }
-.hero-bg {
+/* Poster: static image tampil instan sebagai fallback */
+.hero-bg-poster {
     position: absolute; inset: 0;
     background-image: url('/assets/img/hero-carousel/hover-1-new.webp');
     background-size: cover; background-position: center 30%;
-    z-index: 0; transform: scale(1.04); transition: transform 8s ease-out;
+    z-index: 0;
 }
-.hero-section:hover .hero-bg { transform: scale(1.0); }
+/* Video: invisible sampai siap diputar */
+.hero-bg-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+/* Fade in video begitu sudah bisa diputar */
+.hero-bg-video--ready {
+    opacity: 1;
+}
+.hero-section:hover .hero-bg-video { transform: none; }
 .hero-overlay {
-    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
     background:
-        linear-gradient(105deg, rgba(11,11,11,0.88) 0%, rgba(11,11,11,0.72) 45%, rgba(11,11,11,0.30) 75%, transparent 100%),
-        linear-gradient(to top, rgba(11,11,11,0.90) 0%, rgba(11,11,11,0.40) 22%, transparent 45%),
-        linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, transparent 18%);
+        linear-gradient(110deg, rgba(5,8,22,0.92) 0%, rgba(5,8,22,0.78) 40%, rgba(5,8,22,0.35) 70%, transparent 100%),
+        linear-gradient(to top, rgba(5,8,22,0.97) 0%, rgba(5,8,22,0.55) 25%, transparent 55%),
+        linear-gradient(to bottom, rgba(5,8,22,0.65) 0%, transparent 20%);
+}
+/* Gold accent glow di kiri bawah — memberi depth dan brand identity */
+.hero-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 15%; left: -5%;
+    width: 45vw; height: 45vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%);
+    pointer-events: none;
 }
 .hero-grain {
-    position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0.035;
+    position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.040;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-repeat: repeat; background-size: 180px;
-    /* transform: translateZ(0) kept for compositing but will-change removed
-       to avoid creating a new stacking context that clips fixed descendants */
     transform: translateZ(0);
 }
 .hero-body {
     position: relative; z-index: 10;
     display: flex; flex-direction: column; align-items: flex-start;
-    padding: clamp(100px, 13vh, 140px) clamp(24px, 5vw, 88px) 0;
-    max-width: 900px; flex: 1;
+    justify-content: center;
+    padding: clamp(100px, 13vh, 140px) clamp(24px, 5vw, 88px) clamp(40px, 6vh, 64px);
+    flex: 1; gap: 48px;
 }
+/* Konten: headline, rule, sub, cta */
+.hero-content {
+    max-width: 620px;
+}
+/* Hapus sisa CSS card kanan yang tidak dipakai */
+.hero-main-row, .hero-side-card, .hero-side-item,
+.hero-side-icon, .hero-side-title, .hero-side-sub, .hero-side-badge { display: none; }
 .hero-headline {
     font-family: "Bricolage Grotesque", sans-serif; font-weight: 900;
     font-size: clamp(42px, 7vw, 88px); line-height: 0.93;
-    letter-spacing: -2px; color: #FFFFFF; margin: 0 0 24px 0;
-    animation: hero-fade-up 0.9s cubic-bezier(0.22,1,0.36,1) both;
+    letter-spacing: -2px; color: #FFFFFF; margin: 0 0 28px 0;
+    animation: hero-fade-up 0.9s 0.05s cubic-bezier(0.22,1,0.36,1) both;
 }
 @keyframes hero-fade-up {
     from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 .hero-rule {
-    width: 280px; height: 1px;
-    background: linear-gradient(to right, rgba(27,47,110,0.8), rgba(255,255,255,0.20), transparent);
-    margin-bottom: 20px; flex-shrink: 0;
+    width: 280px; height: 1.5px;
+    background: linear-gradient(to right, #F59E0B, rgba(245,158,11,0.25), transparent);
+    margin-bottom: 22px; flex-shrink: 0;
     animation: hero-fade-up 1.0s 0.15s cubic-bezier(0.22,1,0.36,1) both;
 }
 .hero-sub {
-    font-family: "Pliant", sans-serif; color: rgba(255,255,255,0.70);
-    font-size: clamp(15px, 1.4vw, 17px); font-weight: 400; line-height: 1.65;
-    margin: 0 0 36px 0; max-width: 520px;
+    font-family: "Pliant", sans-serif; color: rgba(255,255,255,0.65);
+    font-size: clamp(15px, 1.4vw, 17px); font-weight: 400; line-height: 1.70;
+    margin: 0 0 40px 0; max-width: 480px;
     animation: hero-fade-up 1.0s 0.25s cubic-bezier(0.22,1,0.36,1) both;
 }
 .hero-ctas {
-    display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px;
+    display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px;
     animation: hero-fade-up 1.0s 0.35s cubic-bezier(0.22,1,0.36,1) both;
 }
 .hero-cta-primary {
@@ -852,24 +899,28 @@ defineProps({
     display: inline-flex; align-items: center; gap: 8px;
     background: transparent; color: rgba(255,255,255,0.85);
     font-family: "Pliant", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.3px;
-    padding: 13px 28px; border-radius: 50px; text-decoration: none;
-    border: 1.5px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px);
+    padding: 14px 30px; border-radius: 50px; text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.30); backdrop-filter: blur(8px);
     transition: border-color 0.22s, background 0.22s, color 0.22s, transform 0.2s; white-space: nowrap;
 }
 .hero-cta-ghost:hover { border-color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.08); color: #fff; transform: translateY(-2px); }
 .hero-stats {
     display: flex; align-items: center; gap: 0;
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(255,255,255,0.10);
     animation: hero-fade-up 1.0s 0.45s cubic-bezier(0.22,1,0.36,1) both;
 }
+.hero-stat:first-child { padding-left: 0; }
+.hero-stat-num { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.5px; }
 .hero-stat { display: flex; flex-direction: column; padding: 0 28px 0 0; }
 .hero-stat:first-child { padding-left: 0; }
 .hero-stat-num { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.5px; }
 .stat-plus { font-size: 0.65em; color: #93a8e8; font-weight: 900; }
-.hero-stat-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
-.hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.15); margin: 0 28px 0 0; flex-shrink: 0; }
-.hero-logos-wrap { position: relative; z-index: 10; margin-top: 32px; padding-bottom: 0; }
+.hero-stat-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px; }
+.hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.12); margin: 0 28px 0 0; flex-shrink: 0; }
+.hero-logos-wrap { position: relative; z-index: 10; margin-top: 0; padding-bottom: 0; }
 .hero-logos-inner {
-    border-top: 1px solid rgba(255,255,255,0.10); padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; padding-bottom: 16px;
     display: flex; align-items: center; gap: 0; overflow: hidden;
 }
 .hero-marquee-track {
@@ -880,7 +931,7 @@ defineProps({
 .hero-marquee-set { display: flex; align-items: center; gap: 64px; padding-right: 64px; flex-shrink: 0; }
 @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .hero-logo-box { width: 110px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.hero-logo { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.65; transition: opacity 0.25s; }
+.hero-logo { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.55; transition: opacity 0.25s; }
 .hero-logo-box:hover .hero-logo { opacity: 1; }
 @media (max-width: 768px) {
     .hero-headline { font-size: clamp(44px, 13vw, 72px); letter-spacing: -1.5px; }

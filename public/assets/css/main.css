@@ -308,6 +308,12 @@ section {
     transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
+.header-inner {
+    width: 100%;
+    padding-left: clamp(24px, 5vw, 88px);
+    padding-right: clamp(24px, 5vw, 88px);
+}
+
 /* Slightly shorter header on small screens */
 @media (max-width: 480px) {
     .header {

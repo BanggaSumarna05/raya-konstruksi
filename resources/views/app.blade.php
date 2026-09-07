@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title inertia>{{ config('app.name', 'RAYA KONSTRUKSI INTERNASIONAL') }}</title>
+    <title inertia>Raya Konstruksi Internasional</title>
 
     <!-- Self-hosted fonts — Bricolage Grotesque (headings) + Pliant (body) -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>

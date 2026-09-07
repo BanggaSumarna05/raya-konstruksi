@@ -30,3 +30,8 @@ deployment:
     # ── 7. Set permission folder yang dibutuhkan Laravel ─────────────────────
     - chmod -R 775 $DEPLOYPATH/storage
     - chmod -R 775 $DEPLOYPATH/bootstrap/cache
+
+    # ── 8. Sync public assets ke public_html root agar URL /build/ & /assets/ bisa diakses ──
+    - /bin/cp -R $DEPLOYPATH/public/build/. /home/rayakonstruksi/public_html/build/
+    - /bin/cp -R $DEPLOYPATH/public/assets/. /home/rayakonstruksi/public_html/assets/
+    - /bin/cp $DEPLOYPATH/public/icon.png /home/rayakonstruksi/public_html/icon.png 2>/dev/null || true

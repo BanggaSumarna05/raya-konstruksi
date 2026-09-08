@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('raya-panel')
             ->login()
             ->brandName('Raya Konstruksi')
             ->brandLogo(asset('assets/img/logo-raya-polos.webp'))

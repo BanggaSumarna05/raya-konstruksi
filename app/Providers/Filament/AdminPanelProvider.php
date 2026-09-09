@@ -28,7 +28,6 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('rk-8472')
-            ->domain('panel.rayakonstruksi.com')
             ->login()
             ->brandName('Raya Konstruksi')
             ->brandLogo(asset('assets/img/logo-raya-polos.webp'))

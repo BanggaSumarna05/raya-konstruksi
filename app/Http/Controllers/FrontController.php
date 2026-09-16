@@ -890,7 +890,7 @@ class FrontController extends Controller
     {
         return [
             ['id' => 1,  'name' => 'PT Muria Sumba Manis',               'logo_url' => asset('assets/img/client/logo-msm.webp'),               'url' => null],
-            ['id' => 2,  'name' => 'Pertamina',                          'logo_url' => asset('assets/img/client/logo-pertamina.svg'),          'url' => null],
+            ['id' => 2,  'name' => 'Pertamina RU V',                    'logo_url' => asset('assets/img/client/Pertamina RU V.png'),         'url' => null],
             ['id' => 3,  'name' => 'PT Lotte Chemical Indonesia',        'logo_url' => asset('assets/img/client/lotte-chemical.webp'),         'url' => null],
             ['id' => 4,  'name' => 'PT Air Products Indonesia Gases',    'logo_url' => asset('assets/img/client/logo-air-products.webp'),      'url' => null],
             ['id' => 5,  'name' => 'OKI Pulp & Paper',                   'logo_url' => asset('assets/img/client/logo_OKI.svg'),                'url' => null],

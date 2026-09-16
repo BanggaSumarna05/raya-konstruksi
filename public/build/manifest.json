@@ -46,7 +46,7 @@
     "name": "vue-vendor"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DZGl3ot_.css",
+    "file": "assets/app-DTbVRFqs.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -103,7 +103,7 @@
     ]
   },
   "resources/js/Pages/1home.vue": {
-    "file": "assets/1home-C8qx2uWF.js",
+    "file": "assets/1home-Dl2Zu4Ks.js",
     "name": "1home",
     "src": "resources/js/Pages/1home.vue",
     "isDynamicEntry": true,
@@ -112,7 +112,7 @@
       "__plugin-vue_export-helper-BCo6x5W8.js"
     ],
     "css": [
-      "assets/1home-B4n0f4s1.css"
+      "assets/1home-nDQx3gA8.css"
     ]
   },
   "resources/js/Pages/1news.vue": {
@@ -453,7 +453,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-hjGsyGx9.js",
+    "file": "assets/app-Co5zOEal.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

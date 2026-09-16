@@ -656,10 +656,12 @@ class FrontController extends Controller
                 ->get()
         );
         $clients = $this->getStaticClients();
+        $heroClients = $this->getHeroClients();
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1home', [
             'blogs' => $blogs,
-            'clients' => $clients
+            'clients' => $clients,
+            'heroClients' => $heroClients,
         ]);
     }
 
@@ -884,6 +886,26 @@ class FrontController extends Controller
             report($th);
             return redirect()->back()->with('error', 'Failed to send inquiry. Please try again or contact us directly.');
         }
+    }
+
+    private function getHeroClients(): array
+    {
+        return [
+            ['id' => 1,  'name' => 'PT Muria Sumba Manis',               'logo_url' => asset('assets/img/client/logo-msm.webp'),               'url' => null],
+            ['id' => 2,  'name' => 'Pertamina RU V',                     'logo_url' => asset('assets/img/client/Pertamina RU V.png'),          'url' => null],
+            ['id' => 3,  'name' => 'PT Lotte Chemical Indonesia',        'logo_url' => asset('assets/img/client/lotte-chemical.webp'),         'url' => null],
+            ['id' => 4,  'name' => 'PT Air Products Indonesia Gases',    'logo_url' => asset('assets/img/client/logo-air-products.webp'),      'url' => null],
+            ['id' => 5,  'name' => 'OKI Pulp & Paper',                   'logo_url' => asset('assets/img/client/logo_OKI.svg'),                'url' => null],
+            ['id' => 6,  'name' => 'Apical / RGE Group',                 'logo_url' => asset('assets/img/client/apical-retina.webp'),          'url' => null],
+            ['id' => 7,  'name' => 'PT Unilever Oleochemical Indonesia', 'logo_url' => asset('assets/img/client/logo-unilever.webp'),          'url' => null],
+            ['id' => 8,  'name' => 'Jadestone Energy',                   'logo_url' => asset('assets/img/client/logo-jadestone.webp'),         'url' => null],
+            ['id' => 9,  'name' => 'PT Casa Asraya Properti',            'logo_url' => asset('assets/img/client/logo-asraya.webp'),            'url' => null],
+            ['id' => 10, 'name' => 'PT Tatamulia Nusantara Indah',       'logo_url' => asset('assets/img/client/tata.webp'),                  'url' => null],
+            ['id' => 11, 'name' => 'SWG',                                'logo_url' => asset('assets/img/client/swg.webp'),                   'url' => null],
+            ['id' => 12, 'name' => 'Maxiterm',                           'logo_url' => asset('assets/img/client/maxiterm.webp'),              'url' => null],
+            ['id' => 13, 'name' => 'Kine Jo',                            'logo_url' => asset('assets/img/client/kine-jo-logo.webp'),          'url' => null],
+            ['id' => 14, 'name' => 'Enerco',                             'logo_url' => asset('assets/img/client/logo-enerco.webp'),           'url' => null],
+        ];
     }
 
     private function getStaticClients(): array

@@ -7,6 +7,10 @@ defineProps({
     clients: {
         type: Array,
         default: () => []
+    },
+    heroClients: {
+        type: Array,
+        default: () => []
     }
 });
 
@@ -86,16 +90,16 @@ function onVideoCanPlay() {
         </div>
 
         <!-- Client logo marquee strip -->
-        <div v-if="clients && clients.length > 0" class="hero-logos-wrap">
+        <div v-if="heroClients && heroClients.length > 0" class="hero-logos-wrap">
             <div class="hero-logos-inner">
                 <div class="hero-marquee-track">
                     <div class="hero-marquee-set" aria-hidden="false">
-                        <div v-for="c in clients" :key="'hero-' + c.id" class="hero-logo-box">
+                        <div v-for="c in heroClients" :key="'hero-' + c.id" class="hero-logo-box">
                             <img :src="c.logo_url" :alt="c.name" class="hero-logo" width="88" height="44" />
                         </div>
                     </div>
                     <div class="hero-marquee-set" aria-hidden="true">
-                        <div v-for="c in clients" :key="'hero-dup-' + c.id" class="hero-logo-box">
+                        <div v-for="c in heroClients" :key="'hero-dup-' + c.id" class="hero-logo-box">
                             <img :src="c.logo_url" alt="" class="hero-logo" width="88" height="44" loading="lazy" />
                         </div>
                     </div>

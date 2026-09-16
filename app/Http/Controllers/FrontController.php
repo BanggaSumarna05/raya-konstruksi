@@ -895,7 +895,7 @@ class FrontController extends Controller
             ['id' => 4,  'name' => 'Unilever Oleochemical',           'logo_url' => asset('assets/img/client/logo-unilever.webp'),          'url' => null],
             ['id' => 5,  'name' => 'Apical Group',                    'logo_url' => asset('assets/img/client/apical-retina.webp'),          'url' => null],
             ['id' => 6,  'name' => 'Jadestone Energy',                'logo_url' => asset('assets/img/client/logo-jadestone.webp'),         'url' => null],
-            ['id' => 8,  'name' => 'OKI Pulp & Paper',                'logo_url' => asset('assets/img/client/logo-oki.svg'),                'url' => null],
+            ['id' => 8,  'name' => 'OKI Pulp & Paper',                'logo_url' => asset('assets/img/client/logo_OKI.svg'),               'url' => null],
             ['id' => 9,  'name' => 'Muria Sumba Manis',               'logo_url' => asset('assets/img/client/logo-msm.webp'),               'url' => null],
             ['id' => 10, 'name' => 'Enerco',                          'logo_url' => asset('assets/img/client/logo-enerco.webp'),            'url' => null],
             ['id' => 11, 'name' => 'Kine Jo',                         'logo_url' => asset('assets/img/client/kine-jo-logo.webp'),           'url' => null],

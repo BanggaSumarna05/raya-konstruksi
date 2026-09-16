@@ -655,16 +655,7 @@ class FrontController extends Controller
                 ->limit(4)
                 ->get()
         );
-        try {
-            $clients = Client::where('is_active', true)->orderBy('order', 'asc')->get()->map(fn ($c) => [
-                'id' => $c->id,
-                'name' => $c->name,
-                'logo_url' => $c->logo_url,
-                'url' => $c->url,
-            ])->values();
-        } catch (\Throwable $e) {
-            $clients = collect();
-        }
+        $clients = $this->getStaticClients();
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1home', [
             'blogs' => $blogs,
@@ -687,16 +678,7 @@ class FrontController extends Controller
 
     public function clientPartner()
     {
-        try {
-            $clients = Client::where('is_active', true)->orderBy('order', 'asc')->get()->map(fn ($c) => [
-                'id' => $c->id,
-                'name' => $c->name,
-                'logo_url' => $c->logo_url,
-                'url' => $c->url,
-            ])->values();
-        } catch (\Throwable $e) {
-            $clients = collect();
-        }
+        $clients = $this->getStaticClients();
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1whoWeAre-partners', [
             'clients' => $clients
@@ -902,6 +884,29 @@ class FrontController extends Controller
             report($th);
             return redirect()->back()->with('error', 'Failed to send inquiry. Please try again or contact us directly.');
         }
+    }
+
+    private function getStaticClients(): array
+    {
+        return [
+            ['id' => 1,  'name' => 'Lotte Chemical',                  'logo_url' => asset('assets/img/client/lotte-chemical.webp'),  'url' => null],
+            ['id' => 2,  'name' => 'Pertamina',                       'logo_url' => asset('assets/img/client/logo-pertamina.svg'),   'url' => null],
+            ['id' => 3,  'name' => 'Air Products',                    'logo_url' => asset('assets/img/client/logo-air-products.webp'),'url' => null],
+            ['id' => 4,  'name' => 'Unilever Oleochemical',           'logo_url' => asset('assets/img/client/logo-unilever.webp'),   'url' => null],
+            ['id' => 5,  'name' => 'Apical Group',                    'logo_url' => asset('assets/img/client/apical-retina.webp'),   'url' => null],
+            ['id' => 6,  'name' => 'Jadestone Energy',                'logo_url' => asset('assets/img/client/logo-jadestone.webp'),  'url' => null],
+            ['id' => 7,  'name' => 'Bukit Asam',                      'logo_url' => asset('assets/img/client/bukit-asam.webp'),      'url' => null],
+            ['id' => 8,  'name' => 'OKI Pulp & Paper',                'logo_url' => asset('assets/img/client/OKI.webp'),             'url' => null],
+            ['id' => 9,  'name' => 'Muria Sumba Manis',               'logo_url' => asset('assets/img/client/logo-msm.webp'),        'url' => null],
+            ['id' => 10, 'name' => 'Enerco',                          'logo_url' => asset('assets/img/client/logo-enerco.webp'),     'url' => null],
+            ['id' => 11, 'name' => 'Kine Jo',                         'logo_url' => asset('assets/img/client/kine-jo-logo.webp'),    'url' => null],
+            ['id' => 12, 'name' => 'Casa Asraya',                     'logo_url' => asset('assets/img/client/logo-asraya.webp'),     'url' => null],
+            ['id' => 13, 'name' => 'SWG',                             'logo_url' => asset('assets/img/client/swg.webp'),             'url' => null],
+            ['id' => 14, 'name' => 'Maxiterm',                        'logo_url' => asset('assets/img/client/maxiterm.webp'),        'url' => null],
+            ['id' => 15, 'name' => 'Tatamulia Nusantara Indah',       'logo_url' => asset('assets/img/client/tata.webp'),            'url' => null],
+            ['id' => 16, 'name' => 'Kilang Pertamina Internasional',  'logo_url' => asset('assets/img/client/logo-kpi.svg'),         'url' => null],
+            ['id' => 17, 'name' => 'Pupuk Indonesia',                 'logo_url' => asset('assets/img/client/logo-pupuk.svg'),       'url' => null],
+        ];
     }
 
 }

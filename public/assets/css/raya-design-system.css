@@ -59,16 +59,17 @@
     background-position: center;
 }
 .page-hero-overlay {
+.page-hero-overlay {
     position: absolute;
     inset: 0;
     background:
         linear-gradient(105deg,
-            rgba(11,11,11,0.85) 0%,
-            rgba(27,47,110,0.60) 50%,
-            rgba(11,11,11,0.30) 100%
+            rgba(11,11,11,0.50) 0%,
+            rgba(27,47,110,0.30) 50%,
+            rgba(11,11,11,0.10) 100%
         ),
         linear-gradient(to top,
-            rgba(11,11,11,0.80) 0%,
+            rgba(11,11,11,0.50) 0%,
             transparent 50%
         );
     z-index: 1;

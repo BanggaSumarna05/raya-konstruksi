@@ -807,7 +807,7 @@ class FrontController extends Controller
         SEOMeta::addKeyword($this->keywords);
 
         $projects = Cache::remember('portfolio_projects', now()->addHours(6), fn () =>
-            Project::all()->map(fn ($p) => [
+            Project::orderBy('id', 'desc')->get()->map(fn ($p) => [
                 'id'           => $p->id,
                 'title'        => $p->title,
                 'slug'         => $p->slug,

@@ -919,7 +919,7 @@ function onVideoCanPlay() {
 .stat-plus { font-size: 0.65em; color: #93a8e8; font-weight: 900; }
 .hero-stat-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px; }
 .hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.12); margin: 0 28px 0 0; flex-shrink: 0; }
-.hero-logos-wrap { position: relative; z-index: 10; margin-top: 0; padding-bottom: 0; }
+.hero-logos-wrap { position: relative; z-index: 10; margin-top: 0; padding-bottom: 0; background: rgba(5,8,22,0.55); backdrop-filter: blur(4px); }
 .hero-logos-inner {
     border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; padding-bottom: 16px;
     display: flex; align-items: center; gap: 0; overflow: hidden;

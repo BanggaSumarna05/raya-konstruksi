@@ -10,9 +10,6 @@ class ProjectSeeder extends Seeder
 {
     public function run(): void
     {
-        // Clear existing
-        Project::truncate();
-
         $projects = [
             [
                 'title'        => 'UOI Turnaround & Maintenance Project',
@@ -188,7 +185,10 @@ class ProjectSeeder extends Seeder
         ];
 
         foreach ($projects as $data) {
-            Project::create($data);
+            Project::updateOrCreate(
+                ['slug' => $data['slug']],
+                $data
+            );
         }
     }
 }

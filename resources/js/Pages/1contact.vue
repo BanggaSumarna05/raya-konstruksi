@@ -30,9 +30,23 @@ const offices = [
     },
     {
         icon: "bi-geo-alt",
-        label: "Riau Branch",
+        label: "Riau Office",
         address: "Jl. Dwikora I No. 16,\nKel. Suka Maju, Kec. Sail,\nPekanbaru, Kepulauan Riau",
         maps: "https://www.google.com/maps/place/Jl.+Dwikora+I+No.16,+Suka+Maju/",
+    },
+    {
+        icon: "bi-geo-alt",
+        label: "Surabaya Office",
+        address: "Perumahan Royal Residence\nCluster Serenade Blok B7 No. 85\nWiyung, Surabaya",
+        maps: "https://www.google.com/maps/place/Royal+Residence+Cluster+Serenade/",
+        embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.283641018357!2d112.67594177500038!3d-7.322002892686151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fdbff6665413%3A0x7e1cd06e96af4593!2sRoyal%20Residence%20Cluster%20Serenade!5e0!3m2!1sid!2sid!4v1790456609413!5m2!1sid!2sid",
+    },
+    {
+        icon: "bi-geo-alt",
+        label: "Karawang Office",
+        address: "Jl. Nakula Raya No. 272 Perumnas Blok S,\nKec. Telukjambe Timur, Desa Sukaluyu,\nKab. Karawang, Jawa Barat",
+        maps: "https://www.google.com/maps/place/Perumnas+Bumi+Teluk+Jambe/",
+        embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7930.983573060424!2d107.27523567770994!3d-6.330267999999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699d00707bc461%3A0xa7af131a00ada0e2!2sPerumnas%20Bumi%20Teluk%20Jambe%2C%20Blok%20S%2C%20Sukaluyu%2C%20Telukjambe%20Timur%2C%20Karawang!5e0!3m2!1sid!2sid!4v1790457041704!5m2!1sid!2sid",
     },
 ];
 
@@ -193,6 +207,15 @@ async function handleSubmit() {
                             <a :href="office.maps" target="_blank" rel="noopener noreferrer" class="contact-maps-link">
                                 <i class="bi bi-geo-alt-fill"></i> View on Maps
                             </a>
+                            <div v-if="office.embed" class="contact-embed-map">
+                                <iframe
+                                    :src="office.embed"
+                                    width="100%" height="200"
+                                    style="border:0; border-radius: 8px; margin-top: 10px;"
+                                    allowfullscreen="" loading="lazy"
+                                    referrerpolicy="strict-origin-when-cross-origin">
+                                </iframe>
+                            </div>
                         </div>
                     </div>
                 </div>

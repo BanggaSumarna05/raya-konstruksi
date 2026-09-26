@@ -77,7 +77,7 @@
     ]
   },
   "resources/js/Pages/1contact.vue": {
-    "file": "assets/1contact-DfkJyG5F.js",
+    "file": "assets/1contact-BUjR2SP-.js",
     "name": "1contact",
     "src": "resources/js/Pages/1contact.vue",
     "isDynamicEntry": true,
@@ -86,7 +86,7 @@
       "__plugin-vue_export-helper-BCo6x5W8.js"
     ],
     "css": [
-      "assets/1contact-C9gW3LrQ.css"
+      "assets/1contact-BVRYBW3F.css"
     ]
   },
   "resources/js/Pages/1cyberInfo.vue": {
@@ -103,7 +103,7 @@
     ]
   },
   "resources/js/Pages/1home.vue": {
-    "file": "assets/1home-Dl2Zu4Ks.js",
+    "file": "assets/1home-Ba3M4SLg.js",
     "name": "1home",
     "src": "resources/js/Pages/1home.vue",
     "isDynamicEntry": true,
@@ -112,7 +112,7 @@
       "__plugin-vue_export-helper-BCo6x5W8.js"
     ],
     "css": [
-      "assets/1home-nDQx3gA8.css"
+      "assets/1home-Nmy1UHBE.css"
     ]
   },
   "resources/js/Pages/1news.vue": {
@@ -453,7 +453,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-Co5zOEal.js",
+    "file": "assets/app-DgLfPuLV.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

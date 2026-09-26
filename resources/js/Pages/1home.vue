@@ -43,7 +43,6 @@ function onVideoCanPlay() {
             <source src="/assets/img/hero-carousel/hero-main.webm" type="video/webm" />
         </video>
         <div class="hero-overlay"></div>
-        <div class="hero-grain" aria-hidden="true"></div>
 
         <div class="hero-body">
             <div class="hero-content">
@@ -803,7 +802,7 @@ function onVideoCanPlay() {
 .hero-section {
     position: relative; width: 100%; min-height: 100vh;
     display: flex; flex-direction: column; justify-content: space-between;
-    overflow: hidden; background-color: #0B0B0B;
+    overflow: hidden; background-color: #4a5568;
     will-change: auto;
 }
 /* Poster: static image tampil instan sebagai fallback */
@@ -812,6 +811,7 @@ function onVideoCanPlay() {
     background-image: url('/assets/img/hero-carousel/hover-1-new.webp');
     background-size: cover; background-position: center 30%;
     z-index: 0;
+    filter: brightness(1.4);
 }
 /* Video: invisible sampai siap diputar */
 .hero-bg-video {
@@ -820,6 +820,7 @@ function onVideoCanPlay() {
     object-fit: cover; object-position: center;
     z-index: 1;
     opacity: 0;
+    filter: brightness(1.4);
     transition: opacity 0.8s ease;
 }
 /* Fade in video begitu sudah bisa diputar */
@@ -828,21 +829,11 @@ function onVideoCanPlay() {
 }
 .hero-section:hover .hero-bg-video { transform: none; }
 .hero-overlay {
-    position: absolute; inset: 0; z-index: 2; pointer-events: none;
-    background:
-        linear-gradient(110deg, rgba(5,8,22,0.92) 0%, rgba(5,8,22,0.78) 40%, rgba(5,8,22,0.35) 70%, transparent 100%),
-        linear-gradient(to top, rgba(5,8,22,0.97) 0%, rgba(5,8,22,0.55) 25%, transparent 55%),
-        linear-gradient(to bottom, rgba(5,8,22,0.65) 0%, transparent 20%);
+    display: none;
 }
 /* Gold accent glow di kiri bawah — memberi depth dan brand identity */
 .hero-overlay::after {
-    content: '';
-    position: absolute;
-    bottom: 15%; left: -5%;
-    width: 45vw; height: 45vw;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%);
-    pointer-events: none;
+    display: none;
 }
 .hero-grain {
     position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.040;
@@ -856,6 +847,12 @@ function onVideoCanPlay() {
     justify-content: center;
     padding: clamp(100px, 13vh, 140px) clamp(24px, 5vw, 88px) clamp(40px, 6vh, 64px);
     flex: 1; gap: 48px;
+}
+.hero-body::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(5,8,22,0.55) 0%, rgba(5,8,22,0.25) 50%, transparent 75%);
+    pointer-events: none; z-index: -1;
 }
 /* Konten: headline, rule, sub, cta */
 .hero-content {

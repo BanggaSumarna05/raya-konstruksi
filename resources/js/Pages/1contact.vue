@@ -207,15 +207,6 @@ async function handleSubmit() {
                             <a :href="office.maps" target="_blank" rel="noopener noreferrer" class="contact-maps-link">
                                 <i class="bi bi-geo-alt-fill"></i> View on Maps
                             </a>
-                            <div v-if="office.embed" class="contact-embed-map">
-                                <iframe
-                                    :src="office.embed"
-                                    width="100%" height="200"
-                                    style="border:0; border-radius: 8px; margin-top: 10px;"
-                                    allowfullscreen="" loading="lazy"
-                                    referrerpolicy="strict-origin-when-cross-origin">
-                                </iframe>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -932,7 +932,7 @@ function onVideoCanPlay() {
 .hero-marquee-set { display: flex; align-items: center; gap: 64px; padding-right: 64px; flex-shrink: 0; }
 @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .hero-logo-box { width: 110px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.hero-logo { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.55; transition: opacity 0.25s; }
+.hero-logo { width: 100%; height: 100%; object-fit: contain; opacity: 0.85; transition: opacity 0.25s; }
 .hero-logo-box:hover .hero-logo { opacity: 1; }
 @media (max-width: 768px) {
     .hero-headline { font-size: clamp(44px, 13vw, 72px); letter-spacing: -1.5px; }

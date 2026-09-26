@@ -103,7 +103,7 @@
     ]
   },
   "resources/js/Pages/1home.vue": {
-    "file": "assets/1home-ebU2Ap1H.js",
+    "file": "assets/1home-CV5sZJFn.js",
     "name": "1home",
     "src": "resources/js/Pages/1home.vue",
     "isDynamicEntry": true,
@@ -112,7 +112,7 @@
       "__plugin-vue_export-helper-BCo6x5W8.js"
     ],
     "css": [
-      "assets/1home-B-8FkDXG.css"
+      "assets/1home-sFuQmfaY.css"
     ]
   },
   "resources/js/Pages/1news.vue": {
@@ -453,7 +453,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CalHXcly.js",
+    "file": "assets/app-DQCazxID.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

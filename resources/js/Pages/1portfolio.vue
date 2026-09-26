@@ -43,7 +43,7 @@ const getImageUrl = (imagePath) => {
             <a
                 v-for="(project, index) in projects"
                 :key="index"
-                href="#"
+                :href="project.slug ? route('projectDetail', project.slug) : '#'"
                 class="pf-card"
             >
                 <!-- Background photo -->
@@ -80,10 +80,10 @@ const getImageUrl = (imagePath) => {
                         </div>
                     </div>
 
-                    <!-- <span class="pf-cta">
+                    <span class="pf-cta">
                         View Details
                         <i class="bi bi-arrow-right"></i>
-                    </span> -->
+                    </span>
                 </div>
 
                 <!-- Gold border bottom sweep -->

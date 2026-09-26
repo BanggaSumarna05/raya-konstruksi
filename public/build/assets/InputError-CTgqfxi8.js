@@ -1,1 +1,0 @@
-import{y as s,G as e,o as a,b as t,e as r,t as o}from"./vue-vendor-hLeGo6CW.js";const p={class:"text-sm text-red-600"},m={__name:"InputError",props:{message:{type:String}},setup:m=>(n,g)=>s((a(),t("div",null,[r("p",p,o(m.message),1)],512)),[[e,m.message]])};export{m as _};

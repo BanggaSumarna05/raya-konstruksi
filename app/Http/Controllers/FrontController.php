@@ -807,11 +807,44 @@ class FrontController extends Controller
         SEOMeta::addKeyword($this->keywords);
 
         $projects = Cache::remember('portfolio_projects', now()->addHours(6), fn () =>
-            Project::all()
+            Project::all()->map(fn ($p) => [
+                'id'           => $p->id,
+                'title'        => $p->title,
+                'slug'         => $p->slug,
+                'client'       => $p->client,
+                'duration'     => $p->duration,
+                'location'     => $p->location,
+                'service_type' => $p->service_type,
+                'image'        => $p->image_url,
+                'has_gallery'  => !empty($p->gallery),
+            ])
         );
 
         return Inertia::render('1portfolio', [
             'projects' => $projects
+        ]);
+    }
+
+    public function projectDetail(string $slug)
+    {
+        $project = Project::where('slug', $slug)->firstOrFail();
+
+        SEOMeta::setTitle($project->title . ' | Raya Konstruksi');
+        SEOMeta::setDescription($project->description ?? 'Project by Raya Konstruksi');
+
+        return Inertia::render('1project-detail', [
+            'project' => [
+                'id'           => $project->id,
+                'title'        => $project->title,
+                'slug'         => $project->slug,
+                'client'       => $project->client,
+                'duration'     => $project->duration,
+                'location'     => $project->location,
+                'service_type' => $project->service_type,
+                'description'  => $project->description,
+                'image'        => $project->image_url,
+                'gallery'      => $project->gallery_urls,
+            ]
         ]);
     }
 

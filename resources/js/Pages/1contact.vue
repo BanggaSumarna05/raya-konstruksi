@@ -180,13 +180,6 @@ async function handleSubmit() {
 
                     <!-- Phone & Email -->
                     <div class="contact-direct">
-                        <a href="tel:02127814774" class="contact-direct-item">
-                            <div class="contact-info-icon"><i class="bi bi-telephone-fill"></i></div>
-                            <div>
-                                <div class="contact-info-label">Phone</div>
-                                <div class="contact-info-value">(021) 27814774</div>
-                            </div>
-                        </a>
                         <a href="mailto:marketing@rayakonstruksi.com" class="contact-direct-item">
                             <div class="contact-info-icon"><i class="bi bi-envelope-fill"></i></div>
                             <div>

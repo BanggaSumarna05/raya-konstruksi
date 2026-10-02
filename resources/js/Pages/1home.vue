@@ -1350,23 +1350,6 @@ function onVideoCanPlay() {
 @media (max-width: 991px) { .hse-stats-card { display: block; } .hse-stats-row { gap: 16px; } }
 
 /* ============================================================
-   11. TESTIMONIALS
-============================================================ */
-.testimonials-section { padding: 80px 0; background: #f8f9fb; }
-.testimonial-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 32px; height: 100%; position: relative; transition: box-shadow 0.3s, transform 0.3s; }
-.testimonial-card:hover { box-shadow: 0 20px 50px rgba(27,47,110,0.1); transform: translateY(-4px); }
-.testimonial-card--featured { background: linear-gradient(135deg, #1B2F6E 0%, #243d8c 100%); border-color: transparent; }
-.testimonial-quote-icon { font-size: 48px; color: #e5e7eb; position: absolute; top: 18px; right: 22px; line-height: 1; }
-.testimonial-text { font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 22px; position: relative; z-index: 1; }
-.testimonial-author { display: flex; align-items: center; gap: 12px; }
-.testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #fff; flex-shrink: 0; }
-.testimonial-avatar--gold { background: #F59E0B; }
-.testimonial-avatar--navy { background: #1B2F6E; }
-.testimonial-name { font-weight: 800; font-size: 13px; color: #1B2F6E; margin: 0 0 2px; }
-.testimonial-company { font-size: 11px; color: #767676; margin: 0; }
-@media (max-width: 767px) { .testimonials-section { padding: 60px 0; } }
-
-/* ============================================================
    12. CTA
 ============================================================ */
 .cta-section { padding: 100px 0; position: relative; overflow: hidden; }

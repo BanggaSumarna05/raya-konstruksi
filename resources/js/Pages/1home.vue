@@ -597,7 +597,77 @@ function onVideoCanPlay() {
     </section>
 
     <!-- ============================================================
-         12. NEWS
+         11. TESTIMONIALS
+    ============================================================ -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-eyebrow">Client Testimonials</span>
+                <h2 class="section-title mt-2">What Our Clients Say</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote testimonial-quote-icon"></i>
+                        <p class="testimonial-text">"Raya delivered an exceptional level of workmanship on our civil and structural scope. Their team was professional, safety-conscious, and met every milestone on schedule."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar testimonial-avatar--gold">R</div>
+                            <div>
+                                <h6 class="testimonial-name">Project Director</h6>
+                                <p class="testimonial-company">Petrochemical Plant, Banten</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card testimonial-card--featured">
+                        <i class="bi bi-quote testimonial-quote-icon" style="color: rgba(245,158,11,0.25);"></i>
+                        <p class="testimonial-text" style="color: rgba(255,255,255,0.9);">"We have partnered with Raya for multiple turnaround and maintenance projects. Their capability in handling critical path activities has made them our go-to contractor."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" style="background: #F59E0B;">S</div>
+                            <div>
+                                <h6 class="testimonial-name" style="color: #fff;">Plant Manager</h6>
+                                <p class="testimonial-company" style="color: rgba(255,255,255,0.6);">Energy Sector Client</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote testimonial-quote-icon"></i>
+                        <p class="testimonial-text">"The civil works executed by Raya were top-notch. They handled the complex foundations perfectly despite the challenging site conditions a very reliable engineering partner."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar testimonial-avatar--navy">B</div>
+                            <div>
+                                <h6 class="testimonial-name">Lead Civil Engineer</h6>
+                                <p class="testimonial-company">Infrastructure Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         12. CTA
+    ============================================================ -->
+    <section class="cta-section">
+        <div class="cta-bg"></div>
+        <div class="cta-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2; text-align: center;">
+            <span class="section-eyebrow">Let's Work Together</span>
+            <h2 class="cta-title">Ready to Discuss Your<br />Next Industrial Project?</h2>
+            <p class="cta-desc">From fabrication and construction to maintenance and catalyst handling, our highly skilled team is ready to support your project across Indonesia.</p>
+            <div class="cta-btn-row">
+                <Link :href="route('contactUs')" class="btn-cta-primary">Contact Us</Link>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         13. NEWS
     ============================================================ -->
     <section class="news-section">
         <div class="container">
@@ -628,22 +698,6 @@ function onVideoCanPlay() {
             </div>
             <div class="text-center mt-4 d-md-none">
                 <Link :href="route('news')" class="btn-primary-navy">View All Updates</Link>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         13. CTA
-    ============================================================ -->
-    <section class="cta-section">
-        <div class="cta-bg"></div>
-        <div class="cta-overlay"></div>
-        <div class="container" style="position: relative; z-index: 2; text-align: center;">
-            <span class="section-eyebrow">Let's Work Together</span>
-            <h2 class="cta-title">Ready to Discuss Your<br />Next Industrial Project?</h2>
-            <p class="cta-desc">From fabrication and construction to maintenance and catalyst handling, our highly skilled team is ready to support your project across Indonesia.</p>
-            <div class="cta-btn-row">
-                <Link :href="route('contactUs')" class="btn-cta-primary">Contact Us</Link>
             </div>
         </div>
     </section>
@@ -1348,6 +1402,23 @@ function onVideoCanPlay() {
 .hse-stat-sm-num { font-size: 22px; font-weight: 900; color: #fff; line-height: 1; }
 .hse-stat-sm-label { font-size: 10px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 @media (max-width: 991px) { .hse-stats-card { display: block; } .hse-stats-row { gap: 16px; } }
+
+/* ============================================================
+   11. TESTIMONIALS
+============================================================ */
+.testimonials-section { padding: 80px 0; background: #f8f9fb; }
+.testimonial-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 32px; height: 100%; position: relative; transition: box-shadow 0.3s, transform 0.3s; }
+.testimonial-card:hover { box-shadow: 0 20px 50px rgba(27,47,110,0.1); transform: translateY(-4px); }
+.testimonial-card--featured { background: linear-gradient(135deg, #1B2F6E 0%, #243d8c 100%); border-color: transparent; }
+.testimonial-quote-icon { font-size: 48px; color: #e5e7eb; position: absolute; top: 18px; right: 22px; line-height: 1; }
+.testimonial-text { font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 22px; position: relative; z-index: 1; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #fff; flex-shrink: 0; }
+.testimonial-avatar--gold { background: #F59E0B; }
+.testimonial-avatar--navy { background: #1B2F6E; }
+.testimonial-name { font-weight: 800; font-size: 13px; color: #1B2F6E; margin: 0 0 2px; }
+.testimonial-company { font-size: 11px; color: #767676; margin: 0; }
+@media (max-width: 767px) { .testimonials-section { padding: 60px 0; } }
 
 /* ============================================================
    12. CTA

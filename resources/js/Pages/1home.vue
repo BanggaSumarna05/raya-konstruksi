@@ -597,23 +597,7 @@ function onVideoCanPlay() {
     </section>
 
     <!-- ============================================================
-         12. CTA
-    ============================================================ -->
-    <section class="cta-section">
-        <div class="cta-bg"></div>
-        <div class="cta-overlay"></div>
-        <div class="container" style="position: relative; z-index: 2; text-align: center;">
-            <span class="section-eyebrow">Let's Work Together</span>
-            <h2 class="cta-title">Ready to Discuss Your<br />Next Industrial Project?</h2>
-            <p class="cta-desc">From fabrication and construction to maintenance and catalyst handling, our highly skilled team is ready to support your project across Indonesia.</p>
-            <div class="cta-btn-row">
-                <Link :href="route('contactUs')" class="btn-cta-primary">Contact Us</Link>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         13. NEWS
+         12. NEWS
     ============================================================ -->
     <section class="news-section">
         <div class="container">
@@ -644,6 +628,22 @@ function onVideoCanPlay() {
             </div>
             <div class="text-center mt-4 d-md-none">
                 <Link :href="route('news')" class="btn-primary-navy">View All Updates</Link>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         13. CTA
+    ============================================================ -->
+    <section class="cta-section">
+        <div class="cta-bg"></div>
+        <div class="cta-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2; text-align: center;">
+            <span class="section-eyebrow">Let's Work Together</span>
+            <h2 class="cta-title">Ready to Discuss Your<br />Next Industrial Project?</h2>
+            <p class="cta-desc">From fabrication and construction to maintenance and catalyst handling, our highly skilled team is ready to support your project across Indonesia.</p>
+            <div class="cta-btn-row">
+                <Link :href="route('contactUs')" class="btn-cta-primary">Contact Us</Link>
             </div>
         </div>
     </section>

@@ -597,60 +597,6 @@ function onVideoCanPlay() {
     </section>
 
     <!-- ============================================================
-         11. TESTIMONIALS
-    ============================================================ -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="section-eyebrow">Client Testimonials</span>
-                <h2 class="section-title mt-2">What Our Clients Say</h2>
-                <div class="section-divider mx-auto"></div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="testimonial-card">
-                        <i class="bi bi-quote testimonial-quote-icon"></i>
-                        <p class="testimonial-text">"Raya delivered an exceptional level of workmanship on our civil and structural scope. Their team was professional, safety-conscious, and met every milestone on schedule."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar testimonial-avatar--gold">R</div>
-                            <div>
-                                <h6 class="testimonial-name">Project Director</h6>
-                                <p class="testimonial-company">Petrochemical Plant, Banten</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="testimonial-card testimonial-card--featured">
-                        <i class="bi bi-quote testimonial-quote-icon" style="color: rgba(245,158,11,0.25);"></i>
-                        <p class="testimonial-text" style="color: rgba(255,255,255,0.9);">"We have partnered with Raya for multiple turnaround and maintenance projects. Their capability in handling critical path activities has made them our go-to contractor."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar" style="background: #F59E0B;">S</div>
-                            <div>
-                                <h6 class="testimonial-name" style="color: #fff;">Plant Manager</h6>
-                                <p class="testimonial-company" style="color: rgba(255,255,255,0.6);">Energy Sector Client</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="testimonial-card">
-                        <i class="bi bi-quote testimonial-quote-icon"></i>
-                        <p class="testimonial-text">"The civil works executed by Raya were top-notch. They handled the complex foundations perfectly despite the challenging site conditions a very reliable engineering partner."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar testimonial-avatar--navy">B</div>
-                            <div>
-                                <h6 class="testimonial-name">Lead Civil Engineer</h6>
-                                <p class="testimonial-company">Infrastructure Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
          12. CTA
     ============================================================ -->
     <section class="cta-section">

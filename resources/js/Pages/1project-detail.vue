@@ -162,6 +162,7 @@ function onKeydown(e) {
     transition: gap 0.2s;
 }
 .proj-back-link:hover { gap: 12px; }
+
 .proj-info-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 16px; margin-bottom: 32px;
@@ -213,6 +214,7 @@ function onKeydown(e) {
     display: block;
 }
 .proj-gallery-item:hover img { transform: scale(1.06); }
+
 .proj-gallery-overlay {
     position: absolute; inset: 0;
     background: rgba(5,8,22,0.45);
@@ -241,6 +243,7 @@ function onKeydown(e) {
     margin-top: 12px; font-size: 13px;
     color: rgba(255,255,255,0.5); font-family: "Pliant", sans-serif;
 }
+
 .proj-lb-close {
     position: fixed; top: 20px; right: 24px;
     background: rgba(255,255,255,0.1); border: none;
@@ -250,6 +253,7 @@ function onKeydown(e) {
     transition: background 0.2s;
 }
 .proj-lb-close:hover { background: rgba(255,255,255,0.2); }
+
 .proj-lb-prev, .proj-lb-next {
     position: fixed; top: 50%; transform: translateY(-50%);
     background: rgba(255,255,255,0.1); border: none;

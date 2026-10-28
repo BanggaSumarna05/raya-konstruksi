@@ -261,6 +261,7 @@ const getImageUrl = (imagePath) => {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (max-width: 575px) {
     .portfolio-grid {
         grid-template-columns: 1fr;

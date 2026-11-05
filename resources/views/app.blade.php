@@ -88,12 +88,9 @@
     <!-- Google Fonts — async with font-display:swap so Pliant/Bricolage Grotesque always render -->
     {{-- Google Fonts link removed — fonts are now self-hosted --}}
 
-    <!-- Template Main CSS File — async to unblock render -->
+    <!-- Main CSS (includes Raya Design System) -->
     <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/assets/css/main.css" />
     <noscript><link rel="stylesheet" href="/assets/css/main.css" /></noscript>
-    <!-- Raya Design System — async to unblock render -->
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/assets/css/raya-design-system.css" />
-    <noscript><link rel="stylesheet" href="/assets/css/raya-design-system.css" /></noscript>
 
     <!-- Scripts -->
     @routes

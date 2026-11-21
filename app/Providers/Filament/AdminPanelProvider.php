@@ -63,49 +63,54 @@ class AdminPanelProvider extends PanelProvider
                     </style>
                     
                     @if(request()->routeIs(\'filament.admin.auth.login\'))
-                    <link rel="preload" as="image" href="{{ asset(\'/assets/img/cover-plant.webp\') }}?v=2" fetchpriority="high">
                     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset(\'/assets/font/Poppins/poppins-latin-400-normal.woff2\') }}">
                     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset(\'/assets/font/Poppins/poppins-latin-600-normal.woff2\') }}">
                     <style>
                         body {
                             background-color: #0f172a !important;
-                            background-image: url("{{ asset(\'/assets/img/cover-plant.webp\') }}?v=2") !important;
-                            background-size: cover !important;
-                            background-position: center !important;
+                            background-image: radial-gradient(circle at 15% 10%, #1b2f6e 0%, #121c3d 45%, #0b1220 100%) !important;
+                            background-attachment: fixed !important;
                         }
-                        body::before {
-                            content: "";
-                            position: absolute;
-                            inset: 0;
-                            background: rgba(15, 23, 42, 0.8);
-                            z-index: -1;
-                        }
-                        .fi-simple-main-content {
-                            background: rgba(255, 255, 255, 0.03) !important;
-                            backdrop-filter: blur(20px) !important;
-                            -webkit-backdrop-filter: blur(20px) !important;
+                        .fi-simple-main {
+                            background: rgba(255, 255, 255, 0.04) !important;
                             border: 1px solid rgba(255, 255, 255, 0.1) !important;
                             border-radius: 1.5rem !important;
                             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
                         }
-                        .fi-simple-main-content h2, 
-                        .fi-simple-main-content p, 
-                        .fi-simple-main-content label, 
-                        .fi-simple-main-content span {
+                        .fi-simple-main h1,
+                        .fi-simple-main h2, 
+                        .fi-simple-main p, 
+                        .fi-simple-main label, 
+                        .fi-simple-main span {
                             color: #ffffff !important;
                         }
-                        .fi-input {
-                            background: rgba(255, 255, 255, 0.05) !important;
-                            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-                            color: white !important;
+                        .fi-simple-main .fi-logo {
+                            filter: brightness(0) invert(1);
+                            opacity: 0.95;
                         }
-                        .fi-input:focus {
-                            border-color: #0c00b1ff !important;
-                            box-shadow: 0 0 0 1px #0c00b1ff !important;
+                        .fi-simple-main .fi-input-wrp {
+                            background: rgba(255, 255, 255, 0.06) !important;
+                            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
                         }
-                        .fi-checkbox {
-                            background: rgba(255, 255, 255, 0.1) !important;
-                            border-color: rgba(255, 255, 255, 0.3) !important;
+                        .fi-simple-main .fi-input {
+                            background: transparent !important;
+                            border: none !important;
+                            color: #ffffff !important;
+                        }
+                        .fi-simple-main .fi-input:focus {
+                            box-shadow: 0 0 0 1px #CAD0E0 !important;
+                        }
+                        .fi-simple-main .fi-input-wrp-suffix {
+                            background: transparent !important;
+                            border-inline-start-color: rgba(255, 255, 255, 0.15) !important;
+                        }
+                        .fi-simple-main .fi-input-wrp-suffix .fi-icon-btn {
+                            background: transparent !important;
+                            color: #cbd5e1 !important;
+                        }
+                        .fi-simple-main .fi-checkbox-input {
+                            background: rgba(255, 255, 255, 0.12) !important;
+                            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
                         }
                         .fi-btn-primary {
                             background-color: #0c00b1ff !important;

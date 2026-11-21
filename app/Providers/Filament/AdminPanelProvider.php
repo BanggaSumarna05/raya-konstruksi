@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\FontProviders\LocalFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -33,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('assets/img/logo-raya-polos.webp'))
             ->brandLogoHeight('2.5rem')
             ->favicon(asset('assets/img/logo-raya-polos.webp'))
-            ->font('Poppins')
+            ->font('Poppins', url: asset('assets/css/filament-poppins.css'), provider: LocalFontProvider::class)
             ->sidebarCollapsibleOnDesktop()
             ->spa()
             ->colors([
@@ -62,9 +63,13 @@ class AdminPanelProvider extends PanelProvider
                     </style>
                     
                     @if(request()->routeIs(\'filament.admin.auth.login\'))
+                    <link rel="preload" as="image" href="{{ asset(\'/assets/img/cover-plant.webp\') }}?v=2" fetchpriority="high">
+                    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset(\'/assets/font/Poppins/poppins-latin-400-normal.woff2\') }}">
+                    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset(\'/assets/font/Poppins/poppins-latin-600-normal.woff2\') }}">
                     <style>
                         body {
-                            background-image: url("{{ asset(\'/assets/img/cover-plant.webp\') }}") !important;
+                            background-color: #0f172a !important;
+                            background-image: url("{{ asset(\'/assets/img/cover-plant.webp\') }}?v=2") !important;
                             background-size: cover !important;
                             background-position: center !important;
                         }

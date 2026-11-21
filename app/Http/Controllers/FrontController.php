@@ -667,6 +667,7 @@ class FrontController extends Controller
         $blogs->each(fn (Blog $blog) => $this->dropMissingBlogImage($blog));
         $projects = Cache::remember('home_projects', now()->addHours(2), fn () =>
             Project::all()
+                ->filter(fn ($p) => filled($p->slug))
                 ->sortByDesc(fn ($p) => $p->started_at?->timestamp ?? $p->created_at->timestamp)
                 ->take(8)
                 ->values()
@@ -701,6 +702,7 @@ class FrontController extends Controller
         $clients = $this->getStaticClients();
         $projects = Cache::remember('who_we_are_projects', now()->addHours(2), fn () =>
             Project::all()
+                ->filter(fn ($p) => filled($p->slug))
                 ->sortByDesc(fn ($p) => $p->started_at?->timestamp ?? $p->created_at->timestamp)
                 ->take(3)
                 ->values()
@@ -920,6 +922,7 @@ class FrontController extends Controller
 
         $projects = Cache::remember('portfolio_projects', now()->addHours(6), fn () =>
             Project::all()
+                ->filter(fn ($p) => filled($p->slug))
                 ->sortByDesc(fn ($p) => $p->started_at?->timestamp ?? $p->created_at->timestamp)
                 ->values()
                 ->map(fn ($p) => [

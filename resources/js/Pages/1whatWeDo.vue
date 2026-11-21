@@ -1,11 +1,14 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
+import { usePageMotion } from "../Composables/usePageMotion";
+
+usePageMotion();
 
 const services = [
     {
         id: "construction",
         title: "Fabrication &\nConstruction",
-        img: "/assets/img/cover-const.webp",
+        img: "/assets/img/refresh/wwd-construction.webp",
         route: "constructionFabrication",
         desc: "Our team of skilled engineers and workers collaborate to bring your visions to life across a range of disciplines.",
         items: [
@@ -13,7 +16,6 @@ const services = [
             "Piping Fabrication & Installation",
             "Mechanical Erection",
             "Tank Fabrication & Installation",
-            "Equipment Rental",
         ],
     },
     {
@@ -34,7 +36,7 @@ const services = [
     {
         id: "plant-maintenance",
         title: "Operation &\nMaintenance",
-        img: "/assets/img/cover-plant.webp",
+        img: "/assets/img/refresh/wwd-plant.webp",
         route: "plantMaintenance",
         desc: "Driven by an unwavering commitment to client satisfaction, our skilled and dedicated team consistently delivers exceptional results.",
         items: [
@@ -51,10 +53,10 @@ const services = [
     },
     {
         id: "civil",
-        title: "Civil &\nRoad Works",
+        title: "Civil &\n Infrastructure",
         img: "/assets/img/cover-soil.webp",
         route: "portfolio",
-        desc: "We deliver comprehensive civil construction and roadwork services to support industrial and infrastructure development projects.",
+        desc: "We deliver comprehensive civil construction and roadwork services to support industrial and infrastructure development projects. Our experienced team ensures precision, safety, and quality at every stage, from design, groundwork, and structural concrete to final pavement finishing.",
         items: [
             "Earthworks & Site Preparation",
             "Concrete & Foundation Works",
@@ -74,7 +76,7 @@ const services = [
     <Head title="What We Do" />
 
     <!-- ── Page Hero ── -->
-    <section class="page-hero" style="background-image: url('/assets/img/cover-const.webp');">
+    <section class="page-hero" style="background-image: url('/assets/img/refresh/wwd-construction.webp');">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">Our Services</span>
@@ -96,7 +98,7 @@ const services = [
             :class="{ 'service-row--alt': svc.reverse }"
         >
             <!-- Image column -->
-            <div class="service-img-col" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-img-col" data-rv data-rv-delay="100">
                 <div class="service-img-wrap">
                     <div class="service-img-accent"></div>
                     <img :src="svc.img" :alt="svc.title" class="service-img" />
@@ -104,7 +106,7 @@ const services = [
             </div>
 
             <!-- Content column -->
-            <div class="service-content-col" data-aos="fade-up">
+            <div class="service-content-col" data-rv>
                 <span class="section-eyebrow">Our Services</span>
                 <h2 class="service-heading">
                     <span v-for="(line, i) in svc.title.split('\n')" :key="i">
@@ -135,7 +137,7 @@ const services = [
 <style scoped>
 /* wrapper */
 .services-wrapper {
-    background: #fff;
+    background: var(--paper);
     padding-bottom: 80px;
 }
 
@@ -148,7 +150,7 @@ const services = [
     padding: 96px clamp(24px, 6vw, 100px);
     border-bottom: 1px solid var(--border);
 }
-.service-row--alt { direction: rtl; }
+.service-row--alt { direction: rtl; background: var(--off); }
 .service-row--alt > * { direction: ltr; }
 
 /* image column */
@@ -158,7 +160,7 @@ const services = [
     position: absolute;
     left: -14px; top: -14px;
     width: 80px; height: 80px;
-    background: var(--gold);
+    background: var(--tint);
     border-radius: 10px;
     z-index: 0;
 }
@@ -167,20 +169,20 @@ const services = [
     object-fit: cover;
     border-radius: 24px;
     position: relative; z-index: 1;
-    box-shadow: 0 20px 50px rgba(27,47,110,0.14);
+    box-shadow: 0 20px 50px rgba(43,65,132,0.14);
 }
 
 /* content */
 .service-content-col { max-width: 540px; }
 .service-heading {
     font-family: var(--font-head);
-    font-weight: 900;
-    font-size: clamp(32px, 3.5vw, 50px);
+    font-weight: 800;
+    font-size: clamp(30px, 3.6vw, 52px);
     line-height: 1.05;
-    letter-spacing: -1px;
-    color: var(--navy);
+    letter-spacing: -0.02em;
+    color: var(--eerie);
     margin: 8px 0 0;
-    text-transform: uppercase;
+    text-wrap: balance;
 }
 .mb-5 { margin-bottom: 20px !important; }
 .mb-6 { margin-bottom: 24px !important; }

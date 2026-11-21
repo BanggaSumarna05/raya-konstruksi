@@ -22,7 +22,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Login — Raya Konstruksi" />
+    <Head title="Login | Raya Konstruksi" />
 
     <div class="login-page">
         <!-- Background photo -->
@@ -36,7 +36,7 @@ const submit = () => {
             </Link>
             <div class="login-brand-body">
                 <h1 class="login-brand-title">Raya Konstruksi<br /><span class="login-brand-gold">Internasional</span></h1>
-                <p class="login-brand-sub">Admin Portal — Authorized access only.</p>
+                <p class="login-brand-sub">Admin Portal. Authorized access only.</p>
             </div>
             <div class="login-brand-stats">
                 <div class="login-stat">
@@ -88,7 +88,7 @@ const submit = () => {
                                 placeholder="admin@example.com"
                                 class="login-input"
                                 :class="{ 'login-input--error': form.errors.email }"
-                                style="color: #111827 !important; -webkit-text-fill-color: #111827 !important;"
+                                style="color: #1E1E1E !important; -webkit-text-fill-color: #1E1E1E !important;"
                             />
                         </div>
                         <InputError :message="form.errors.email" class="login-error" />
@@ -108,7 +108,7 @@ const submit = () => {
                                 placeholder="••••••••"
                                 class="login-input"
                                 :class="{ 'login-input--error': form.errors.password }"
-                                style="color: #111827 !important; -webkit-text-fill-color: #111827 !important;"
+                                style="color: #1E1E1E !important; -webkit-text-fill-color: #1E1E1E !important;"
                             />
                         </div>
                         <InputError :message="form.errors.password" class="login-error" />
@@ -156,13 +156,13 @@ const submit = () => {
     grid-template-columns: 1fr 480px;
     position: relative;
     overflow: hidden;
-    font-family: "Pliant", system-ui, sans-serif;
+    font-family: "Figtree", system-ui, sans-serif;
 }
 
 /* Background photo */
 .login-bg {
     position: fixed; inset: 0; z-index: 0;
-    background-image: url('/assets/img/projects/airproduct/cover-1.webp');
+    background-image: url('/assets/img/refresh/login-hero.webp');
     background-size: cover; background-position: center;
 }
 .login-overlay {
@@ -189,12 +189,12 @@ const submit = () => {
 
 .login-brand-body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .login-brand-title {
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family: "Figtree", sans-serif;
     font-weight: 900;
     font-size: clamp(32px, 4vw, 52px);
     color: #fff; line-height: 1.1; margin: 0 0 16px;
 }
-.login-brand-gold { color: #F59E0B; }
+.login-brand-gold { color: #CAD0E0; }
 .login-brand-sub {
     font-size: 14px; color: rgba(255,255,255,0.50);
     font-weight: 500; letter-spacing: 0.3px;
@@ -206,7 +206,7 @@ const submit = () => {
     border-top: 1px solid rgba(255,255,255,0.10);
 }
 .login-stat { display: flex; flex-direction: column; padding-right: 32px; }
-.login-stat-num { font-family: "Bricolage Grotesque", sans-serif; font-size: 24px; font-weight: 900; color: #fff; line-height: 1; }
+.login-stat-num { font-family: "Figtree", sans-serif; font-size: 24px; font-weight: 900; color: #fff; line-height: 1; }
 .login-stat-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
 .login-stat-div { width: 1px; height: 32px; background: rgba(255,255,255,0.15); margin-right: 32px; flex-shrink: 0; }
 
@@ -229,9 +229,9 @@ const submit = () => {
 
 .login-card-header { margin-bottom: 32px; }
 .login-card-title {
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family: "Figtree", sans-serif;
     font-size: 28px; font-weight: 900;
-    color: #1B2F6E; margin: 0 0 8px;
+    color: #2B4184; margin: 0 0 8px;
 }
 .login-card-sub { font-size: 13px; color: #6B7280; margin: 0; }
 
@@ -257,25 +257,25 @@ const submit = () => {
 .login-input {
     width: 100%; padding: 12px 14px 12px 40px;
     border: 1.5px solid #e5e7eb; border-radius: 10px;
-    font-size: 14px; color: #111827 !important; background: #f9fafb !important;
+    font-size: 14px; color: #1E1E1E !important; background: #f9fafb !important;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
     box-sizing: border-box;
-    -webkit-text-fill-color: #111827;
+    -webkit-text-fill-color: #1E1E1E;
 }
 .login-input:focus {
-    border-color: #1B2F6E;
+    border-color: #2B4184;
     background: #fff !important;
-    box-shadow: 0 0 0 3px rgba(27,47,110,0.10);
-    -webkit-text-fill-color: #111827;
+    box-shadow: 0 0 0 3px rgba(43,65,132,0.10);
+    -webkit-text-fill-color: #1E1E1E;
 }
 /* Fix autofill background & text color */
 .login-input:-webkit-autofill,
 .login-input:-webkit-autofill:hover,
 .login-input:-webkit-autofill:focus {
-    -webkit-text-fill-color: #111827 !important;
+    -webkit-text-fill-color: #1E1E1E !important;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
-    border-color: #1B2F6E;
+    border-color: #2B4184;
 }
 .login-input--error { border-color: #ef4444; }
 .login-error { font-size: 12px; color: #ef4444; margin-top: 2px; }
@@ -283,22 +283,22 @@ const submit = () => {
 /* Remember + Forgot */
 .login-row { display: flex; align-items: center; justify-content: space-between; }
 .login-remember { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; cursor: pointer; }
-.login-forgot { font-size: 13px; font-weight: 600; color: #1B2F6E; text-decoration: none; }
-.login-forgot:hover { color: #F59E0B; }
+.login-forgot { font-size: 13px; font-weight: 600; color: #2B4184; text-decoration: none; }
+.login-forgot:hover { color: #1E1E1E; }
 
 /* Submit button */
 .login-btn {
     width: 100%; padding: 14px;
-    background: #1B2F6E; color: #fff;
+    background: #2B4184; color: #fff;
     border: none; border-radius: 10px;
-    font-family: "Pliant", sans-serif;
+    font-family: "Figtree", sans-serif;
     font-size: 14px; font-weight: 700;
     cursor: pointer; letter-spacing: 0.3px;
     display: flex; align-items: center; justify-content: center;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 4px 16px rgba(27,47,110,0.25);
+    box-shadow: 0 4px 16px rgba(43,65,132,0.25);
 }
-.login-btn:hover:not(:disabled) { background: #142257; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(27,47,110,0.35); }
+.login-btn:hover:not(:disabled) { background: #1E1E1E; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(43,65,132,0.35); }
 .login-btn:disabled { opacity: 0.65; cursor: not-allowed; }
 .login-btn-spinner {
     width: 18px; height: 18px;
@@ -312,7 +312,7 @@ const submit = () => {
 /* Back to website */
 .login-back { text-align: center; margin-top: 24px; }
 .login-back-link { font-size: 13px; font-weight: 600; color: #9ca3af; text-decoration: none; transition: color 0.2s; }
-.login-back-link:hover { color: #1B2F6E; }
+.login-back-link:hover { color: #2B4184; }
 
 /* Responsive */
 @media (max-width: 767px) {

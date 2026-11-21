@@ -26,15 +26,15 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-    --font-default: "Pliant", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --font-primary: "Bricolage Grotesque", sans-serif;
-    --font-secondary: "Pliant", sans-serif;
+    --font-default: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-primary: "Figtree", sans-serif;
+    --font-secondary: "Figtree", sans-serif;
 }
 
 /* Colors */
 :root {
     --color-default: #364d59;
-    --color-primary: #1B2F6E;
+    --color-primary: #2B4184;
     --color-secondary: #52565e;
     --color-primary2: #3A5DB0; /*  warna primary yang lebih gelap*/
 }
@@ -51,7 +51,8 @@
 --------------------------------------------------------------*/
 body {
     font-family: var(--font-default);
-    color: var(--color-default);
+    color: var(--eerie);
+    background: var(--paper); /* latar gelap — disamakan dengan home */
     overflow-x: hidden;
 }
 
@@ -61,7 +62,7 @@ a {
 }
 
 a:hover {
-    color: #1B2F6E;
+    color: #2B4184;
     text-decoration: none;
 }
 
@@ -71,7 +72,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-primary);
+    font-family: var(--font-head);
 }
 
 /*--------------------------------------------------------------
@@ -210,8 +211,8 @@ section {
     bottom: 15px;
     z-index: 99999;
     background: var(--color-primary);
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 4px;
     transition: opacity 0.4s, visibility 0.4s, background 0.4s;
 }
@@ -223,7 +224,7 @@ section {
 }
 
 .scroll-top:hover {
-    background: #1B2F6E;
+    background: #2B4184;
     color: #fff;
 }
 
@@ -334,8 +335,8 @@ section {
 .header.scrolled {
     height: 64px;
     background-color: rgba(255, 255, 255, 0.97);
-    border-bottom: 1px solid rgba(27, 47, 110, 0.12);
-    box-shadow: 0 4px 20px rgba(27, 47, 110, 0.10);
+    border-bottom: 1px solid rgba(43, 65, 132, 0.12);
+    box-shadow: 0 4px 20px rgba(43, 65, 132, 0.10);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
@@ -357,7 +358,7 @@ section {
 .header .logo h1 {
     font-size: 24px;
     font-weight: 700;
-    color: #1B2F6E;
+    color: #2B4184;
     margin-bottom: 0;
     font-family: var(--font-primary);
 }
@@ -459,24 +460,24 @@ section {
 
     .header.scrolled .navbar a,
     .header.scrolled .navbar a:focus {
-        color: #1B2F6E;
+        color: #2B4184;
     }
 
     .header.scrolled .navbar a:hover,
     .header.scrolled .navbar .active,
     .header.scrolled .navbar .active:focus,
     .header.scrolled .navbar li:hover > a {
-        color: #142257;
+        color: #1E1E1E;
     }
 
     .header.scrolled .navbar > ul > li > a::after {
-        background-color: #1B2F6E;
+        background-color: #2B4184;
     }
 
     /* Contact Us — plain nav link on scrolled, no pill */
     .header.scrolled .navbar > ul > li:last-child > a {
         background-color: transparent;
-        color: #1B2F6E;
+        color: #2B4184;
         border: none;
         border-radius: 4px;
         padding: 8px 14px;
@@ -484,13 +485,13 @@ section {
 
     .header.scrolled .navbar > ul > li:last-child > a:hover {
         background-color: transparent;
-        color: #142257;
+        color: #1E1E1E;
         border: none;
     }
 
     .header.scrolled .navbar > ul > li:last-child > a::after {
         display: block;
-        background-color: #1B2F6E;
+        background-color: #2B4184;
     }
 
     .navbar > ul > li:last-child > a::after {
@@ -515,9 +516,9 @@ section {
         opacity: 0;
         visibility: hidden;
         background: #fff;
-        border-top: 3px solid #1B2F6E;
+        border-top: 3px solid #2B4184;
         border-radius: 0 0 8px 8px;
-        box-shadow: 0 12px 40px rgba(27, 47, 110, 0.15);
+        box-shadow: 0 12px 40px rgba(43, 65, 132, 0.15);
         min-width: 220px;
         transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
         transform: translateY(12px);
@@ -542,9 +543,9 @@ section {
     .navbar .dropdown ul a:hover,
     .navbar .dropdown ul .active:hover,
     .navbar .dropdown ul li:hover > a {
-        color: #1B2F6E;
+        color: #2B4184;
         background-color: #f0f4ff;
-        border-left-color: #1B2F6E;
+        border-left-color: #2B4184;
         padding-left: 24px;
     }
 
@@ -660,7 +661,7 @@ section {
     .navbar .active:focus,
     .navbar li:hover > a {
         color: var(--color-primary);
-        background-color: rgba(27, 47, 110, 0.05);
+        background-color: rgba(43, 65, 132, 0.05);
     }
 
     .navbar .dropdown ul,
@@ -670,11 +671,11 @@ section {
         padding: 6px 0;
         margin: 0 0 0 20px;
         transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        border-left: 3px solid #1B2F6E;
+        border-left: 3px solid #2B4184;
         border-top: none;
         border-right: none;
         border-bottom: none;
-        background: rgba(27, 47, 110, 0.03);
+        background: rgba(43, 65, 132, 0.03);
     }
 
     .navbar .dropdown ul a,
@@ -696,7 +697,7 @@ section {
     /* Hamburger toggle — inside header, always visible */
     .mobile-nav-show {
         position: relative;
-        color: #1B2F6E;
+        color: #2B4184;
         font-size: 28px;
         cursor: pointer;
         line-height: 0;
@@ -716,7 +717,7 @@ section {
         position: fixed;
         top: 14px;
         right: 14px;
-        color: #1B2F6E;
+        color: #2B4184;
         font-size: 28px;
         cursor: pointer;
         line-height: 0;
@@ -3082,7 +3083,7 @@ li::marker {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #1B2F6E;
+    background: #2B4184;
 }
 
 .milestone-stack {
@@ -3127,31 +3128,89 @@ li::marker {
 ============================================================ */
 
 /* ============================================================
+   PAGE MOTION — reveal & split-text (bahasa motion home, dipakai
+   semua halaman via usePageMotion + atribut data-rv)
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+    [data-rv] {
+        transition:
+            opacity 0.65s ease var(--rv-delay, 0ms),
+            transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms);
+    }
+    [data-rv="out"] {
+        opacity: 0;
+        transform: translate3d(0, 28px, 0);
+    }
+    [data-rv="in"] {
+        opacity: 1;
+        transform: none;
+    }
+    .h-word-in {
+        transform: translate3d(0, 115%, 0);
+        transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: calc(var(--i, 0) * 45ms);
+    }
+    .is-split-in .h-word-in {
+        transform: translate3d(0, 0, 0);
+    }
+}
+.h-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+.h-split { display: block; }
+.h-word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+}
+.h-word-in { display: inline-block; }
+
+/* ============================================================
    TOKENS
 ============================================================ */
 :root {
-    --navy:        #1B2F6E;
-    --navy-dark:   #142257;
-    --navy-light:  #2a47a0;
-    --gold:        #F59E0B;
+    --navy:        #2B4184;  /* Azure Blue 100% */
+    --navy-dark:   #1E1E1E;  /* Eerie Black */
+    --navy-light:  #6070A3;  /* Azure Blue 75% */
+    --gold:        #2B4184;  /* Azure Blue — aksen utama (Brand Book hal. 10) */
+    --tint:        #CAD0E0;  /* Azure Blue 25% — aksen lembut */
+    --amber-dark:  #1E1E1E;  /* Eerie Black — hover aksen */
+    --cta:         #2B4184;  /* tombol utama = Azure Blue */
+    --cta-hover:   #1E1E1E;  /* Eerie Black */
+    --az:          #2B4184;  /* biru label — bahasa visual home */
+    --eerie:       #1E1E1E;  /* ink — warna teks utama home */
+    --muted:       #687080;
+    --line:        #D9DDE5;
+    --paper:       #FFFFFF;  /* latar putih — disamakan dengan home */
+    --off:         #F7F8FA;
     --white:       #ffffff;
-    --bg-light:    #f8f9fb;
-    --bg-section:  #f0f2f8;
+    --bg-light:    #FFFFFF;
+    --bg-section:  #FFFFFF;
     --text-dark:   #1a1a1a;
     --text-body:   #555555;
-    --text-muted:  #888888;
-    --border:      #e5e7eb;
+    --text-muted:  #5F6673;
+    --border:      #D9DDE5;
 
     /* Typography */
-    --font-head:   "Bricolage Grotesque", sans-serif;  /* For headings only */
-    --font-body:   "Pliant", sans-serif;               /* For body text */
+    --font-head:   "Figtree", sans-serif;                /* For headings only */
+    --font-body:   "Figtree", sans-serif;               /* For body text */
 
     /* Layout */
     --radius-btn:  50px;
     --radius-card: 14px;
-    --shadow-sm:   0 4px 16px rgba(27,47,110,0.10);
-    --shadow-md:   0 10px 32px rgba(27,47,110,0.14);
-    --shadow-lg:   0 20px 60px rgba(27,47,110,0.16);
+    --shadow-sm:   0 4px 16px rgba(43,65,132,0.10);
+    --shadow-md:   0 10px 32px rgba(43,65,132,0.14);
+    --shadow-lg:   0 20px 60px rgba(43,65,132,0.16);
 }
 
 /* ============================================================
@@ -3167,89 +3226,119 @@ li::marker {
 ============================================================ */
 .page-hero {
     position: relative;
-    min-height: 46vh;
+    min-height: 72vh;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
-    background: var(--navy-dark);
+    background: var(--eerie);
     background-size: cover;
     background-position: center;
 }
+/* scrim gelap ink — sama dengan hero home */
 .page-hero-overlay {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(105deg,
-            rgba(11,11,11,0.50) 0%,
-            rgba(27,47,110,0.30) 50%,
-            rgba(11,11,11,0.10) 100%
-        ),
-        linear-gradient(to top,
-            rgba(11,11,11,0.50) 0%,
-            transparent 50%
-        );
+        linear-gradient(90deg, rgba(30,30,30,0.62) 0%, rgba(30,30,30,0.30) 50%, rgba(30,30,30,0.08) 100%),
+        linear-gradient(180deg, rgba(30,30,30,0.45) 0%, rgba(30,30,30,0.05) 38%, rgba(30,30,30,0.55) 100%);
     z-index: 1;
     pointer-events: none;
 }
 .page-hero-body {
     position: relative;
     z-index: 2;
-    padding-top: 120px;
-    padding-bottom: 60px;
+    padding-top: 148px;
+    padding-bottom: 72px;
 }
+/* skala judul hero — identik dengan .h-hero-title home */
 .page-hero-title {
     font-family: var(--font-head);
-    font-weight: 900;
-    font-size: clamp(36px, 6vw, 72px);
-    line-height: 0.95;
-    letter-spacing: -1.5px;
+    font-weight: 800;
+    font-size: clamp(42px, 6.2vw, 92px);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
     color: #ffffff;
+    text-wrap: balance;
     margin: 12px 0 0;
 }
 .page-hero-sub {
     font-family: var(--font-body);
     font-size: clamp(14px, 1.4vw, 17px);
     font-weight: 400;
-    color: rgba(255,255,255,0.72);
+    color: rgba(255,255,255,0.78);
     margin: 16px 0 0;
-    max-width: 560px;
+    max-width: 46ch;
     line-height: 1.65;
+}
+/* garis aksen di atas subjudul — sama dengan kaki hero home */
+.page-hero-sub::before {
+    content: "";
+    display: block;
+    width: 45%;
+    max-width: 180px;
+    height: 1px;
+    margin-bottom: 18px;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /* ============================================================
    SECTION HELPERS
 ============================================================ */
+/* eyebrow ber-dot amber — identik dengan .h-eyebrow home */
 .section-eyebrow {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--font-body);
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 3px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 8px;
+    margin-bottom: 18px;
 }
+.section-eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex: none;
+}
+/* konteks gelap: teks terang + dot amber terang, seperti home */
+.page-hero .section-eyebrow,
+.values-header-panel .section-eyebrow {
+    color: rgba(255,255,255,0.85);
+}
+.page-hero .section-eyebrow::before,
+.values-header-panel .section-eyebrow::before {
+    background: var(--tint);
+}
+/* skala judul section — identik dengan .h-h2 home */
 .section-title {
     font-family: var(--font-head);
     font-weight: 800;
-    font-size: clamp(22px, 2.8vw, 34px);
-    color: var(--navy);
-    line-height: 1.2;
+    font-size: clamp(30px, 3.6vw, 52px);
+    color: var(--eerie);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
     margin-bottom: 16px;
 }
 .section-divider {
-    width: 48px;
-    height: 4px;
+    width: 56px;
+    height: 3px;
     background: var(--gold);
-    border-radius: 2px;
-    margin-bottom: 20px;
+    margin: 24px 0;
 }
 .section-body {
     font-family: var(--font-body);
     font-size: 16px;
-    color: var(--text-body);
+    color: var(--muted);
     line-height: 1.75;
 }
+.section-body strong { color: var(--eerie); font-weight: 700; }
 
 /* ============================================================
    BUTTON SYSTEM
@@ -3258,67 +3347,99 @@ li::marker {
    .btn-ghost     → white outline pill (dark backgrounds)
    .btn-link-nav  → underline text link
 ============================================================ */
+/* tombol pill amber dengan lingkaran ikon — bahasa .h-btn home */
 .btn-primary,
 .btn-outline,
 .btn-ghost {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    gap: 14px;
     font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    padding: 13px 28px;
-    border-radius: var(--radius-btn);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    padding: 10px 24px;
+    height: 52px;
+    border-radius: 9999px;
+    border: 1px solid transparent;
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
-    transition: background 0.22s, color 0.22s, border-color 0.22s,
-                transform 0.2s, box-shadow 0.22s;
+    transition: background 0.4s cubic-bezier(0.16,1,0.3,1), color 0.4s cubic-bezier(0.16,1,0.3,1),
+                border-color 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+                transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+/* lingkaran ikon — morf memanjang saat hover, persis home */
+.btn-primary > i,
+.btn-outline > i,
+.btn-ghost > i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 13px;
+    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), border-radius 0.4s ease,
+                background 0.4s ease, width 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.btn-primary:hover > i,
+.btn-outline:hover > i,
+.btn-ghost:hover > i {
+    width: 44px;
+    border-radius: 16px;
+    transform: translateX(3px);
 }
 
 .btn-primary {
-    background: var(--navy);
+    background: var(--cta);
+    border-color: var(--cta);
     color: var(--white);
-    border: 2px solid var(--navy);
-    box-shadow: 0 4px 18px rgba(27,47,110,0.22);
+    box-shadow: inset 0 4px 6px rgba(0,0,0,0.18), inset 0 2px 4px rgba(255,255,255,0.28);
 }
+.btn-primary > i { background: rgba(255,255,255,0.18); }
 .btn-primary:hover {
-    background: var(--navy-dark);
-    border-color: var(--navy-dark);
+    background: var(--cta-hover);
+    border-color: var(--cta-hover);
     color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(27,47,110,0.32);
+    transform: translateY(-1px);
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.16), inset 0 2px 6px rgba(255,255,255,0.3);
 }
+.btn-primary:hover > i { background: rgba(255,255,255,0.18); }
 
 .btn-outline {
     background: transparent;
-    color: var(--navy);
-    border: 2px solid var(--navy);
+    color: var(--eerie);
+    border-color: rgba(30,30,30,0.25);
 }
+.btn-outline > i { background: rgba(30,30,30,0.08); }
 .btn-outline:hover {
-    background: var(--navy);
+    background: var(--eerie);
+    border-color: var(--eerie);
     color: var(--white);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
+.btn-outline:hover > i { background: rgba(255,255,255,0.18); }
 
 .btn-ghost {
     background: transparent;
-    color: rgba(255,255,255,0.85);
-    border: 1.5px solid rgba(255,255,255,0.35);
-    backdrop-filter: blur(8px);
+    color: #FFFFFF;
+    border-color: rgba(255,255,255,0.4);
+    box-shadow: inset 0 4px 6px rgba(0,0,0,0.18), inset 0 2px 4px rgba(255,255,255,0.22);
 }
+.btn-ghost > i { background: rgba(255,255,255,0.16); }
 .btn-ghost:hover {
-    border-color: rgba(255,255,255,0.8);
-    background: rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.75);
     color: var(--white);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
+.btn-ghost:hover > i { background: rgba(255,255,255,0.26); }
 
 /* btn sizes */
-.btn-sm { font-size: 12px; padding: 9px 20px; }
-.btn-lg { font-size: 15px; padding: 16px 36px; }
+.btn-sm { font-size: 12px; padding: 8px 18px; height: 44px; }
+.btn-lg { font-size: 15px; padding: 12px 30px; height: 58px; }
 
 .btn-link-nav {
     display: inline-flex;
@@ -3342,7 +3463,7 @@ li::marker {
 ============================================================ */
 .raya-card {
     background: var(--white);
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     border-radius: var(--radius-card);
     overflow: hidden;
     height: 100%;
@@ -3386,7 +3507,7 @@ li::marker {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-.raya-card-badge--gold { background: var(--gold); color: var(--navy); }
+.raya-card-badge--gold { background: var(--gold); color: #FFFFFF; }
 
 /* ============================================================
    STAT ITEM
@@ -3434,7 +3555,7 @@ li::marker {
 .raya-num-list li {
     display: flex;
     align-items: stretch;
-    background: #f1f3f9;
+    background: var(--off);
     border-radius: 10px;
     overflow: hidden;
     font-size: 14px;
@@ -3445,7 +3566,7 @@ li::marker {
     align-items: center;
     justify-content: center;
     min-width: 44px;
-    background: var(--navy);
+    background: var(--eerie);
     color: var(--white);
     font-weight: 700;
     font-size: 13px;
@@ -3475,8 +3596,8 @@ li::marker {
 ============================================================ */
 .hse-policy-card {
     background: var(--white);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--navy);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
     border-radius: var(--radius-card);
     padding: 28px 24px;
     height: 100%;
@@ -3490,7 +3611,7 @@ li::marker {
     font-family: var(--font-head);
     font-size: 42px;
     font-weight: 900;
-    color: var(--navy);
+    color: var(--eerie);
     line-height: 1;
     margin-bottom: 12px;
     opacity: 0.15;
@@ -3509,8 +3630,8 @@ li::marker {
 ============================================================ */
 .values-card {
     background: var(--white);
-    border: 1px solid var(--border);
-    border-top: 4px solid var(--navy);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--eerie);
     border-radius: var(--radius-card);
     padding: 32px 24px;
     text-align: center;
@@ -3541,10 +3662,10 @@ li::marker {
     font-family: var(--font-head);
     font-size: 14px;
     font-weight: 800;
-    color: var(--navy);
+    color: var(--eerie);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-bottom: 2px solid var(--navy);
+    border-bottom: 1px solid var(--line);
     padding-bottom: 8px;
     margin-bottom: 12px;
 }
@@ -3569,12 +3690,12 @@ li::marker {
 .contact-info-icon {
     width: 40px;
     height: 40px;
-    background: var(--bg-light);
+    background: var(--off);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--navy);
+    color: var(--gold);
     font-size: 18px;
     flex-shrink: 0;
 }
@@ -3582,7 +3703,7 @@ li::marker {
     font-family: var(--font-body);
     font-size: 11px;
     font-weight: 700;
-    color: var(--text-muted);
+    color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 3px;
@@ -3590,7 +3711,7 @@ li::marker {
 .contact-info-value {
     font-family: var(--font-body);
     font-size: 14px;
-    color: var(--text-dark);
+    color: var(--eerie);
     font-weight: 500;
     line-height: 1.5;
 }
@@ -3600,7 +3721,7 @@ li::marker {
     gap: 4px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--gold);
     text-decoration: none;
     margin-top: 4px;
     transition: color 0.2s;
@@ -3621,10 +3742,10 @@ li::marker {
    RESPONSIVE
 ============================================================ */
 @media (max-width: 768px) {
-    .page-hero { min-height: 38vh; }
-    .page-hero-title { letter-spacing: -0.5px; }
+    .page-hero { min-height: 44vh; }
     .page-hero-body { padding-top: 90px; padding-bottom: 40px; }
-    .btn-primary, .btn-outline, .btn-ghost { font-size: 12px; padding: 11px 22px; }
+    .btn-primary, .btn-outline, .btn-ghost { height: 46px; font-size: 13px; padding: 8px 20px; }
+    .btn-primary > i, .btn-outline > i, .btn-ghost > i { width: 28px; height: 28px; }
 }
 
 /* ============================================================

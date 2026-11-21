@@ -1,12 +1,15 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 
 defineProps({
     projects: { type: Array, required: true }
 });
 
 const getImageUrl = (imagePath) => {
-    if (!imagePath) return '/assets/img/hero-carousel/hover-1-new.webp';
+    if (!imagePath) return '/assets/img/refresh/portfolio-hero.webp';
     if (imagePath.startsWith('/') || imagePath.startsWith('http')) return imagePath;
     return `/storage/${imagePath}`;
 };
@@ -16,7 +19,7 @@ const getImageUrl = (imagePath) => {
     <Head title="Our Projects & Portfolio" />
 
     <!-- ── Page Hero ── -->
-    <section class="page-hero" style="background-image: url('/assets/img/hero-carousel/hover-1-new.webp');">
+    <section class="page-hero" style="background-image: url('/assets/img/refresh/portfolio-hero.webp');">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">Portfolio</span>
@@ -29,16 +32,9 @@ const getImageUrl = (imagePath) => {
     </section>
 
     <!-- ── Portfolio Grid ── -->
-    <section class="portfolio-grid-section">
-        <!-- Section Header -->
-        <div class="pf-header">
-            <div class="container">
-                <span class="section-eyebrow">Portfolio</span>
-                <h2 class="pf-header-title">Our Projects</h2>
-            </div>
-        </div>
-
-        <!-- Dark Grid -->
+    <section class="portfolio-grid-section" aria-label="Project portfolio">
+        <h2 class="visually-hidden">Project Portfolio</h2>
+        <!-- Grid -->
         <div class="portfolio-grid">
             <a
                 v-for="(project, index) in projects"
@@ -86,7 +82,7 @@ const getImageUrl = (imagePath) => {
                     </span>
                 </div>
 
-                <!-- Gold border bottom sweep -->
+                <!-- Accent border bottom sweep -->
                 <div class="pf-border"></div>
             </a>
         </div>
@@ -94,23 +90,20 @@ const getImageUrl = (imagePath) => {
 </template>
 
 <style scoped>
+.visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* ── Section ── */
 .portfolio-grid-section {
     padding: 0;
-    background: #0d1120;
-}
-
-/* ── Section Header (white strip) ── */
-.pf-header {
-    background: #fff;
-    padding: 64px clamp(20px, 5vw, 80px) 36px;
-}
-.pf-header-title {
-    font-family: var(--font-head, "Bricolage Grotesque", sans-serif);
-    font-weight: 800;
-    font-size: clamp(26px, 3vw, 38px);
-    color: var(--navy, #1B2F6E);
-    margin: 8px 0 0;
+    background: var(--navy);
 }
 
 /* ── Grid ── */
@@ -130,6 +123,7 @@ const getImageUrl = (imagePath) => {
     overflow: hidden;
     cursor: pointer;
     text-decoration: none;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
 }
 
 /* ── Photo background ── */
@@ -151,9 +145,9 @@ const getImageUrl = (imagePath) => {
     z-index: 1;
     background: linear-gradient(
         to top,
-        rgba(5, 10, 30, 0.97) 0%,
-        rgba(5, 10, 30, 0.60) 45%,
-        rgba(5, 10, 30, 0.20) 100%
+        rgba(13, 20, 40, 0.96) 0%,
+        rgba(18, 28, 58, 0.62) 45%,
+        rgba(18, 28, 58, 0.16) 100%
     );
 }
 
@@ -169,7 +163,7 @@ const getImageUrl = (imagePath) => {
 /* ── Badge ── */
 .pf-badge {
     display: inline-block;
-    background: rgba(27, 47, 110, 0.85);
+    background: rgba(43, 65, 132, 0.85);
     color: #fff;
     font-size: 10px;
     font-weight: 700;
@@ -183,7 +177,7 @@ const getImageUrl = (imagePath) => {
 
 /* ── Title ── */
 .pf-title {
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family: "Figtree", sans-serif;
     font-weight: 800;
     font-size: clamp(15px, 1.4vw, 19px);
     color: #fff;
@@ -215,7 +209,7 @@ const getImageUrl = (imagePath) => {
     color: rgba(255, 255, 255, 0.65);
 }
 .pf-meta-row i {
-    color: #F59E0B;
+    color: var(--tint);
     font-size: 12px;
 }
 
@@ -228,7 +222,7 @@ const getImageUrl = (imagePath) => {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #F59E0B;
+    color: var(--tint);
     margin-top: 4px;
 }
 .pf-cta i, .pf-cta svg {
@@ -245,7 +239,7 @@ const getImageUrl = (imagePath) => {
     left: 0;
     height: 3px;
     width: 100%;
-    background: #F59E0B;
+    background: var(--tint);
     z-index: 4;
     transform: scaleX(0);
     transform-origin: left;

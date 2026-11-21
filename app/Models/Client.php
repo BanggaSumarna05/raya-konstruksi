@@ -15,11 +15,13 @@ class Client extends Model
         'logo',
         'order',
         'is_active',
+        'is_hero',
         'url',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'is_hero' => 'boolean',
         'order' => 'integer',
     ];
 
@@ -27,10 +29,10 @@ class Client extends Model
         'logo_url',
     ];
 
-    public function getLogoUrlAttribute(): string
+    public function getLogoUrlAttribute(): ?string
     {
         if (!$this->logo) {
-            return asset('assets/img/placeholder.jpg');
+            return null;
         }
 
         if (str_starts_with($this->logo, 'http://') || str_starts_with($this->logo, 'https://')) {

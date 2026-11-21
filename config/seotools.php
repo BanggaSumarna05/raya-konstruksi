@@ -12,7 +12,7 @@ return [
         'defaults'       => [
             'title'        => "Raya Konstruksi Internasional", // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'Raya Konstruksi Internasional menyediakan layanan Catalyst Loading dan Catalyst Handling yang aman, efisien, dan sesuai standar industri. Dengan tim berpengalaman dan teknologi terkini, kami memastikan optimalisasi proses, penggantian katalis, dan manajemen keselamatan untuk industri petrokimia dan energi',
+            'description'  => 'PT Raya Konstruksi Internasional delivers construction, fabrication, catalyst handling, and plant maintenance services for Indonesia\'s energy and industrial sectors.',
             'separator'    => ' - ',
             'keywords'     => [
                 "Catalyst Loading Indonesia",

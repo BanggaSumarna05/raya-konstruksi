@@ -26,6 +26,10 @@ class DatabaseSeeder extends Seeder
             ProjectSeeder::class,
             BlogSeeder::class,
             ClientSeeder::class,
+            EquipmentSeeder::class,
+            OfficeSeeder::class,
+            ProjectLocationSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

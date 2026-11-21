@@ -1,5 +1,8 @@
 ﻿<script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 </script>
 
 <script>
@@ -28,13 +31,13 @@ export default {
     <Head title="Health, Safety & Environment" />
 
     <!-- ── Page Hero ── -->
-    <section class="page-hero" style="background-image: url('/assets/img/cover-plant.webp');">
+    <section class="page-hero" style="background-image: url('/assets/img/refresh/safety-hero.webp');">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">Safety First</span>
             <h1 class="page-hero-title">Health, Safety<br />&amp; Environment</h1>
             <p class="page-hero-sub">
-                Target Zero — no injuries, no property damage, no harm to the environment.
+                Target Zero: no injuries, no property damage, no harm to the environment.
             </p>
         </div>
     </section>
@@ -43,13 +46,13 @@ export default {
     <section class="hse-overview-section">
         <div class="container">
             <div class="row align-items-center gy-5">
-                <div class="col-lg-4" data-aos="fade-right">
+                <div class="col-lg-4" data-rv>
                     <span class="section-eyebrow" style="color: rgba(255,255,255,0.6);">HSE at RAYA</span>
                     <h2 class="section-title text-white mt-2">
-                        Our vision is<br /><span style="color: var(--gold);">Target Zero</span>
+                        Our vision is<br /><span style="color: var(--tint);">Target Zero</span>
                     </h2>
                 </div>
-                <div class="col-lg-8" data-aos="fade-left">
+                <div class="col-lg-8" data-rv>
                     <p class="section-body" style="color: rgba(255,255,255,0.78);">
                         The health and safety of our people, and integrity of our operations is our top priority.
                         We strongly believe that all incidents related to people, environment and assets can be prevented.
@@ -64,7 +67,7 @@ export default {
             <!-- Stats -->
             <div class="row g-4 mt-5">
                 <div v-for="(stat, i) in hseStats" :key="i" class="col-md-4"
-                     data-aos="fade-up" :data-aos-delay="i * 100">
+                     data-rv :data-rv-delay="i * 100">
                     <div class="hse-stat-card">
                         <div class="hse-stat-value">{{ stat.value }}</div>
                         <div class="hse-stat-label">{{ stat.label }}</div>
@@ -82,12 +85,12 @@ export default {
     <section class="hse-culture-section">
         <div class="container">
             <div class="row align-items-center gy-5">
-                <div class="col-lg-5" data-aos="fade-right">
+                <div class="col-lg-5" data-rv>
                     <span class="section-eyebrow">Our Culture</span>
                     <h2 class="section-title mt-2">Safety is a<br />Core Value</h2>
                     <div class="section-divider"></div>
                 </div>
-                <div class="col-lg-7" data-aos="fade-left">
+                <div class="col-lg-7" data-rv>
                     <p class="section-body">
                         Our values embody the spirit and energy of <strong>RAYA</strong> at its best. They help us set direction,
                         and guide our decisions, actions and the way we interact with others.
@@ -104,7 +107,7 @@ export default {
     <!-- ── HSE Policy ── -->
     <section class="hse-policy-section">
         <div class="container">
-            <div class="text-center mb-12" data-aos="fade-up">
+            <div class="text-center mb-12" data-rv>
                 <span class="section-eyebrow">Our Commitment</span>
                 <h2 class="section-title mt-2">RAYA HSE Policy</h2>
                 <div class="section-divider mx-auto"></div>
@@ -115,7 +118,7 @@ export default {
             </div>
             <div class="row g-4">
                 <div v-for="(item, i) in hsePolicy" :key="i" class="col-md-6 col-lg-4"
-                     data-aos="fade-up" :data-aos-delay="i * 80">
+                     data-rv :data-rv-delay="i * 80">
                     <div class="hse-policy-card">
                         <div class="hse-policy-num">{{ item.no }}</div>
                         <p class="hse-policy-text">{{ item.title }}</p>
@@ -128,40 +131,40 @@ export default {
     <!-- ── HSE Photo Gallery ── -->
     <section class="hse-gallery-section">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
+            <div class="text-center mb-5" data-rv>
                 <span class="section-eyebrow">HSE in Action</span>
                 <h2 class="section-title mt-2">Safety on Every Site</h2>
                 <div class="section-divider mx-auto"></div>
             </div>
             <div class="row g-3">
-                <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="0">
+                <div class="col-md-4 col-6" data-rv data-rv-delay="0">
                     <div class="hse-photo-wrap">
-                        <img src="/assets/img/projects/lotte/lotte-1.webp" alt="HSE on site" class="hse-photo" loading="lazy" width="400" height="300" />
+                        <img src="/assets/img/refresh/safety-1.webp" alt="HSE on site" class="hse-photo" loading="lazy" width="800" height="600" />
                     </div>
                 </div>
-                <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="80">
+                <div class="col-md-4 col-6" data-rv data-rv-delay="80">
                     <div class="hse-photo-wrap">
-                        <img src="/assets/img/projects/lotte-catalyst/catalyst (1).webp" alt="Catalyst safety" class="hse-photo" loading="lazy" width="400" height="300" />
+                        <img src="/assets/img/refresh/safety-2.webp" alt="Catalyst safety" class="hse-photo" loading="lazy" width="800" height="601" />
                     </div>
                 </div>
-                <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="160">
+                <div class="col-md-4 col-6" data-rv data-rv-delay="160">
                     <div class="hse-photo-wrap">
-                        <img src="/assets/img/projects/airproduct/cover-1.webp" alt="Plant maintenance safety" class="hse-photo" loading="lazy" width="400" height="300" />
+                        <img src="/assets/img/refresh/safety-3.webp" alt="Plant maintenance safety" class="hse-photo" loading="lazy" width="800" height="549" />
                     </div>
                 </div>
-                <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="0">
+                <div class="col-md-4 col-6" data-rv data-rv-delay="0">
                     <div class="hse-photo-wrap">
-                        <img src="/assets/img/projects/rdmp/rdmp-1.webp" alt="Refinery safety" class="hse-photo" loading="lazy" width="400" height="300" />
+                        <img src="/assets/img/refresh/safety-4.webp" alt="Refinery safety" class="hse-photo" loading="lazy" width="800" height="600" />
                     </div>
                 </div>
-                <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="80">
+                <div class="col-md-4 col-6" data-rv data-rv-delay="80">
                     <div class="hse-photo-wrap">
-                        <img src="/assets/img/projects/enerco-1/enerco-3.webp" alt="Civil works safety" class="hse-photo" loading="lazy" width="400" height="300" />
+                        <img src="/assets/img/refresh/safety-5.webp" alt="Civil works safety" class="hse-photo" loading="lazy" width="800" height="600" />
                     </div>
                 </div>
-                <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="160">
+                <div class="col-md-4 col-6" data-rv data-rv-delay="160">
                     <div class="hse-photo-wrap">
-                        <img src="/assets/img/projects/rdmp/rdmp-2.webp" alt="Construction safety" class="hse-photo" loading="lazy" width="400" height="300" />
+                        <img src="/assets/img/refresh/safety-6.webp" alt="Construction safety" class="hse-photo" loading="lazy" width="800" height="533" />
                     </div>
                 </div>
             </div>
@@ -170,17 +173,19 @@ export default {
 </template>
 
 <style scoped>
-/* Overview section — dark navy bg */
+/* Overview section — azure bg */
 .hse-overview-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, #0a1428 0%, #1B2F6E 100%);
+    background:
+        radial-gradient(120% 160% at 100% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 50%),
+        var(--navy);
 }
 
 /* HSE stats card */
 .hse-stat-card {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
-    border-top: 3px solid var(--gold);
+    border-top: 3px solid var(--tint);
     border-radius: var(--radius-card);
     padding: 36px 28px;
     text-align: center;
@@ -192,7 +197,7 @@ export default {
     font-family: var(--font-head);
     font-size: 56px;
     font-weight: 900;
-    color: var(--gold);
+    color: var(--tint);
     line-height: 1;
     margin-bottom: 10px;
 }
@@ -211,18 +216,18 @@ export default {
 .mt-5  { margin-top: 28px !important; }
 
 /* HSE Culture & Policy sections */
-.hse-culture-section { padding: 80px 0; background: var(--bg-light, #f8f9fb); }
+.hse-culture-section { padding: 80px 0; background: var(--off); }
 .hse-body-mt { margin-top: 16px; }
-.hse-policy-section { padding: 80px 0; background: #fff; }
+.hse-policy-section { padding: 80px 0; background: var(--paper); }
 .hse-policy-intro { max-width: 580px; }
-.hse-gallery-section { padding: 80px 0; background: var(--bg-light, #f8f9fb); }
+.hse-gallery-section { padding: 80px 0; background: var(--off); }
 
 /* HSE Photo Gallery */
 .hse-photo-wrap {
     border-radius: 12px;
     overflow: hidden;
     aspect-ratio: 4/3;
-    box-shadow: 0 8px 24px rgba(27,47,110,0.10);
+    box-shadow: 0 8px 24px rgba(43,65,132,0.10);
 }
 .hse-photo {
     width: 100%;

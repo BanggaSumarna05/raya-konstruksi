@@ -1,9 +1,14 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { Head, Link } from "@inertiajs/vue3";
+import Lenis from "@studio-freight/lenis";
 
-defineProps({
+const props = defineProps({
     blogs: Array,
+    projects: {
+        type: Array,
+        default: () => []
+    },
     clients: {
         type: Array,
         default: () => []
@@ -11,14 +16,289 @@ defineProps({
     heroClients: {
         type: Array,
         default: () => []
+    },
+    projectLocations: {
+        type: Array,
+        default: () => []
     }
 });
 
-const heroVideo = ref(null);
+const projTrack = ref(null);
+const projIndex = ref(0);
+const projAtStart = ref(true);
+const projAtEnd = ref(false);
 
-function onVideoCanPlay() {
-    if (heroVideo.value) {
-        heroVideo.value.classList.add('hero-bg-video--ready');
+const industries = [
+    {
+        name: "Petrochemical",
+        desc: "Fabrication, plant maintenance and catalyst handling for petrochemical facilities.",
+        img: "/assets/img/refresh/ind-petrochemical.webp",
+        alt: "Raya Konstruksi catalyst handling at a petrochemical reactor"
+    },
+    {
+        name: "Oil & Gas",
+        desc: "Construction, piping and maintenance support for oil and gas operations.",
+        img: "/assets/img/refresh/ind-oil-gas.webp",
+        alt: "Oil and gas processing facility"
+    },
+    {
+        name: "Energy",
+        desc: "Construction and maintenance services for power and energy projects.",
+        img: "/assets/img/refresh/ind-energy.webp",
+        alt: "Energy processing plant"
+    },
+    {
+        name: "Infrastructure",
+        desc: "Civil works, roads and site structures for industrial infrastructure.",
+        img: "/assets/img/refresh/ind-infrastructure.webp",
+        alt: "Civil infrastructure construction site"
+    },
+    {
+        name: "Sugar Plant",
+        desc: "Construction and maintenance works for sugar mills and processing plants.",
+        img: "/assets/img/refresh/ind-sugar-plant.webp",
+        alt: "Aerial view of the MSM sugar mill construction site"
+    }
+];
+const indIndex = ref(0);
+const indDir = ref(1);
+const indCount = String(industries.length).padStart(2, "0");
+const currentIndustry = computed(() => industries[indIndex.value]);
+
+function industryNum(i) {
+    return String(i + 1).padStart(2, "0");
+}
+
+function indStep(dir) {
+    indDir.value = dir;
+    indIndex.value = (indIndex.value + dir + industries.length) % industries.length;
+}
+
+function indGo(i) {
+    if (i === indIndex.value) return;
+    indDir.value = i > indIndex.value ? 1 : -1;
+    indIndex.value = i;
+}
+
+function projectMeta(project) {
+    return [project.client, project.location, project.duration].filter(Boolean).join(" · ");
+}
+
+function projStep() {
+    const track = projTrack.value;
+    if (!track) return 0;
+    const slide = track.querySelector(".h-proj");
+    if (!slide) return 0;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    return slide.getBoundingClientRect().width + gap;
+}
+
+function syncProjState() {
+    const track = projTrack.value;
+    if (!track) return;
+    const step = projStep();
+    projIndex.value = step ? Math.round(track.scrollLeft / step) : 0;
+    projAtStart.value = track.scrollLeft <= 2;
+    projAtEnd.value = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+}
+
+function scrollProjects(dir) {
+    const track = projTrack.value;
+    if (!track) return;
+    track.scrollBy({ left: dir * projStep(), behavior: "smooth" });
+}
+
+const pageRoot = ref(null);
+let revealObserver = null;
+let splitObserver = null;
+let lenis = null;
+let lenisFrame = 0;
+
+const revealGroups = [
+    [".h-section-head", 0],
+    [".h-svc-cards", 80],
+    [".h-about-photo", 0],
+    [".h-about-panel", 90],
+    [".h-why-copy", 0],
+    [".h-why-list", 120],
+    [".h-certs-inner", 0],
+    [".h-proj-intro", 0],
+    [".h-proj-carousel", 100],
+    [".h-presence-copy", 0],
+    [".h-presence-map", 100],
+    [".h-presence-list", 180],
+    [".h-safety-copy", 0],
+    [".h-safety-metrics", 100],
+    [".h-safety-media", 180],
+    [".h-ind-slider", 80],
+    [".h-clients-title", 0],
+    [".h-marquee", 80],
+    [".h-cta-title", 0],
+    [".h-cta-text", 100],
+    [".h-cta-actions", 180],
+    [".h-careers-media", 0],
+    [".h-careers-intro", 90],
+    [".h-careers-list", 180],
+    [".h-careers-actions", 240]
+];
+
+function setupReveal() {
+    const root = pageRoot.value;
+    if (!root || !("IntersectionObserver" in window)) return;
+
+    revealObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.dataset.rv = "in";
+                revealObserver.unobserve(entry.target);
+            });
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+    );
+
+    revealGroups.forEach(([selector, step]) => {
+        root.querySelectorAll(selector).forEach((el, i) => {
+            el.dataset.rv = "out";
+            el.style.setProperty("--rv-delay", `${Math.min(i * step, 320)}ms`);
+            revealObserver.observe(el);
+        });
+    });
+}
+
+/* split headings into words + letters, mirroring the reference letter rise */
+function splitHeading(el) {
+    if (el.dataset.split === "done") return;
+    el.dataset.split = "done";
+
+    const visual = document.createElement("span");
+    visual.className = "h-split";
+    visual.setAttribute("aria-hidden", "true");
+    while (el.firstChild) visual.appendChild(el.firstChild);
+
+    const sr = document.createElement("span");
+    sr.className = "h-sr";
+    sr.textContent = (visual.textContent || "").replace(/\s+/g, " ").trim();
+    el.appendChild(sr);
+    el.appendChild(visual);
+
+    let index = 0;
+    const walker = document.createTreeWalker(visual, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (walker.nextNode()) {
+        if (walker.currentNode.nodeValue.trim()) textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach((node) => {
+        const prev = node.previousSibling;
+        const next = node.nextSibling;
+        let value = node.nodeValue.replace(/[ \t\r\n]+/g, " ");
+        if (!prev || prev.nodeName === "BR") value = value.replace(/^ /, "");
+        if (!next || next.nodeName === "BR") value = value.replace(/ $/, "");
+
+        const frag = document.createDocumentFragment();
+        value.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+                frag.appendChild(document.createTextNode(" "));
+                return;
+            }
+            const word = document.createElement("span");
+            word.className = "h-word";
+            const inner = document.createElement("span");
+            inner.className = "h-word-in";
+            inner.style.setProperty("--i", index++);
+            inner.textContent = part;
+            word.appendChild(inner);
+            frag.appendChild(word);
+        });
+        node.replaceWith(frag);
+    });
+}
+
+function setupSplitHeadings() {
+    const root = pageRoot.value;
+    if (!root || !("IntersectionObserver" in window)) return;
+
+    splitObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("is-split-in");
+                splitObserver.unobserve(entry.target);
+            });
+        },
+        { rootMargin: "0px 0px -8% 0px", threshold: 0.2 }
+    );
+
+    root.querySelectorAll(".h-hero-title, .h-h2").forEach((el) => {
+        splitHeading(el);
+        if (el.classList.contains("h-hero-title")) {
+            requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("is-split-in")));
+        } else {
+            splitObserver.observe(el);
+        }
+    });
+}
+
+function startLenis() {
+    lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    const raf = (time) => {
+        lenis.raf(time);
+        lenisFrame = requestAnimationFrame(raf);
+    };
+    lenisFrame = requestAnimationFrame(raf);
+}
+
+const heroVideo = ref(null);
+let heroVideoMq = null;
+
+function applyHeroVideo() {
+    const v = heroVideo.value;
+    if (!v || !heroVideoMq) return;
+    if (heroVideoMq.matches && !v.src) {
+        v.src = "/assets/img/hero-carousel/hero-main.webm";
+        v.play().catch(() => {});
+    } else if (!heroVideoMq.matches && v.src) {
+        v.pause();
+        v.removeAttribute("src");
+        v.load();
+    }
+}
+
+onMounted(() => {
+    heroVideoMq = window.matchMedia("(min-width: 992px) and (prefers-reduced-motion: no-preference)");
+    heroVideoMq.addEventListener("change", applyHeroVideo);
+    applyHeroVideo();
+    syncProjState();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setupSplitHeadings();
+    setupReveal();
+    startLenis();
+});
+
+onBeforeUnmount(() => {
+    if (heroVideoMq) heroVideoMq.removeEventListener("change", applyHeroVideo);
+    if (lenis) lenis.destroy();
+    cancelAnimationFrame(lenisFrame);
+    if (revealObserver) revealObserver.disconnect();
+    if (splitObserver) splitObserver.disconnect();
+});
+
+const brokenClientLogos = ref(new Set());
+function onClientLogoError(id) {
+    brokenClientLogos.value = new Set(brokenClientLogos.value).add(id);
+}
+
+const logoClients = computed(() =>
+    ((props.heroClients && props.heroClients.length ? props.heroClients : props.clients) || [])
+        .filter((c) => c.logo_url && !brokenClientLogos.value.has(c.id))
+);
+
+const brokenBlogImages = ref([]);
+function markBlogImageBroken(id) {
+    if (!brokenBlogImages.value.includes(id)) {
+        brokenBlogImages.value = [...brokenBlogImages.value, id];
     }
 }
 </script>
@@ -26,1360 +306,2835 @@ function onVideoCanPlay() {
 <template>
     <Head title="Home" />
 
-    <!-- ============================================================
-         1. HERO
-    ============================================================ -->
-    <section id="hero" class="hero-section">
+    <div ref="pageRoot" class="rk-home">
 
-        <div class="hero-bg-poster" aria-hidden="true"></div>
-        <video
-            class="hero-bg-video"
-            autoplay muted loop playsinline
-            preload="none"
-            aria-hidden="true"
-            @canplay="onVideoCanPlay"
-            ref="heroVideo"
-        >
-            <source src="/assets/img/hero-carousel/hero-main.webm" type="video/webm" />
-        </video>
-        <div class="hero-overlay"></div>
+        <!-- ============================================================
+             01 - HERO
+        ============================================================ -->
+        <section id="hero" class="h-hero hero-section">
+            <div class="h-hero-sticky">
 
-        <div class="hero-body">
-            <div class="hero-content">
-                <h1 class="hero-headline">
-                    BUILDING TOMORROW,<br />
-                    TODAY.
-                </h1>
-
-                <div class="hero-rule"></div>
-                <p class="hero-sub">Excellence meet innovation to deliver unparalleled solutions for all your needs.</p>
-
-                <div class="hero-ctas">
-                    <Link :href="route('portfolio')" class="hero-cta-primary">
-                        View Portfolio
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" /></svg>
-                    </Link>
-                    <Link :href="route('contactUs')" class="hero-cta-ghost">
-                        Contact Us
-                    </Link>
-                </div>
+            <div class="h-hero-media" aria-hidden="true">
+                <img
+                    class="h-hero-image"
+                    src="/assets/img/refresh/home-hero.webp"
+                    alt=""
+                    width="2200"
+                    height="1239"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+                <video
+                    ref="heroVideo"
+                    class="h-hero-video"
+                    muted
+                    loop
+                    playsinline
+                    preload="none"
+                    poster="/assets/img/refresh/hero-video-poster.webp"
+                ></video>
+                <div class="h-hero-scrim"></div>
             </div>
 
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="hero-stat-num">50<span class="stat-plus">+</span></span>
-                    <span class="hero-stat-label">Projects</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-num">1000<span class="stat-plus">+</span></span>
-                    <span class="hero-stat-label">Workforce</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-num">8<span class="stat-plus">+</span></span>
-                    <span class="hero-stat-label">Years</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-num">{{ clients && clients.length ? clients.length : '17' }}<span class="stat-plus">+</span></span>
-                    <span class="hero-stat-label">Corporate Clients</span>
-                </div>
-            </div>
-        </div>
+            <div class="h-container h-hero-grid">
+                <div class="h-hero-copy">
+                  
 
-        <!-- Client logo marquee strip -->
-        <div v-if="heroClients && heroClients.length > 0" class="hero-logos-wrap">
-            <div class="hero-logos-inner">
-                <div class="hero-marquee-track">
-                    <div class="hero-marquee-set" aria-hidden="false">
-                        <div v-for="c in heroClients" :key="'hero-' + c.id" class="hero-logo-box">
-                            <img :src="c.logo_url" :alt="c.name" class="hero-logo" width="88" height="44" />
-                        </div>
-                    </div>
-                    <div class="hero-marquee-set" aria-hidden="true">
-                        <div v-for="c in heroClients" :key="'hero-dup-' + c.id" class="hero-logo-box">
-                            <img :src="c.logo_url" alt="" class="hero-logo" width="88" height="44" loading="lazy" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <h1 class="h-hero-title">
+                        BUILDING<br />
+                        TOMORROW,<br />
+                        TODAY.
+                    </h1>
 
-    <!-- ============================================================
-         2. SERVICES
-    ============================================================ -->
-    <section class="svc-section">
-        <div class="svc-header">
-            <div class="svc-header-left">
-                <span class="section-eyebrow">What We Do</span>
-                <h2 class="section-title mt-1 mb-0">Our Core Services</h2>
-            </div>
-            <Link :href="route('whatWeDo')" class="view-all-link">
-                View All Services <i class="bi bi-arrow-right ms-1"></i>
-            </Link>
-        </div>
-        <div class="svc-grid">
-
-            <!-- Card 1 — Construction & Fabrication -->
-            <Link :href="route('constructionFabrication')" class="svc-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/lotte/cover.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-num">01</div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-building-fill-gear"></i></div>
-                    <h3 class="svc-card-title">Construction &amp;<br />Fabrication</h3>
-                    <p class="svc-card-desc">Civil works, steel fabrication &amp; industrial construction with strict safety standards.</p>
-                    <span class="svc-card-cta">Explore <i class="bi bi-arrow-right"></i></span>
-                </div>
-                <div class="svc-card-border"></div>
-            </Link>
-
-            <!-- Card 2 — Operation & Maintenance -->
-            <Link :href="route('plantMaintenance')" class="svc-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/airproduct/cover-1.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-num">02</div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-gear-wide-connected"></i></div>
-                    <h3 class="svc-card-title">Operation &amp;<br />Maintenance</h3>
-                    <p class="svc-card-desc">Plant maintenance ensuring safe operations, peak efficiency &amp; minimal downtime.</p>
-                    <span class="svc-card-cta">Explore <i class="bi bi-arrow-right"></i></span>
-                </div>
-                <div class="svc-card-border"></div>
-            </Link>
-
-            <!-- Card 3 — Catalyst Handling -->
-            <Link :href="route('catalyst-loading')" class="svc-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/lotte-catalyst/catalyst-3.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-num">03</div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-radioactive"></i></div>
-                    <h3 class="svc-card-title">Catalyst<br />Handling</h3>
-                    <p class="svc-card-desc">Professional catalyst loading, unloading &amp; reactor handling per global refinery standards.</p>
-                    <span class="svc-card-cta">Explore <i class="bi bi-arrow-right"></i></span>
-                </div>
-                <div class="svc-card-border"></div>
-            </Link>
-
-            <!-- Card 4 — Civil & Road Works -->
-            <Link :href="route('whatWeDo')" class="svc-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/enerco-1/enerco-1.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-num">04</div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-cone-striped"></i></div>
-                    <h3 class="svc-card-title">Civil &amp;<br />Road Works</h3>
-                    <p class="svc-card-desc">Civil construction &amp; roadwork services supporting industrial and infrastructure projects.</p>
-                    <span class="svc-card-cta">Explore <i class="bi bi-arrow-right"></i></span>
-                </div>
-                <div class="svc-card-border"></div>
-            </Link>
-
-        </div><!-- end svc-grid -->
-    </section>
-
-    <!-- ============================================================
-         3. ABOUT COMPANY
-    ============================================================ -->
-    <section class="glance-section">
-        <div class="container">
-            <div class="row align-items-center gy-5">
-                <div class="col-lg-5">
-                    <div class="glance-image-wrap">
-                        <img src="/assets/img/home.webp" alt="Raya Konstruksi Operations" class="glance-img" width="800" height="450" loading="lazy" />
-                        <div class="glance-img-badge">
-                            <span class="glance-badge-number">8+</span>
-                            <span class="glance-badge-label">Years of Excellence</span>
-                        </div>
-                        <div class="glance-accent-bar"></div>
-                        <div class="glance-accent-dot"></div>
-                    </div>
-                </div>
-                <div class="col-lg-7 ps-lg-5">
-                    <span class="section-eyebrow">Raya at a Glance</span>
-                    <h2 class="section-title">
-                        Indonesia's Trusted<br />Industrial Construction &amp;<br /><span class="text-gold">Maintenance Partner</span>
-                    </h2>
-                    <div class="section-divider"></div>
-                    <p class="section-body">
-                        <strong>RAYA</strong> delivers comprehensive solutions in fabrication, plant maintenance, catalyst handling &amp; civil works for industrial projects across Indonesia backed by a zero-accident commitment and certified workforce.
+                    <p class="h-hero-sub">
+                        Excellence meets innovation. We fabricate, build, maintain and
+                        service industrial plants, refineries and infrastructure across
+                        Indonesia.
                     </p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">50<span class="stat-plus">+</span></div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1000<span class="stat-plus">+</span></div>
-                            <div class="stat-label">Skilled Workforce</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">20<span class="stat-plus">+</span></div>
-                            <div class="stat-label">Industrial Clients</div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <Link :href="route('whoWeAre')" class="btn-primary-navy">
-                            About Raya
+
+                    <div class="h-hero-actions">
+                        <Link :href="route('whatWeDo')" class="h-hero-cta h-hero-cta--solid">
+                            See our services
+                        </Link>
+                        <Link :href="route('contactUs')" class="h-hero-cta h-hero-cta--ghost">
+                            Request a proposal
                         </Link>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ============================================================
-         4. WHY CHOOSE US
-    ============================================================ -->
-    <section class="why-section">
-        <div class="svc-header">
-            <div class="svc-header-left">
-                <span class="section-eyebrow">Why Choose Raya</span>
-                <h2 class="section-title mt-1 mb-0">What Sets Us Apart</h2>
-            </div>
-        </div>
-        <div class="why-grid">
-
-            <div class="why-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/lotte/lotte-1.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-people-fill"></i></div>
-                    <h3 class="svc-card-title">Experienced<br />Team</h3>
-                    <p class="svc-card-desc">Skilled professionals with deep expertise across heavy industries.</p>
-                </div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="why-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/lotte-catalyst/catalyst (1).webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-shield-check"></i></div>
-                    <h3 class="svc-card-title">Strong Safety<br />Culture</h3>
-                    <p class="svc-card-desc">Zero-accident commitment on every project we execute.</p>
-                </div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="why-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/airproduct/cover-1.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-award"></i></div>
-                    <h3 class="svc-card-title">Certified &amp;<br />Compliant</h3>
-                    <p class="svc-card-desc">Adherent to international standards and industry best practices.</p>
-                </div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="why-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/enerco-1/enerco-3.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-clock-history"></i></div>
-                    <h3 class="svc-card-title">On-Time<br />Delivery</h3>
-                    <p class="svc-card-desc">Committed to delivering quality work within agreed timelines.</p>
-                </div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="why-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/rdmp/rdmp-2.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-geo-alt-fill"></i></div>
-                    <h3 class="svc-card-title">Nationwide<br />Coverage</h3>
-                    <p class="svc-card-desc">Active projects across 5 major islands in Indonesia.</p>
-                </div>
-                <div class="svc-card-border"></div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ============================================================
-         5. FEATURED PROJECTS
-    ============================================================ -->
-    <section class="projects-section">
-        <div class="svc-header">
-            <div class="svc-header-left">
-                <span class="section-eyebrow">Featured Projects</span>
-                <h2 class="section-title mt-1 mb-0">Recent Work</h2>
-            </div>
-            <Link :href="route('portfolio')" class="view-all-link">View All </Link>
-        </div>
-        <div class="proj-grid">
-
-            <Link :href="route('portfolio')" class="svc-card proj-card-tall">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/unilever-1/cover.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <span class="proj-badge">Fabrication &amp; Construction</span>
-                    <h3 class="svc-card-title">UOI TURNAROUND & <br />MAINTENANCE PROJECT</h3>
-                    <p class="svc-card-desc">PT Unilever Oleochemical Indonesia · Sei Mangkei, Sumut · Nov 2024 – Aug 2025</p>
-                    <span class="svc-card-cta">View Details <i class="bi bi-arrow-right"></i></span>
-                </div>
-                <div class="svc-card-border"></div>
-            </Link>
-
-            <Link :href="route('portfolio')" class="svc-card proj-card-short">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/airproduct/cover-1.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <span class="proj-badge proj-badge--gold">O &amp; M</span>
-                    <h3 class="svc-card-title">Air Products SMIP<br />Mechanical &amp; Piping</h3>
-                    <p class="svc-card-desc">PT OKI Pulp & Paper · Palembang, Sumsel · Apr - Jul 2026</p>
-                    <span class="svc-card-cta">View Details <i class="bi bi-arrow-right"></i></span>
-                </div>
-                <div class="svc-card-border"></div>
-            </Link>
-
-            <Link :href="route('portfolio')" class="svc-card proj-card-short">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/rdmp/cover.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <span class="proj-badge">Refinery Maintenance &amp; Civil Repair Project </span>
-                    <h3 class="svc-card-title">RDMP Balikpapan JO</h3>
-                    <p class="svc-card-desc">PT Apical · Balikpapan, Kaltim · Okt - Des 2025</p>
-                    <span class="svc-card-cta">View Details <i class="bi bi-arrow-right"></i></span>
-                </div>
-                <div class="svc-card-border"></div>
-            </Link>
-
-        </div>
-    </section>
-
-    <!-- ============================================================
-         6. ACTIVE SITES (MAP)
-    ============================================================ -->
-    <section class="map-section">
-        <div class="map-bg-shape map-bg-shape--top"></div>
-        <div class="map-bg-shape map-bg-shape--bottom"></div>
-        <div class="container" style="position: relative; z-index: 1;">
-            <div class="row justify-content-center mb-5 text-center">
-                <div class="col-lg-7">
-                    <span class="section-eyebrow">Ongoing Projects</span>
-                    <h2 class="section-title mt-2">
-                        Active Sites <span class="text-gold">Across Indonesia</span>
-                    </h2>
-                    <div class="section-divider mx-auto"></div>
-                    <p class="section-body text-center" style="max-width: 560px; margin: 0 auto;">
-                        Major construction, fabrication, and maintenance projects currently executing in key industrial regions.
-                    </p>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="map-card" data-bs-toggle="modal" data-bs-target="#mapModal">
-                        <img src="/assets/img/maps.webp" alt="Indonesia Active Project Map" class="map-img" width="696" height="492" loading="lazy" />
-                        <div class="map-hover-overlay">
-                            <div class="map-zoom-btn"><i class="bi bi-zoom-in me-2"></i> Click to Enlarge</div>
+                <div class="h-hero-foot">
+                    <dl class="h-hero-stats">
+                        <div>
+                            <dd>50<span class="h-plus">+</span></dd>
+                            <dt>Projects</dt>
                         </div>
-                    </div>
+                        <div>
+                            <dd>20<span class="h-plus">+</span></dd>
+                            <dt>Clients</dt>
+                        </div>
+                        <div>
+                            <dd>14</dd>
+                            <dt>Regions</dt>
+                        </div>
+                    </dl>
                 </div>
             </div>
-        </div>
-        <!-- Map Modal -->
-        <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content" style="background: transparent; border: none;">
-                    <div class="modal-header" style="border: none; padding-bottom: 0;">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #fff; opacity: 1; border-radius: 50%; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin-left: auto;"></button>
-                    </div>
-                    <div class="modal-body text-center p-0">
-                        <img src="/assets/img/maps.webp" alt="Indonesia Map Detail" width="696" height="492" style="width: 100%; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);" />
-                    </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             03 - SERVICES
+        ============================================================ -->
+        <section class="h-section">
+            <div class="h-container h-svc-split">
+                <div class="h-svc-copy">
+                    <span class="h-eyebrow">Our Services</span>
+                    <h2 class="h-h2">Comprehensive Construction Solutions</h2>
+                    <div class="h-rule"></div>
+                    <p class="h-body">
+                        From civil works and steel fabrication to plant maintenance and catalyst handling, Raya delivers integrated industrial services under one accountable team.
+                    </p>
+                    <Link :href="route('whatWeDo')" class="h-btn h-btn--solid">
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </Link>
+                </div>
+
+                <div class="h-svc-cards">
+
+                    <Link :href="route('constructionFabrication')" class="h-svc-card">
+                        <img src="/assets/img/svc-fabrication.webp" alt="Raya Konstruksi welder fabricating plant piping" loading="lazy" width="800" height="1250" />
+                        <span class="h-svc-shade" aria-hidden="true"></span>
+                        <span class="h-svc-num">01</span>
+                        <span class="h-svc-foot">
+                            <span class="h-svc-body">
+                                <span class="h-svc-name">Construction &amp; Fabrication</span>
+                                <span class="h-svc-desc">Structural, piping and tank systems, from fabrication through installation.</span>
+                            </span>
+                            <span class="h-svc-arrow"><i class="bi bi-arrow-right"></i></span>
+                        </span>
+                    </Link>
+
+                    <Link :href="route('plantMaintenance')" class="h-svc-card">
+                        <img src="/assets/img/refresh/svc-plant.webp" alt="Plant operation and maintenance" loading="lazy" width="1200" height="900" />
+                        <span class="h-svc-shade" aria-hidden="true"></span>
+                        <span class="h-svc-num">02</span>
+                        <span class="h-svc-foot">
+                            <span class="h-svc-body">
+                                <span class="h-svc-name">Operation &amp; Maintenance</span>
+                                <span class="h-svc-desc">Scheduled inspections, corrective repairs and shutdown support for plant assets.</span>
+                            </span>
+                            <span class="h-svc-arrow"><i class="bi bi-arrow-right"></i></span>
+                        </span>
+                    </Link>
+
+                    <Link :href="route('catalyst-loading')" class="h-svc-card">
+                        <img src="/assets/img/projects/lotte-catalyst/catalyst-3.webp" alt="Catalyst handling operation" loading="lazy" width="360" height="720" />
+                        <span class="h-svc-shade" aria-hidden="true"></span>
+                        <span class="h-svc-num">03</span>
+                        <span class="h-svc-foot">
+                            <span class="h-svc-body">
+                                <span class="h-svc-name">Catalyst Handling</span>
+                                <span class="h-svc-desc">Catalyst loading, unloading and reactor handling following controlled procedures.</span>
+                            </span>
+                            <span class="h-svc-arrow"><i class="bi bi-arrow-right"></i></span>
+                        </span>
+                    </Link>
+
+                    <Link :href="route('whatWeDo')" class="h-svc-card">
+                        <img src="/assets/img/projects/enerco-1/enerco-1.webp" alt="Civil and road works" loading="lazy" width="360" height="720" />
+                        <span class="h-svc-shade" aria-hidden="true"></span>
+                        <span class="h-svc-num">04</span>
+                        <span class="h-svc-foot">
+                            <span class="h-svc-body">
+                                <span class="h-svc-name">Civil &amp; Infrastructure</span>
+                                <span class="h-svc-desc">Civil construction, road bases and industrial access roads and Infrastructure.</span>
+                            </span>
+                            <span class="h-svc-arrow"><i class="bi bi-arrow-right"></i></span>
+                        </span>
+                    </Link>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ============================================================
-         7. INDUSTRIES
-    ============================================================ -->
-    <section class="industries-section">
-        <div class="svc-header">
-            <div class="svc-header-left">
-                <span class="section-eyebrow">Industries We Serve</span>
-                <h2 class="section-title mt-1 mb-0">Expertise Across Key Sectors</h2>
-            </div>
-        </div>
-        <div class="industry-grid">
-
-            <div class="ind-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/petro.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-heptagon-half"></i></div>
-                    <h3 class="svc-card-title">Petrochemical</h3>
-                </div>
-                <div class="svc-card-border"></div>
+        <!-- ============================================================
+             04 - ABOUT BAND
+        ============================================================ -->
+        <section class="h-about-band">
+            <div class="h-about-photo">
+                <img src="/assets/img/refresh/about-tank.webp" alt="Tank construction at an industrial facility" loading="lazy" width="1600" height="1200" />
             </div>
 
-            <div class="ind-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/oil.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-droplet-fill"></i></div>
-                    <h3 class="svc-card-title">Oil &amp; Gas</h3>
-                </div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="ind-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/energy.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-                    <h3 class="svc-card-title">Energy</h3>
-                </div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="ind-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/projects/rdmp/rdmp-1.webp')"></div>
-                <div class="svc-card-overlay"></div>
-                <div class="svc-card-content">
-                    <div class="svc-card-icon"><i class="bi bi-cone-striped"></i></div>
-                    <h3 class="svc-card-title">Infrastructure</h3>
-                </div>
-                <div class="svc-card-border"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         8. EQUIPMENT
-    ============================================================ -->
-    <section class="equipment-section">
-        <div class="svc-header">
-            <div class="svc-header-left">
-                <span class="section-eyebrow">Our Assets</span>
-                <h2 class="section-title mt-1 mb-0">Equipment &amp; Resources</h2>
-            </div>
-            <Link :href="route('equipment')" class="view-all-link">View All Equipment </Link>
-        </div>
-        <div class="equip-grid">
-
-            <div class="equip-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/equipment/excavator.webp')"></div>
-                <div class="svc-card-overlay svc-card-overlay--subtle"></div>
-                <div class="equip-card-label">Excavators</div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="equip-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/equipment/terrain crane.webp')"></div>
-                <div class="svc-card-overlay svc-card-overlay--subtle"></div>
-                <div class="equip-card-label">Terrain Cranes</div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="equip-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/equipment/skylift.webp')"></div>
-                <div class="svc-card-overlay svc-card-overlay--subtle"></div>
-                <div class="equip-card-label">Skylifts</div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="equip-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/equipment/scaffolding tube.webp')"></div>
-                <div class="svc-card-overlay svc-card-overlay--subtle"></div>
-                <div class="equip-card-label">Scaffolding</div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="equip-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/equipment/catalyst hooper.webp')"></div>
-                <div class="svc-card-overlay svc-card-overlay--subtle"></div>
-                <div class="equip-card-label">Catalyst Hoppers</div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="equip-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/equipment/welding inverter.webp')"></div>
-                <div class="svc-card-overlay svc-card-overlay--subtle"></div>
-                <div class="equip-card-label">Welding Inverters</div>
-                <div class="svc-card-border"></div>
-            </div>
-
-            <div class="equip-photo-card">
-                <div class="svc-card-bg" style="background-image: url('/assets/img/equipment/generator.webp')"></div>
-                <div class="svc-card-overlay svc-card-overlay--subtle"></div>
-                <div class="equip-card-label">Generators</div>
-                <div class="svc-card-border"></div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ============================================================
-         9. CLIENTS
-    ============================================================ -->
-    <section v-if="clients && clients.length > 0" class="clients-section">
-        <div class="container">
-            <div class="clients-header">
-                <div class="clients-header-left">
-                    <span class="section-eyebrow">Our Clients</span>
-                    <h2 class="section-title mt-1 mb-0">Trusted By Industry Leaders</h2>
-                </div>
-                <Link :href="route('clientPartner')" class="btn-primary-navy">
-                    More Clients
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
-                        <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-                    </svg>
+            <div class="h-about-panel">
+                <span class="h-eyebrow h-eyebrow--light">About Raya</span>
+                <h2 class="h-h2 h-h2--light">
+                    Excellence meets innovation to deliver unparalleled solutions for all your needs.
+                </h2>
+                <Link :href="route('whoWeAre')" class="h-btn h-btn--light">
+                    About Us
+                    <i class="bi bi-arrow-right"></i>
                 </Link>
             </div>
-            <div class="clients-marquee-wrap">
-                <div class="clients-fade clients-fade--left"></div>
-                <div class="clients-fade clients-fade--right"></div>
-                <div class="clients-marquee-track">
-                    <div class="clients-marquee-set">
-                        <div v-for="c in clients" :key="'sec-' + c.id" class="client-logo-card">
-                            <img :src="c.logo_url" :alt="c.name" class="client-logo-img" loading="lazy" width="130" height="44" />
-                        </div>
-                    </div>
-                    <div class="clients-marquee-set" aria-hidden="true">
-                        <div v-for="c in clients" :key="'sec-dup-' + c.id" class="client-logo-card">
-                            <img :src="c.logo_url" alt="" class="client-logo-img" loading="lazy" width="130" height="44" />
+        </section>
+
+        <!-- ============================================================
+             05 - CLIENTS
+        ============================================================ -->
+        <section v-if="logoClients.length > 0" class="h-clients">
+            <div class="h-container h-clients-inner">
+                <h2 class="h-clients-title">
+                    <span class="h-clients-title-accent">Our Clients.</span>
+                    <span class="h-clients-title-strong">Proven Track Record With Top Enterprises</span>
+                </h2>
+
+                <div class="h-clients-strip">
+                    <div class="h-marquee">
+                        <div class="h-marquee-track">
+                            <div class="h-marquee-set">
+                                <div v-for="c in logoClients" :key="'logo-' + c.id" class="h-logo-box">
+                                    <img :src="c.logo_url" :alt="c.name" width="130" height="44" @error="onClientLogoError(c.id)" />
+                                </div>
+                            </div>
+                            <div class="h-marquee-set" aria-hidden="true">
+                                <div v-for="c in logoClients" :key="'logo-dup-' + c.id" class="h-logo-box">
+                                    <img :src="c.logo_url" alt="" width="130" height="44" @error="onClientLogoError(c.id)" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ============================================================
-         10. CERTIFICATIONS & HSE
-    ============================================================ -->
-    <section class="hse-section">
-        <div class="hse-overlay"></div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <div class="row align-items-center gy-4">
-                <div class="col-lg-6">
-                    <span class="section-eyebrow">Safety First</span>
-                    <h2 class="section-title text-white mt-2 mb-4">
-                        Uncompromising<br />Commitment to<br /><span class="text-gold">Health &amp; Safety</span>
-                    </h2>
-                    <ul class="hse-list">
-                        <li><i class="bi bi-shield-check"></i> Zero Accident Commitment on Every Project</li>
-                        <li><i class="bi bi-person-check-fill"></i> 100% Certified &amp; Trained Workforce</li>
-                        <li><i class="bi bi-clipboard-check-fill"></i> Strict Safety &amp; Compliance Standards</li>
-                        <li><i class="bi bi-globe"></i> International HSE Best Practices</li>
+                <Link :href="route('clientPartner')" class="h-btn h-btn--solid h-clients-link">
+                    More Clients
+                    <i class="bi bi-arrow-right"></i>
+                </Link>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             06 - WHY CHOOSE RAYA
+        ============================================================ -->
+        <section class="h-why">
+            <div class="h-why-bg" aria-hidden="true"></div>
+            <div class="h-container h-why-grid">
+                <div class="h-why-copy">
+                    <span class="h-eyebrow h-eyebrow--light">Why Choose Raya</span>
+                    <h2 class="h-h2 h-h2--light">What Sets Us Apart</h2>
+                    <div class="h-rule h-rule--light"></div>
+                    <p class="h-why-text">
+                        Five commitments carried into every site, from mobilisation to handover.
+                    </p>
+                </div>
+
+                <ol class="h-why-list">
+                    <li>
+                        <span class="h-why-num">01</span>
+                        <div>
+                            <h3 class="h-why-title">Experienced Team</h3>
+                            <p class="h-why-desc">Skilled professionals with deep expertise across heavy industries.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="h-why-num">02</span>
+                        <div>
+                            <h3 class="h-why-title">Strong Safety Culture</h3>
+                            <p class="h-why-desc">Zero-accident commitment on every project we execute.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="h-why-num">03</span>
+                        <div>
+                            <h3 class="h-why-title">Certified &amp; Compliant</h3>
+                            <p class="h-why-desc">Adherent to international standards and industry best practices.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="h-why-num">04</span>
+                        <div>
+                            <h3 class="h-why-title">On-Time Delivery</h3>
+                            <p class="h-why-desc">Committed to delivering quality work within agreed timelines.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="h-why-num">05</span>
+                        <div>
+                            <h3 class="h-why-title">Nationwide Coverage</h3>
+                            <p class="h-why-desc">Active projects across 5 major islands in Indonesia.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             06b - CERTIFICATIONS
+        ============================================================ -->
+        <section class="h-certs" aria-label="Certifications">
+            <div class="h-container h-certs-inner">
+                <p class="h-certs-label">Certified to International Standards</p>
+                <div class="h-certs-logos">
+                    <span class="h-cert-item">
+                        <img src="/assets/img/certifications/iso-9001-2015.png"
+                             alt="ISO 9001:2015 Quality Management System" width="160" height="149"
+                             loading="lazy" decoding="async" />
+                    </span>
+                    <span class="h-cert-item">
+                        <img src="/assets/img/certifications/iso-14001-2015.png"
+                             alt="ISO 14001:2015 Environmental Management System" width="153" height="155"
+                             loading="lazy" decoding="async" />
+                    </span>
+                    <span class="h-cert-item">
+                        <img src="/assets/img/certifications/iso-45001-2018.png"
+                             alt="ISO 45001:2018 Occupational Health and Safety" width="450" height="300"
+                             loading="lazy" decoding="async" />
+                    </span>
+                    <span class="h-cert-item">
+                        <img src="/assets/img/certifications/smk3.png"
+                             alt="SMK3 certification" width="417" height="417"
+                             class="h-certs-logo--round" loading="lazy" decoding="async" />
+                    </span>
+                </div>
+                <Link :href="route('quality')" class="h-certs-link">
+                    Our Certifications
+                    <i class="bi bi-arrow-right"></i>
+                </Link>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             07 - FEATURED PROJECTS
+        ============================================================ -->
+        <section class="h-section">
+            <div class="h-container h-proj-split">
+                <div class="h-proj-intro">
+                    <span class="h-eyebrow">Featured Projects</span>
+                    <h2 class="h-h2">Recent Work</h2>
+                    <div class="h-rule"></div>
+                    <p class="h-body">
+                        Selected construction, maintenance and catalyst projects delivered for industrial clients across Indonesia.
+                    </p>
+                    <Link :href="route('portfolio')" class="h-btn h-btn--solid">
+                        View All Projects
+                        <i class="bi bi-arrow-right"></i>
+                    </Link>
+                </div>
+
+                <div v-if="projects.length" class="h-proj-carousel">
+                    <div class="h-proj-head">
+                        <span class="h-proj-count">
+                            {{ String(Math.min(projIndex + 1, projects.length)).padStart(2, "0") }}
+                            <span>/</span>
+                            {{ String(projects.length).padStart(2, "0") }}
+                        </span>
+
+                        <div class="h-proj-nav">
+                            <button
+                                type="button"
+                                class="h-proj-arrow"
+                                aria-label="Previous project"
+                                :disabled="projAtStart"
+                                @click="scrollProjects(-1)"
+                            >
+                                <i class="bi bi-arrow-left"></i>
+                            </button>
+                            <button
+                                type="button"
+                                class="h-proj-arrow"
+                                aria-label="Next project"
+                                :disabled="projAtEnd"
+                                @click="scrollProjects(1)"
+                            >
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div
+                        ref="projTrack"
+                        class="h-proj-track"
+                        role="region"
+                        aria-label="Recent projects"
+                        @scroll.passive="syncProjState"
+                    >
+                        <Link
+                            v-for="project in projects"
+                            :key="project.id"
+                            :href="route('projectDetail', project.slug)"
+                            class="h-proj"
+                        >
+                            <div class="h-proj-media">
+                                <img
+                                    :src="project.image"
+                                    :alt="project.title"
+                                    loading="lazy"
+                                    width="960"
+                                    height="600"
+                                />
+                            </div>
+                            <div class="h-proj-bar">
+                                <span v-if="project.service_type" class="h-proj-tag">{{ project.service_type }}</span>
+                                <h3 class="h-proj-title">{{ project.title }}</h3>
+                                <p v-if="projectMeta(project)" class="h-proj-meta">{{ projectMeta(project) }}</p>
+                                <span class="h-proj-cta">View Details <i class="bi bi-arrow-right"></i></span>
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+                <p v-else class="h-body">Projects will be published here.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             08 - ACTIVE SITES
+        ============================================================ -->
+        <section class="h-presence">
+            <div class="h-container h-presence-grid">
+                <div class="h-presence-copy">
+                    <span class="h-eyebrow h-eyebrow--light">Active Sites</span>
+                    <h2 class="h-h2 h-h2--light">Across <span class="h-tint">Indonesia</span></h2>
+                    <p class="h-presence-text">
+                        Major construction, fabrication and maintenance projects currently executing in key industrial regions.
+                    </p>
+                    <Link :href="route('portfolio')" class="h-link h-link--light">
+                        View Our Presence <i class="bi bi-arrow-right"></i>
+                    </Link>
+                </div>
+
+                <div class="h-presence-map">
+                    <button
+                        type="button"
+                        class="h-map-trigger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#mapModal"
+                        aria-label="Enlarge Indonesia active project map"
+                    >
+                        <img src="/assets/img/maps.webp?v=20261117" alt="Indonesia active project map" loading="lazy" width="3592" height="2376" />
+                        <span class="h-map-zoom"><i class="bi bi-zoom-in"></i> Click to Enlarge</span>
+                    </button>
+                </div>
+
+                <div class="h-presence-list">
+                    <span class="h-presence-list-title">Our Industries</span>
+                    <ul>
+                        <li><Link :href="route('whatWeDo')">Petrochemical <i class="bi bi-arrow-right"></i></Link></li>
+                        <li><Link :href="route('whatWeDo')">Oil &amp; Gas <i class="bi bi-arrow-right"></i></Link></li>
+                        <li><Link :href="route('whatWeDo')">Energy <i class="bi bi-arrow-right"></i></Link></li>
+                        <li><Link :href="route('whatWeDo')">Infrastructure <i class="bi bi-arrow-right"></i></Link></li>
                     </ul>
-                    <Link :href="route('safety')" class="btn-hero-outline mt-4 d-inline-block">Learn About HSE </Link>
                 </div>
-                <div class="col-lg-6 text-lg-center">
-                    <div class="hse-stats-card">
-                        <div class="hse-stat-big">
-                            <div class="hse-stat-number">0</div>
-                            <div class="hse-stat-label">LTI Incidents</div>
-                        </div>
-                        <div class="hse-stat-divider"></div>
-                        <div class="hse-stats-row">
-                            <div class="hse-stat-sm">
-                                <div class="hse-stat-sm-num">100%</div>
-                                <div class="hse-stat-sm-label">PPE Compliance</div>
-                            </div>
-                            <div class="hse-stat-sm">
-                                <div class="hse-stat-sm-num">ISO</div>
-                                <div class="hse-stat-sm-label">9001 Certified</div>
-                            </div>
+            </div>
+
+            <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <img class="h-map-modal-img" src="/assets/img/maps.webp?v=20261117" alt="Indonesia active project map" width="3592" height="2376" />
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ============================================================
-         12. CTA
-    ============================================================ -->
-    <section class="cta-section">
-        <div class="cta-bg"></div>
-        <div class="cta-overlay"></div>
-        <div class="container" style="position: relative; z-index: 2; text-align: center;">
-            <span class="section-eyebrow">Let's Work Together</span>
-            <h2 class="cta-title">Ready to Discuss Your<br />Next Industrial Project?</h2>
-            <p class="cta-desc">From fabrication and construction to maintenance and catalyst handling, our highly skilled team is ready to support your project across Indonesia.</p>
-            <div class="cta-btn-row">
-                <Link :href="route('contactUs')" class="btn-cta-primary">Contact Us</Link>
-            </div>
-        </div>
-    </section>
+        <!-- ============================================================
+             09 - INDUSTRIES
+        ============================================================ -->
+        <section class="h-section">
+            <div class="h-container">
+                <header class="h-section-head">
+                    <div class="h-section-head-copy">
+                        <span class="h-eyebrow">Industries We Serve</span>
+                        <h2 class="h-h2">Expertise Across Key Sectors</h2>
+                    </div>
+                    <div class="h-ind-counter" aria-hidden="true">
+                        <Transition name="h-ind-num" mode="out-in">
+                            <span class="h-ind-counter-now" :key="indIndex">{{ industryNum(indIndex) }}</span>
+                        </Transition>
+                        <span class="h-ind-counter-total">/ {{ indCount }}</span>
+                    </div>
+                </header>
 
-    <!-- ============================================================
-         13. NEWS
-    ============================================================ -->
-    <section class="news-section">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-end mb-5">
-                <div>
-                    <span class="section-eyebrow">Project Updates</span>
-                    <h2 class="section-title mt-1 mb-0">Latest News &amp; Updates</h2>
-                </div>
-                <Link :href="route('news')" class="view-all-link d-none d-md-block">View All Updates </Link>
-            </div>
-            <div v-if="blogs && blogs.length > 0" class="row g-4">
-                <div v-for="blog in blogs.slice(0, 3)" :key="blog.id" class="col-md-4">
-                    <div class="news-card">
-                        <div class="news-card-img-wrap">
-                            <img v-if="blog.image" :src="'/storage/' + blog.image" :alt="blog.title" class="news-card-img" loading="lazy" width="400" height="190" />
-                            <div v-else class="news-card-img-placeholder"><i class="bi bi-newspaper"></i></div>
+                <div class="h-ind-slider" :class="{ 'is-back': indDir < 0 }">
+                    <div class="h-ind-stage" role="group" aria-roledescription="carousel" aria-label="Industries We Serve">
+                        <figure
+                            v-for="(ind, i) in industries"
+                            :key="ind.name"
+                            class="h-ind-slide"
+                            :class="{ 'is-active': i === indIndex }"
+                            :aria-hidden="i !== indIndex"
+                        >
+                            <img :src="ind.img" :alt="ind.alt" width="1920" height="1080" />
+                        </figure>
+                        <span class="h-ind-veil" aria-hidden="true"></span>
+
+                        <div class="h-ind-caption" aria-live="polite">
+                            <Transition name="h-ind-copy" mode="out-in">
+                                <div class="h-ind-copy" :key="indIndex">
+                                    <h3>{{ currentIndustry.name }}</h3>
+                                    <p>{{ currentIndustry.desc }}</p>
+                                </div>
+                            </Transition>
                         </div>
-                        <div class="news-card-body">
-                            <p class="news-card-date">
-                                <i class="bi bi-calendar3 me-1"></i>
-                                {{ blog.published_at ? new Date(blog.published_at).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}) : '' }}
+
+                        <div class="h-ind-controls">
+                            <button type="button" class="h-ind-arrow" aria-label="Previous industry" @click="indStep(-1)">
+                                <i class="bi bi-arrow-left"></i>
+                            </button>
+                            <button type="button" class="h-ind-arrow" aria-label="Next industry" @click="indStep(1)">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="h-ind-tabs">
+                        <button
+                            v-for="(ind, i) in industries"
+                            :key="'ind-tab-' + ind.name"
+                            type="button"
+                            class="h-ind-tab"
+                            :class="{ 'is-active': i === indIndex }"
+                            :aria-pressed="i === indIndex"
+                            @click="indGo(i)"
+                        >
+                            <span class="h-ind-tab-num">{{ industryNum(i) }}</span>
+                            <span class="h-ind-tab-name">{{ ind.name }}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             10 - SAFETY
+        ============================================================ -->
+        <section class="h-safety">
+            <div class="h-container h-safety-grid">
+                <div class="h-safety-copy">
+                    <span class="h-eyebrow h-eyebrow--light">Safety First</span>
+                    <h2 class="h-h2 h-h2--light h-safety-statement">
+                        Safety is not a policy. It's how we work.
+                    </h2>
+                    <p class="h-safety-text">
+                        Every task is planned around people first, from daily toolbox briefings to site-wide HSE audits.
+                    </p>
+                    <Link :href="route('safety')" class="h-link h-link--light">
+                        Learn About HSE <i class="bi bi-arrow-right"></i>
+                    </Link>
+                </div>
+
+                <dl class="h-safety-metrics">
+                    <div>
+                        <dt>LTI Incidents</dt>
+                        <dd>0</dd>
+                    </div>
+                    <div>
+                        <dt>PPE Compliance</dt>
+                        <dd>100%</dd>
+                    </div>
+                    <div>
+                        <dt>Quality Management</dt>
+                        <dd>ISO 9001</dd>
+                    </div>
+                </dl>
+
+                <div class="h-safety-media">
+                    <img src="/assets/img/refresh/hse.webp" alt="Raya Konstruksi HSE briefing at a construction site" width="1600" height="900" />
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             12 - CTA
+        ============================================================ -->
+        <section class="h-cta">
+            <div class="h-cta-media" aria-hidden="true">
+                <img src="/assets/img/refresh/cta.webp" alt="" width="2200" height="958" />
+            </div>
+
+            <div class="h-container h-cta-inner">
+                <h2 class="h-cta-title">
+                       Ready to Discuss Your<br />
+
+                    <span class="h-cta-outline">Next Industrial Project?</span>
+                </h2>
+
+                <p class="h-cta-text">
+                    Let's build the solution together. From fabrication and construction to maintenance and catalyst handling, our team is ready to support your project across Indonesia.
+                </p>
+
+                <div class="h-cta-actions">
+                    <Link :href="route('contactUs')" class="h-btn h-cta-btn h-cta-btn--primary">
+                        Start a Conversation
+                        <i class="bi bi-arrow-right"></i>
+                    </Link>
+                    <Link :href="route('portfolio')" class="h-btn h-cta-btn h-cta-btn--dark">
+                        Explore Projects
+                        <i class="bi bi-arrow-right"></i>
+                    </Link>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             13 - NEWS
+        ============================================================ -->
+        <section class="h-section">
+            <div class="h-container">
+                <header class="h-section-head">
+                    <div class="h-section-head-copy">
+                        <span class="h-eyebrow">Latest Updates</span>
+                        <h2 class="h-h2">News &amp; Updates</h2>
+                    </div>
+                    <Link :href="route('news')" class="h-link h-section-head-link">
+                        View All News <i class="bi bi-arrow-right"></i>
+                    </Link>
+                </header>
+
+                <div v-if="blogs && blogs.length > 0" class="h-news-grid">
+                    <article v-for="blog in blogs.slice(0, 3)" :key="blog.id" class="h-news">
+                        <Link :href="route('newsDetail', blog.slug)" class="h-news-media">
+                            <img
+                                v-if="blog.image && !brokenBlogImages.includes(blog.id)"
+                                :src="'/storage/' + blog.image"
+                                :alt="blog.title"
+                                loading="lazy"
+                                width="280"
+                                height="280"
+                                @error="markBlogImageBroken(blog.id)"
+                            />
+                            <span v-else class="h-news-placeholder">
+                                <span class="h-news-placeholder-tag">Project Update</span>
+                                <i class="bi bi-arrow-up-right"></i>
+                            </span>
+                        </Link>
+
+                        <div class="h-news-body">
+                            <span class="h-news-date">
+                                {{ blog.published_at ? new Date(blog.published_at).toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'}) : '' }}
+                            </span>
+                            <Link :href="route('newsDetail', blog.slug)" class="h-news-title">{{ blog.title }}</Link>
+                        </div>
+
+                        <Link :href="route('newsDetail', blog.slug)" class="h-news-arrow" aria-label="Read article">
+                            <i class="bi bi-arrow-up-right"></i>
+                        </Link>
+                    </article>
+                </div>
+
+                <div v-else class="h-news-empty">
+                    <p class="h-body">Project updates will be published here.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             14 - CAREERS
+        ============================================================ -->
+        <section class="h-section h-careers">
+            <div class="h-container">
+                <div class="h-careers-inner">
+                    <div class="h-careers-panel" aria-hidden="true"></div>
+
+                    <figure class="h-careers-media">
+                        <span class="h-careers-bracket" aria-hidden="true"></span>
+                        <div class="h-careers-card">
+                            <img src="/assets/img/br.webp"
+                                alt="Raya Konstruksi workers installing large pipes on scaffolding at a project site"
+                                loading="lazy" width="1400" height="1703" />
+                            <div class="h-careers-stats">
+                                <div class="h-careers-stat">
+                                    <i class="bi bi-buildings" aria-hidden="true"></i>
+                                    <div class="h-careers-stat-copy">
+                                        <strong>50+</strong>
+                                        <span>Completed Projects</span>
+                                    </div>
+                                </div>
+                                <div class="h-careers-stat">
+                                    <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                                    <div class="h-careers-stat-copy">
+                                        <strong>14</strong>
+                                        <span>Project Regions</span>
+                                    </div>
+                                </div>
+                                <div class="h-careers-stat">
+                                    <i class="bi bi-people" aria-hidden="true"></i>
+                                    <div class="h-careers-stat-copy">
+                                        <strong>20+</strong>
+                                        <span>Trusted Clients</span>
+                                    </div>
+                                </div>
+                                <span class="h-careers-wedge" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <div class="h-careers-body">
+                        <div class="h-careers-intro">
+                            <span class="h-eyebrow h-careers-eyebrow">Careers</span>
+                            <h2 class="h-careers-heading">Build Your Career<br />With RAYA</h2>
+                            <p class="h-careers-lead">
+                                Join a team of engineers, technicians, and specialists delivering excellence across Indonesia's industrial sector.
                             </p>
-                            <h5 class="news-card-title">{{ blog.title }}</h5>
-                            <Link :href="route('newsDetail', blog.slug)" class="news-card-link">Read More </Link>
+                        </div>
+
+                        <ol class="h-careers-list">
+                            <li>
+                                <span class="h-careers-num">01</span>
+                                <span class="h-careers-itemtext"><strong>Professional Growth.</strong> Continuous training and development tailored to your expertise.</span>
+                            </li>
+                            <li>
+                                <span class="h-careers-num">02</span>
+                                <span class="h-careers-itemtext"><strong>Safety First.</strong> Industry-leading HSE standards protecting every team member on every site.</span>
+                            </li>
+                            <li>
+                                <span class="h-careers-num">03</span>
+                                <span class="h-careers-itemtext"><strong>Collaborative Culture.</strong> A diverse and inclusive environment where every contribution is valued.</span>
+                            </li>
+                            <li>
+                                <span class="h-careers-num">04</span>
+                                <span class="h-careers-itemtext"><strong>Nationwide Presence.</strong> Work on major industrial projects across Indonesia.</span>
+                            </li>
+                        </ol>
+
+                        <div class="h-careers-actions">
+                            <Link :href="route('career')" class="h-btn h-btn--solid">
+                                Explore Careers
+                                <i class="bi bi-arrow-right"></i>
+                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-4 d-md-none">
-                <Link :href="route('news')" class="btn-primary-navy">View All Updates</Link>
-            </div>
-        </div>
-    </section>
+        </section>
 
+    </div>
 </template>
 
 <style scoped>
 /* ============================================================
    TOKENS
 ============================================================ */
-:root {
-    --navy: #1B2F6E;
-    --navy-dark: #142257;
-    --gold: #F59E0B;
-    --gold-dark: #D97706;
-    --text-primary: #1a1a1a;
-    --text-secondary: #555555;
-    --text-muted: #888888;
-    --bg-light: #f8f9fb;
-    --border: #e5e7eb;
-}
+.rk-home {
+    --az: #2B4184;
+    --eerie: #1E1E1E;
+    --muted: #687080;
+    --line: #D9DDE5;
+    --off: #F7F8FA;
+    --paper: #FFFFFF;
+    --paper-2: #E7E1D7;
+    /* Brand Book: Azure Blue 50 / white 30 / aksen 20 */
+    --tint: #CAD0E0;
+    --amber: #2B4184;
+    --amber-light: #CAD0E0;
+    --amber-dark: #1E1E1E;
+    --cta: #2B4184;
+    --cta-hover: #1E1E1E;
 
-/* ============================================================
-   BUTTONS
-============================================================ */
-.btn-primary-navy {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #1B2F6E; color: #fff;
-    font-family: "Pliant", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
-    padding: 13px 28px; border-radius: 50px; text-decoration: none;
-    border: 2px solid #1B2F6E; box-shadow: 0 4px 18px rgba(27,47,110,0.22);
-    transition: background 0.22s, color 0.22s, transform 0.2s, box-shadow 0.22s; white-space: nowrap;
-}
-.btn-primary-navy:hover { background: #142257; border-color: #142257; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(27,47,110,0.32); }
+    --radius-btn: 10px;
+    --radius-card: 14px;
+    --radius-media: 12px;
+    --radius-badge: 4px;
 
-.btn-hero-outline {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: transparent; color: rgba(255,255,255,0.85);
-    font-family: "Pliant", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
-    padding: 13px 28px; border-radius: 50px; text-decoration: none;
-    border: 1.5px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px);
-    transition: border-color 0.22s, background 0.22s, color 0.22s, transform 0.2s; white-space: nowrap;
-}
-.btn-hero-outline:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.1); color: #fff; transform: translateY(-2px); }
+    --max: 1440px;
+    --gutter: 32px;
+    --edge: 32px;
+    --section-y: 104px;
 
-.view-all-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: "Pliant", sans-serif; font-size: 13px; font-weight: 700; color: #1B2F6E;
-    text-decoration: none; letter-spacing: 0.3px; border-bottom: 2px solid #F59E0B;
-    padding-bottom: 2px; transition: color 0.2s; white-space: nowrap;
-}
-.view-all-link:hover { color: #F59E0B; }
-
-.project-card-link, .news-card-link {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-family: "Pliant", sans-serif; font-size: 12px; font-weight: 700; color: #1B2F6E;
-    text-decoration: none; letter-spacing: 0.3px; border-bottom: 2px solid #F59E0B;
-    padding-bottom: 1px; transition: color 0.2s; margin-top: 14px;
-}
-.project-card-link:hover, .news-card-link:hover { color: #F59E0B; }
-
-.btn-cta-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #F59E0B; color: #1B2F6E;
-    font-family: "Pliant", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
-    padding: 14px 32px; border-radius: 50px; text-decoration: none;
-    border: 2px solid #F59E0B; box-shadow: 0 8px 24px rgba(245,158,11,0.35);
-    transition: background 0.22s, transform 0.2s, box-shadow 0.22s;
-}
-.btn-cta-primary:hover { background: #D97706; border-color: #D97706; transform: translateY(-2px); color: #1B2F6E; box-shadow: 0 12px 32px rgba(245,158,11,0.45); }
-
-.btn-cta-outline {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: transparent; border: 2px solid rgba(255,255,255,0.55); color: #fff;
-    font-family: "Pliant", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
-    padding: 14px 32px; border-radius: 50px; text-decoration: none;
-    transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.2s;
-}
-.btn-cta-outline:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.85); color: #fff; transform: translateY(-2px); }
-
-/* ============================================================
-   SECTION HELPERS
-============================================================ */
-.section-eyebrow {
-    display: inline-block; font-family: "Pliant", sans-serif; font-size: 11px;
-    font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
-    color: #B45309; margin-bottom: 8px;
-}
-.section-title {
-    font-family: "Bricolage Grotesque", sans-serif; font-weight: 800;
-    font-size: clamp(22px, 2.8vw, 34px); color: #1B2F6E; line-height: 1.2; margin-bottom: 16px;
-}
-.section-divider {
-    width: 48px; height: 4px; background: #F59E0B; border-radius: 2px; margin-bottom: 20px;
-}
-.section-body { font-size: 16px; color: #555; line-height: 1.75; }
-.text-gold { color: #B45309; }
-
-/* ============================================================
-   1. HERO
-============================================================ */
-.hero-section {
-    position: relative; width: 100%; min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: space-between;
-    overflow: hidden; background-color: #4a5568;
-    will-change: auto;
-}
-/* Poster: static image tampil instan sebagai fallback */
-.hero-bg-poster {
-    position: absolute; inset: 0;
-    background-image: url('/assets/img/hero-carousel/hover-1-new.webp');
-    background-size: cover; background-position: center 30%;
-    z-index: 0;
-    filter: brightness(1.4);
-}
-/* Video: invisible sampai siap diputar */
-.hero-bg-video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center;
-    z-index: 1;
-    opacity: 0;
-    filter: brightness(1.4);
-    transition: opacity 0.8s ease;
-}
-/* Fade in video begitu sudah bisa diputar */
-.hero-bg-video--ready {
-    opacity: 1;
-}
-.hero-section:hover .hero-bg-video { transform: none; }
-.hero-overlay {
-    display: none;
-}
-/* Gold accent glow di kiri bawah — memberi depth dan brand identity */
-.hero-overlay::after {
-    display: none;
-}
-.hero-grain {
-    position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.040;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-repeat: repeat; background-size: 180px;
-    transform: translateZ(0);
-}
-.hero-body {
-    position: relative; z-index: 10;
-    display: flex; flex-direction: column; align-items: flex-start;
-    justify-content: center;
-    padding: clamp(100px, 13vh, 140px) clamp(24px, 5vw, 88px) clamp(40px, 6vh, 64px);
-    flex: 1; gap: 48px;
-}
-.hero-body::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(5,8,22,0.55) 0%, rgba(5,8,22,0.25) 50%, transparent 75%);
-    pointer-events: none; z-index: -1;
-}
-/* Konten: headline, rule, sub, cta */
-.hero-content {
-    max-width: 620px;
-}
-/* Hapus sisa CSS card kanan yang tidak dipakai */
-.hero-main-row, .hero-side-card, .hero-side-item,
-.hero-side-icon, .hero-side-title, .hero-side-sub, .hero-side-badge { display: none; }
-.hero-headline {
-    font-family: "Bricolage Grotesque", sans-serif; font-weight: 900;
-    font-size: clamp(42px, 7vw, 88px); line-height: 0.93;
-    letter-spacing: -2px; color: #FFFFFF; margin: 0 0 28px 0;
-    animation: hero-fade-up 0.9s 0.05s cubic-bezier(0.22,1,0.36,1) both;
-}
-@keyframes hero-fade-up {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-.hero-rule {
-    width: 280px; height: 1.5px;
-    background: linear-gradient(to right, #F59E0B, rgba(245,158,11,0.25), transparent);
-    margin-bottom: 22px; flex-shrink: 0;
-    animation: hero-fade-up 1.0s 0.15s cubic-bezier(0.22,1,0.36,1) both;
-}
-.hero-sub {
-    font-family: "Pliant", sans-serif; color: rgba(255,255,255,0.65);
-    font-size: clamp(15px, 1.4vw, 17px); font-weight: 400; line-height: 1.70;
-    margin: 0 0 40px 0; max-width: 480px;
-    animation: hero-fade-up 1.0s 0.25s cubic-bezier(0.22,1,0.36,1) both;
-}
-.hero-ctas {
-    display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px;
-    animation: hero-fade-up 1.0s 0.35s cubic-bezier(0.22,1,0.36,1) both;
-}
-.hero-cta-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #1B2F6E; color: #ffffff;
-    font-family: "Pliant", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.3px;
-    padding: 13px 28px; border-radius: 50px; text-decoration: none;
-    border: 2px solid #1B2F6E; box-shadow: 0 4px 18px rgba(27,47,110,0.30);
-    transition: background 0.22s, box-shadow 0.22s, transform 0.2s; white-space: nowrap;
-}
-.hero-cta-primary:hover { background: #142257; border-color: #142257; box-shadow: 0 8px 28px rgba(27,47,110,0.45); transform: translateY(-2px); color: #fff; }
-.hero-cta-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: transparent; color: rgba(255,255,255,0.85);
-    font-family: "Pliant", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.3px;
-    padding: 14px 30px; border-radius: 50px; text-decoration: none;
-    border: 1.5px solid rgba(255,255,255,0.30); backdrop-filter: blur(8px);
-    transition: border-color 0.22s, background 0.22s, color 0.22s, transform 0.2s; white-space: nowrap;
-}
-.hero-cta-ghost:hover { border-color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.08); color: #fff; transform: translateY(-2px); }
-.hero-stats {
-    display: flex; align-items: center; gap: 0;
-    padding: 20px 0 0;
-    border-top: 1px solid rgba(255,255,255,0.10);
-    animation: hero-fade-up 1.0s 0.45s cubic-bezier(0.22,1,0.36,1) both;
-}
-.hero-stat:first-child { padding-left: 0; }
-.hero-stat-num { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.5px; }
-.hero-stat { display: flex; flex-direction: column; padding: 0 28px 0 0; }
-.hero-stat:first-child { padding-left: 0; }
-.hero-stat-num { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.5px; }
-.stat-plus { font-size: 0.65em; color: #93a8e8; font-weight: 900; }
-.hero-stat-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.40); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px; }
-.hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.12); margin: 0 28px 0 0; flex-shrink: 0; }
-.hero-logos-wrap { position: relative; z-index: 10; margin-top: 0; padding-bottom: 0; background: rgba(5,8,22,0.55); backdrop-filter: blur(4px); }
-.hero-logos-inner {
-    border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; padding-bottom: 16px;
-    display: flex; align-items: center; gap: 0; overflow: hidden;
-}
-.hero-marquee-track {
-    display: flex; flex-shrink: 0; min-width: 0;
-    animation: marquee-scroll 32s linear infinite;
-}
-.hero-marquee-track:hover { animation-play-state: paused; }
-.hero-marquee-set { display: flex; align-items: center; gap: 64px; padding-right: 64px; flex-shrink: 0; }
-@keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.hero-logo-box { width: 110px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.hero-logo { width: 100%; height: 100%; object-fit: contain; opacity: 0.85; transition: opacity 0.25s; }
-.hero-logo-box:hover .hero-logo { opacity: 1; }
-@media (max-width: 768px) {
-    .hero-headline { font-size: clamp(44px, 13vw, 72px); letter-spacing: -1.5px; }
-    .hero-body { padding-top: clamp(80px, 10vh, 110px); }
-    .hero-stat { padding-right: 18px; }
-    .hero-stat-divider { margin-right: 18px; }
-}
-@media (max-width: 480px) {
-    .hero-stats { flex-wrap: wrap; gap: 16px; }
-    .hero-stat-divider { display: none; }
-    .hero-stat { padding: 0; }
-}
-
-/* ============================================================
-   2. SERVICE CARDS — photo bg, overlay, number accent
-============================================================ */
-.svc-section {
     width: 100%;
+    overflow-x: clip;
+    background: var(--paper);
+    color: var(--eerie);
+    font-family: "Figtree", system-ui, sans-serif;
+}
+
+.rk-home *,
+.rk-home *::before,
+.rk-home *::after { box-sizing: border-box; }
+
+.rk-home img { display: block; max-width: 100%; }
+
+.h-container {
+    width: 100%;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--edge);
+    padding-right: var(--edge);
+}
+
+/* content rises into place as each section scrolls into view */
+@media (prefers-reduced-motion: no-preference) {
+    [data-rv] {
+        transition:
+            opacity 0.65s ease var(--rv-delay, 0ms),
+            transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms);
+    }
+    [data-rv="out"] {
+        opacity: 0;
+        transform: translate3d(0, 28px, 0);
+    }
+    [data-rv="in"] {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* headings rise word by word, as in the reference.
+   :deep() karena span dibuat lewat JS dan tidak membawa atribut scope Vue */
+.rk-home :deep(.h-sr) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
     overflow: hidden;
-    background: #fff;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
 }
-
-/* Header bar above the grid */
-.svc-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 64px clamp(20px, 5vw, 80px) 36px;
-    flex-wrap: wrap;
-}
-.svc-header-left { display: flex; flex-direction: column; gap: 2px; }
-
-@media (max-width: 575px) {
-    .svc-header { padding: 48px 20px 28px; flex-direction: column; align-items: flex-start; }
-}
-
-.svc-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    min-height: 480px;
-}
-
-/* Individual card */
-.svc-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 36px 32px;
+.rk-home :deep(.h-split) { display: block; }
+.rk-home :deep(.h-word) {
+    display: inline-block;
     overflow: hidden;
-    text-decoration: none;
-    cursor: pointer;
-    min-height: 480px;
+    vertical-align: top;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+}
+.rk-home :deep(.h-word-in) { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+    .rk-home :deep(.h-word-in) {
+        transform: translate3d(0, 115%, 0);
+        transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: calc(var(--i, 0) * 45ms);
+    }
+    .rk-home :deep(.is-split-in .h-word-in) { transform: translate3d(0, 0, 0); }
 }
 
-/* Background photo */
-.svc-card-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
-}
-.svc-card:hover .svc-card-bg {
-    transform: scale(1.08);
-}
-
-/* Dark overlay — default */
-.svc-card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to top,
-        rgba(5, 10, 30, 0.95) 0%,
-        rgba(5, 10, 30, 0.70) 40%,
-        rgba(5, 10, 30, 0.30) 100%
-    );
-    transition: background 0.4s ease;
-    z-index: 1;
-}
-
-/* Gold-tinted overlay for accent card */
-.svc-card-overlay--gold {
-    background: linear-gradient(
-        to top,
-        rgba(15, 10, 0, 0.97) 0%,
-        rgba(80, 45, 0, 0.75) 40%,
-        rgba(30, 20, 0, 0.35) 100%
-    );
-}
-
-.svc-card:hover .svc-card-overlay {
-    background: linear-gradient(
-        to top,
-        rgba(5, 10, 30, 0.98) 0%,
-        rgba(5, 10, 30, 0.80) 50%,
-        rgba(5, 10, 30, 0.45) 100%
-    );
-}
-.svc-card--accent:hover .svc-card-overlay {
-    background: linear-gradient(
-        to top,
-        rgba(15, 10, 0, 0.99) 0%,
-        rgba(80, 45, 0, 0.88) 50%,
-        rgba(30, 20, 0, 0.55) 100%
-    );
-}
-
-/* Big number watermark */
-.svc-card-num {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    font-family: "Bricolage Grotesque", sans-serif;
-    font-weight: 900;
-    font-size: 96px;
-    line-height: 1;
-    color: rgba(255, 255, 255, 0.06);
-    z-index: 2;
-    transition: color 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
-    user-select: none;
-}
-.svc-card:hover .svc-card-num {
-    color: rgba(255, 255, 255, 0.10);
-    transform: translateY(-6px);
-}
-.svc-card--accent:hover .svc-card-num {
-    color: rgba(245, 158, 11, 0.18);
-}
-
-/* Card content — icon + title + desc + cta */
-.svc-card-content {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* Icon */
-.svc-card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    display: flex;
+/* ============================================================
+   TYPE & PRIMITIVES
+============================================================ */
+.h-eyebrow {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    color: #F59E0B;
-    backdrop-filter: blur(8px);
-    transition: background 0.3s, border-color 0.3s, transform 0.3s;
-    margin-bottom: 4px;
-}
-.svc-card:hover .svc-card-icon {
-    background: rgba(245, 158, 11, 0.20);
-    border-color: rgba(245, 158, 11, 0.50);
-    transform: translateY(-3px);
-}
-.svc-card--accent .svc-card-icon {
-    background: rgba(245, 158, 11, 0.15);
-    border-color: rgba(245, 158, 11, 0.40);
-}
-
-/* Title */
-.svc-card-title {
-    font-family: "Bricolage Grotesque", sans-serif;
+    gap: 10px;
+    font-family: "Figtree", sans-serif;
+    font-size: 11px;
     font-weight: 800;
-    font-size: clamp(18px, 1.6vw, 22px);
-    color: #ffffff;
-    line-height: 1.2;
-    margin: 0;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 18px;
 }
+.h-eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex: none;
+}
+.h-eyebrow--light { color: rgba(255, 255, 255, 0.72); }
 
-/* Desc — hidden by default, slides up on hover */
-.svc-card-desc {
-    font-family: "Pliant", sans-serif;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.70);
-    line-height: 1.65;
+.h-h2 {
     margin: 0;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.35s ease;
-    will-change: max-height;
-    contain: layout;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(32px, 3.8vw, 56px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--eerie);
+    text-wrap: balance;
 }
-.svc-card:hover .svc-card-desc {
-    max-height: 80px;
-    opacity: 1;
-}
+.h-h2--light { color: #FFFFFF; }
 
-/* CTA link */
-.svc-card-cta {
+.h-body {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted);
+}
+.h-body strong { color: var(--eerie); font-weight: 700; }
+
+.h-rule {
+    width: 56px;
+    height: 3px;
+    background: var(--amber);
+    margin: 24px 0;
+}
+.h-rule--light { background: var(--amber-light); }
+
+.h-tint { color: var(--tint); }
+.h-plus { color: var(--amber-light); font-weight: 700; }
+
+.h-link {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: "Pliant", sans-serif;
     font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #F59E0B;
-    margin-top: 4px;
+    color: var(--eerie);
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(30, 30, 30, 0.3);
+    transition: color 0.2s, border-color 0.2s;
 }
-/* Composited animation: translateX on children instead of gap (non-composited) */
-.svc-card-cta svg, .svc-card-cta i {
-    transition: transform 0.25s ease;
+.h-link:hover { color: var(--amber); border-bottom-color: var(--amber); }
+.h-link::before { content: ""; position: absolute; inset: -14px -10px; }
+.h-link i { font-size: 12px; }
+.h-link--light { color: #FFFFFF; border-bottom-color: rgba(255, 255, 255, 0.4); }
+.h-link--light:hover { color: var(--tint); border-bottom-color: var(--tint); }
+
+.h-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+    padding: 10px 10px 10px 24px;
+    height: 56px;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    font-family: "Figtree", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.svc-card:hover .svc-card-cta svg, .svc-card:hover .svc-card-cta i {
+.h-btn > i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 14px;
+    transition:
+        transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+        border-radius 0.4s ease,
+        background 0.4s ease,
+        width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.h-btn:hover > i,
+.h-btn:focus-visible > i {
+    width: 50px;
+    border-radius: 18px;
     transform: translateX(4px);
 }
+.h-btn:active { transform: scale(0.98); }
+.h-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
-/* Gold bottom-border reveal on hover */
-.svc-card-border {
+.h-btn--solid {
+    background: var(--cta);
+    border-color: var(--cta);
+    color: #FFFFFF;
+    box-shadow:
+        inset 0 4px 6px rgba(0, 0, 0, 0.18),
+        inset 0 2px 4px rgba(255, 255, 255, 0.28);
+}
+.h-btn--solid > i { background: rgba(255, 255, 255, 0.18); }
+.h-btn--solid:hover {
+    background: var(--cta-hover);
+    border-color: var(--cta-hover);
+    color: #FFFFFF;
+    box-shadow:
+        inset 0 4px 8px rgba(0, 0, 0, 0.16),
+        inset 0 2px 6px rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+.h-btn--solid:hover > i { background: rgba(255, 255, 255, 0.18); }
+
+.h-btn--ghost {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #FFFFFF;
+    box-shadow:
+        inset 0 4px 6px rgba(0, 0, 0, 0.18),
+        inset 0 2px 4px rgba(255, 255, 255, 0.22);
+}
+.h-btn--ghost > i { background: rgba(255, 255, 255, 0.16); }
+.h-btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.75);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+}
+.h-btn--ghost:hover > i { background: rgba(255, 255, 255, 0.26); }
+
+.h-btn--light {
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    color: var(--az);
+    box-shadow:
+        inset 0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.7);
+}
+.h-btn--light > i { background: rgba(43, 65, 132, 0.12); }
+.h-btn--light:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+    color: var(--az);
+    transform: translateY(-1px);
+}
+.h-btn--light:hover > i { background: rgba(43, 65, 132, 0.2); }
+
+.h-section { padding: var(--section-y) 0; }
+
+/* ============================================================
+   SECTION HEAD
+============================================================ */
+.h-section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    padding-bottom: 24px;
+    margin-bottom: 34px;
+    border-bottom: 1px solid var(--line);
+}
+.h-section-head-copy { min-width: 0; }
+.h-section-head-link { flex: none; margin-bottom: 6px; }
+
+/* ============================================================
+   01 - HERO
+============================================================ */
+.h-hero {
+    position: relative;
+    height: 150vh;
+    background: var(--eerie);
+    /* sticky child needs a non-clipping scroll chain */
+    overflow: visible;
+}
+.h-hero-sticky {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+.h-hero-media { position: absolute; inset: 0; z-index: 0; }
+.h-hero-image {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
+    inset: 0;
     width: 100%;
-    background: #F59E0B;
-    z-index: 4;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
 }
-.svc-card:hover .svc-card-border { transform: scaleX(1); }
-
-/* Vertical dividers between cards */
-.svc-card + .svc-card::before {
-    content: '';
+.h-hero-video {
+    display: none;
     position: absolute;
-    top: 10%;
-    left: 0;
-    width: 1px;
-    height: 80%;
-    background: rgba(255, 255, 255, 0.08);
-    z-index: 4;
-    pointer-events: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+}
+@media (min-width: 992px) {
+    .h-hero-video { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .h-hero-video { display: none !important; }
 }
 
-/* Responsive */
-@media (max-width: 991px) {
-    .svc-grid { grid-template-columns: repeat(2, 1fr); }
-    .svc-card { min-height: 380px; }
-    .svc-card + .svc-card::before { display: none; }
+.h-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(30, 30, 30, 0.74) 0%, rgba(30, 30, 30, 0.44) 50%, rgba(30, 30, 30, 0.10) 100%),
+        linear-gradient(180deg, rgba(30, 30, 30, 0.45) 0%, rgba(30, 30, 30, 0.05) 38%, rgba(30, 30, 30, 0.55) 100%);
 }
-@media (max-width: 575px) {
-    .svc-grid { grid-template-columns: 1fr; }
-    .svc-card { min-height: 300px; padding: 28px 24px; }
-    .svc-card-num { font-size: 72px; }
-    .svc-card-desc { max-height: 80px; opacity: 1; }
+
+.h-hero-grid {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 124px;
+    padding-bottom: 40px;
+}
+.h-hero-copy {
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+}
+
+.h-hero-rule {
+    display: block;
+    width: 96px;
+    height: 8px;
+    margin-bottom: 34px;
+    background: #FFFFFF;
+}
+
+.h-hero-title {
+    margin: 0;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(44px, 7.2vw, 104px);
+    font-weight: 800;
+    font-style: normal;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+}
+
+.h-hero-sub {
+    max-width: 760px;
+    margin: 30px 0 0;
+    font-size: clamp(16px, 1.35vw, 20px);
+    font-weight: 600;
+    line-height: 1.55;
+    color: var(--tint);
+}
+
+.h-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+}
+.h-hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 0 32px;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+.h-hero-cta:hover { transform: translateY(-1px); }
+.h-hero-cta:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; }
+.h-hero-cta--solid {
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    color: var(--navy);
+}
+.h-hero-cta--solid:hover {
+    background: var(--tint);
+    border-color: var(--tint);
+    color: var(--navy);
+}
+.h-hero-cta--ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: #FFFFFF;
+}
+.h-hero-cta--ghost:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+/* only the + marks carry the accent colour inside the hero */
+.h-hero .h-plus { color: var(--tint); }
+
+/* stats sit bottom-right under the hero copy */
+.h-hero-foot {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 24px;
+    width: 100%;
+}
+
+.h-hero-stats {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+}
+
+@media (max-width: 1279px) {
+    .h-hero-foot { grid-template-columns: 1fr; gap: 20px; }
+    .h-hero-stats { grid-column: 1; justify-self: end; }
+}
+.h-hero-stats > div {
+    padding: 0 24px;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+.h-hero-stats > div:first-child { border-left: 0; padding-left: 0; }
+.h-hero-stats > div:last-child { padding-right: 0; }
+.h-hero-stats dd {
+    margin: 0;
+    font-family: "Figtree", sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+.h-hero-stats dt {
+    margin-top: 7px;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
 }
 
 /* ============================================================
-   3. ABOUT COMPANY
+   HEADER OVER HERO
+   Transparent on top, colour only once the page scrolls.
 ============================================================ */
-.glance-section { padding: 100px 0 60px; background: #fff; }
-.glance-image-wrap { position: relative; display: inline-block; width: 100%; }
-.glance-img { width: 100%; height: 450px; object-fit: cover; border-radius: 20px; box-shadow: 0 30px 70px rgba(27,47,110,0.15); position: relative; z-index: 1; }
-.glance-img-badge { position: absolute; bottom: 30px; right: -20px; background: #F59E0B; color: #1B2F6E; padding: 16px 22px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(245,158,11,0.4); z-index: 3; }
-.glance-badge-number { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 28px; font-weight: 900; line-height: 1; }
-.glance-badge-label { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; margin-top: 4px; white-space: nowrap; }
-.glance-accent-bar { position: absolute; top: -12px; left: -12px; width: 60px; height: 60px; background: #F59E0B; border-radius: 8px; z-index: 0; }
-.glance-accent-dot { position: absolute; bottom: -16px; left: 40px; width: 16px; height: 16px; background: #1B2F6E; border-radius: 50%; z-index: 2; }
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 24px; margin-top: 28px; border-top: 1px solid #e5e7eb; padding-top: 28px; }
-.stat-number { font-family: "Bricolage Grotesque", sans-serif; font-weight: 900; font-size: 30px; color: #1B2F6E; line-height: 1; }
-.stat-plus { font-size: 0.65em; vertical-align: super; color: #F59E0B; font-weight: 900; }
-.stat-label { font-size: 11px; font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-@media (max-width: 991px) { .glance-img-badge { right: 10px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 767px) { .glance-section { padding: 60px 0 40px; } .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+:global(.header:not(.scrolled)) {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    box-shadow: none;
+}
+:global(.header:not(.scrolled) .header-inner > .logo img) { filter: brightness(0) invert(1); }
+/* drawer logo sits on the white mobile panel - keep its original colours */
+:global(.header:not(.scrolled) .navbar .logo img) { filter: none; }
+:global(.header:not(.scrolled) .mobile-nav-show) { color: #FFFFFF !important; }
 
-/* ============================================================
-   4. WHY CHOOSE US — photo grid (5 cols)
-============================================================ */
-.why-section { width: 100%; overflow: hidden; background: #fff; }
-.why-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
-.why-photo-card {
-    position: relative; display: flex; flex-direction: column;
-    justify-content: flex-end; padding: 32px 28px;
-    overflow: hidden; min-height: 360px; cursor: default;
-}
-.why-photo-card .svc-card-bg { transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
-.why-photo-card:hover .svc-card-bg { transform: scale(1.08); }
-.why-photo-card:hover .svc-card-desc { max-height: 80px; opacity: 1; }
-.why-photo-card:hover .svc-card-border { width: 100%; }
-.why-photo-card + .why-photo-card::before {
-    content: ''; position: absolute; top: 10%; left: 0;
-    width: 1px; height: 80%; background: rgba(255,255,255,0.08); z-index: 4; pointer-events: none;
-}
-@media (max-width: 991px) {
-    .why-grid { grid-template-columns: repeat(3, 1fr); }
-    .why-photo-card { min-height: 280px; }
-    .why-photo-card + .why-photo-card::before { display: none; }
-}
-@media (max-width: 575px) {
-    .why-grid { grid-template-columns: repeat(2, 1fr); }
-    .why-photo-card { min-height: 240px; padding: 20px 18px; }
-    .why-photo-card .svc-card-desc { max-height: 60px; opacity: 1; }
+@media (min-width: 1280px) {
+    :global(.header:not(.scrolled) .navbar a),
+    :global(.header:not(.scrolled) .navbar a:focus) { color: rgba(255, 255, 255, 0.88); }
+    :global(.header:not(.scrolled) .navbar a:hover),
+    :global(.header:not(.scrolled) .navbar .active),
+    :global(.header:not(.scrolled) .navbar li:hover > a) { color: #FFFFFF; }
 }
 
 /* ============================================================
-   5. FEATURED PROJECTS — asymmetric grid
+   03 - SERVICES
 ============================================================ */
-.projects-section { width: 100%; overflow: hidden; background: #fff; }
-.proj-grid {
+.h-svc-split {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gutter);
+    align-items: stretch;
+}
+.h-svc-copy {
+    grid-column: 1 / span 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-right: 24px;
+}
+.h-svc-copy .h-body { margin-bottom: 30px; }
+.h-svc-cards {
+    grid-column: 5 / span 8;
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+}
+.h-svc-card {
+    position: relative;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    min-height: 500px;
+    padding: 20px 18px 22px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--az);
+    color: #FFFFFF;
+    text-decoration: none;
+    isolation: isolate;
+    transition: flex-grow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.h-svc-card:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; }
+.h-svc-card img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.45s ease;
+}
+.h-svc-shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.42) 0%, rgba(30, 30, 30, 0.06) 45%, rgba(30, 30, 30, 0.86) 100%);
+}
+.h-svc-card:hover img { transform: scale(1.06); }
+
+.h-svc-num {
+    font-family: "Figtree", sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: var(--amber-light);
+}
+.h-svc-foot {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+}
+.h-svc-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+.h-svc-name {
+    font-family: "Figtree", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #FFFFFF;
+    max-width: 12ch;
+}
+.h-svc-desc {
+    max-width: 34ch;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.8);
+    transition:
+        opacity 0.35s ease,
+        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        margin-top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.h-svc-arrow {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    color: #FFFFFF;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s, opacity 0.3s ease;
+}
+.h-svc-card:hover .h-svc-arrow {
+    background: var(--amber-light);
+    border-color: var(--amber-light);
+    color: #1E1E1E;
+    transform: rotate(-45deg);
+}
+
+/* hovered card widens, its siblings collapse into strips */
+@media (min-width: 1200px) {
+    .h-svc-card:hover,
+    .h-svc-card:focus-visible { flex-grow: 4; }
+
+    .h-svc-card:hover .h-svc-desc,
+    .h-svc-card:focus-visible .h-svc-desc {
+        max-height: 96px;
+        margin-top: 8px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .h-svc-cards:has(.h-svc-card:hover) .h-svc-card:not(:hover) .h-svc-arrow,
+    .h-svc-cards:has(.h-svc-card:focus-visible) .h-svc-card:not(:focus-visible) .h-svc-arrow { opacity: 0; }
+
+    .h-svc-cards:has(.h-svc-card:hover) .h-svc-card:not(:hover) img { filter: brightness(0.72); }
+}
+
+/* ============================================================
+   04 - ABOUT BAND
+============================================================ */
+.h-about-band {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 300px 300px;
+    min-height: 560px;
+    padding: 0;
+    background: var(--az);
+    overflow: hidden;
 }
-.proj-card-tall { grid-row: span 2; min-height: 600px; }
-.proj-card-short { min-height: 300px; }
-.proj-badge {
-    display: inline-block; background: rgba(27,47,110,0.85); color: #fff;
-    font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-    padding: 5px 12px; border-radius: 50px; margin-bottom: 10px;
-    backdrop-filter: blur(6px); width: fit-content;
+.h-about-photo {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
 }
-.proj-badge--gold { background: rgba(245,158,11,0.90); color: #1B2F6E; }
-@media (max-width: 767px) {
-    .proj-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-    .proj-card-tall { grid-row: auto; min-height: 340px; }
-    .proj-card-short { min-height: 280px; }
+.h-about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.h-about-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.10) 0%, rgba(30, 30, 30, 0.45) 100%);
+    pointer-events: none;
+}
+.h-about-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(48px, 6vw, 96px);
+    background: var(--az);
+    color: #FFFFFF;
+}
+.h-about-panel .h-h2 { font-size: clamp(30px, 3.4vw, 48px); }
+.h-about-panel .h-btn { margin-top: 34px; }
+
+/* ============================================================
+   05 - CLIENTS
+============================================================ */
+.h-clients {
+    padding: 104px 0;
+    background: var(--paper);
+}
+.h-clients-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.h-clients-title {
+    margin: 0 0 50px;
+    text-align: center;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(30px, 3.4vw, 46px);
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+}
+.h-clients-title span { display: block; }
+.h-clients-title-accent { color: var(--amber); }
+.h-clients-title-strong { color: var(--eerie); }
+.h-clients-strip {
+    width: 100%;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+.h-clients-link { margin-top: 32px; }
+
+.h-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+.h-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: h-marquee 42s linear infinite;
+}
+.h-marquee:hover .h-marquee-track { animation-play-state: paused; }
+.h-marquee-set { display: flex; align-items: center; }
+.h-logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    height: 46px;
+    margin-right: 88px;
+}
+.h-logo-box img {
+    width: auto;
+    height: 34px;
+    max-width: 170px;
+    max-height: none;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.3s, opacity 0.3s;
+}
+.h-logo-box:hover img { filter: grayscale(0%); opacity: 1; }
+
+@keyframes h-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
 /* ============================================================
-   6. ACTIVE SITES (MAP)
+   06 - WHY
 ============================================================ */
-.map-section { padding: 80px 0; background: linear-gradient(135deg, #f8f9fb 0%, #eef0f5 100%); position: relative; overflow: hidden; }
-.map-bg-shape { position: absolute; border-radius: 50%; background: rgba(27,47,110,0.04); z-index: 0; }
-.map-bg-shape--top { width: 400px; height: 400px; top: -150px; right: -100px; }
-.map-bg-shape--bottom { width: 300px; height: 300px; bottom: -100px; left: -80px; background: rgba(245,158,11,0.04); }
-.map-card { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 60px rgba(27,47,110,0.12); cursor: pointer; transition: transform 0.35s ease; }
-.map-card:hover { transform: scale(1.015); }
-.map-img { width: 100%; object-fit: contain; display: block; }
-.map-hover-overlay { position: absolute; inset: 0; background: rgba(27,47,110,0.0); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s, background 0.3s; }
-.map-card:hover .map-hover-overlay { opacity: 1; background: rgba(27,47,110,0.15); }
-.map-zoom-btn { background: #1B2F6E; color: #fff; padding: 12px 28px; border-radius: 50px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-@media (max-width: 767px) { .map-section { padding: 60px 0; } }
-
-/* ============================================================
-   7. INDUSTRIES — 4-col photo grid
-============================================================ */
-.industries-section { width: 100%; overflow: hidden; background: #fff; }
-.industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.ind-photo-card {
-    position: relative; display: flex; flex-direction: column;
-    justify-content: flex-end; padding: 24px 20px;
-    overflow: hidden; min-height: 280px; cursor: default;
+.h-why {
+    position: relative;
+    padding: var(--section-y) 0;
+    background: var(--eerie);
+    overflow: hidden;
 }
-.ind-photo-card .svc-card-bg { transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
-.ind-photo-card:hover .svc-card-bg { transform: scale(1.10); }
-.ind-photo-card:hover .svc-card-border { width: 100%; }
-.ind-photo-card .svc-card-title { font-size: 16px; }
-.ind-photo-card + .ind-photo-card::before {
-    content: ''; position: absolute; top: 10%; left: 0;
-    width: 1px; height: 80%; background: rgba(255,255,255,0.08); z-index: 4; pointer-events: none;
+.h-why-bg {
+    position: absolute;
+    inset: 0;
+    background: url('/assets/img/projects/lotte/lotte-1.webp') center / cover no-repeat;
+    opacity: 0.22;
 }
-@media (max-width: 991px) {
-    .industry-grid { grid-template-columns: repeat(2, 1fr); }
-    .ind-photo-card { min-height: 220px; }
-    .ind-photo-card + .ind-photo-card::before { display: none; }
+.h-why-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #1E1E1E 0%, rgba(30, 30, 30, 0.86) 55%, rgba(30, 30, 30, 0.55) 100%);
 }
-@media (max-width: 575px) {
-    .industry-grid { grid-template-columns: repeat(2, 1fr); }
-    .ind-photo-card { min-height: 180px; padding: 18px 16px; }
-}
-
-/* ============================================================
-   8. EQUIPMENT — 4+4 compact grid
-============================================================ */
-.equipment-section { width: 100%; overflow: hidden; background: #fff; }
-.equip-grid {
+.h-why-grid {
+    position: relative;
+    z-index: 1;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 220px);
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gutter);
 }
-.equip-photo-card {
-    position: relative; overflow: hidden; cursor: default;
-    display: flex; align-items: flex-end;
+.h-why-copy { grid-column: 1 / span 4; }
+.h-why-text {
+    max-width: 34ch;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
 }
-.equip-photo-card .svc-card-bg { transition: transform 0.6s ease; }
-.equip-photo-card:hover .svc-card-bg { transform: scale(1.10); }
-.equip-photo-card:hover .svc-card-border { width: 100%; }
-.svc-card-overlay--subtle {
-    position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(to top, rgba(5,10,30,0.90) 0%, rgba(5,10,30,0.40) 50%, rgba(5,10,30,0.10) 100%);
+.h-why-list {
+    grid-column: 6 / span 7;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
-.equip-photo-card:hover .svc-card-overlay--subtle {
-    background: linear-gradient(to top, rgba(5,10,30,0.95) 0%, rgba(5,10,30,0.55) 60%, rgba(5,10,30,0.20) 100%);
+.h-why-list li {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
-.equip-card-label {
-    position: relative; z-index: 3; width: 100%; padding: 16px 18px;
-    font-family: "Bricolage Grotesque", sans-serif; font-weight: 800;
-    font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; color: #fff;
+.h-why-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.14); }
+.h-why-num {
+    font-family: "Figtree", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--amber-light);
+    padding-top: 4px;
 }
-.equip-photo-card + .equip-photo-card::before {
-    content: ''; position: absolute; top: 0; left: 0;
-    width: 1px; height: 100%; background: rgba(255,255,255,0.06); z-index: 4; pointer-events: none;
+.h-why-title {
+    margin: 0;
+    font-family: "Figtree", sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #FFFFFF;
 }
-@media (max-width: 991px) { .equip-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 200px); } }
-@media (max-width: 575px) {
-    .equip-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 160px); }
-    .equip-card-label { font-size: 11px; padding: 12px 14px; }
-}
-
-/* ============================================================
-   9. CLIENTS
-============================================================ */
-.clients-section { padding: 0; background: #fff; overflow: hidden; }
-.clients-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 24px; padding: 64px clamp(20px,5vw,80px) 48px; flex-wrap: wrap;
-}
-.clients-header-left { display: flex; flex-direction: column; gap: 4px; }
-.clients-header .btn-primary-navy {
-    background: #1B2F6E; border-color: #1B2F6E; color: #fff;
-}
-.clients-header .btn-primary-navy:hover { background: #142257; border-color: #142257; }
-.clients-marquee-wrap { position: relative; overflow: hidden; border-top: 1px solid #f0f0f0; }
-.clients-fade { position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
-.clients-fade--left { left: 0; background: linear-gradient(to right, #fff 0%, transparent 100%); }
-.clients-fade--right { right: 0; background: linear-gradient(to left, #fff 0%, transparent 100%); }
-.clients-marquee-track { display: flex; width: max-content; animation: clients-scroll 40s linear infinite; }
-.clients-marquee-wrap:hover .clients-marquee-track { animation-play-state: paused; }
-@keyframes clients-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.clients-marquee-set { display: flex; align-items: center; }
-.client-logo-card {
-    display: flex; align-items: center; justify-content: center;
-    padding: 36px 52px; border-right: 1px solid #f0f0f0;
-    transition: background 0.3s; cursor: default;
-}
-.client-logo-card:hover { background: #f8f9fb; }
-.client-logo-img {
-    height: 44px; max-width: 130px; object-fit: contain;
-    filter: grayscale(20%); opacity: 0.75;
-    transition: opacity 0.3s, filter 0.3s; flex-shrink: 0;
-}
-.client-logo-card:hover .client-logo-img { opacity: 1; filter: grayscale(0%); }
-@media (max-width: 768px) {
-    .clients-header { padding: 48px 20px 32px; align-items: flex-start; flex-direction: column; gap: 16px; }
-    .client-logo-card { padding: 24px 32px; }
-    .client-logo-img { height: 36px; max-width: 100px; }
-    .clients-fade { width: 60px; }
+.h-why-desc {
+    margin: 6px 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.58);
 }
 
 /* ============================================================
-   10. HSE / CERTIFICATIONS
+   06b - CERTIFICATIONS
 ============================================================ */
-.hse-section { padding: 90px 0; background-image: url('/assets/img/piping-1.webp'); background-size: cover; background-position: center; position: relative; }
-.hse-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,20,60,0.96) 0%, rgba(20,40,100,0.92) 100%); z-index: 1; }
-.hse-list { list-style: none; padding: 0; margin: 0; }
-.hse-list li { font-size: 15px; color: rgba(255,255,255,0.88); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; line-height: 1.5; }
-.hse-list li i { color: #F59E0B; font-size: 18px; flex-shrink: 0; }
-.hse-stats-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px 36px; display: inline-block; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-.hse-stat-big { margin-bottom: 24px; }
-.hse-stat-number { font-family: "Bricolage Grotesque", sans-serif; font-size: 44px; font-weight: 900; color: #F59E0B; line-height: 1; margin-bottom: 6px; }
-.hse-stat-label { font-size: 13px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-.hse-stat-divider { height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 24px; }
-.hse-stats-row { display: flex; gap: 24px; justify-content: center; }
-.hse-stat-sm { text-align: center; }
-.hse-stat-sm-num { font-size: 22px; font-weight: 900; color: #fff; line-height: 1; }
-.hse-stat-sm-label { font-size: 10px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-@media (max-width: 991px) { .hse-stats-card { display: block; } .hse-stats-row { gap: 16px; } }
-
-
-
-/* ============================================================
-   12. CTA
-============================================================ */
-.cta-section { padding: 100px 0; position: relative; overflow: hidden; }
-.cta-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background-image: url('/assets/img/hero-carousel/hover-1-new.webp');
-    background-size: cover; background-position: center; background-attachment: fixed;
+.h-certs {
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(30, 30, 30, 0.07);
+    padding: clamp(30px, 4vw, 48px) 0;
 }
-.cta-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg, rgba(11,17,40,0.96) 0%, rgba(27,47,110,0.94) 100%); }
-.cta-title { font-family: "Bricolage Grotesque", sans-serif; font-weight: 900; font-size: clamp(28px, 4vw, 48px); color: #fff; line-height: 1.2; margin: 16px 0 20px; }
-.cta-desc { font-size: 16px; color: rgba(255,255,255,0.72); max-width: 580px; margin: 0 auto 40px; line-height: 1.75; }
-.cta-btn-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-@media (max-width: 767px) { .cta-section { padding: 70px 0; } }
+
+.h-certs-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(18px, 2.4vw, 26px);
+    text-align: center;
+}
+
+.h-certs-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+    font-family: "Figtree", sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.h-certs-label::before,
+.h-certs-label::after {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: rgba(30, 30, 30, 0.18);
+}
+
+.h-certs-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 4.5vw, 56px);
+    flex-wrap: wrap;
+}
+
+.h-cert-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(96px, 10vw, 132px);
+    height: 72px;
+}
+
+.h-cert-item img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.h-certs-logo--round { border-radius: 50%; }
+
+.h-certs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Figtree", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    white-space: nowrap;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(43, 65, 132, 0);
+    transition: border-color 0.25s ease;
+}
+
+.h-certs-link i { transition: transform 0.3s ease; }
+.h-certs-link:hover { border-bottom-color: rgba(43, 65, 132, 0.35); }
+.h-certs-link:hover i { transform: translateX(3px); }
+.h-certs-link:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+@media (max-width: 767px) {
+    .h-cert-item {
+        width: 78px;
+        height: 56px;
+    }
+    .h-certs-logos { gap: 14px; }
+    .h-certs-label { gap: 10px; }
+    .h-certs-label::before,
+    .h-certs-label::after { width: 16px; }
+}
 
 /* ============================================================
-   13. NEWS
+   07 - PROJECTS
 ============================================================ */
-.news-section { padding: 80px 0; background: #fff; }
-.news-card { border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: box-shadow 0.3s, transform 0.3s; }
-.news-card:hover { box-shadow: 0 20px 50px rgba(27,47,110,0.1); transform: translateY(-4px); }
-.news-card-img-wrap { height: 190px; overflow: hidden; background: #eef0f8; }
-.news-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.news-card:hover .news-card-img { transform: scale(1.06); }
-.news-card-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #c0c8e0; }
-.news-card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.news-card-date { font-size: 11px; color: #B45309; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-.news-card-title { font-weight: 800; font-size: 15px; color: #1a1a1a; line-height: 1.45; margin-bottom: 0; flex-grow: 1; }
-.news-card-link { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 800; color: #1B2F6E; text-decoration: none; letter-spacing: 0.5px; border-bottom: 2px solid #F59E0B; padding-bottom: 1px; transition: color 0.2s; }
-.news-card-link:hover { color: #F59E0B; }
-@media (max-width: 767px) { .news-section { padding: 60px 0; } }
+.h-proj-split {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 64px;
+    align-items: center;
+}
+.h-proj-intro {
+    grid-column: 1 / span 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.h-proj-intro .h-body { margin-bottom: 30px; }
+
+.h-proj {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: border-color 0.25s;
+}
+.h-proj:hover { border-color: var(--az); }
+
+.h-proj-carousel {
+    grid-column: 6 / span 7;
+    min-width: 0;
+}
+
+.h-proj-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.h-proj-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: "Figtree", sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: var(--eerie);
+}
+.h-proj-count span { color: var(--muted); font-weight: 500; }
+
+.h-proj-nav { display: flex; gap: 8px; }
+.h-proj-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: var(--eerie);
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.h-proj-arrow:hover:not(:disabled) {
+    background: var(--az);
+    border-color: var(--az);
+    color: #FFFFFF;
+}
+.h-proj-arrow:focus-visible { outline: 2px solid var(--az); outline-offset: 2px; }
+.h-proj-arrow:disabled { opacity: 0.35; cursor: default; }
+
+.h-proj-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.h-proj-track::-webkit-scrollbar { display: none; }
+
+.h-proj-carousel .h-proj {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+.h-proj-carousel .h-proj-bar {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.h-proj-carousel .h-proj-cta {
+    margin-top: auto;
+    padding-top: 18px;
+}
+
+.h-proj-media {
+    overflow: hidden;
+    background: var(--off);
+    border-radius: var(--radius-media) var(--radius-media) 0 0;
+}
+.h-proj-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.h-proj-carousel .h-proj-media { aspect-ratio: 16 / 10; }
+.h-proj:hover .h-proj-media img { transform: scale(1.04); }
+
+.h-proj-bar {
+    padding: 26px 28px 30px;
+    background: var(--az);
+    color: #FFFFFF;
+}
+.h-proj-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 4px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-badge);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+}
+.h-proj-title {
+    margin: 0;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(21px, 2vw, 30px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+.h-proj-meta {
+    margin: 10px 0 0;
+    font-size: 12px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.62);
+}
+.h-proj-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    transition: border-color 0.2s;
+}
+.h-proj:hover .h-proj-cta { border-bottom-color: var(--amber-light); }
+
+/* ============================================================
+   08 - PRESENCE
+============================================================ */
+.h-presence {
+    position: relative;
+    padding: var(--section-y) 0;
+    background: var(--az);
+}
+.h-presence-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 40px;
+    align-items: center;
+}
+.h-presence-copy {
+    grid-column: 1 / span 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.h-presence-text {
+    max-width: 32ch;
+    margin: 0 0 28px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.66);
+}
+.h-presence-map { grid-column: 4 / span 6; }
+.h-map-trigger {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-media);
+    overflow: hidden;
+    background: transparent;
+    cursor: zoom-in;
+}
+.h-map-trigger img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-media);
+    transition: transform 0.6s ease, opacity 0.4s ease;
+}
+.h-map-trigger:hover img { transform: scale(1.02); opacity: 0.9; }
+.h-map-zoom {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: var(--radius-btn);
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--az);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.h-presence-list { grid-column: 10 / span 3; }
+.h-presence-list-title {
+    display: block;
+    margin-bottom: 18px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+}
+.h-presence-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.h-presence-list li { border-top: 1px solid rgba(255, 255, 255, 0.16); }
+.h-presence-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
+.h-presence-list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 0;
+    font-family: "Figtree", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.2s, padding 0.2s;
+}
+.h-presence-list a i { font-size: 12px; color: var(--tint); }
+.h-presence-list a:hover { color: var(--tint); padding-left: 6px; }
+
+/* ============================================================
+   09 - INDUSTRIES
+============================================================ */
+.h-ind-counter {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-family: "Figtree", sans-serif;
+    font-variant-numeric: tabular-nums;
+}
+.h-ind-counter-now {
+    display: inline-block;
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--amber);
+}
+.h-ind-counter-total {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+}
+.h-ind-num-enter-active,
+.h-ind-num-leave-active {
+    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.h-ind-num-enter-from { opacity: 0; transform: translateY(65%); }
+.h-ind-num-leave-to { opacity: 0; transform: translateY(-65%); }
+
+.h-ind-slider { --ind-dir: 2.4%; }
+.h-ind-slider.is-back { --ind-dir: -2.4%; }
+
+.h-ind-stage {
+    position: relative;
+    height: clamp(420px, 56vh, 620px);
+    border-radius: var(--radius-media);
+    overflow: hidden;
+    background: var(--eerie);
+    isolation: isolate;
+}
+.h-ind-slide {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.h-ind-slide.is-active {
+    opacity: 1;
+    z-index: 1;
+}
+.h-ind-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translateX(var(--ind-dir)) scale(1.08);
+    transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.h-ind-slide.is-active img { transform: translateX(0) scale(1); }
+.h-ind-veil {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+        linear-gradient(180deg, rgba(16, 20, 28, 0) 35%, rgba(16, 20, 28, 0.72) 100%),
+        linear-gradient(90deg, rgba(16, 20, 28, 0.5) 0%, rgba(16, 20, 28, 0) 58%);
+    pointer-events: none;
+}
+.h-ind-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: clamp(26px, 4vw, 56px);
+    padding-right: clamp(150px, 20vw, 260px);
+    pointer-events: none;
+}
+.h-ind-copy { max-width: 46ch; }
+.h-ind-copy h3 {
+    margin: 0 0 12px;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(30px, 3.6vw, 52px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.h-ind-copy p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.82);
+}
+.h-ind-copy-enter-active,
+.h-ind-copy-leave-active {
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.h-ind-copy-enter-from { opacity: 0; transform: translate3d(0, 20px, 0); }
+.h-ind-copy-leave-to { opacity: 0; transform: translate3d(0, -14px, 0); }
+
+.h-ind-controls {
+    position: absolute;
+    right: clamp(20px, 3vw, 40px);
+    bottom: clamp(20px, 3vw, 40px);
+    z-index: 4;
+    display: flex;
+    gap: 10px;
+}
+.h-ind-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: rgba(16, 20, 28, 0.28);
+    color: #FFFFFF;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+.h-ind-arrow:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+}
+.h-ind-arrow:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; }
+.h-ind-arrow:active { transform: scale(0.96); }
+
+.h-ind-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 20px;
+    border-top: 1px solid var(--line);
+}
+.h-ind-tab {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 16px 6px 14px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: var(--muted);
+    font-family: "Figtree", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.h-ind-tab-num { font-size: 11px; letter-spacing: 0.08em; opacity: 0.75; }
+.h-ind-tab:hover { color: var(--eerie); }
+.h-ind-tab.is-active {
+    color: var(--eerie);
+    border-bottom-color: var(--amber);
+}
+.h-ind-tab.is-active .h-ind-tab-num { color: var(--amber); opacity: 1; }
+.h-ind-tab:focus-visible { outline: 2px solid var(--az); outline-offset: 2px; }
+
+/* ============================================================
+   11 - SAFETY
+============================================================ */
+.h-safety {
+    padding: var(--section-y) 0;
+    background: var(--az);
+}
+.h-safety-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gutter);
+    align-items: center;
+}
+.h-safety-copy {
+    grid-column: 1 / span 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.h-safety-statement {
+    font-size: clamp(30px, 3.4vw, 48px);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+.h-safety-text {
+    max-width: 40ch;
+    margin: 22px 0 28px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.h-safety-metrics {
+    grid-column: 7 / span 3;
+    margin: 0;
+}
+.h-safety-metrics > div {
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.h-safety-metrics > div:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
+.h-safety-metrics dt {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+}
+.h-safety-metrics dd {
+    margin: 6px 0 0;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+.h-safety-metrics > div:first-child dd { color: var(--amber-light); }
+
+.h-safety-media {
+    grid-column: 10 / span 3;
+    border-radius: var(--radius-media);
+    overflow: hidden;
+    background: var(--eerie);
+}
+.h-safety-media img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+/* ============================================================
+   12 - CTA (band foto full-bleed)
+============================================================ */
+.h-cta {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    min-height: 78vh;
+    padding: 140px 0;
+    background: #2B4184;
+}
+.h-cta-media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+.h-cta-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    filter: grayscale(0.4) saturate(0.5) contrast(0.9) brightness(1.02) blur(0.55px);
+    transform: scale(1.02);
+}
+.h-cta-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(233, 237, 241, 0.42) 0%,
+            rgba(233, 237, 241, 0.16) 26%,
+            rgba(20, 27, 38, 0.16) 48%,
+            rgba(16, 22, 32, 0.4) 100%
+        ),
+        radial-gradient(
+            80% 64% at 50% 48%,
+            rgba(18, 25, 36, 0.68) 0%,
+            rgba(18, 25, 36, 0.36) 45%,
+            rgba(18, 25, 36, 0) 76%
+        );
+}
+.h-cta-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.h-cta-title {
+    margin: 0;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(40px, 5.6vw, 80px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow:
+        0 2px 40px rgba(12, 18, 28, 0.45),
+        0 1px 2px rgba(12, 18, 28, 0.35);
+}
+.h-cta-outline {
+    display: block;
+}
+.h-cta-text {
+    margin: 28px 0 38px;
+    max-width: 60ch;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 16px rgba(12, 18, 28, 0.45);
+}
+.h-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+.h-cta-btn--primary {
+    background: var(--az);
+    border-color: var(--az);
+    color: #FFFFFF;
+    box-shadow:
+        inset 0 4px 6px rgba(0, 0, 0, 0.18),
+        inset 0 2px 4px rgba(255, 255, 255, 0.22);
+}
+.h-cta-btn--primary > i { background: rgba(255, 255, 255, 0.16); }
+.h-cta-btn--primary:hover {
+    background: var(--cta-hover);
+    border-color: var(--cta-hover);
+    color: #FFFFFF;
+    box-shadow:
+        inset 0 4px 8px rgba(0, 0, 0, 0.16),
+        inset 0 2px 6px rgba(255, 255, 255, 0.26);
+    transform: translateY(-1px);
+}
+.h-cta-btn--primary:hover > i { background: rgba(255, 255, 255, 0.24); }
+.h-cta-btn--dark {
+    background: var(--eerie);
+    border-color: var(--eerie);
+    color: #FFFFFF;
+    box-shadow:
+        inset 0 4px 6px rgba(0, 0, 0, 0.24),
+        inset 0 2px 4px rgba(255, 255, 255, 0.18);
+}
+.h-cta-btn--dark > i { background: rgba(255, 255, 255, 0.14); }
+.h-cta-btn--dark:hover {
+    background: #000000;
+    border-color: #000000;
+    color: #FFFFFF;
+    box-shadow:
+        inset 0 4px 8px rgba(0, 0, 0, 0.22),
+        inset 0 2px 6px rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+}
+.h-cta-btn--dark:hover > i { background: rgba(255, 255, 255, 0.22); }
+
+/* ============================================================
+   13 - NEWS
+============================================================ */
+.h-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
+}
+.h-news {
+    display: grid;
+    grid-template-columns: 128px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: #FFFFFF;
+    transition: border-color 0.25s;
+}
+.h-news:hover { border-color: var(--az); }
+.h-news-media {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-media);
+    background: var(--off);
+}
+.h-news-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.h-news:hover .h-news-media img { transform: scale(1.05); }
+.h-news-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    background: linear-gradient(150deg, rgba(43, 65, 132, 0.96) 0%, rgba(33, 50, 104, 0.96) 100%);
+    color: #FFFFFF;
+}
+.h-news-placeholder-tag {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+.h-news-placeholder i {
+    align-self: flex-end;
+    font-size: 16px;
+    color: var(--amber-light);
+}
+.h-news-body { min-width: 0; }
+.h-news-date {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber);
+}
+.h-news-title {
+    display: -webkit-box;
+    padding: 3px 0;
+    font-family: "Figtree", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--eerie);
+    text-decoration: none;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.h-news-title:hover { color: var(--az); }
+.h-news-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--az);
+    font-size: 13px;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.h-news-arrow:hover {
+    background: var(--az);
+    border-color: var(--az);
+    color: #FFFFFF;
+}
+.h-news-empty { padding: 24px 0; }
+
+/* ============================================================
+   14 - CAREERS
+============================================================ */
+.h-careers {
+    position: relative;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.h-careers-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    align-items: center;
+}
+
+.h-careers-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 35%;
+    z-index: 1;
+    background:
+        repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 30px),
+        #2B4184;
+    clip-path: polygon(10.5% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.h-careers-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/assets/img/construction-fabrication.webp") center right / cover no-repeat;
+    opacity: 0.09;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 58%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 58%);
+}
+
+.h-careers-panel::after { display: none; }
+
+.h-careers-media {
+    position: relative;
+    z-index: 0;
+    margin: 0 18px 0 0;
+}
+
+.h-careers-bracket { display: none; }
+
+.h-careers-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 28px 64px rgba(16, 27, 54, 0.15);
+}
+
+.h-careers-card img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3.1;
+    object-fit: cover;
+    object-position: 50% 42%;
+}
+
+.h-careers-stats {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: stretch;
+    height: 92px;
+    padding-right: 28px;
+}
+
+.h-careers-stats::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #0A152C;
+}
+
+.h-careers-stat {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    color: #FFFFFF;
+}
+
+.h-careers-stat + .h-careers-stat::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 26px;
+    bottom: 26px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.h-careers-stat i {
+    flex: none;
+    font-size: 23px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.h-careers-stat strong {
+    display: block;
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+}
+
+.h-careers-stat span {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.h-careers-wedge { display: none; }
+
+.h-careers-body {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px 64px 112px 118px;
+}
+
+.h-careers-eyebrow {
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.h-careers-eyebrow::before {
+    width: 28px;
+    height: 2px;
+    border-radius: 0;
+    background: var(--tint);
+}
+
+.h-careers-heading {
+    margin: 0 0 16px;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(32px, 3.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+}
+
+.h-careers-lead {
+    max-width: 46ch;
+    margin: 0;
+    font-size: clamp(14px, 1.15vw, 16px);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.74);
+}
+
+.h-careers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 34px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.h-careers-list li {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.h-careers-num {
+    font-family: "Figtree", sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--tint);
+}
+
+.h-careers-itemtext {
+    max-width: 46ch;
+    font-size: clamp(13.5px, 1.05vw, 15px);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.h-careers-itemtext strong {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.h-careers-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px;
+    margin-top: 38px;
+}
+
+@media (min-width: 992px) {
+    .h-careers .h-container {
+        width: 100%;
+        max-width: none;
+        padding-left: clamp(28px, 4vw, 72px);
+        padding-right: 0;
+    }
+    .h-careers-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .h-careers-panel { left: calc((50% - 28px - 15%) / 0.85 + clamp(28px, 3vw, 56px)); }
+    .h-careers-media {
+        align-self: stretch;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .h-careers-card { height: 100%; }
+    .h-careers-card img {
+        height: 100%;
+        aspect-ratio: auto;
+    }
+    .h-careers-stats { padding-right: clamp(88px, 8vw, 164px); }
+}
+
+/* ============================================================
+   MODAL
+============================================================ */
+.h-presence .modal-content {
+    background: transparent;
+    border: 0;
+}
+.h-presence .modal-body {
+    position: relative;
+    padding: 0;
+}
+.h-presence .modal-body img {
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius-media);
+}
+.h-presence .btn-close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    opacity: 1;
+    z-index: 2;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1199px) {
+    .rk-home { --section-y: 84px; }
+
+    .h-svc-copy { grid-column: 1 / span 5; }
+    .h-svc-cards { grid-column: 6 / span 7; display: grid; grid-template-columns: repeat(2, 1fr); }
+    .h-svc-card { flex: none; min-height: 360px; }
+    .h-svc-name { font-size: 16px; }
+    .h-svc-desc { max-height: none; margin-top: 8px; opacity: 1; transform: none; }
+
+    .h-proj-split { gap: 40px; }
+    .h-proj-intro { grid-column: 1 / span 5; }
+    .h-proj-carousel { grid-column: 6 / span 7; }
+
+    .h-presence-copy { grid-column: 1 / span 4; }
+    .h-presence-map { grid-column: 5 / span 5; }
+    .h-presence-list { grid-column: 10 / span 3; }
+
+    .h-safety-copy { grid-column: 1 / span 6; }
+    .h-safety-metrics { grid-column: 7 / span 3; }
+    .h-safety-media { grid-column: 10 / span 3; }
+
+    .h-careers-stats { padding-right: 84px; }
+    .h-careers-wedge { display: none; }
+    .h-careers-stat { padding: 0 11px; gap: 9px; }
+    .h-careers-stat i { font-size: 20px; }
+    .h-careers-stat strong { font-size: 19px; }
+    .h-careers-body { padding: 56px 44px 100px 96px; }
+    .h-careers-panel::after { width: 180px; height: 90px; }
+}
+
+@media (max-width: 991px) {
+    .rk-home { --section-y: 68px; --gutter: 24px; }
+
+    .h-svc-split,
+    .h-why-grid,
+    .h-proj-split,
+    .h-presence-grid,
+    .h-safety-grid {
+        grid-template-columns: 1fr;
+        gap: var(--gutter);
+    }
+
+    .h-svc-copy,
+    .h-svc-cards,
+    .h-why-copy,
+    .h-why-list,
+    .h-proj-intro,
+    .h-proj-carousel,
+    .h-presence-copy,
+    .h-presence-map,
+    .h-presence-list,
+    .h-safety-copy,
+    .h-safety-metrics,
+    .h-safety-media { grid-column: auto; }
+
+    .h-svc-copy { padding-right: 0; margin-bottom: 12px; }
+    .h-svc-cards { grid-template-columns: repeat(2, 1fr); }
+    .h-svc-card { min-height: 340px; }
+
+    .h-hero { height: 140vh; }
+    .h-hero-grid { gap: 24px; padding-top: 116px; padding-bottom: 28px; }
+    .h-hero-stats dd { font-size: 19px; }
+    .h-hero-stats > div { padding: 0 20px; }
+
+    .h-about-band { grid-template-columns: 1fr; }
+    .h-about-photo { min-height: 380px; }
+    .h-about-panel { padding: 56px var(--edge); }
+
+    .h-why-list { margin-top: 16px; }
+    .h-proj-split { gap: 40px; }
+
+    .h-presence-map { order: -1; }
+    .h-presence-list ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+    }
+
+    .h-safety-media { max-width: 560px; }
+    .h-safety-media img { aspect-ratio: 16 / 9; }
+
+    .h-news-grid { grid-template-columns: 1fr; }
+    .h-news { grid-template-columns: 132px 1fr auto; }
+
+    .h-careers-inner { grid-template-columns: 1fr; }
+    .h-careers-panel { display: none; }
+    .h-careers-media { margin: 16px 0 0; }
+    .h-careers-body {
+        margin-top: 24px;
+        padding: 46px 28px 52px;
+        background:
+            repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 28px),
+            #2B4184;
+    }
+}
+
+@media (max-width: 767px) {
+    .rk-home { --section-y: 56px; }
+
+    .h-hero { height: auto; }
+    .h-hero-sticky { position: relative; height: auto; min-height: 100svh; }
+    .h-hero-image { object-position: 65% 42%; }
+    .h-hero-scrim {
+        background: linear-gradient(
+            180deg,
+            rgba(30, 30, 30, 0.62) 0%,
+            rgba(30, 30, 30, 0.5) 45%,
+            rgba(30, 30, 30, 0.72) 100%
+        );
+    }
+    .h-hero-grid { padding-top: 104px; padding-bottom: 24px; }
+    .h-hero-rule { width: 64px; height: 6px; margin-bottom: 24px; }
+    .h-hero-title { font-size: clamp(40px, 11.5vw, 60px); }
+    .h-hero-sub { font-size: 15px; margin-top: 22px; }
+    .h-hero-actions { width: 100%; margin-top: 28px; }
+    .h-hero-cta { width: 100%; min-height: 52px; }
+    .h-hero-stats { width: 100%; justify-content: space-between; }
+    .h-hero-stats dd { font-size: 17px; }
+    .h-hero-stats > div { padding: 0 14px; }
+
+    .h-section-head { flex-direction: column; align-items: flex-start; gap: 16px; padding-bottom: 20px; margin-bottom: 28px; }
+    .h-section-head-link { margin-bottom: 0; }
+
+    .h-svc-cards { grid-template-columns: 1fr; }
+    .h-svc-card { min-height: 300px; }
+
+    .h-about-photo { min-height: 300px; }
+
+    .h-proj-head { margin-bottom: 12px; }
+    .h-proj-arrow { width: 44px; height: 44px; font-size: 14px; }
+    .h-proj-track { gap: 16px; }
+    .h-proj-carousel .h-proj { flex-basis: 90%; }
+    .h-proj-carousel .h-proj-media { aspect-ratio: 4 / 3; }
+
+    .h-ind-stage { height: clamp(380px, 60vh, 520px); }
+    .h-ind-caption { padding: 22px; padding-bottom: 84px; }
+    .h-ind-copy h3 { font-size: clamp(26px, 7vw, 34px); }
+    .h-ind-copy p { font-size: 14px; }
+    .h-ind-controls { top: 18px; bottom: auto; right: 18px; }
+    .h-ind-arrow { width: 44px; height: 44px; }
+    .h-ind-tabs { grid-template-columns: repeat(2, 1fr); margin-top: 14px; }
+    .h-ind-tab { padding: 13px 4px 11px; font-size: 13px; gap: 8px; }
+    .h-ind-counter-now { font-size: 30px; }
+
+    .h-cta { min-height: 0; padding: 96px 0; }
+    .h-cta-title { font-size: clamp(38px, 10.5vw, 60px); }
+    .h-cta-text { margin: 22px 0 30px; font-size: 15px; }
+    .h-cta-actions { width: 100%; flex-direction: column; }
+    .h-cta-btn { width: 100%; }
+
+    .h-news-grid { grid-template-columns: 1fr; }
+
+    .h-careers-stats { height: 84px; padding-right: 72px; }
+    .h-careers-wedge { display: none; }
+    .h-careers-stat span { font-size: 9.5px; }
+    .h-careers .h-btn { width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .rk-home { --edge: 18px; --gutter: 18px; }
+    .h-hero-stats dd { font-size: 15px; }
+    .h-hero-stats dt { font-size: 7px; letter-spacing: 0.14em; }
+    .h-why-list li { grid-template-columns: 44px 1fr; gap: 14px; }
+    .h-presence-list ul { grid-template-columns: 1fr; }
+    .h-clients { padding: 76px 0; }
+    .h-clients-title { margin-bottom: 34px; }
+    .h-clients-strip { padding: 24px 0; }
+    .h-logo-box { margin-right: 56px; }
+    .h-logo-box img { height: 28px; max-width: 140px; }
+    .h-clients-link { margin-top: 26px; }
+    .h-news { grid-template-columns: 96px 1fr auto; gap: 14px; padding: 14px; }
+    .h-news-title { font-size: 15px; }
+
+    .h-careers-bracket { top: -12px; left: 0; width: 56px; height: 56px; }
+    .h-careers-card img { aspect-ratio: 4 / 3.8; }
+    .h-careers-stats { height: auto; padding: 14px 52px 14px 0; }
+    .h-careers-wedge { display: none; }
+    .h-careers-stat { flex-direction: column; align-items: flex-start; gap: 7px; padding: 0 10px; }
+    .h-careers-stat + .h-careers-stat::before { top: 2px; bottom: 2px; }
+    .h-careers-stat i { font-size: 18px; }
+    .h-careers-stat strong { font-size: 17px; }
+    .h-careers-stat span { font-size: 9px; }
+    .h-careers-body { margin-top: 18px; padding: 40px 20px 46px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rk-home .h-marquee-track { animation: none; }
+    .rk-home img,
+    .rk-home .h-svc-card img,
+    .rk-home .h-proj-media img,
+    .rk-home .h-news-media img { transition: none; }
+    .rk-home .h-ind-slide { transition: none; }
+    .rk-home .h-ind-copy-enter-active,
+    .rk-home .h-ind-copy-leave-active,
+    .rk-home .h-ind-num-enter-active,
+    .rk-home .h-ind-num-leave-active { transition: none; }
+}
 </style>

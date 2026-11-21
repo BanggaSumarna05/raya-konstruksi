@@ -34,7 +34,8 @@ class UserResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255)
-                    ->label('Email'),
+                    ->label('Email')
+                    ->helperText('Hanya email domain @rayakonstruksi.com yang bisa masuk panel admin.'),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))

@@ -1,5 +1,9 @@
 ﻿<script setup>
+import { ref, onMounted } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 
 const commissioner = [
     { name: "Robby Satria",   role: "President Commissioner", img: "/assets/img/robby-2.webp" },
@@ -13,6 +17,20 @@ const management = [
     { name: "Suwoto",           role: "Sr. Manager Proposal & Estimator",   img: "/assets/img/Suwoto.webp" },
     { name: "Anggi Simatupang", role: "Manager Business Development",       img: "/assets/img/anggi1.webp" },
 ];
+
+const photoOk = ref({});
+
+onMounted(() => {
+    [...commissioner, ...directors, ...management].forEach((p) => {
+        const probe = new Image();
+        probe.onload = () => { photoOk.value[p.img] = true; };
+        probe.onerror = () => { photoOk.value[p.img] = false; };
+        probe.src = p.img;
+    });
+});
+
+const initials = (name) =>
+    name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 </script>
 
 <template>
@@ -33,7 +51,7 @@ const management = [
         <div class="container">
 
             <!-- Commissioner -->
-            <div class="bod-group" data-aos="fade-up">
+            <div class="bod-group" data-rv>
                 <span class="section-eyebrow">Board of Commissioners</span>
                 <h2 class="section-title mt-2">President Commissioner</h2>
                 <div class="section-divider"></div>
@@ -41,6 +59,9 @@ const management = [
                     <div v-for="p in commissioner" :key="p.name" class="col-md-4 col-lg-3">
                         <div class="bod-card">
                             <div class="bod-photo-bg" :style="`background-image: url('${p.img}')`"></div>
+                            <div v-if="photoOk[p.img] === false" class="bod-photo-fallback" aria-hidden="true">
+                                <span>{{ initials(p.name) }}</span>
+                            </div>
                             <div class="bod-overlay"></div>
                             <div class="bod-card-content">
                                 <h5 class="bod-name">{{ p.name }}</h5>
@@ -53,7 +74,7 @@ const management = [
             </div>
 
             <!-- Directors -->
-            <div class="bod-group" data-aos="fade-up">
+            <div class="bod-group" data-rv>
                 <span class="section-eyebrow">Executive Leadership</span>
                 <h2 class="section-title mt-2">Board of Directors</h2>
                 <div class="section-divider"></div>
@@ -61,6 +82,9 @@ const management = [
                     <div v-for="p in directors" :key="p.name" class="col-md-4 col-lg-3">
                         <div class="bod-card">
                             <div class="bod-photo-bg" :style="`background-image: url('${p.img}')`"></div>
+                            <div v-if="photoOk[p.img] === false" class="bod-photo-fallback" aria-hidden="true">
+                                <span>{{ initials(p.name) }}</span>
+                            </div>
                             <div class="bod-overlay"></div>
                             <div class="bod-card-content">
                                 <h5 class="bod-name">{{ p.name }}</h5>
@@ -73,7 +97,7 @@ const management = [
             </div>
 
             <!-- Management -->
-            <div class="bod-group" data-aos="fade-up">
+            <div class="bod-group" data-rv>
                 <span class="section-eyebrow">Senior Management</span>
                 <h2 class="section-title mt-2">Key Management</h2>
                 <div class="section-divider"></div>
@@ -81,6 +105,9 @@ const management = [
                     <div v-for="p in management" :key="p.name" class="col-md-4 col-lg-3">
                         <div class="bod-card">
                             <div class="bod-photo-bg" :style="`background-image: url('${p.img}')`"></div>
+                            <div v-if="photoOk[p.img] === false" class="bod-photo-fallback" aria-hidden="true">
+                                <span>{{ initials(p.name) }}</span>
+                            </div>
                             <div class="bod-overlay"></div>
                             <div class="bod-card-content">
                                 <h5 class="bod-name">{{ p.name }}</h5>
@@ -97,7 +124,7 @@ const management = [
 </template>
 
 <style scoped>
-.bod-section { padding: 80px 0; background: #fff; }
+.bod-section { padding: 80px 0; background: var(--paper); }
 .bod-group {
     margin-bottom: 72px;
     padding-bottom: 72px;
@@ -114,11 +141,20 @@ const management = [
     justify-content: flex-end; cursor: default;
     transition: box-shadow 0.3s;
 }
-.bod-card:hover { box-shadow: 0 20px 50px rgba(27,47,110,0.25); }
+.bod-card:hover { box-shadow: 0 20px 50px rgba(43,65,132,0.25); }
 .bod-photo-bg {
     position: absolute; inset: 0; background-size: cover; background-position: top center;
     transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
     filter: grayscale(20%);
+}
+.bod-photo-fallback {
+    position: absolute; inset: 0; z-index: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(150deg, #1E3268 0%, #2B4184 55%, #41598F 100%);
+}
+.bod-photo-fallback span {
+    font-family: "Figtree", sans-serif; font-size: 64px; font-weight: 800;
+    letter-spacing: 2px; color: rgba(255, 255, 255, 0.62);
 }
 .bod-card:hover .bod-photo-bg { transform: scale(1.05); filter: grayscale(0%); }
 .bod-overlay {
@@ -127,11 +163,11 @@ const management = [
 }
 .bod-card-content {
     position: relative; z-index: 3; padding: 24px 22px;
-    border-top: 3px solid #1B2F6E; transition: border-color 0.3s;
+    border-top: 3px solid #2B4184; transition: border-color 0.3s;
 }
-.bod-card:hover .bod-card-content { border-top-color: #F59E0B; }
-.bod-name { font-family: "Bricolage Grotesque", sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin: 0 0 4px; }
-.bod-role { font-family: "Pliant", sans-serif; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.60); text-transform: uppercase; letter-spacing: 0.5px; margin: 0; }
-.bod-card-border { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: #F59E0B; z-index: 4; transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease; }
+.bod-card:hover .bod-card-content { border-top-color: var(--tint); }
+.bod-name { font-family: "Figtree", sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin: 0 0 4px; }
+.bod-role { font-family: "Figtree", sans-serif; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.60); text-transform: uppercase; letter-spacing: 0.5px; margin: 0; }
+.bod-card-border { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: var(--tint); z-index: 4; transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease; }
 .bod-card:hover .bod-card-border { transform: scaleX(1); }
 </style>

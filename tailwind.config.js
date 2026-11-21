@@ -13,8 +13,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Pliant", ...defaultTheme.fontFamily.sans],
-                heading: ["Bricolage Grotesque", ...defaultTheme.fontFamily.sans],
+                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                heading: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 navy: {

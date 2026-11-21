@@ -6,7 +6,7 @@
                 title="Logo Raya Konstruksi International" width="149" height="44">
         </a>
 
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list" style="color:#1B2F6E"></i>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list" style="color:#2B4184"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
             <ul>
@@ -82,7 +82,7 @@
                 <li class="d-flex d-lg-none pt-75">
                     <div>
                         <div class="copyright m-3">
-                            &copy; Copyright <b>RAYA Construction International</b> 2026 All Rights
+                            &copy; Copyright <b>PT Raya Konstruksi Internasional</b> 2026 All Rights
                             Reserved
                         </div>
                     </div>

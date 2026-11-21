@@ -1,5 +1,8 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
+import { usePageMotion } from "../Composables/usePageMotion";
+
+usePageMotion();
 
 const methods = [
     {
@@ -14,7 +17,7 @@ const methods = [
         title: "Dense Catalyst Loading",
         desc: "Optimises catalyst placement by maximising packing density and reducing void spaces in the reactor.",
         advantages: ["Enhances reactor efficiency by improving catalyst density", "Reduces risk of channeling due to better distribution"],
-        applications: ["Widely used in hydroprocessing — e.g. hydrodesulfurization — and high-capacity oil refinery processes"],
+        applications: ["Widely used in hydroprocessing, e.g. hydrodesulfurization, and high-capacity oil refinery processes"],
     },
     {
         icon: "bi-wind",
@@ -36,14 +39,14 @@ const comparisonRows = [
     <Head title="Catalyst Handling" />
 
     <!-- ── Page Hero ── -->
-    <section class="page-hero" style="background-image: url('/assets/img/cover-catalyst.webp');">
+    <section class="page-hero" style="background-image: url('/assets/img/refresh/ind-petrochemical.webp');">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">What We Do</span>
             <h1 class="page-hero-title">Catalyst<br />Handling</h1>
             <p class="page-hero-sub">
                 Professional catalyst loading, unloading, and reactor handling following
-                global refinery safety standards — atmospheric and inert conditions.
+                global refinery safety standards: atmospheric and inert conditions.
             </p>
         </div>
     </section>
@@ -52,7 +55,7 @@ const comparisonRows = [
     <section class="svc-overview">
         <div class="container">
             <div class="row align-items-center gy-5">
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-lg-6" data-rv>
                     <span class="section-eyebrow">Overview</span>
                     <h2 class="section-title">Precision Catalyst<br />Loading &amp; Handling</h2>
                     <div class="section-divider"></div>
@@ -92,7 +95,7 @@ const comparisonRows = [
                 </div>
 
                 <!-- Loading type cards -->
-                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="80">
+                <div class="col-lg-6" data-rv data-rv-delay="80">
                     <div class="row g-3">
                         <!-- Drums -->
                         <div class="col-12">
@@ -102,7 +105,7 @@ const comparisonRows = [
                                     <h4 class="loading-type-title">Loading with DRUMS</h4>
                                 </div>
                                 <p class="loading-type-desc">
-                                    Drums are reusable — once emptied they can be returned to the supplier,
+                                    Drums are reusable; once emptied they can be returned to the supplier,
                                     considerably reducing waste generation at the plant. The hopper is filled,
                                     raised to the reactor mouth, and the catalyst is loaded.
                                 </p>
@@ -137,7 +140,7 @@ const comparisonRows = [
     <!-- ── Catalyst Methods ── -->
     <section class="svc-cards-section">
         <div class="container">
-            <div class="text-center mb-12" data-aos="fade-up">
+            <div class="text-center mb-12" data-rv>
                 <span class="section-eyebrow">Catalyst Methods</span>
                 <h2 class="section-title mt-2">Loading Techniques We Apply</h2>
                 <div class="section-divider mx-auto"></div>
@@ -150,7 +153,7 @@ const comparisonRows = [
             <div class="row g-4 mb-5">
                 <div v-for="(m, i) in methods" :key="i"
                      class="col-md-4"
-                     data-aos="fade-up" :data-aos-delay="i * 80">
+                     data-rv :data-rv-delay="i * 80">
                     <div class="svc-card">
                         <div class="svc-card-icon"><i :class="'bi ' + m.icon"></i></div>
                         <h4 class="svc-card-title">{{ m.title }}</h4>
@@ -177,7 +180,7 @@ const comparisonRows = [
             </div>
 
             <!-- Comparison table -->
-            <div data-aos="fade-up">
+            <div data-rv>
                 <h3 class="comparison-heading">Method Comparison</h3>
                 <div class="table-wrap">
                     <table class="raya-table">
@@ -216,8 +219,8 @@ const comparisonRows = [
     <!-- ── CTA ── -->
     <section class="svc-cta-section">
         <div class="svc-cta-overlay"></div>
-        <div class="container text-center" style="position:relative;z-index:2;" data-aos="fade-up">
-            <span class="section-eyebrow" style="color:rgba(27,47,110,0.7);">Partner With Raya</span>
+        <div class="container text-center" style="position:relative;z-index:2;" data-rv>
+            <span class="section-eyebrow">Partner With Raya</span>
             <h2 class="svc-cta-title">Ready to Work With Us?</h2>
             <p class="svc-cta-desc">
                 Contact our team to discuss your catalyst handling requirements and discover
@@ -235,7 +238,7 @@ const comparisonRows = [
 
 <style scoped>
 /* Overview */
-.svc-overview { padding: 96px 0; background: #fff; }
+.svc-overview { padding: 96px 0; background: var(--paper); }
 .mt-3 { margin-top: 16px !important; }
 .mt-5 { margin-top: 28px !important; }
 .mb-5 { margin-bottom: 28px !important; }
@@ -248,9 +251,9 @@ const comparisonRows = [
 .cat-cap-item {
     display: flex; align-items: center; gap: 12px;
     font-family: var(--font-body); font-size: 14px;
-    font-weight: 600; color: var(--text-body);
+    font-weight: 600; color: var(--muted);
 }
-.cat-cap-item i { font-size: 18px; color: var(--navy); flex-shrink: 0; }
+.cat-cap-item i { font-size: 18px; color: var(--gold); flex-shrink: 0; }
 
 /* Loading type cards */
 .loading-type-card {
@@ -263,7 +266,7 @@ const comparisonRows = [
 .loading-type-icon {
     width: 44px; height: 44px; background: var(--navy);
     border-radius: 10px; display: flex; align-items: center;
-    justify-content: center; font-size: 20px; color: var(--gold);
+    justify-content: center; font-size: 20px; color: var(--tint);
     flex-shrink: 0;
 }
 .loading-type-title {
@@ -275,13 +278,13 @@ const comparisonRows = [
     line-height: 1.6; margin-bottom: 16px;
 }
 .loading-type-img-wrap {
-    background: var(--bg-light); border-radius: 10px;
+    background: var(--off); border-radius: 10px;
     padding: 16px; text-align: center;
 }
 .loading-type-img { max-height: 160px; max-width: 100%; object-fit: contain; }
 
 /* Methods cards */
-.svc-cards-section { padding: 80px 0; background: var(--bg-light); }
+.svc-cards-section { padding: 80px 0; background: var(--off); }
 .mb-12 { margin-bottom: 48px; }
 
 .svc-card {
@@ -294,10 +297,10 @@ const comparisonRows = [
 .svc-card-icon {
     width: 52px; height: 52px; background: var(--navy);
     border-radius: 12px; display: flex; align-items: center;
-    justify-content: center; font-size: 22px; color: var(--gold);
+    justify-content: center; font-size: 22px; color: var(--tint);
     margin-bottom: 16px; transition: background 0.25s;
 }
-.svc-card:hover .svc-card-icon { background: var(--gold); color: var(--navy); }
+.svc-card:hover .svc-card-icon { background: var(--navy-dark); color: #FFFFFF; }
 .svc-card-title {
     font-family: var(--font-head); font-size: 15px; font-weight: 800;
     color: var(--navy); margin-bottom: 8px; line-height: 1.35;
@@ -323,9 +326,9 @@ const comparisonRows = [
 /* Comparison */
 .comparison-heading {
     font-family: var(--font-head); font-size: 20px; font-weight: 800;
-    color: var(--navy); margin-bottom: 16px;
+    color: var(--eerie); margin-bottom: 16px;
 }
-.table-wrap { overflow-x: auto; border-radius: 14px; box-shadow: var(--shadow-sm); }
+.table-wrap { overflow-x: auto; border-radius: 14px; box-shadow: var(--shadow-sm); background: #fff; }
 .raya-table { width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 14px; }
 .raya-table thead tr { background: var(--navy); color: #fff; }
 .raya-table th {
@@ -333,7 +336,7 @@ const comparisonRows = [
     font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
 }
 .raya-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.2s; }
-.raya-table tbody tr:nth-child(odd) { background: var(--bg-light); }
+.raya-table tbody tr:nth-child(odd) { background: #fff; }
 .raya-table tbody tr:hover { background: #eef0fc; }
 .raya-table td { padding: 13px 18px; color: var(--text-body); vertical-align: middle; }
 .level-cell { font-weight: 700; color: var(--navy); white-space: nowrap; }
@@ -349,22 +352,38 @@ const comparisonRows = [
 .eff-badge--high    { background: #dbeafe; color: #1e40af; }
 .eff-badge--moderate{ background: #f3f4f6; color: #374151; }
 
-/* CTA */
-.svc-cta-section { padding: 96px 0; position: relative; background: var(--gold); }
+/* CTA — band foto, sama dengan CTA home */
+.svc-cta-section {
+    padding: 120px 0; position: relative; overflow: hidden;
+    background: #2B4184; isolation: isolate;
+}
 .svc-cta-overlay {
-    position: absolute; inset: 0;
-    background: url('/assets/img/cover-catalyst.webp') center/cover;
-    opacity: 0.06; z-index: 0;
+    position: absolute; inset: 0; z-index: -1;
+    background: url('/assets/img/refresh/ind-petrochemical.webp') center/cover;
+}
+.svc-cta-overlay::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(30,30,30,0.55) 0%, rgba(20,26,36,0.72) 100%),
+        radial-gradient(80% 64% at 50% 48%, rgba(18,25,36,0.55) 0%, rgba(18,25,36,0.25) 55%, rgba(18,25,36,0) 80%);
 }
 .svc-cta-title {
-    font-family: var(--font-head);
-    font-size: clamp(28px, 4vw, 44px); font-weight: 900;
-    color: var(--navy); margin: 10px 0 20px;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(34px, 4.6vw, 64px); font-weight: 800;
+    line-height: 0.98; letter-spacing: -0.01em; text-transform: uppercase;
+    color: #fff; margin: 10px 0 20px;
+    text-shadow: 0 2px 40px rgba(12,18,28,0.45);
 }
 .svc-cta-desc {
-    font-size: 17px; color: rgba(27,47,110,0.80);
+    font-size: 17px; color: rgba(255,255,255,0.78);
     max-width: 620px; margin: 0 auto 36px; line-height: 1.7;
 }
+.svc-cta-section .section-eyebrow { color: rgba(255,255,255,0.8); }
+.svc-cta-section .section-eyebrow::before { background: var(--tint); }
+.svc-cta-section .btn-outline { color: #fff; border-color: rgba(255,255,255,0.4); }
+.svc-cta-section .btn-outline > i { background: rgba(255,255,255,0.16); }
+.svc-cta-section .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.75); color: #fff; }
+.svc-cta-section .btn-outline:hover > i { background: rgba(255,255,255,0.26); }
 .gap-3 { gap: 12px !important; }
 
 @media (max-width: 768px) {

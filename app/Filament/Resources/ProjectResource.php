@@ -37,8 +37,9 @@ class ProjectResource extends Resource
                             ),
                         Forms\Components\TextInput::make('slug')
                             ->maxLength(255)
+                            ->unique(ignoreRecord: true)
                             ->label('Slug (URL)')
-                            ->helperText('Auto-generated dari judul. Bisa diubah manual.'),
+                            ->helperText('Auto-generated dari judul. Bisa diubah manual, harus unik.'),
                         Forms\Components\TextInput::make('client')
                             ->maxLength(255)
                             ->label('Klien / Stakeholder'),

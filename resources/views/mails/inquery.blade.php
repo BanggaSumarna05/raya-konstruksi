@@ -22,7 +22,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         .header {
-            background: #1b2f6e;
+            background: #2B4184;
             padding: 32px 40px;
             text-align: center;
         }
@@ -39,8 +39,8 @@
         }
         .badge {
             display: inline-block;
-            background: #F59E0B;
-            color: #1b2f6e;
+            background: #2B4184;
+            color: #ffffff;
             font-size: 11px;
             font-weight: 800;
             letter-spacing: 1px;
@@ -95,11 +95,11 @@
             color: #aaa;
             line-height: 1.6;
         }
-        .footer strong { color: #1b2f6e; }
+        .footer strong { color: #2B4184; }
         .reply-btn {
             display: inline-block;
             margin-top: 24px;
-            background: #1b2f6e;
+            background: #2B4184;
             color: #ffffff !important;
             text-decoration: none;
             padding: 12px 28px;

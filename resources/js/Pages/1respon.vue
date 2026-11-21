@@ -1,5 +1,8 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 </script>
 
 <script>
@@ -39,7 +42,7 @@ export default {
     <section class="csr-section">
         <div class="container">
             <div class="row align-items-center gy-5">
-                <div class="col-lg-5" data-aos="fade-right">
+                <div class="col-lg-5" data-rv>
                     <span class="section-eyebrow">CSR at RAYA</span>
                     <h2 class="section-title mt-2">Our Corporate<br />Social Responsibility</h2>
                     <div class="section-divider"></div>
@@ -50,7 +53,7 @@ export default {
                         and strategic framework to ensure long-term value creation for all stakeholders.
                     </p>
                 </div>
-                <div class="col-lg-7 ps-lg-5" data-aos="fade-left" data-aos-delay="80">
+                <div class="col-lg-7 ps-lg-5" data-rv data-rv-delay="80">
                     <!-- Dual responsibility cards -->
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -88,15 +91,15 @@ export default {
     </section>
 
     <!-- ── SDGs ── -->
-    <section class="csr-section" style="background: var(--bg-light);">
+    <section class="csr-section" style="background: var(--off);">
         <div class="container">
             <div class="row gy-4 mb-10">
-                <div class="col-lg-5" data-aos="fade-right">
+                <div class="col-lg-5" data-rv>
                     <span class="section-eyebrow">Global Alignment</span>
                     <h2 class="section-title mt-2">Sustainable Development<br />Goals (SDGs)</h2>
                     <div class="section-divider"></div>
                 </div>
-                <div class="col-lg-7" data-aos="fade-left">
+                <div class="col-lg-7" data-rv>
                     <p class="section-body">
                         The <strong>SDGs</strong> are highly relevant to the construction industry given its
                         significant contribution to energy consumption, resource utilisation, and environmental
@@ -111,14 +114,14 @@ export default {
                 </div>
             </div>
 
-            <div class="sdg-heading mb-4" data-aos="fade-up">
+            <div class="sdg-heading mb-4" data-rv>
                 <h4 class="section-title" style="font-size: 18px;">Our initiatives directly support:</h4>
             </div>
 
             <div class="row g-4">
                 <div v-for="(sdg, i) in sdgs" :key="i"
                      class="col-6 col-md-4 col-lg-2"
-                     data-aos="fade-up" :data-aos-delay="i * 60">
+                     data-rv :data-rv-delay="i * 60">
                     <div class="sdg-card">
                         <img :src="sdg.img" :alt="sdg.title" class="sdg-img" />
                         <p class="sdg-label">{{ sdg.title }}</p>
@@ -130,15 +133,15 @@ export default {
 </template>
 
 <style scoped>
-.csr-section { padding: 80px 0; background: #fff; }
+.csr-section { padding: 80px 0; background: var(--paper); }
 .mt-3 { margin-top: 16px !important; }
 .mb-4 { margin-bottom: 20px !important; }
 .mb-10 { margin-bottom: 48px !important; }
 
 /* Pillar cards */
 .csr-pillar-card {
-    background: var(--bg-light); border: 1px solid var(--border);
-    border-top: 4px solid var(--navy); border-radius: 12px;
+    background: #fff; border: 1px solid var(--border);
+    border-top: 4px solid var(--gold); border-radius: 12px;
     padding: 22px 20px; height: 100%;
     transition: box-shadow 0.3s, transform 0.3s;
 }
@@ -146,14 +149,14 @@ export default {
 .csr-pillar-icon {
     width: 44px; height: 44px; background: var(--navy);
     border-radius: 10px; display: flex; align-items: center;
-    justify-content: center; font-size: 18px; color: var(--gold);
+    justify-content: center; font-size: 18px; color: var(--tint);
     margin-bottom: 14px;
 }
 .csr-pillar-title {
     font-family: var(--font-head); font-size: 14px; font-weight: 800;
-    color: var(--navy); margin-bottom: 8px;
+    color: var(--eerie); margin-bottom: 8px;
 }
-.csr-pillar-desc { font-size: 13px; color: var(--text-body); line-height: 1.6; margin: 0; }
+.csr-pillar-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0; }
 
 /* SDG cards */
 .sdg-card {

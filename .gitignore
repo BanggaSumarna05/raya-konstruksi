@@ -26,6 +26,9 @@ lighthouse-result.json
 test.txt
 *.lh.json
 
+# Design QA artifacts (screenshots/reports are local only)
+/.design-qa
+
 # Python scripts (local tooling only)
 *.py
 
@@ -40,6 +43,24 @@ test.txt
 *.tar.gz
 *.rar
 
+# Raw media sources (site serves optimized .webp assets)
+/public/assets/img/pilihanuntukweb/
+/public/assets/img/vid/
+/public/assets/img/about-team.png
+/public/assets/img/projects/**/*.png
+/public/assets/img/projects/**/*.jpg
+/public/assets/img/projects/**/*.jpeg
+/public/assets/img/projects/**/*.JPG
+/public/assets/img/projects/**/*.jfif
+/public/assets/img/projects/**/*.mp4
+/public/assets/img/projects/**/*.mov
+/public/assets/img/projects/**/*.MOV
+/public/assets/img/projects/**/*.CR2
+
 # OS generated files
 .DS_Store
+._*
 Thumbs.db
+
+# Local deployment backup artifact
+/public/storage.bak-non-symlink/

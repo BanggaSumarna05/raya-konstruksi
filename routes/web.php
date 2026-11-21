@@ -10,7 +10,7 @@ use Inertia\Inertia;
 Route::get('/', [FrontController::class, 'index'])->name('index');
 
 Route::get('/dashboard', function () {
-    return redirect('/admin');
+    return redirect('/rk130718');
 })->name('dashboard');
 
 #who we are
@@ -26,9 +26,6 @@ Route::get('/what-we-do/plant-maintenance', [FrontController::class, 'plantMaint
 Route::get('/raya-konstruksi-portfolio', [FrontController::class, 'portfolio'])->name('portfolio');
 Route::get('/raya-konstruksi-portfolio/{slug}', [FrontController::class, 'projectDetail'])->name('projectDetail');
 // Route::get('/what-we-do/raya-konstruksi-portfolio-soil', [FrontController::class, 'portfolioSoil'])->name('portfolio-soil');
-Route::get('/what-we-do/heavy-rental-equipment', [FrontController::class, 'heavyRental'])->name('heavyRental');
-Route::get('/equipment', [FrontController::class, 'equipment'])->name('equipment');
-Route::get('/ecatalogue', [FrontController::class, 'ecatalogue'])->name('ecatalogue');
 Route::get('/quality', [FrontController::class, 'quality'])->name('quality');
 
 #sustainability

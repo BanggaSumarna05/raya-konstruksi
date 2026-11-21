@@ -1,7 +1,15 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 
 const props = defineProps({ blog: Object });
+
+function hideBrokenFeatured(e) {
+    const wrap = e.target.closest('.nd-featured-img-wrap');
+    if (wrap) wrap.style.display = 'none';
+}
 
 function convertMedia(content) {
     if (!content) return content;
@@ -30,7 +38,7 @@ function convertMedia(content) {
 
     <!-- ── Page Hero — always use default bg, no photo here ── -->
     <section class="page-hero nd-hero"
-        style="background-image: url('/assets/img/hero-carousel/hover-2-new.webp')">
+        style="background-image: url('/assets/img/refresh/news-hero.webp')">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">News &amp; Events</span>
@@ -40,7 +48,7 @@ function convertMedia(content) {
                 <span class="nd-meta-dot">·</span>
                 <span>
                     <i class="bi bi-calendar3"></i>
-                    {{ new Date(blog.published_at).toLocaleDateString('id-ID', { year:'numeric', month:'long', day:'numeric' }) }}
+                    {{ new Date(blog.published_at).toLocaleDateString('en-GB', { year:'numeric', month:'long', day:'numeric' }) }}
                 </span>
             </div>
         </div>
@@ -58,6 +66,7 @@ function convertMedia(content) {
                             :src="`/storage/${blog.image}`"
                             :alt="blog.title"
                             class="nd-featured-img"
+                            @error="hideBrokenFeatured"
                         />
                     </div>
 
@@ -76,11 +85,11 @@ function convertMedia(content) {
 
 <style scoped>
 /* Hero overrides for news detail */
-.nd-hero { min-height: 40vh; align-items: flex-end; }
+.nd-hero { min-height: 52vh; align-items: flex-end; }
 .nd-title {
-    font-size: clamp(26px, 4vw, 52px);
-    letter-spacing: -0.5px;
-    max-width: 780px;
+    font-size: clamp(30px, 4.4vw, 60px);
+    letter-spacing: -0.02em;
+    max-width: 20ch;
 }
 .nd-meta {
     display: flex; align-items: center; gap: 10px;
@@ -92,14 +101,14 @@ function convertMedia(content) {
 .nd-meta-dot { color: rgba(255,255,255,0.35); }
 
 /* Article body */
-.nd-body { padding: 64px 0 96px; background: #fff; }
+.nd-body { padding: 64px 0 96px; background: var(--paper); }
 
 /* Featured image */
 .nd-featured-img-wrap {
     margin-bottom: 40px;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 12px 40px rgba(27,47,110,0.12);
+    box-shadow: 0 12px 40px rgba(43,65,132,0.12);
 }
 .nd-featured-img {
     width: 100%;
@@ -119,7 +128,7 @@ function convertMedia(content) {
 :deep(.nd-article h3),
 :deep(.nd-article h4) {
     font-family: var(--font-head);
-    font-weight: 800; color: var(--navy);
+    font-weight: 800; color: var(--eerie);
     margin: 32px 0 12px; line-height: 1.25;
 }
 :deep(.nd-article h2) { font-size: 26px; }
@@ -134,11 +143,11 @@ function convertMedia(content) {
     padding-left: 24px; margin-bottom: 18px;
 }
 :deep(.nd-article li) { margin-bottom: 6px; }
-:deep(.nd-article a) { color: var(--navy); font-weight: 600; }
+:deep(.nd-article a) { color: var(--gold); font-weight: 600; }
 :deep(.nd-article blockquote) {
     border-left: 4px solid var(--gold);
     padding: 12px 20px; margin: 24px 0;
-    background: var(--bg-light); border-radius: 0 8px 8px 0;
+    background: var(--off); border-radius: 0 8px 8px 0;
     font-style: italic; color: var(--text-body);
 }
 

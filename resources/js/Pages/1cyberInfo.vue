@@ -1,5 +1,8 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 
 const protocols = [
     {
@@ -27,7 +30,7 @@ const protocols = [
     <Head title="Cyber Security Information" />
 
     <!-- ── Page Hero ── -->
-    <section class="page-hero" style="background-image: url('/assets/img/hero-carousel/hover-2-new.webp');">
+    <section class="page-hero" style="background-image: url('/assets/img/refresh/wwd-plant.webp');">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">Security Notice</span>
@@ -42,7 +45,7 @@ const protocols = [
     <!-- ── Alert Banner ── -->
     <section class="cyber-alert-section">
         <div class="container">
-            <div class="cyber-alert" data-aos="fade-up">
+            <div class="cyber-alert" data-rv>
                 <div class="cyber-alert-icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
                 <div>
                     <h4 class="cyber-alert-title">Phishing &amp; Email Spoofing Warning</h4>
@@ -60,7 +63,7 @@ const protocols = [
     <!-- ── Protocols ── -->
     <section class="cyber-protocols-section">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
+            <div class="text-center mb-5" data-rv>
                 <span class="section-eyebrow">Email Authentication</span>
                 <h2 class="section-title mt-2">Our Security Protocols</h2>
                 <div class="section-divider mx-auto"></div>
@@ -72,7 +75,7 @@ const protocols = [
             <div class="row g-4 justify-content-center">
                 <div v-for="(p, i) in protocols" :key="i"
                      class="col-md-4"
-                     data-aos="fade-up" :data-aos-delay="i * 80">
+                     data-rv :data-rv-delay="i * 80">
                     <div class="cyber-card">
                         <div class="cyber-card-icon"><i :class="'bi ' + p.icon"></i></div>
                         <div class="cyber-card-code">{{ p.code }}</div>
@@ -88,7 +91,7 @@ const protocols = [
     <section class="cyber-rec-section">
         <div class="container">
             <div class="row g-5 align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-lg-6" data-rv>
                     <span class="section-eyebrow">Our Recommendation</span>
                     <h2 class="section-title mt-2">What You Should Do</h2>
                     <div class="section-divider"></div>
@@ -111,7 +114,7 @@ const protocols = [
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
+                <div class="col-lg-6" data-rv>
                     <div class="cyber-contact-card">
                         <div class="cyber-contact-icon"><i class="bi bi-envelope-shield-fill"></i></div>
                         <h4 class="cyber-contact-title">Report Suspicious Email</h4>
@@ -131,61 +134,64 @@ const protocols = [
 
 <style scoped>
 /* Alert banner */
-.cyber-alert-section { padding: 48px 0; background: #fff7ed; border-bottom: 1px solid #fed7aa; }
+.cyber-alert-section { padding: 48px 0; background: var(--paper); border-bottom: 1px solid var(--border); }
 .cyber-alert {
     display: flex; align-items: flex-start; gap: 20px;
-    background: #fff; border: 1px solid #fed7aa; border-left: 4px solid #F59E0B;
-    border-radius: 12px; padding: 28px 32px;
+    background: var(--off); border: 1px solid var(--border); border-left: 4px solid var(--navy);
+    border-radius: var(--radius-card); padding: 28px 32px;
 }
-.cyber-alert-icon { font-size: 28px; color: #F59E0B; flex-shrink: 0; margin-top: 2px; }
-.cyber-alert-title { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 16px; color: #1B2F6E; margin: 0 0 8px; }
-.cyber-alert-text { font-size: 14px; color: #555; line-height: 1.7; margin: 0; }
-.cyber-alert-text code { background: #f0f2f8; color: #1B2F6E; padding: 2px 6px; border-radius: 4px; font-size: 13px; font-weight: 700; }
+.cyber-alert-icon { font-size: 28px; color: var(--navy); flex-shrink: 0; margin-top: 2px; }
+.cyber-alert-title { font-family: "Figtree", sans-serif; font-weight: 800; font-size: 16px; color: var(--navy); margin: 0 0 8px; }
+.cyber-alert-text { font-size: 14px; color: var(--text-body); line-height: 1.7; margin: 0; }
+.cyber-alert-text code { background: #1E1E1E; color: #FFFFFF; padding: 2px 6px; border-radius: 4px; font-size: 13px; font-weight: 700; }
 @media (max-width: 575px) { .cyber-alert { flex-direction: column; padding: 20px; } }
 
 /* Protocols */
-.cyber-protocols-section { padding: 80px 0; background: var(--bg-light, #f8f9fb); }
+.cyber-protocols-section { padding: 80px 0; background: var(--off); }
 .cyber-card {
-    background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+    background: #fff; border: 1px solid #D9DDE5; border-radius: 16px;
     padding: 36px 28px; height: 100%; text-align: center;
     transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
 }
-.cyber-card:hover { box-shadow: 0 20px 50px rgba(27,47,110,0.12); transform: translateY(-6px); border-color: #F59E0B; }
+.cyber-card:hover { box-shadow: 0 20px 50px rgba(43,65,132,0.12); transform: translateY(-6px); border-color: var(--navy); }
 .cyber-card-icon {
     width: 64px; height: 64px; border-radius: 16px;
-    background: linear-gradient(135deg, #1B2F6E, #2a47a0);
+    background: linear-gradient(135deg, #2B4184, #6070A3);
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px; font-size: 28px; color: #F59E0B;
+    margin: 0 auto 20px; font-size: 28px; color: var(--tint);
     transition: transform 0.3s;
 }
 .cyber-card:hover .cyber-card-icon { transform: rotate(-6deg) scale(1.1); }
-.cyber-card-code { font-family: "Bricolage Grotesque", sans-serif; font-weight: 900; font-size: 20px; color: #1B2F6E; margin-bottom: 4px; }
-.cyber-card-full { font-size: 12px; font-weight: 700; color: #F59E0B; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
+.cyber-card-code { font-family: "Figtree", sans-serif; font-weight: 900; font-size: 20px; color: #2B4184; margin-bottom: 4px; }
+.cyber-card-full { font-size: 12px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
 .cyber-card-desc { font-size: 13px; color: #666; line-height: 1.65; margin: 0; }
 
 /* Recommendation */
-.cyber-rec-section { padding: 80px 0; background: #fff; }
+.cyber-rec-section { padding: 80px 0; background: var(--paper); }
 .cyber-rec-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
-.cyber-rec-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: #444; line-height: 1.6; }
-.cyber-rec-list li i { font-size: 18px; color: #1B2F6E; flex-shrink: 0; margin-top: 2px; }
+.cyber-rec-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--muted); line-height: 1.6; }
+.cyber-rec-list li strong { color: var(--eerie); }
+.cyber-rec-list li i { font-size: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
 .cyber-icon-red { color: #ef4444 !important; }
 
 .cyber-contact-card {
-    background: linear-gradient(135deg, #0b1535, #1B2F6E);
+    background:
+        radial-gradient(120% 140% at 100% 0%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 55%),
+        linear-gradient(150deg, #2B4184 0%, #24366E 60%, #1E1E1E 100%);
     border-radius: 20px; padding: 44px 36px; text-align: center;
-    box-shadow: 0 20px 60px rgba(27,47,110,0.25);
+    box-shadow: 0 20px 60px rgba(43,65,132,0.25);
 }
-.cyber-contact-icon { font-size: 48px; color: #F59E0B; margin-bottom: 20px; }
-.cyber-contact-title { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 20px; color: #fff; margin-bottom: 12px; }
+.cyber-contact-icon { font-size: 48px; color: var(--tint); margin-bottom: 20px; }
+.cyber-contact-title { font-family: "Figtree", sans-serif; font-weight: 800; font-size: 20px; color: #fff; margin-bottom: 12px; }
 .cyber-contact-body { font-size: 14px; color: rgba(255,255,255,0.70); line-height: 1.7; margin-bottom: 28px; }
 .cyber-contact-btn {
     display: inline-flex; align-items: center; gap: 8px;
-    background: #F59E0B; color: #1B2F6E;
-    font-family: "Pliant", sans-serif; font-size: 14px; font-weight: 700;
+    background: var(--cta); color: #FFFFFF;
+    font-family: "Figtree", sans-serif; font-size: 14px; font-weight: 700;
     padding: 13px 28px; border-radius: 50px; text-decoration: none;
     transition: background 0.2s, transform 0.2s;
 }
-.cyber-contact-btn:hover { background: #D97706; transform: translateY(-2px); }
+.cyber-contact-btn:hover { background: var(--cta-hover); color: #FFFFFF; transform: translateY(-2px); }
 
 @media (max-width: 767px) { .cyber-protocols-section { padding: 60px 0; } .cyber-rec-section { padding: 60px 0; } .cyber-contact-card { padding: 32px 24px; } }
 </style>

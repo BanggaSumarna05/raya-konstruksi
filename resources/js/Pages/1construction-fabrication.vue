@@ -1,18 +1,21 @@
 ﻿<script setup>
 import { Head, Link } from "@inertiajs/vue3";
+import { usePageMotion } from "../Composables/usePageMotion";
+
+usePageMotion();
 </script>
 
 <template>
     <Head title="Construction & Fabrication" />
 
     <!-- ── Page Hero ── -->
-    <section class="page-hero" style="background-image: url('/assets/img/cover-const.webp');">
+    <section class="page-hero" style="background-image: url('/assets/img/refresh/const-hero.webp');">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">What We Do</span>
             <h1 class="page-hero-title">Construction &amp;<br />Fabrication</h1>
             <p class="page-hero-sub">
-                Precision engineering — from steel structures and piping to tanks and mechanical erection —
+                Precision engineering, from steel structures and piping to tanks and mechanical erection,
                 delivered to the highest industrial standards.
             </p>
         </div>
@@ -22,14 +25,14 @@ import { Head, Link } from "@inertiajs/vue3";
     <section class="svc-overview">
         <div class="container">
             <div class="row align-items-center gy-5">
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-lg-6" data-rv>
                     <span class="section-eyebrow">Overview</span>
                     <h2 class="section-title">Integrated Construction<br />&amp; Fabrication Solutions</h2>
                     <div class="section-divider"></div>
                     <p class="section-body">
                         <strong>RAYA</strong> delivers integrated construction and fabrication solutions covering
                         structural, piping, and tank systems. Supported by experienced engineers, modern facilities,
-                        and strict quality control, we ensure every project meets the highest industrial standards —
+                        and strict quality control, we ensure every project meets the highest industrial standards,
                         from design and fabrication to installation and maintenance.
                     </p>
                     <p class="section-body mt-3">
@@ -38,9 +41,9 @@ import { Head, Link } from "@inertiajs/vue3";
                         results that stand the test of time.
                     </p>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                <div class="col-lg-6" data-rv data-rv-delay="100">
                     <div class="svc-img-wrap">
-                        <img src="/assets/img/construction.webp" alt="Construction & Fabrication" class="svc-img" width="600" height="420" />
+                        <img src="/assets/img/refresh/who-intro.webp" alt="Construction & Fabrication" class="svc-img" width="1600" height="1067" />
                     </div>
                 </div>
             </div>
@@ -50,7 +53,7 @@ import { Head, Link } from "@inertiajs/vue3";
     <!-- ── Core Services ── -->
     <section class="svc-cards-section">
         <div class="container">
-            <div class="text-center mb-12" data-aos="fade-up">
+            <div class="text-center mb-12" data-rv>
                 <span class="section-eyebrow">Scope of Services</span>
                 <h2 class="section-title mt-2">What We Deliver</h2>
                 <div class="section-divider mx-auto"></div>
@@ -58,7 +61,7 @@ import { Head, Link } from "@inertiajs/vue3";
 
             <div class="row g-4">
                 <!-- Card 1 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="col-md-6 col-lg-4" data-rv data-rv-delay="0">
                     <div class="svc-card">
                         <div class="svc-card-icon"><i class="bi bi-layers-fill"></i></div>
                         <h4 class="svc-card-title">Steel Structure<br />Fabrication &amp; Installation</h4>
@@ -69,7 +72,7 @@ import { Head, Link } from "@inertiajs/vue3";
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+                <div class="col-md-6 col-lg-4" data-rv data-rv-delay="80">
                     <div class="svc-card">
                         <div class="svc-card-icon"><i class="bi bi-arrows-angle-expand"></i></div>
                         <h4 class="svc-card-title">Piping Fabrication<br />&amp; Installation</h4>
@@ -80,7 +83,7 @@ import { Head, Link } from "@inertiajs/vue3";
                     </div>
                 </div>
                 <!-- Card 3 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+                <div class="col-md-6 col-lg-4" data-rv data-rv-delay="160">
                     <div class="svc-card">
                         <div class="svc-card-icon"><i class="bi bi-database-fill"></i></div>
                         <h4 class="svc-card-title">Tank Fabrication<br />&amp; Installation</h4>
@@ -91,7 +94,7 @@ import { Head, Link } from "@inertiajs/vue3";
                     </div>
                 </div>
                 <!-- Card 4 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="col-md-6 col-lg-4" data-rv data-rv-delay="0">
                     <div class="svc-card">
                         <div class="svc-card-icon"><i class="bi bi-gear-wide-connected"></i></div>
                         <h4 class="svc-card-title">Mechanical Erection</h4>
@@ -106,24 +109,8 @@ import { Head, Link } from "@inertiajs/vue3";
                         </ul>
                     </div>
                 </div>
-                <!-- Card 5 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
-                    <div class="svc-card">
-                        <div class="svc-card-icon"><i class="bi bi-truck-front-fill"></i></div>
-                        <h4 class="svc-card-title">Equipment Rental<br />&amp; Operation</h4>
-                        <p class="svc-card-desc">
-                            Heavy equipment rental and operation services: cranes, forklifts, welding machines,
-                            and lifting equipment operated by certified personnel.
-                        </p>
-                        <ul class="svc-check-list mt-3">
-                            <li><i class="bi bi-check-circle-fill"></i> Flexible rental duration</li>
-                            <li><i class="bi bi-check-circle-fill"></i> On-site technical assistance</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Reliable &amp; safe equipment</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Card 6 — image -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+                <!-- Card 5 — image -->
+                <div class="col-md-6 col-lg-4" data-rv data-rv-delay="80">
                     <div class="svc-card svc-card--img">
                         <img src="/assets/img/projects/lotte-catalyst/catalyst-3 - Copy.webp"
                              alt="Fabrication work" class="svc-card-bg-img" width="400" height="300" />
@@ -140,8 +127,8 @@ import { Head, Link } from "@inertiajs/vue3";
     <!-- ── CTA ── -->
     <section class="svc-cta-section">
         <div class="svc-cta-overlay"></div>
-        <div class="container text-center" style="position:relative;z-index:2;" data-aos="fade-up">
-            <span class="section-eyebrow" style="color:rgba(27,47,110,0.7);">Let's Build Together</span>
+        <div class="container text-center" style="position:relative;z-index:2;" data-rv>
+            <span class="section-eyebrow">Let's Build Together</span>
             <h2 class="svc-cta-title">Ready to Work With Us?</h2>
             <p class="svc-cta-desc">
                 With a commitment to quality, safety, and timely delivery, RAYA ensures every project runs
@@ -160,13 +147,13 @@ import { Head, Link } from "@inertiajs/vue3";
 
 <style scoped>
 /* Overview */
-.svc-overview { padding: 96px 0; background: #fff; }
+.svc-overview { padding: 96px 0; background: var(--paper); }
 .svc-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-lg); }
 .svc-img { width: 100%; height: 420px; object-fit: cover; display: block; }
 .mt-3 { margin-top: 16px !important; }
 
 /* Cards section */
-.svc-cards-section { padding: 80px 0; background: var(--bg-light); }
+.svc-cards-section { padding: 80px 0; background: var(--off); }
 .mb-12 { margin-bottom: 48px; }
 
 .svc-card {
@@ -186,11 +173,11 @@ import { Head, Link } from "@inertiajs/vue3";
     background: var(--navy);
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px; color: var(--gold);
+    font-size: 24px; color: var(--tint);
     margin-bottom: 20px; flex-shrink: 0;
     transition: background 0.25s;
 }
-.svc-card:hover .svc-card-icon { background: var(--gold); color: var(--navy); }
+.svc-card:hover .svc-card-icon { background: var(--navy-dark); color: #FFFFFF; }
 
 .svc-card-title {
     font-family: var(--font-head);
@@ -227,7 +214,7 @@ import { Head, Link } from "@inertiajs/vue3";
 .svc-card--img:hover .svc-card-bg-img { transform: scale(1.06); }
 .svc-card-img-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(11,11,11,0.85) 0%, rgba(11,11,11,0.2) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(13,20,40,0.88) 0%, rgba(18,28,58,0.35) 60%, transparent 100%);
     display: flex; flex-direction: column;
     justify-content: flex-end; padding: 28px;
     z-index: 1;
@@ -236,7 +223,7 @@ import { Head, Link } from "@inertiajs/vue3";
     font-family: var(--font-body);
     font-size: 11px; font-weight: 800;
     letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 8px;
+    color: var(--tint); margin-bottom: 8px;
 }
 .svc-card-img-title {
     font-family: var(--font-head);
@@ -244,26 +231,39 @@ import { Head, Link } from "@inertiajs/vue3";
     color: #fff; line-height: 1.2; margin: 0;
 }
 
-/* CTA section */
+/* CTA — band foto, sama dengan CTA home */
 .svc-cta-section {
-    padding: 96px 0; position: relative;
-    background: var(--gold);
+    padding: 120px 0; position: relative; overflow: hidden;
+    background: #2B4184; isolation: isolate;
 }
 .svc-cta-overlay {
-    position: absolute; inset: 0;
-    background: url('/assets/img/footer-1.webp') center/cover;
-    opacity: 0.08; z-index: 0;
+    position: absolute; inset: 0; z-index: -1;
+    background: url('/assets/img/refresh/cta.webp') center/cover;
+}
+.svc-cta-overlay::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(30,30,30,0.55) 0%, rgba(20,26,36,0.72) 100%),
+        radial-gradient(80% 64% at 50% 48%, rgba(18,25,36,0.55) 0%, rgba(18,25,36,0.25) 55%, rgba(18,25,36,0) 80%);
 }
 .svc-cta-title {
-    font-family: var(--font-head);
-    font-size: clamp(28px, 4vw, 44px); font-weight: 900;
-    color: var(--navy); margin: 10px 0 20px; line-height: 1.1;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(34px, 4.6vw, 64px); font-weight: 800;
+    line-height: 0.98; letter-spacing: -0.01em; text-transform: uppercase;
+    color: #fff; margin: 10px 0 20px;
+    text-shadow: 0 2px 40px rgba(12,18,28,0.45);
 }
 .svc-cta-desc {
     font-family: var(--font-body);
-    font-size: 17px; color: rgba(27,47,110,0.80);
+    font-size: 17px; color: rgba(255,255,255,0.78);
     max-width: 620px; margin: 0 auto 36px; line-height: 1.7;
 }
+.svc-cta-section .section-eyebrow { color: rgba(255,255,255,0.8); }
+.svc-cta-section .section-eyebrow::before { background: var(--tint); }
+.svc-cta-section .btn-outline { color: #fff; border-color: rgba(255,255,255,0.4); }
+.svc-cta-section .btn-outline > i { background: rgba(255,255,255,0.16); }
+.svc-cta-section .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.75); color: #fff; }
+.svc-cta-section .btn-outline:hover > i { background: rgba(255,255,255,0.26); }
 .gap-3 { gap: 12px !important; }
 
 /* Responsive */

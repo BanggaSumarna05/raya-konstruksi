@@ -1,5 +1,8 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
+import { usePageMotion } from "../Composables/usePageMotion";
+
+usePageMotion();
 
 const scopeItems = [
     {
@@ -61,14 +64,14 @@ const comparisonRows = [
     <Head title="Operation & Maintenance" />
 
     <!-- ── Page Hero ── -->
-    <section class="page-hero" style="background-image: url('/assets/img/cover-plant.webp');">
+    <section class="page-hero" style="background-image: url('/assets/img/refresh/svc-plant-hero.webp');">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">What We Do</span>
             <h1 class="page-hero-title">Operation &amp;<br />Maintenance</h1>
             <p class="page-hero-sub">
                 Reliable plant maintenance solutions across Oil &amp; Gas, Oleochemical, and
-                Petrochemical sectors — minimising downtime and extending asset life.
+                Petrochemical sectors, minimising downtime and extending asset life.
             </p>
         </div>
     </section>
@@ -77,7 +80,7 @@ const comparisonRows = [
     <section class="svc-overview">
         <div class="container">
             <div class="row align-items-center gy-5">
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-lg-6" data-rv>
                     <span class="section-eyebrow">Overview</span>
                     <h2 class="section-title">Comprehensive Plant<br />Maintenance Services</h2>
                     <div class="section-divider"></div>
@@ -89,7 +92,7 @@ const comparisonRows = [
                     </p>
                     <p class="section-body mt-3">
                         With disciplined planning, certified manpower, and strict HSE compliance, we ensure
-                        your facility operates safely and efficiently — helping prevent costly failures and
+                        your facility operates safely and efficiently, helping prevent costly failures and
                         extending asset life.
                     </p>
 
@@ -109,9 +112,9 @@ const comparisonRows = [
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                <div class="col-lg-6" data-rv data-rv-delay="100">
                     <div class="svc-img-wrap">
-                        <img src="/assets/img/footer-1.webp" alt="Plant Maintenance" class="svc-img" />
+                        <img src="/assets/img/refresh/wwd-plant.webp" alt="Plant Maintenance" class="svc-img" />
                         <div class="svc-img-badge">
                             <i class="bi bi-shield-check-fill"></i>
                             <span>Zero Accident<br />Commitment</span>
@@ -125,7 +128,7 @@ const comparisonRows = [
     <!-- ── Scope of Services ── -->
     <section class="svc-cards-section">
         <div class="container">
-            <div class="text-center mb-12" data-aos="fade-up">
+            <div class="text-center mb-12" data-rv>
                 <span class="section-eyebrow">Scope of Services</span>
                 <h2 class="section-title mt-2">Maintenance Approach</h2>
                 <div class="section-divider mx-auto"></div>
@@ -139,7 +142,7 @@ const comparisonRows = [
             <div class="row g-4">
                 <div v-for="(item, i) in scopeItems" :key="i"
                      class="col-md-6 col-lg-3"
-                     data-aos="fade-up" :data-aos-delay="i * 80">
+                     data-rv :data-rv-delay="i * 80">
                     <div class="svc-card">
                         <div class="svc-card-icon">
                             <i :class="'bi ' + item.icon"></i>
@@ -160,13 +163,13 @@ const comparisonRows = [
     <!-- ── Comparison Table ── -->
     <section class="comparison-section">
         <div class="container">
-            <div class="mb-10" data-aos="fade-up">
+            <div class="mb-10" data-rv>
                 <span class="section-eyebrow">Reference Guide</span>
                 <h2 class="section-title mt-2">Maintenance Level Comparison</h2>
                 <div class="section-divider"></div>
             </div>
 
-            <div class="table-wrap" data-aos="fade-up" data-aos-delay="100">
+            <div class="table-wrap" data-rv data-rv-delay="100">
                 <table class="raya-table">
                     <thead>
                         <tr>
@@ -192,8 +195,8 @@ const comparisonRows = [
     <!-- ── CTA ── -->
     <section class="svc-cta-section">
         <div class="svc-cta-overlay"></div>
-        <div class="container text-center" style="position:relative;z-index:2;" data-aos="fade-up">
-            <span class="section-eyebrow" style="color:rgba(27,47,110,0.7);">Partner With Raya</span>
+        <div class="container text-center" style="position:relative;z-index:2;" data-rv>
+            <span class="section-eyebrow">Partner With Raya</span>
             <h2 class="svc-cta-title">Ready to Work With Us?</h2>
             <p class="svc-cta-desc">
                 We'd love to hear from you. Contact our team to discuss your maintenance requirements
@@ -211,7 +214,7 @@ const comparisonRows = [
 
 <style scoped>
 /* Overview */
-.svc-overview { padding: 96px 0; background: #fff; }
+.svc-overview { padding: 96px 0; background: var(--paper); }
 .mt-3  { margin-top: 16px !important; }
 .mt-5  { margin-top: 28px !important; }
 
@@ -230,10 +233,10 @@ const comparisonRows = [
     display: flex; align-items: center; gap: 12px;
     font-family: var(--font-body);
     font-size: 13px; font-weight: 700; line-height: 1.4;
-    box-shadow: 0 10px 30px rgba(27,47,110,0.3);
+    box-shadow: 0 10px 30px rgba(43,65,132,0.3);
     z-index: 2;
 }
-.svc-img-badge i { font-size: 22px; color: var(--gold); flex-shrink: 0; }
+.svc-img-badge i { font-size: 22px; color: var(--tint); flex-shrink: 0; }
 
 /* Stats row */
 .om-stats {
@@ -260,7 +263,7 @@ const comparisonRows = [
 }
 
 /* Cards */
-.svc-cards-section { padding: 80px 0; background: var(--bg-light); }
+.svc-cards-section { padding: 80px 0; background: var(--off); }
 .mb-12 { margin-bottom: 48px; }
 
 .svc-card {
@@ -277,10 +280,10 @@ const comparisonRows = [
     width: 52px; height: 52px;
     background: var(--navy); border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px; color: var(--gold); margin-bottom: 18px;
+    font-size: 22px; color: var(--tint); margin-bottom: 18px;
     transition: background 0.25s;
 }
-.svc-card:hover .svc-card-icon { background: var(--gold); color: var(--navy); }
+.svc-card:hover .svc-card-icon { background: var(--navy-dark); color: #FFFFFF; }
 .svc-card-title {
     font-family: var(--font-head);
     font-size: 15px; font-weight: 800; color: var(--navy);
@@ -301,9 +304,9 @@ const comparisonRows = [
 .svc-check-list i { color: var(--navy); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
 
 /* Comparison table */
-.comparison-section { padding: 80px 0; background: #fff; }
+.comparison-section { padding: 80px 0; background: var(--paper); }
 .mb-10 { margin-bottom: 40px; }
-.table-wrap { overflow-x: auto; border-radius: 14px; box-shadow: var(--shadow-sm); }
+.table-wrap { overflow-x: auto; border-radius: 14px; box-shadow: var(--shadow-sm); background: #fff; }
 .raya-table {
     width: 100%; border-collapse: collapse;
     font-family: var(--font-body); font-size: 14px;
@@ -328,25 +331,41 @@ const comparisonRows = [
 }
 .level-cell { font-weight: 700; color: var(--navy); white-space: nowrap; }
 .result-cell { color: #1a6e3a; font-weight: 600; }
-.raya-table tbody tr:nth-child(odd) { background: var(--bg-light); }
+.raya-table tbody tr:nth-child(odd) { background: #fff; }
 .raya-table tbody tr:nth-child(odd):hover { background: #f0f2fa; }
 
-/* CTA */
-.svc-cta-section { padding: 96px 0; position: relative; background: var(--gold); }
+/* CTA — band foto, sama dengan CTA home */
+.svc-cta-section {
+    padding: 120px 0; position: relative; overflow: hidden;
+    background: #2B4184; isolation: isolate;
+}
 .svc-cta-overlay {
-    position: absolute; inset: 0;
-    background: url('/assets/img/cover-plant.webp') center/cover;
-    opacity: 0.06; z-index: 0;
+    position: absolute; inset: 0; z-index: -1;
+    background: url('/assets/img/refresh/svc-plant-hero.webp') center/cover;
+}
+.svc-cta-overlay::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(30,30,30,0.55) 0%, rgba(20,26,36,0.72) 100%),
+        radial-gradient(80% 64% at 50% 48%, rgba(18,25,36,0.55) 0%, rgba(18,25,36,0.25) 55%, rgba(18,25,36,0) 80%);
 }
 .svc-cta-title {
-    font-family: var(--font-head);
-    font-size: clamp(28px, 4vw, 44px); font-weight: 900;
-    color: var(--navy); margin: 10px 0 20px;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(34px, 4.6vw, 64px); font-weight: 800;
+    line-height: 0.98; letter-spacing: -0.01em; text-transform: uppercase;
+    color: #fff; margin: 10px 0 20px;
+    text-shadow: 0 2px 40px rgba(12,18,28,0.45);
 }
 .svc-cta-desc {
-    font-size: 17px; color: rgba(27,47,110,0.80);
+    font-size: 17px; color: rgba(255,255,255,0.78);
     max-width: 620px; margin: 0 auto 36px; line-height: 1.7;
 }
+.svc-cta-section .section-eyebrow { color: rgba(255,255,255,0.8); }
+.svc-cta-section .section-eyebrow::before { background: var(--tint); }
+.svc-cta-section .btn-outline { color: #fff; border-color: rgba(255,255,255,0.4); }
+.svc-cta-section .btn-outline > i { background: rgba(255,255,255,0.16); }
+.svc-cta-section .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.75); color: #fff; }
+.svc-cta-section .btn-outline:hover > i { background: rgba(255,255,255,0.26); }
 .gap-3 { gap: 12px !important; }
 
 @media (max-width: 768px) {

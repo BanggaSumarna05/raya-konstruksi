@@ -213,8 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function aos_init() {
     AOS.init({
-      duration: 800,
-      easing: 'slide',
+      duration: 700,
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)', // sama dengan transisi reveal home
+      offset: 80,
       once: true,
       mirror: false
     });

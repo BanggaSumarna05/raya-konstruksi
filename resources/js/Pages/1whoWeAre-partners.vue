@@ -1,5 +1,9 @@
 <script setup>
+import { ref } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 
 defineProps({
     clients: {
@@ -7,6 +11,16 @@ defineProps({
         default: () => []
     }
 });
+
+const failedLogos = ref(new Set());
+
+function markLogoBroken(id) {
+    failedLogos.value = new Set(failedLogos.value).add(id);
+}
+
+function logoOk(c, i) {
+    return !!c.logo_url && !failedLogos.value.has(c.id || i);
+}
 </script>
 
 <template>
@@ -31,26 +45,20 @@ defineProps({
             <div class="row justify-content-center text-center gy-4">
                 <div class="col-6 col-md-3">
                     <div class="pi-stat">
-                        <div class="pi-num">{{ clients && clients.length ? clients.length : '17' }}<sup>+</sup></div>
+                        <div class="pi-num">20<sup>+</sup></div>
                         <div class="pi-label">Industry Clients</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="pi-stat">
                         <div class="pi-num">50<sup>+</sup></div>
-                        <div class="pi-label">Projects Completed</div>
+                        <div class="pi-label">Projects</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="pi-stat">
-                        <div class="pi-num">8<sup>+</sup></div>
-                        <div class="pi-label">Years of Partnership</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="pi-stat">
-                        <div class="pi-num">5</div>
-                        <div class="pi-label">Islands Covered</div>
+                        <div class="pi-num">14</div>
+                        <div class="pi-label">Project Regions</div>
                     </div>
                 </div>
             </div>
@@ -60,7 +68,7 @@ defineProps({
     <!-- ── Logo grid ── -->
     <section class="partners-grid-section">
         <div class="container">
-            <div class="text-center mb-12" data-aos="fade-up">
+            <div class="text-center mb-12" data-rv>
                 <span class="section-eyebrow">Our Clients</span>
                 <h2 class="section-title mt-2">Trusted by Industry Leaders</h2>
                 <div class="section-divider mx-auto"></div>
@@ -73,10 +81,11 @@ defineProps({
             <div class="row g-4">
                 <div v-for="(c, i) in clients" :key="c.id || i"
                      class="col-6 col-md-3 col-lg-2"
-                     data-aos="fade-up" :data-aos-delay="i % 6 * 60">
+                     data-rv :data-rv-delay="i % 6 * 60">
                     <div class="partner-card">
-                        <img :src="c.logo_url" :alt="c.name" class="partner-logo" />
-                        <p class="partner-name">{{ c.name }}</p>
+                        <img v-if="logoOk(c, i)" :src="c.logo_url" :alt="c.name" class="partner-logo" @error="markLogoBroken(c.id || i)" />
+                        <span v-else class="partner-wordmark">{{ c.name }}</span>
+                        <p v-if="logoOk(c, i)" class="partner-name">{{ c.name }}</p>
                     </div>
                 </div>
             </div>
@@ -86,11 +95,11 @@ defineProps({
     <!-- ── CTA ── -->
     <section class="partners-cta">
         <div class="partners-cta-overlay"></div>
-        <div class="container text-center" style="position:relative;z-index:2;" data-aos="fade-up">
-            <span class="section-eyebrow" style="color:rgba(27,47,110,0.7);">Join Our Client List</span>
+        <div class="container text-center" style="position:relative;z-index:2;" data-rv>
+            <span class="section-eyebrow">Join Our Client List</span>
             <h2 class="partners-cta-title">Ready to Partner with RAYA?</h2>
             <p class="partners-cta-desc">
-                Join over 17 industry leaders who trust RAYA for their construction, fabrication,
+                Join over 20 industry leaders who trust RAYA for their construction, fabrication,
                 and maintenance needs across Indonesia.
             </p>
             <Link :href="route('contactUs')" class="btn-primary btn-lg">
@@ -111,15 +120,15 @@ defineProps({
     font-family: var(--font-head); font-size: clamp(32px, 4vw, 48px);
     font-weight: 900; color: #fff; line-height: 1;
 }
-.pi-num sup { font-size: 0.55em; color: var(--gold); font-weight: 900; }
+.pi-num sup { font-size: 0.55em; color: var(--tint); font-weight: 900; }
 .pi-label {
     font-family: var(--font-body); font-size: 11px; font-weight: 700;
-    color: rgba(255,255,255,0.50); text-transform: uppercase;
+    color: rgba(255,255,255,0.72); text-transform: uppercase;
     letter-spacing: 1.5px; margin-top: 6px;
 }
 
 /* Grid */
-.partners-grid-section { padding: 80px 0; background: var(--bg-light); }
+.partners-grid-section { padding: 80px 0; background: var(--off); }
 .mb-12 { margin-bottom: 48px; }
 
 .partner-card {
@@ -138,25 +147,43 @@ defineProps({
     margin-bottom: 12px;
 }
 .partner-card:hover .partner-logo { filter: grayscale(0%); opacity: 1; }
+.partner-wordmark {
+    height: 52px; max-width: 140px; margin-bottom: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head); font-size: 14px; font-weight: 800;
+    line-height: 1.15; color: var(--navy); opacity: 0.75;
+    transition: opacity 0.3s;
+}
+.partner-card:hover .partner-wordmark { opacity: 1; }
 .partner-name {
     font-family: var(--font-body); font-size: 11px; font-weight: 700;
     color: var(--text-muted); text-align: center; margin: 0;
     text-transform: uppercase; letter-spacing: 0.5px;
 }
 
-/* CTA */
-.partners-cta { padding: 96px 0; position: relative; background: var(--gold); }
+/* CTA — band foto, sama dengan CTA home */
+.partners-cta { padding: 120px 0; position: relative; overflow: hidden; background: #2B4184; isolation: isolate; }
 .partners-cta-overlay {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; z-index: -1;
     background: url('/assets/img/handshake-3.webp') center/cover;
-    opacity: 0.06; z-index: 0;
+}
+.partners-cta-overlay::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(30,30,30,0.55) 0%, rgba(20,26,36,0.72) 100%),
+        radial-gradient(80% 64% at 50% 48%, rgba(18,25,36,0.55) 0%, rgba(18,25,36,0.25) 55%, rgba(18,25,36,0) 80%);
 }
 .partners-cta-title {
-    font-family: var(--font-head); font-size: clamp(28px, 4vw, 44px);
-    font-weight: 900; color: var(--navy); margin: 10px 0 20px;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(34px, 4.6vw, 64px); font-weight: 800;
+    line-height: 0.98; letter-spacing: -0.01em; text-transform: uppercase;
+    color: #fff; margin: 10px 0 20px;
+    text-shadow: 0 2px 40px rgba(12,18,28,0.45);
 }
 .partners-cta-desc {
-    font-size: 17px; color: rgba(27,47,110,0.80);
+    font-size: 17px; color: rgba(255,255,255,0.78);
     max-width: 580px; margin: 0 auto 36px; line-height: 1.7;
 }
+.partners-cta .section-eyebrow { color: rgba(255,255,255,0.8); }
+.partners-cta .section-eyebrow::before { background: var(--tint); }
 </style>

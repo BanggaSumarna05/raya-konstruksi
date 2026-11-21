@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Mail\InqueryMail;
 use App\Models\Blog;
+use App\Models\Career;
 use App\Models\Client;
+use App\Models\InstagramPost;
+use App\Models\LinkedinPost;
+use App\Models\Office;
 use App\Models\Project;
+use App\Models\ProjectLocation;
+use App\Models\Setting;
+use App\Models\ThreadsPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Inertia\Inertia;
@@ -655,25 +664,68 @@ class FrontController extends Controller
                 ->limit(4)
                 ->get()
         );
+        $blogs->each(fn (Blog $blog) => $this->dropMissingBlogImage($blog));
+        $projects = Cache::remember('home_projects', now()->addHours(2), fn () =>
+            Project::all()
+                ->sortByDesc(fn ($p) => $p->started_at?->timestamp ?? $p->created_at->timestamp)
+                ->take(8)
+                ->values()
+                ->map(fn ($p) => [
+                'id'           => $p->id,
+                'title'        => $p->title,
+                'slug'         => $p->slug,
+                'client'       => $p->client,
+                'duration'     => $p->duration,
+                'location'     => $p->location,
+                'service_type' => $p->service_type,
+                'image'        => $p->image_url,
+            ])
+        );
         $clients = $this->getStaticClients();
         $heroClients = $this->getHeroClients();
+        $projectLocations = ProjectLocation::where('is_active', true)->orderBy('order')
+            ->get(['name', 'lat', 'lng']);
+        SEOMeta::setDescription('Raya Konstruksi delivers integrated construction, fabrication, catalyst handling, and plant maintenance for Indonesia\'s industrial sector.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1home', [
             'blogs' => $blogs,
+            'projects' => $projects,
             'clients' => $clients,
             'heroClients' => $heroClients,
+            'projectLocations' => $projectLocations,
         ]);
     }
 
     public function whoWeAre()
     {
+        $clients = $this->getStaticClients();
+        $projects = Cache::remember('who_we_are_projects', now()->addHours(2), fn () =>
+            Project::all()
+                ->sortByDesc(fn ($p) => $p->started_at?->timestamp ?? $p->created_at->timestamp)
+                ->take(3)
+                ->values()
+                ->map(fn ($p) => [
+                'id'           => $p->id,
+                'title'        => $p->title,
+                'slug'         => $p->slug,
+                'client'       => $p->client,
+                'location'     => $p->location,
+                'service_type' => $p->service_type,
+                'image'        => $p->image_url,
+            ])
+        );
+        SEOMeta::setDescription('Learn about PT Raya Konstruksi Internasional: our company profile, vision and mission, core values, and the industrial projects we deliver across Indonesia.');
         SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('1whoWeAre');
+        return Inertia::render('1whoWeAre', [
+            'clients' => $clients,
+            'projects' => $projects,
+        ]);
     }
 
 
     public function corporateStructure()
     {
+        SEOMeta::setDescription('Meet the leadership team guiding Raya Konstruksi, from the Board of Commissioners and Board of Directors to senior management.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1whoWeAre-bod');
     }
@@ -681,6 +733,7 @@ class FrontController extends Controller
     public function clientPartner()
     {
         $clients = $this->getStaticClients();
+        SEOMeta::setDescription('Raya Konstruksi is trusted by Indonesia\'s leading energy, petrochemical, and manufacturing companies. See our clients and partners.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1whoWeAre-partners', [
             'clients' => $clients
@@ -689,57 +742,109 @@ class FrontController extends Controller
 
     public function whatWeDo()
     {
+        SEOMeta::setDescription('Explore Raya Konstruksi services: construction and fabrication, catalyst handling, plant maintenance, and soil and civil works.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1whatWeDo');
     }
 
     public function contactUs()
     {
+        $offices = Office::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+        SEOMeta::setDescription('Contact PT Raya Konstruksi Internasional in South Jakarta for construction, fabrication, catalyst handling, and plant maintenance inquiries.');
         SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('1contact');
+        return Inertia::render('1contact', [
+            'offices' => $offices,
+        ]);
     }
 
     public function career()
     {
+        $careers = Career::where('is_active', true)
+            ->orderBy('order')
+            ->get()
+            ->map(fn (Career $career) => [
+                ...$career->toArray(),
+                'description' => $career->description
+                    ? Str::sanitizeHtml($career->description)
+                    : $career->description,
+            ]);
+
+        $linkedinPosts = Cache::remember('career_linkedin_posts', now()->addHours(1), fn () =>
+            LinkedinPost::where('is_active', true)
+                ->orderBy('order')
+                ->get(['id', 'url'])
+                ->map(fn (LinkedinPost $post) => [
+                    'id' => $post->id,
+                    'url' => $post->url,
+                ])
+                ->values()
+        );
+
+        SEOMeta::setDescription('Build your career with Raya Konstruksi. Explore current openings for engineers, technicians, and specialists across Indonesia.');
         SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('1career');
+        return Inertia::render('1career', [
+            'careers' => $careers,
+            'linkedinPosts' => $linkedinPosts,
+            'threadsPosts' => ThreadsPost::where('is_active', true)->orderBy('order')->get()
+                ->map(fn (ThreadsPost $post) => [
+                    'id' => $post->id,
+                    'url' => $post->post_url,
+                    'embed' => $post->embed_url,
+                ]),
+        ]);
     }
 
     public function sustainability()
     {
+        SEOMeta::setDescription('Raya Konstruksi is committed to sustainability, health, safety, environment, and corporate social responsibility across our operations.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1sustainability');
     }
 
     public function safety()
     {
+        SEOMeta::setDescription('Health, Safety and Environment at Raya Konstruksi: Target Zero injuries, protecting people and the environment on every site.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1safety');
     }
 
     public function quality()
     {
+        SEOMeta::setDescription('Raya Konstruksi builds a strong quality culture with clear standards, certifications, and risk awareness across every project we deliver.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1quality');
     }
 
     public function respon()
     {
+        SEOMeta::setDescription('Raya Konstruksi Corporate Social Responsibility programs supporting the communities around our operations in Indonesia.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1respon');
     }
 
     public function news()
     {
-        $blogs = Cache::remember('news_listing_' . request('page', 1), now()->addMinutes(30), fn () =>
+        $page = max(1, (int) request('page', 1));
+
+        $blogs = Cache::remember('news_listing_' . $page, now()->addMinutes(30), fn () =>
             Blog::with('user')
                 ->where('is_published', 1)
                 ->orderBy('published_at', 'desc')
                 ->paginate(4)
         );
+        $blogs->getCollection()->each(fn (Blog $blog) => $this->dropMissingBlogImage($blog));
+        SEOMeta::setDescription('Latest news, project milestones, and company updates from PT Raya Konstruksi Internasional.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1news', [
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'instagramPosts' => InstagramPost::where('is_active', true)->orderBy('order')->get()
+                ->map(fn (InstagramPost $post) => [
+                    'id' => $post->id,
+                    'url' => $post->post_url,
+                    'embed' => $post->embed_url,
+                ]),
         ]);
     }
 
@@ -749,15 +854,22 @@ class FrontController extends Controller
             Blog::with('user')->where('slug', $slug)->where('is_published', 1)->first()
         );
 
-        // Don't cache null â€” if result is null, forget and abort
+        // Don't cache null, if result is null, forget and abort
         if (!$blog) {
             Cache::forget("blog_{$slug}");
             abort(404);
         }
+        $this->dropMissingBlogImage($blog);
 
+        $excerpt = trim(preg_replace('/\s+/', ' ', strip_tags((string) $blog->content)));
+        SEOMeta::setTitle($blog->title . ' | Raya Konstruksi');
+        SEOMeta::setDescription($excerpt !== '' ? Str::limit($excerpt, 155) : 'Latest news and project updates from PT Raya Konstruksi Internasional.');
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('1newsDetail', [
-            'blog' => $blog
+            'blog' => [
+                ...$blog->toArray(),
+                'content' => Str::sanitizeHtml((string) $blog->content),
+            ],
         ]);
     }
 
@@ -765,7 +877,7 @@ class FrontController extends Controller
     {
         $data = [];
         $data['title'] = 'Catalyst Handling Indonesia';
-        $data['desc'] = "Catalyst Loading The process of placing a catalyst into a chemical reactor to facilitate reactions without being consumed during the process. This step is critical to ensure reaction efficiency, uniform catalyst distribution, and maximum conversion of reactants to products. Here's how catalyst loading works. We carry out the loading process using Big-Bags or Drums, depending on the preferences of our clients or the situation of the equipment to be loaded and its location in the plant. Catalyst loading process with DRUMS The main benefit of the drums is that they are reusable, so once emptied they can be returned to the supplier. This considerably reduces waste generation at the plant. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. The drum loading mechanism consists of filling the hopper and, once it is loaded, raising it to the mouth of the equipment and proceeding to load the catalyst. Big bags are large and flexible bags made of strong materials used to transport bulk material (in this case catalyst). Big-bags are easier to handle due to their â€œflexibilityâ€ and are more adaptable in case of limited manoeuvring space. On the other hand, are often discarded once they have been used, so we generate waste and need to dispose of them properly. In terms of the manoeuvre, the process consists of placing the hopper in the mouth of the reactor, and then raising the big bags without the need to move the hopper at each manoeuvre. Catalyst Method In catalyst loading, there are many methods that are often used, that's why we commonly use the 3 method's below Dry Catalyst Loading Dry catalyst loading involves the introduction of solid catalysts into the reactor without using any auxiliary equipment or liquid medium. commodi magnam occaecati. Dense Catalyst Loading Dense loading optimizes catalyst placement by maximizing packing density and reducing void spaces in the reactor. This method often requires specialized equipment, such as dense loading machines. Sock Catalyst Loading Sock loading employs a sock or tubular bag to guide catalysts into the reactor gently, minimizing physical damage to fragile materials.";
+        $data['desc'] = 'Safe and efficient catalyst loading and handling for refineries and petrochemical plants. Raya Konstruksi manages dense, sock, and drum loading with strict HSE controls.';
         SEOMeta::setTitle($data['title']);
         SEOMeta::setDescription($data['desc']);
         SEOMeta::addKeyword($this->keywords);
@@ -778,7 +890,7 @@ class FrontController extends Controller
     {
         $data = [];
         $data['title'] = 'Construction & Fabrication Indonesia';
-        $data['desc'] = "Raya Konstruksi provides comprehensive construction and fabrication services covering structural, piping, and tank systems. Backed by experienced engineers and modern facilities reliability across industries.";
+        $data['desc'] = 'Comprehensive construction and fabrication services covering structural, piping, and tank systems, backed by experienced engineers and modern facilities.';
         SEOMeta::setTitle($data['title']);
         SEOMeta::setDescription($data['desc']);
         SEOMeta::addKeyword($this->keywords);
@@ -791,7 +903,7 @@ class FrontController extends Controller
     {
         $data = [];
         $data['title'] = 'Plant Maintenance Indonesia';
-        $data['desc'] = "Plant maintenance is key to maximizing efficiency, reducing downtime and cutting costs. Learn all about strategies, essential tools, and more!";
+        $data['desc'] = 'Plant maintenance services for oil and gas, oleochemical, and petrochemical facilities: routine servicing, shutdowns, and turnarounds delivered safely.';
         SEOMeta::setTitle($data['title']);
         SEOMeta::setDescription($data['desc']);
         SEOMeta::addKeyword($this->keywords);
@@ -807,7 +919,10 @@ class FrontController extends Controller
         SEOMeta::addKeyword($this->keywords);
 
         $projects = Cache::remember('portfolio_projects', now()->addHours(6), fn () =>
-            Project::orderBy('id', 'desc')->get()->map(fn ($p) => [
+            Project::all()
+                ->sortByDesc(fn ($p) => $p->started_at?->timestamp ?? $p->created_at->timestamp)
+                ->values()
+                ->map(fn ($p) => [
                 'id'           => $p->id,
                 'title'        => $p->title,
                 'slug'         => $p->slug,
@@ -853,27 +968,6 @@ class FrontController extends Controller
         return response()->file(public_path('assets/pdf/Raya_-_Soil.pdf'));
     }
 
-    public function heavyRental()
-    {
-        $data = [];
-        $data['title'] = 'Heavy Equipment Rental';
-        $data['desc'] = "Plant maintenance is the service and repair of assets and equipment. During normal operation, assets may accumulate wear-and-tear that needs to be addressed. Deviations outside of normal operation of cause the majority of damage to equipment and assets.";
-        SEOMeta::setTitle($data['title']);
-        SEOMeta::setDescription($data['desc']);
-        SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('1services-equipment', [
-            'data' => $data
-        ]);
-    }
-
-    public function equipment()
-    {
-        SEOMeta::setTitle('Equipment List | Raya Konstruksi');
-        SEOMeta::setDescription('Heavy equipment and machinery available for rental and project use.');
-        SEOMeta::addKeyword($this->keywords);
-        return Inertia::render('equipment/index');
-    }
-
 
 
 
@@ -887,11 +981,6 @@ class FrontController extends Controller
         SEOMeta::addKeyword($this->keywords);
         return Inertia::render('aboutUs');
     }
-    public function ecatalogue()
-    {
-        return response()->file(public_path('/assets/ecatalogue/Catalogue Equipment Makadia Group International.pdf'));
-    }
-
     public function submitEmail(Request $request)
     {
         // Validate all form fields + reCAPTCHA before sending
@@ -912,7 +1001,7 @@ class FrontController extends Controller
         ]);
 
         try {
-            $recipient = config('mail.inquiry_recipient', 'marketing@rayakonstruksi.com');
+            $recipient = Setting::get('inquiry_recipient_email', config('mail.inquiry_recipient', 'marketing@rayakonstruksi.com'));
             Mail::to($recipient)->send(new InqueryMail($validated));
             return redirect()->back()->with('success', 'Your inquiry has been sent. We will contact you shortly.');
         } catch (\Throwable $th) {
@@ -921,48 +1010,55 @@ class FrontController extends Controller
         }
     }
 
+    /**
+     * Hero clients (carousel homepage) — dari DB, diatur via panel admin.
+     */
     private function getHeroClients(): array
     {
-        return [
-            ['id' => 1,  'name' => 'PT Muria Sumba Manis',               'logo_url' => asset('assets/img/client/logo-msm.webp'),               'url' => null],
-            ['id' => 2,  'name' => 'Pertamina RU V',                     'logo_url' => asset('assets/img/client/Pertamina RU V.png'),          'url' => null],
-            ['id' => 3,  'name' => 'PT Lotte Chemical Indonesia',        'logo_url' => asset('assets/img/client/lotte-chemical.webp'),         'url' => null],
-            ['id' => 4,  'name' => 'PT Air Products Indonesia Gases',    'logo_url' => asset('assets/img/client/logo-air-products.webp'),      'url' => null],
-            ['id' => 5,  'name' => 'OKI Pulp & Paper',                   'logo_url' => asset('assets/img/client/logo_OKI.svg'),                'url' => null],
-            ['id' => 6,  'name' => 'Apical / RGE Group',                 'logo_url' => asset('assets/img/client/apical-retina.webp'),          'url' => null],
-            ['id' => 7,  'name' => 'PT Unilever Oleochemical Indonesia', 'logo_url' => asset('assets/img/client/logo-unilever.webp'),          'url' => null],
-            ['id' => 8,  'name' => 'Jadestone Energy',                   'logo_url' => asset('assets/img/client/logo-jadestone.webp'),         'url' => null],
-            ['id' => 9,  'name' => 'PT Casa Asraya Properti',            'logo_url' => asset('assets/img/client/logo-asraya.webp'),            'url' => null],
-            ['id' => 10, 'name' => 'PT Tatamulia Nusantara Indah',       'logo_url' => asset('assets/img/client/tata.webp'),                  'url' => null],
-            ['id' => 11, 'name' => 'SWG',                                'logo_url' => asset('assets/img/client/swg.webp'),                   'url' => null],
-            ['id' => 12, 'name' => 'Maxiterm',                           'logo_url' => asset('assets/img/client/maxiterm.webp'),              'url' => null],
-            ['id' => 13, 'name' => 'Kine Jo',                            'logo_url' => asset('assets/img/client/kine-jo-logo.webp'),          'url' => null],
-            ['id' => 14, 'name' => 'Enerco',                             'logo_url' => asset('assets/img/client/logo-enerco.webp'),           'url' => null],
-        ];
+        return Cache::remember('clients_hero', now()->addHours(6), fn () =>
+            Client::query()
+                ->where('is_active', true)
+                ->where('is_hero', true)
+                ->orderBy('order')
+                ->get()
+                ->map(fn (Client $c) => [
+                    'id'       => $c->id,
+                    'name'     => $c->name,
+                    'logo_url' => $c->logo_url,
+                    'url'      => $c->url,
+                ])
+                ->all()
+        );
     }
 
+    /**
+     * Sembunyikan gambar berita yang filenya tidak ada, agar view memakai fallback.
+     */
+    private function dropMissingBlogImage(Blog $blog): void
+    {
+        if ($blog->image && !Storage::disk('public')->exists($blog->image)) {
+            $blog->image = null;
+        }
+    }
+
+    /**
+     * Semua client aktif (homepage + halaman clients & partners).
+     */
     private function getStaticClients(): array
     {
-        return [
-            ['id' => 1,  'name' => 'PT Muria Sumba Manis',               'logo_url' => asset('assets/img/client/logo-msm.webp'),               'url' => null],
-            ['id' => 2,  'name' => 'Pertamina RU V',                    'logo_url' => asset('assets/img/client/Pertamina RU V.png'),         'url' => null],
-            ['id' => 3,  'name' => 'PT Lotte Chemical Indonesia',        'logo_url' => asset('assets/img/client/lotte-chemical.webp'),         'url' => null],
-            ['id' => 4,  'name' => 'PT Air Products Indonesia Gases',    'logo_url' => asset('assets/img/client/logo-air-products.webp'),      'url' => null],
-            ['id' => 5,  'name' => 'OKI Pulp & Paper',                   'logo_url' => asset('assets/img/client/logo_OKI.svg'),                'url' => null],
-            ['id' => 6,  'name' => 'Apical / RGE Group',                 'logo_url' => asset('assets/img/client/apical-retina.webp'),          'url' => null],
-            ['id' => 7,  'name' => 'PT Unilever Oleochemical Indonesia', 'logo_url' => asset('assets/img/client/logo-unilever.webp'),          'url' => null],
-            ['id' => 8,  'name' => 'Jadestone Energy',                   'logo_url' => asset('assets/img/client/logo-jadestone.webp'),         'url' => null],
-            ['id' => 9,  'name' => 'PT Casa Asraya Properti',            'logo_url' => asset('assets/img/client/logo-asraya.webp'),            'url' => null],
-            ['id' => 10, 'name' => 'PT Tatamulia Nusantara Indah',       'logo_url' => asset('assets/img/client/tata.webp'),                  'url' => null],
-            ['id' => 11, 'name' => 'Pupuk Indonesia Logistik',           'logo_url' => asset('assets/img/client/logo-pupuk.webp'),           'url' => null],
-            ['id' => 12, 'name' => 'Pindo Deli',                         'logo_url' => asset('assets/img/client/logo_pindo_deli.webp'),      'url' => null],
-            ['id' => 13, 'name' => 'Bagus Karya',                        'logo_url' => asset('assets/img/client/PT Bagus Karya.webp'),       'url' => null],
-            ['id' => 14, 'name' => 'ISS (Indo Sutech)',                  'logo_url' => asset('assets/img/client/pt_indo_sutech_sejahtera_logo.webp'), 'url' => null],
-            ['id' => 15, 'name' => 'SWG',                                'logo_url' => asset('assets/img/client/swg.webp'),                   'url' => null],
-            ['id' => 16, 'name' => 'Maxiterm',                           'logo_url' => asset('assets/img/client/maxiterm.webp'),              'url' => null],
-            ['id' => 17, 'name' => 'Kine Jo',                            'logo_url' => asset('assets/img/client/kine-jo-logo.webp'),          'url' => null],
-            ['id' => 18, 'name' => 'Enerco',                             'logo_url' => asset('assets/img/client/logo-enerco.webp'),           'url' => null],
-        ];
+        return Cache::remember('clients_active', now()->addHours(6), fn () =>
+            Client::query()
+                ->where('is_active', true)
+                ->orderBy('order')
+                ->get()
+                ->map(fn (Client $c) => [
+                    'id'       => $c->id,
+                    'name'     => $c->name,
+                    'logo_url' => $c->logo_url,
+                    'url'      => $c->url,
+                ])
+                ->all()
+        );
     }
 
 }

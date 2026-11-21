@@ -43,6 +43,14 @@ class BlogResource extends Resource
                     ->directory('blog-images')
                     ->visibility('public')
                     ->label('Thumbnail / Featured Image'),
+                Forms\Components\FileUpload::make('video')
+                    ->disk('public')
+                    ->directory('blog-videos')
+                    ->visibility('public')
+                    ->acceptedFileTypes(['video/mp4', 'video/webm'])
+                    ->maxSize(51200)
+                    ->helperText('File video berita (MP4/WebM, maks 50MB). Kosongkan jika tidak ada.')
+                    ->label('Video'),
                 Forms\Components\Toggle::make('is_published')
                     ->label('Published')
                     ->default(false),
@@ -58,8 +66,7 @@ class BlogResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->disk('public')
-                    ->label('Gambar')
-                    ->defaultImageUrl(fn () => asset('assets/img/placeholder.jpg')),
+                    ->label('Gambar'),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->sortable()

@@ -3,9 +3,16 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+
+const props = defineProps({
+    markers: {
+        type: Array,
+        default: () => [],
+    },
+});
 
 // Perbaiki path icon Leaflet (agar ikon marker muncul)
 delete L.Icon.Default.prototype._getIconUrl;
@@ -15,32 +22,37 @@ L.Icon.Default.mergeOptions({
     shadowUrl: new URL('leaflet/dist/images/marker-shadow.png', import.meta.url).href,
 });
 
-// Data marker
-const markers = [
-    { name: "Sumba", coords: [-9.6586, 120.2530] },
-    { name: "Jakarta", coords: [-6.2088, 106.8456] },
-    { name: "Riau (Pekanbaru)", coords: [0.5071, 101.4478] },
-    { name: "Sei Mangkei", coords: [3.4579, 99.2143] },
-    { name: "Balikpapan", coords: [-1.2654, 116.8312] },
-    { name: "Batam", coords: [1.0456, 104.0305] },
-];
+// Data marker dari props (fallback ke lokasi bawaan)
+const markers = ref(
+    props.markers.length
+        ? props.markers.map((m) => ({ name: m.name, coords: [Number(m.lat), Number(m.lng)] }))
+        : [
+            { name: "Sumba", coords: [-9.6586, 120.2530] },
+            { name: "Jakarta", coords: [-6.2088, 106.8456] },
+            { name: "Riau (Pekanbaru)", coords: [0.5071, 101.4478] },
+            { name: "Sei Mangkei", coords: [3.4579, 99.2143] },
+            { name: "Balikpapan", coords: [-1.2654, 116.8312] },
+            { name: "Batam", coords: [1.0456, 104.0305] },
+        ]
+);
 
 onMounted(() => {
 
     // Inisialisasi map posisi tengah Indonesia
     const map = L.map("map").setView([-1, 118.5], 5);
 
-    // Tambah layer peta OSM
+    // Basemap CARTO Voyager
     L.tileLayer(
-        "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+        "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
         {
-            maxZoom: 18,
-            // attribution: '&copy; CartoDB',
+            maxZoom: 20,
+            subdomains: "abcd",
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         }
     ).addTo(map);
 
     // Render semua marker
-    markers.forEach((m) => {
+    markers.value.forEach((m) => {
         const icon = L.divIcon({
             className: "custom-marker",
             html: `
@@ -52,6 +64,14 @@ onMounted(() => {
 
         L.marker(m.coords, { icon }).addTo(map);
     });
+
+    const modalEl = document.getElementById("mapModal");
+    if (modalEl) {
+        modalEl.addEventListener("shown.bs.modal", () => {
+            map.invalidateSize();
+            map.setView([-1, 118.5], 5);
+        });
+    }
 
 });
 </script>

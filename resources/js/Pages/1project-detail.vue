@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 
 const props = defineProps({
     project: { type: Object, required: true }
@@ -111,8 +114,8 @@ function onKeydown(e) {
     <!-- ── Empty gallery state ── -->
     <section class="proj-gallery-section" v-else>
         <div class="container text-center" style="padding: 60px 0;">
-            <i class="bi bi-images" style="font-size: 48px; color: #cbd5e1;"></i>
-            <p style="color: #94a3b8; margin-top: 16px;">Gallery belum tersedia untuk proyek ini.</p>
+            <i class="bi bi-images" style="font-size: 48px; color: var(--tint);"></i>
+            <p style="color: var(--muted); margin-top: 16px;">Gallery is not available for this project yet.</p>
         </div>
     </section>
 
@@ -140,24 +143,23 @@ function onKeydown(e) {
 
 <style scoped>
 /* ── Hero ── */
-.proj-hero .page-hero-overlay {
-    background: linear-gradient(to top, rgba(5,8,22,0.85) 0%, rgba(5,8,22,0.45) 50%, rgba(5,8,22,0.25) 100%);
-}
+.proj-hero { min-height: 52vh; }
+.proj-hero .page-hero-title { font-size: clamp(32px, 4.6vw, 64px); max-width: 20ch; }
 .proj-hero-meta {
     display: flex; flex-wrap: wrap; gap: 20px; margin-top: 16px;
 }
 .proj-hero-meta span {
     display: flex; align-items: center; gap: 8px;
     font-size: 14px; color: rgba(255,255,255,0.8);
-    font-family: "Pliant", sans-serif;
+    font-family: "Figtree", sans-serif;
 }
-.proj-hero-meta i { color: #F59E0B; }
+.proj-hero-meta i { color: var(--tint); }
 
 /* ── Info section ── */
-.proj-info-section { padding: 48px 0 32px; background: #f8fafc; }
+.proj-info-section { padding: 48px 0 32px; background: var(--paper); }
 .proj-back-link {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 14px; font-weight: 600; color: #1B2F6E;
+    font-size: 14px; font-weight: 600; color: var(--gold);
     text-decoration: none; margin-bottom: 32px;
     transition: gap 0.2s;
 }
@@ -167,27 +169,26 @@ function onKeydown(e) {
     gap: 16px; margin-bottom: 32px;
 }
 .proj-info-card {
-    background: #fff; border: 1px solid #e2e8f0;
-    border-radius: 12px; padding: 20px;
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius-card); padding: 20px;
 }
 .proj-info-label {
-    font-size: 11px; font-weight: 700; color: #94a3b8;
+    font-size: 11px; font-weight: 700; color: var(--muted);
     text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
 }
 .proj-info-value {
-    font-size: 15px; font-weight: 600; color: #1e293b;
-    font-family: "Pliant", sans-serif;
+    font-size: 15px; font-weight: 600; color: var(--eerie);
+    font-family: "Figtree", sans-serif;
 }
 .proj-description {
     max-width: 720px;
-    font-size: 16px; line-height: 1.75; color: #475569;
-    font-family: "Pliant", sans-serif;
+    font-size: 16px; line-height: 1.75; color: var(--text-body);
+    font-family: "Figtree", sans-serif;
 }
 
 /* ── Gallery ── */
-.proj-gallery-section { padding: 64px 0; background: #0d1120; }
-.proj-gallery-section .section-eyebrow { color: rgba(255,255,255,0.5); }
-.proj-gallery-section .section-title { color: #fff; }
+.proj-gallery-section { padding: 64px 0; background: var(--paper); }
+.proj-gallery-section .section-title { color: var(--eerie); }
 
 .proj-gallery-grid {
     display: grid;
@@ -203,9 +204,9 @@ function onKeydown(e) {
 
 .proj-gallery-item {
     position: relative; overflow: hidden;
-    border-radius: 10px; cursor: pointer;
+    border-radius: var(--radius-card); cursor: pointer;
     aspect-ratio: 4/3;
-    background: #1e293b;
+    background: var(--off);
 }
 .proj-gallery-item img {
     width: 100%; height: 100%; object-fit: cover;
@@ -215,7 +216,7 @@ function onKeydown(e) {
 .proj-gallery-item:hover img { transform: scale(1.06); }
 .proj-gallery-overlay {
     position: absolute; inset: 0;
-    background: rgba(5,8,22,0.45);
+    background: rgba(13,20,40,0.45);
     display: flex; align-items: center; justify-content: center;
     opacity: 0; transition: opacity 0.3s;
 }
@@ -239,7 +240,7 @@ function onKeydown(e) {
 }
 .proj-lb-counter {
     margin-top: 12px; font-size: 13px;
-    color: rgba(255,255,255,0.5); font-family: "Pliant", sans-serif;
+    color: rgba(255,255,255,0.5); font-family: "Figtree", sans-serif;
 }
 .proj-lb-close {
     position: fixed; top: 20px; right: 24px;

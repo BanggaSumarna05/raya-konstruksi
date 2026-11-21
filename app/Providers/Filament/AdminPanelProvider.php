@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('rk-8472')
+            ->path('rk130718')
             ->login()
             ->brandName('Raya Konstruksi')
             ->brandLogo(asset('assets/img/logo-raya-polos.webp'))
@@ -64,7 +64,7 @@ class AdminPanelProvider extends PanelProvider
                     @if(request()->routeIs(\'filament.admin.auth.login\'))
                     <style>
                         body {
-                            background-image: url("/assets/img/cover-plant.webp") !important;
+                            background-image: url("{{ asset(\'/assets/img/cover-plant.webp\') }}") !important;
                             background-size: cover !important;
                             background-position: center !important;
                         }

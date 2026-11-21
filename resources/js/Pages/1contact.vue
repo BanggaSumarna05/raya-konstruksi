@@ -1,5 +1,8 @@
 <script setup>
 import { Head, usePage } from '@inertiajs/vue3';
+import { usePageMotion } from '../Composables/usePageMotion';
+
+usePageMotion();
 import { ref, computed } from 'vue';
 import vueRecaptcha from 'vue3-recaptcha2';
 
@@ -14,41 +17,13 @@ try {
 const page = usePage();
 const recaptchaKey = computed(() => page.props.config?.google_recaptcha_key ?? '');
 
-// ── Office info ──────────────────────────────────────────────────────────────
-const offices = [
-    {
-        icon: "bi-building",
-        label: "Head Office",
-        address: "Talavera Office Park, 15th Floor\nJl. TB Simatupang No. 23, RT 3/RW 1,\nCilandak Barat, Kec. Cilandak,\nJakarta Selatan 12430",
-        maps: "https://www.google.com/maps/place/Talavera+Office+Park/@-6.2912807,106.8010619,17z/",
+// ── Office info (dari DB — panel: Content Management > Offices / Kantor) ─────
+defineProps({
+    offices: {
+        type: Array,
+        default: () => [],
     },
-    {
-        icon: "bi-tools",
-        label: "Workshop",
-        address: "Jl. Balai Kimia | 15, RT 15/RW 9,\nPekayon, Kec. Ps. Rebo,\nJakarta Timur 13790",
-        maps: "https://www.google.com/maps/search/Jl.+Balai+Kimia+l+15,+RT+15%2FRW+9,+Pekayon/",
-    },
-    {
-        icon: "bi-geo-alt",
-        label: "Riau Office",
-        address: "Jl. Dwikora I No. 16,\nKel. Suka Maju, Kec. Sail,\nPekanbaru, Kepulauan Riau",
-        maps: "https://www.google.com/maps/place/Jl.+Dwikora+I+No.16,+Suka+Maju/",
-    },
-    {
-        icon: "bi-geo-alt",
-        label: "Surabaya Office",
-        address: "Perumahan Royal Residence\nCluster Serenade Blok B7 No. 85\nWiyung, Surabaya",
-        maps: "https://www.google.com/maps/place/Royal+Residence+Cluster+Serenade/",
-        embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.283641018357!2d112.67594177500038!3d-7.322002892686151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fdbff6665413%3A0x7e1cd06e96af4593!2sRoyal%20Residence%20Cluster%20Serenade!5e0!3m2!1sid!2sid!4v1790456609413!5m2!1sid!2sid",
-    },
-    {
-        icon: "bi-geo-alt",
-        label: "Karawang Office",
-        address: "Jl. Nakula Raya No. 272 Perumnas Blok S,\nKec. Telukjambe Timur, Desa Sukaluyu,\nKab. Karawang, Jawa Barat",
-        maps: "https://www.google.com/maps/place/Perumnas+Bumi+Teluk+Jambe/",
-        embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7930.983573060424!2d107.27523567770994!3d-6.330267999999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699d00707bc461%3A0xa7af131a00ada0e2!2sPerumnas%20Bumi%20Teluk%20Jambe%2C%20Blok%20S%2C%20Sukaluyu%2C%20Telukjambe%20Timur%2C%20Karawang!5e0!3m2!1sid!2sid!4v1790457041704!5m2!1sid!2sid",
-    },
-];
+});
 
 // ── Flash messages from Laravel redirect()->back()->with(...) ───────────────
 const flash = computed(() => page.props.flash ?? {});
@@ -142,7 +117,7 @@ async function handleSubmit() {
     <Head title="Contact Us" />
 
     <!-- ── Page Hero ── -->
-    <section class="page-hero" style="background-image: url('/assets/img/hero-carousel/hover-2-new.webp');">
+    <section class="page-hero" style="background-image: url('/assets/img/refresh/ind-oil-gas.webp');">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-body">
             <span class="section-eyebrow">Get In Touch</span>
@@ -159,7 +134,7 @@ async function handleSubmit() {
             <div class="row g-5 align-items-start">
 
                 <!-- Map -->
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-lg-6" data-rv>
                     <div class="contact-map-wrap">
                         <iframe
                             class="contact-map"
@@ -171,7 +146,7 @@ async function handleSubmit() {
                 </div>
 
                 <!-- Details -->
-                <div class="col-lg-6" data-aos="fade-left">
+                <div class="col-lg-6" data-rv>
                     <span class="section-eyebrow">Reach Us</span>
                     <h2 class="section-title">Contact Details</h2>
                     <div class="section-divider"></div>
@@ -192,12 +167,12 @@ async function handleSubmit() {
                     <!-- Office locations -->
                     <div v-for="(office, i) in offices" :key="i" class="contact-info-row">
                         <div class="contact-info-icon">
-                            <i :class="'bi ' + office.icon"></i>
+                            <i :class="'bi ' + (office.icon || 'bi-geo-alt')"></i>
                         </div>
                         <div class="flex-grow-1">
-                            <div class="contact-info-label">{{ office.label }}</div>
+                            <div class="contact-info-label">{{ office.name }}</div>
                             <div class="contact-info-value" style="white-space: pre-line;">{{ office.address }}</div>
-                            <a :href="office.maps" target="_blank" rel="noopener noreferrer" class="contact-maps-link">
+                            <a v-if="office.maps_url" :href="office.maps_url" target="_blank" rel="noopener noreferrer" class="contact-maps-link">
                                 <i class="bi bi-geo-alt-fill"></i> View on Maps
                             </a>
                         </div>
@@ -212,7 +187,7 @@ async function handleSubmit() {
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="inquiry-card" data-aos="fade-up">
+                    <div class="inquiry-card" data-rv>
                         <div class="text-center mb-5">
                             <span class="section-eyebrow">Send a Message</span>
                             <h2 class="section-title mt-2">Inquiry Form</h2>
@@ -368,8 +343,11 @@ async function handleSubmit() {
 
 <style scoped>
 /* ── Sections ── */
-.contact-section  { padding: 80px 0; background: #fff; }
-.inquiry-section  { padding: 60px 0 80px; background: var(--bg-light, #f8f9fa); }
+.contact-section  { padding: 80px 0; background: var(--paper); }
+.inquiry-section  { padding: 60px 0 80px; background: var(--off); }
+.inquiry-card .section-eyebrow { color: var(--az); }
+.inquiry-card .section-title { color: var(--eerie); }
+.inquiry-card .section-body { color: var(--muted); }
 
 /* ── Map ── */
 .contact-map-wrap { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); }
@@ -381,20 +359,24 @@ async function handleSubmit() {
 .contact-company-name {
     font-family: var(--font-head);
     font-size: 18px; font-weight: 800;
-    color: var(--text-dark); margin-bottom: 20px;
+    color: var(--eerie); margin-bottom: 20px;
 }
 .contact-direct { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
 .contact-direct-item {
     display: flex; align-items: center; gap: 12px;
     text-decoration: none; padding: 14px 18px;
-    border: 1px solid var(--border, #e2e8f0); border-radius: 10px;
+    border: 1px solid var(--border); border-radius: 10px;
     transition: background 0.2s, border-color 0.2s;
 }
-.contact-direct-item:hover { background: var(--bg-light); border-color: var(--navy); }
+.contact-direct-item:hover { background: var(--off); border-color: var(--gold); }
 .contact-maps-link {
+    position: relative;
     display: inline-flex; align-items: center; gap: 4px;
-    font-size: 12px; color: var(--navy); text-decoration: none;
+    font-size: 12px; color: var(--gold); text-decoration: none;
     margin-top: 6px; font-weight: 600;
+}
+.contact-maps-link::before {
+    content: ""; position: absolute; inset: -13px -10px;
 }
 .contact-maps-link:hover { text-decoration: underline; }
 
@@ -409,7 +391,7 @@ async function handleSubmit() {
 /* ── Form controls ── */
 .form-label {
     display: block; font-size: 13px; font-weight: 700;
-    color: var(--text-dark, #111827); margin-bottom: 6px;
+    color: var(--text-dark, #1E1E1E); margin-bottom: 6px;
     font-family: var(--font-head);
 }
 .required-mark { color: #e53e3e; }
@@ -418,14 +400,14 @@ async function handleSubmit() {
     width: 100%; padding: 11px 14px;
     border: 1.5px solid var(--border, #cbd5e0);
     border-radius: 8px; font-size: 14px;
-    font-family: var(--font-body, 'Pliant', sans-serif);
-    color: #111827; background: #fff;
+    font-family: var(--font-body, 'Figtree', sans-serif);
+    color: #1E1E1E; background: #fff;
     transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
 }
 .form-control-raya:focus {
-    border-color: var(--navy, #1B2F6E);
-    box-shadow: 0 0 0 3px rgba(27,47,110,0.12);
+    border-color: var(--navy, #2B4184);
+    box-shadow: 0 0 0 3px rgba(43,65,132,0.12);
 }
 .form-control-raya.is-invalid { border-color: #e53e3e; }
 .form-control-raya::placeholder { color: #9ca3af; }
@@ -446,7 +428,7 @@ textarea.form-control-raya { resize: vertical; min-height: 120px; }
 /* ── Submit button ── */
 .btn-submit-inquiry {
     width: 100%; padding: 14px 24px;
-    background: var(--navy, #1B2F6E); color: #fff;
+    background: var(--navy, #2B4184); color: #fff;
     border: none; border-radius: 10px; cursor: pointer;
     font-size: 15px; font-weight: 700;
     font-family: var(--font-head);

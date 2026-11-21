@@ -49,6 +49,9 @@ class ClientResource extends Resource
                 Forms\Components\Toggle::make('is_active')
                     ->label('Aktif / Tampilkan')
                     ->default(true),
+                Forms\Components\Toggle::make('is_hero')
+                    ->label('Tampilkan di Hero (carousel homepage)')
+                    ->default(false),
             ]);
     }
 
@@ -69,6 +72,9 @@ class ClientResource extends Resource
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean()
                     ->label('Aktif'),
+                Tables\Columns\IconColumn::make('is_hero')
+                    ->boolean()
+                    ->label('Hero'),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime('d M Y H:i')
                     ->label('Terakhir Diubah')

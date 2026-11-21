@@ -231,10 +231,12 @@
         }
     </style>
     {{-- favicon --}}
-    <link rel="apple-touch-icon" sizes="180x180" href="/icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icon.png">
-    <link rel="shortcut icon" href="/icon.png">
+    <link rel="icon" href="/assets/img/favicon/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/img/favicon/favicon-144x144.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">

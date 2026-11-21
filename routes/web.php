@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 
+Route::get('/favicon.ico', fn () => response()->file(public_path('assets/img/favicon/favicon.ico'), [
+    'Cache-Control' => 'public, max-age=86400',
+]));
+
 Route::get('/storage/{path}', function (string $path) {
     abort_if(str_contains($path, '..'), 404);
 

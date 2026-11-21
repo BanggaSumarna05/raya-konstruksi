@@ -3,8 +3,21 @@
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
+
+Route::get('/storage/{path}', function (string $path) {
+    abort_if(str_contains($path, '..'), 404);
+
+    $disk = Storage::disk('public');
+
+    abort_unless($disk->exists($path), 404);
+
+    return response()->file($disk->path($path), [
+        'Cache-Control' => 'public, max-age=604800',
+    ]);
+})->where('path', '.*');
 
 #home
 Route::get('/', [FrontController::class, 'index'])->name('index');
